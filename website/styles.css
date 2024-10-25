@@ -69,8 +69,13 @@ body, html {
   }
   
   .tag-versione {
-    font-size: 0.8em;
+    font-size: 0.9em;
     color: gray;
+  }
+
+  .azienda {
+    font-size: 0.95em;
+    color: gray
   }
   
   @media (max-width: 600px) {
