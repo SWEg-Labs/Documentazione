@@ -8,6 +8,7 @@
 \usepackage[hidelinks]{hyperref} % Per i collegamenti ipertestuali, ad esempio sulla table of contents
 \usepackage[italian]{babel} % Per la lingua italiana nelle scritte automatiche
 \usepackage{xcolor} % Per colorare il testo
+\usepackage{colortbl} % Per colorare le celle delle tabelle
 \usepackage{lipsum} % Per generare lorem ipsum
 \usepackage[normalem]{ulem} % Per sottolineare il testo
 \usepackage{array} % Per la visualizzazione fluttuante di array di domande e risposte
@@ -15,24 +16,26 @@
 
 \newcommand{\ulhref}[2]{\href{#1}{\uline{#2}}} % Nuovo comando per sottolineare i link
 \newcommand{\ulref}[1]{\uline{\ref{#1}}} % Nuovo comando per sottolineare i collegamenti a immagini
-
-\usepackage{eurosym} %inserisce il simbolo dell'euro
-\usepackage{tikz} %Per creare grafici e disegni
-\usepackage{pgf-pie} %Per creare grafico a torta
+\setlength{\parindent}{0pt} % Rimuove il rientro automatico dei paragrafi
 
 \graphicspath{ {immagini/} {../../shared/immagini/} }
-
-% Variabili
-\newcommand{\titolo}{Documento degli Impegni}
 
 
 % Struttura
 \begin{document}
 
-\input{contenuti/intestazione}
+\input{contenuti/intestazione_titolo}
+\input{contenuti/informazioni}
 
-\input{contenuti/titolo}
+\newpage
+\input{contenuti/registro_modifiche}
+\newpage
 
-\input{contenuti/scadenza_preventivo_ore}
+\input{contenuti/introduzione.tex}
+\newpage
+\input{contenuti/resoconto_incontri.tex}
+\input{contenuti/motivazione_scelta.tex}
+\newpage
+\input{contenuti/conclusione.tex}
 
 \end{document}
