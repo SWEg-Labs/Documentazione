@@ -30,17 +30,15 @@ jobs:
       - name: Run main.py script
         run: python .github/workflows/main.py
 
-      - name: Add changes
-        run: git add .
-  
-      - name: Commit changes
+      - name: Configure Git
         run: |
           git config --global user.name 'github-actions'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m "Automated update from GitHub Actions" -a || true
 
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+      - name: Add, commit and push changes
+        run: |
+          git add .
+          git commit -m "Automated update from GitHub Actions"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
