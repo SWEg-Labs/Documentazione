@@ -39,6 +39,6 @@ jobs:
         run: |
           git add .
           git commit -m "Automated update from GitHub Actions"
-          git push origin main
+          git push https://${{ secrets.GH_TOKEN }}:x-oauth-basic@github.com/SWEg-Labs/Documentazione.git main
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
