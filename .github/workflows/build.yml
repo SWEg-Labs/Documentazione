@@ -31,8 +31,7 @@ jobs:
         run: python .github/workflows/main.py
 
       - name: Add changes
-        run:
-          git add .github/ReadmeBadges
+        run: git add .
   
       - name: Commit changes
         run: |
