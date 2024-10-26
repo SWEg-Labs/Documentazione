@@ -25,39 +25,6 @@ Programmatore & 24 & 168 & 15 & 2.520 \\
 Verificatore & 26 & 182 & 15 & 2.730 \\
 \hline
 \end{tabular}
+\caption{Ripartizione oraria e dettaglio dei costi}
 \end{table}
-
 \newpage
-Di seguito riportiamo un grafico che rappresenta la percentuale di lavoro di ciascun ruolo:
-\vspace{0.5cm}
-
-\begin{figure}[h]
-\centering
-\begin{tikzpicture}
-\pie[radius=3,
-    text=pin,
-    pin distance=0.5cm, % uso delle frecce che collegano le sezioni della torta ai rispettivi valori.
-    sum=auto,%calcola automaticamente il totale dei valori che compongono la torta(100%)
-    before number=\footnotesize,%riduce la dimensione delle percentuali
-    after number=\%,
-    color={yellow!90!orange,   % giallo intenso
-           orange!70,          % arancione
-           yellow!85!red,      % giallo-rosso (più caldo)
-           orange!80!yellow,   % arancione tenue
-           yellow!75!orange,   % giallo-arancio più chiaro
-           orange!100!red      % arancione molto scuro
-}
-]{
-    27.4/Verificatore,
-    25.2/Programmatore,
-    24.2/Progettista,
-    9.5/Responsabile,
-    8.4/Amministratore,
-    5.3/Analista
-}
-\end{tikzpicture}
-\caption{Percentuale di ore di lavoro per ruolo}
-\end{figure}
-
-Il costo finale calcolato in base alle tariffe orarie dei ruoli e alle ore preventivate risulta di: \euro~XX.ZZZ.\\
-In totale il monte ore \`e pari a N ore, quindi N ore a testa per ciascun membro del gruppo.

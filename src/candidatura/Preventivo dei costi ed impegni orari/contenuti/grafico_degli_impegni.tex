@@ -1,0 +1,30 @@
+Di seguito riportiamo un grafico che rappresenta la percentuale di lavoro di ciascun ruolo:
+\vspace{0.5cm}
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+        \pie[radius=3,
+            text=pin,
+            pin distance=0.5cm,
+            sum=auto,
+            before number=\footnotesize,
+            after number=\%,
+            color={
+                yellow!90!orange,
+                orange!70,
+                yellow!85!red,
+                orange!80!yellow,
+                yellow!75!orange,
+                orange!100!red
+            }
+        ]{
+            27.4/Verificatore,
+            25.2/Programmatore,
+            24.2/Progettista,
+            9.5/Responsabile,
+            8.4/Amministratore,
+            5.3/Analista
+        }
+    \end{tikzpicture}
+    \caption{Percentuale di ore di lavoro per ruolo.}
+\end{figure}
