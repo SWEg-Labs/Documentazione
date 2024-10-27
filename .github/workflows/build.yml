@@ -30,15 +30,8 @@ jobs:
       - name: Run main.py script
         run: python .github/workflows/main.py
 
-      - name: Configure Git
-        run: |
-          git config --global user.name 'github-actions'
-          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
-
       - name: Add, commit and push changes
         run: |
           git add .
           git commit -m "Automated update from GitHub Actions"
-          git push https://${{ secrets.GH_TOKEN }}:x-oauth-basic@github.com/SWEg-Labs/Documentazione.git main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          git push origin main
