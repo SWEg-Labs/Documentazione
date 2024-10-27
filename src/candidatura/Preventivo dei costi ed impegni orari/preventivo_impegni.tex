@@ -6,7 +6,8 @@
 \usepackage{calc}
 \usepackage[hidelinks]{hyperref}
 \usepackage[italian]{babel}
-\usepackage[table]{xcolor}
+\usepackage{xcolor}
+\usepackage{colortbl}
 \usepackage{lipsum}
 \usepackage[normalem]{ulem}
 \usepackage{array}
@@ -17,32 +18,26 @@
 
 \newcommand{\ulhref}[2]{\href{#1}{\uline{#2}}}
 \newcommand{\ulref}[1]{\uline{\ref{#1}}}
+\setlength{\parindent}{0pt}
 
 \graphicspath{ {immagini/} {../../shared/immagini/} }
+
 
 \begin{document}
 
 \input{contenuti/intestazione_titolo}
 \input{contenuti/informazioni}
 
-\clearpage
+\newpage
 \input{contenuti/registro_modifiche}
-\clearpage
-
+\newpage
 \tableofcontents
 \newpage
-\section{Candidatura}
-Con il presente documento il gruppo SWEg Labs intende comunicarLe che si impegner\`a a terminare il progetto didattico entro il giorno DD/MM/YYYY.
-E altro...
 
-\section{Impegno orario}
-\input{contenuti/scadenza_preventivo_ore}
-
-\section{Grafico degli impegni}
+\input{contenuti/candidatura.tex}
+\input{contenuti/impegno_orario}
+\newpage
 \input{contenuti/grafico_degli_impegni}
-
-\section{Preventivo totale}
-Il preventivo finale calcolato in base alle tariffe orarie dei ruoli e alle ore preventivate risulta di: \euro~XX.ZZZ.
-In totale il monte ore \`e pari a N ore, quindi N ore a testa per ciascun membro del gruppo.
+\input{contenuti/preventivo_totale.tex}
 
 \end{document}
