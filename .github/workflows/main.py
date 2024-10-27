@@ -32,8 +32,8 @@ file temporanei relativi alla compilazione dei file latex;
 
 import os
 import shutil
-from time import localtime, strftime
 from datetime import datetime
+import pytz
 
 # --- Configurazione ---
 
@@ -57,6 +57,7 @@ PATH_OUTPUT = ""          # Inizializzato in "set_path_base_directory"
 PATH_OUTPUT_TEMP = ""     # Inizializzato in "set_path_base_directory"
 
 HTML_TEMPLATE_VERBALE = '<p><a href="<placeholder_link_verbale/>" target="_blank"><placeholder_titolo_verbale/></a></p>'
+
 
 
 
@@ -172,8 +173,11 @@ def update_verbali(file_content):
     return file_content_updated
 
 def update_last_update_date(html_website):
-    time_string = strftime("%d/%m/%Y %H:%M", localtime())
+    italy_tz = pytz.timezone('Europe/Rome')
+    italian_time = datetime.now(italy_tz)
+    time_string = italian_time.strftime("%d/%m/%Y %H:%M")
     return html_website.replace("<placeholder_last_update/>", "Ultimo aggiornamento: " + time_string)
+
 
 
 
@@ -273,6 +277,9 @@ def ok_message():
   Stampa un messaggio per segnalare la corretta terminazione dello script.
   """
   print("\n[" + os.path.basename(__file__) + "] OK\n")
+  
+  
+  
 
 # --- Main ---
 
