@@ -33,7 +33,7 @@ file temporanei relativi alla compilazione dei file latex;
 import os
 import shutil
 from datetime import datetime
-import pytz
+from zoneinfo import ZoneInfo
 
 # --- Configurazione ---
 
@@ -173,7 +173,7 @@ def update_verbali(file_content):
     return file_content_updated
 
 def update_last_update_date(html_website):
-    italy_tz = pytz.timezone('Europe/Rome')
+    italy_tz = ZoneInfo("Europe/Rome")
     italian_time = datetime.now(italy_tz)
     time_string = italian_time.strftime("%d/%m/%Y %H:%M")
     return html_website.replace("<placeholder_last_update/>", "Ultimo aggiornamento: " + time_string)
