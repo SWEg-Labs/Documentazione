@@ -89,14 +89,14 @@ body, html {
   }
   
   #nav-navigation p {
-    padding: 0 1em;
+    padding: 0 0.5em;
   }
  
   #candidatura{
     padding-top: 7em;
   }
 
-@media (max-width: 1200px) {
+@media (max-width: 67em) {
     
     body,html{
       scroll-padding-top: 0em;
@@ -112,11 +112,13 @@ body, html {
     }
 
     header {
-      height: 23em;
+      height: 18.5em;
       position:relative;
+      transition: 0s;
     }
     header.scrolled{
-      height: 23em;
+      height: 18.5em;
+      transition: 0s;
     }
 
     nav {
@@ -131,6 +133,17 @@ body, html {
     #nav-navigation {
       flex-direction: column;
       align-items: center;
+    }
+
+    #nav-navigation p{
+      margin: 0.5em 0em;
+    }
+  }
+
+  @media (max-width: 5em){
+    #header-logo{
+      max-width:100%;
+      height: auto;
     }
   }
 
