@@ -140,10 +140,18 @@ body, html {
     }
   }
 
-  @media (max-width: 5em){
+  @media (max-width: 29em){
     #header-logo{
-      max-width:100%;
+      max-width: 100%;
       height: auto;
+    }
+    /*
+    header {
+      background-color: green;
+    }*/
+
+    section h1{
+      font-size: 2rem;
     }
   }
 
