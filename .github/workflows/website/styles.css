@@ -162,12 +162,11 @@ body, html {
   }
   
   section h1 {
-    font-family: "Bungee Shade";
+    font-family: "Lexend", Roboto, sans-serif;
     text-align: left;
     border-radius: 1em;
     color: #1a1a1a;
-    color: #ffd101;
-    
+    color: #ffd101;    
   }
 
 
