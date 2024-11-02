@@ -4,4 +4,5 @@ Per modificare la versione dei documenti è necessario:
 - Cambiare i link nel file "Documentazione\.github\workflows\index.html"
 - Cambiare le versioni indicate negli span nel file "Documentazione\.github\\workflows\index.html"
 
-Nel sito, quando arriverà la PB e ci sarà da aggiornare il sito, spostare la classe "firstSection" (attualmente sulla section "RTB") sulla nuova section "PB".
+Nel sito, quando arriverà la PB e ci sarà da aggiornare il sito, spostare la classe "firstSection" (attualmente sulla section "RTB")
+sulla nuova section "PB".

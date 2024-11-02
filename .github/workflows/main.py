@@ -42,14 +42,22 @@ from zoneinfo import ZoneInfo
 
 # MOD: Configurazione modificabile
 PATH_DOCUMENTI = [
-    os.path.join("src", "candidatura", "Lettera di Presentazione", "lettera_presentazione_v1.0.0.tex"),
-    os.path.join("src", "candidatura", "Preventivo dei costi ed impegni orari", "preventivo_impegni_v1.0.0.tex"),
-    os.path.join("src", "candidatura", "Valutazione dei Capitolati", "valutazione_capitolati_v1.0.0.tex"),
-    os.path.join("src", "template", "template.tex")
-    # I verbali non sono elencati in PATH_DOCUMENTI poiché non solo devono essere compilati, ma verranno anche inseriti automaticamente nel sito, e quindi è comodo trattarli a parte
+    os.path.join("src", "template", "template.tex"),
+    os.path.join("src", "RTB", "Lettera di Presentazione", "lettera_presentazione.tex"),
+    os.path.join("src", "RTB", "Documentazione esterna", "Analisi dei Requisiti", "analisi_requisiti_v1.0.0.tex"),
+    os.path.join("src", "RTB", "Documentazione esterna", "Piano di Progetto", "piano_progetto_v1.0.0.tex"),
+    os.path.join("src", "RTB", "Documentazione esterna", "Piano di Qualifica", "piano_qualifica_v1.0.0.tex"),
+    os.path.join("src", "RTB", "Documentazione esterna", "Glossario", "glossario_v1.0.0.tex"),
+    os.path.join("src", "RTB", "Documentazione interna", "Norme di Progetto", "norme_progetto_v1.0.0.tex"),
+    os.path.join("src", "Candidatura", "Lettera di Presentazione", "lettera_presentazione_v1.0.0.tex"),
+    os.path.join("src", "Candidatura", "Preventivo dei costi ed impegni orari", "preventivo_impegni_v1.0.0.tex"),
+    os.path.join("src", "Candidatura", "Valutazione dei Capitolati", "valutazione_capitolati_v1.0.0.tex")
+    # I verbali non sono elencati in PATH_DOCUMENTI perchè sono tanti e quindi è più comodo listarli dalla cartella di origine
 ]
-PATH_VERBALI_INTERNI = os.path.join("src", "verbali", "verbali interni")
-PATH_VERBALI_ESTERNI = os.path.join("src", "verbali", "verbali esterni")
+PATH_VERBALI_ESTERNI_RTB = os.path.join("src", "RTB", "Documentazione esterna", "Verbali esterni")
+PATH_VERBALI_INTERNI_RTB = os.path.join("src", "RTB", "Documentazione interna", "Verbali interni")
+PATH_VERBALI_ESTERNI_CANDIDATURA = os.path.join("src", "Candidatura", "Verbali", "Verbali esterni")
+PATH_VERBALI_INTERNI_CANDIDATURA = os.path.join("src", "Candidatura", "Verbali", "Verbali interni")
 
 # Configurazione di default
 NAME_OUTPUT_DIRECTORY = "output"
@@ -68,13 +76,25 @@ HTML_TEMPLATE_VERBALE = '<p><a href="<placeholder_link_verbale/>" target="_blank
 
 def get_output_file_path(path):
     list_path_elements = path.split(os.sep)
-    if "candidatura" in list_path_elements:
-        return os.path.join(PATH_OUTPUT_TEMP, "candidatura")
-    if "verbali" in list_path_elements:
-        if "verbali esterni" in list_path_elements:
-            return os.path.join(PATH_OUTPUT_TEMP, "verbali", "verbali esterni")
-        else:
-            return os.path.join(PATH_OUTPUT_TEMP, "verbali", "verbali interni")
+
+    if "RTB" in list_path_elements:
+        if "Documentazione esterna" in list_path_elements:
+            if "Verbali esterni" in list_path_elements:
+                return os.path.join(PATH_OUTPUT_TEMP, "RTB", "Documentazione esterna", "Verbali esterni")
+            return os.path.join(PATH_OUTPUT_TEMP, "RTB", "Documentazione esterna")
+        if "Documentazione interna" in list_path_elements:
+            if "Verbali interni" in list_path_elements:
+                return os.path.join(PATH_OUTPUT_TEMP, "RTB", "Documentazione interna", "Verbali interni")
+            return os.path.join(PATH_OUTPUT_TEMP, "RTB", "Documentazione interna")
+        return os.path.join(PATH_OUTPUT_TEMP, "RTB")
+
+    if "Candidatura" in list_path_elements:
+        if "Verbali" in list_path_elements:
+            if "Verbali esterni" in list_path_elements:
+                return os.path.join(PATH_OUTPUT_TEMP, "Candidatura", "Verbali", "Verbali esterni")
+            return os.path.join(PATH_OUTPUT_TEMP, "Candidatura", "Verbali", "Verbali interni")
+        return os.path.join(PATH_OUTPUT_TEMP, "Candidatura")
+    
     return PATH_OUTPUT_TEMP
 
 def compile_latex_and_move_pdf(name_file, path_directory):
@@ -147,32 +167,74 @@ def sort_by_date_desc(verbali_list):
     return sorted(verbali_list, key=extract_date, reverse=True)
 
 def update_verbali(file_content):
-    html_verbali_interni = ""
-    html_verbali_esterni = ""
+    html_verbali_esterni_candidatura = ""
+    html_verbali_interni_candidatura = ""
+    html_verbali_esterni_rtb = ""
+    html_verbali_interni_rtb = ""
     
-    file_verbali_list = os.listdir(os.path.join(PATH_OUTPUT, "verbali", "verbali interni"))
+
+    # Verbali esterni Candidaura
+
+    file_verbali_list = os.listdir(os.path.join(PATH_OUTPUT, "Candidatura", "Verbali", "Verbali esterni"))
         
     descending_order_file_verbali_list = sort_by_date_desc(file_verbali_list)
         
     for file_verbale in descending_order_file_verbali_list:
-        html_verbali_interni += HTML_TEMPLATE_VERBALE.replace(
-            "<placeholder_link_verbale/>", "output/verbali/verbali interni/" + file_verbale
+        html_verbali_esterni_candidatura += HTML_TEMPLATE_VERBALE.replace(
+            "<placeholder_link_verbale/>", "output/Candidatura/Verbali/Verbali esterni/" + file_verbale
         ).replace(
             "<placeholder_titolo_verbale/>", parse_verbale_title(file_verbale)
         ) + "\n"
 
-    file_verbali_list = os.listdir(os.path.join(PATH_OUTPUT, "verbali", "verbali esterni"))
+
+    # Verbali interni Candidaura
+
+    file_verbali_list = os.listdir(os.path.join(PATH_OUTPUT, "Candidatura", "Verbali", "Verbali interni"))
         
     descending_order_file_verbali_list = sort_by_date_desc(file_verbali_list)
         
     for file_verbale in descending_order_file_verbali_list:
-        html_verbali_esterni += HTML_TEMPLATE_VERBALE.replace(
-            "<placeholder_link_verbale/>", "output/verbali/verbali esterni/" + file_verbale
+        html_verbali_interni_candidatura += HTML_TEMPLATE_VERBALE.replace(
+            "<placeholder_link_verbale/>", "output/Candidatura/Verbali/Verbali interni/" + file_verbale
         ).replace(
             "<placeholder_titolo_verbale/>", parse_verbale_title(file_verbale)
         ) + "\n"
-    file_content_updated = file_content.replace("<placeholder_verbali_interni/>", html_verbali_interni)\
-        .replace("<placeholder_verbali_esterni/>", html_verbali_esterni)
+
+
+    # Verbali esterni RTB
+
+    file_verbali_list = os.listdir(os.path.join(PATH_OUTPUT, "RTB", "Documentazione interna", "Verbali interni"))
+        
+    descending_order_file_verbali_list = sort_by_date_desc(file_verbali_list)
+        
+    for file_verbale in descending_order_file_verbali_list:
+        html_verbali_esterni_rtb += HTML_TEMPLATE_VERBALE.replace(
+            "<placeholder_link_verbale/>", "output/RTB/Documentazione interna/Verbali interni/" + file_verbale
+        ).replace(
+            "<placeholder_titolo_verbale/>", parse_verbale_title(file_verbale)
+        ) + "\n"
+
+
+    # Verbali interni RTB
+
+    file_verbali_list = os.listdir(os.path.join(PATH_OUTPUT, "RTB", "Documentazione esterna", "Verbali esterni"))
+        
+    descending_order_file_verbali_list = sort_by_date_desc(file_verbali_list)
+        
+    for file_verbale in descending_order_file_verbali_list:
+        html_verbali_interni_rtb += HTML_TEMPLATE_VERBALE.replace(
+            "<placeholder_link_verbale/>", "output/RTB/Documentazione esterna/Verbali esterni/" + file_verbale
+        ).replace(
+            "<placeholder_titolo_verbale/>", parse_verbale_title(file_verbale)
+        ) + "\n"
+
+
+    file_content_updated = file_content\
+        .replace("<placeholder_verbali_esterni_rtb/>", html_verbali_esterni_rtb)\
+        .replace("<placeholder_verbali_interni_rtb/>", html_verbali_interni_rtb)\
+        .replace("<placeholder_verbali_esterni_candidatura/>", html_verbali_esterni_candidatura)\
+        .replace("<placeholder_verbali_interni_candidatura/>", html_verbali_interni_candidatura)
+        
     return file_content_updated
 
 def update_last_update_date(html_website):
@@ -225,10 +287,17 @@ def create_new_output_directory():
     if os.path.exists(PATH_OUTPUT_TEMP):
         shutil.rmtree(PATH_OUTPUT_TEMP)
     os.mkdir(PATH_OUTPUT_TEMP)
-    os.mkdir(os.path.join(PATH_OUTPUT_TEMP, "candidatura"))
-    os.mkdir(os.path.join(PATH_OUTPUT_TEMP, "verbali"))
-    os.mkdir(os.path.join(PATH_OUTPUT_TEMP, "verbali", "verbali esterni"))
-    os.mkdir(os.path.join(PATH_OUTPUT_TEMP, "verbali", "verbali interni"))
+
+    os.mkdir(os.path.join(PATH_OUTPUT_TEMP, "Candidatura"))
+    os.mkdir(os.path.join(PATH_OUTPUT_TEMP, "Candidatura", "Verbali"))
+    os.mkdir(os.path.join(PATH_OUTPUT_TEMP, "Candidatura", "Verbali", "Verbali esterni"))
+    os.mkdir(os.path.join(PATH_OUTPUT_TEMP, "Candidatura", "Verbali", "Verbali interni"))
+
+    os.mkdir(os.path.join(PATH_OUTPUT_TEMP, "RTB"))
+    os.mkdir(os.path.join(PATH_OUTPUT_TEMP, "RTB", "Documentazione esterna"))
+    os.mkdir(os.path.join(PATH_OUTPUT_TEMP, "RTB", "Documentazione esterna", "Verbali esterni"))
+    os.mkdir(os.path.join(PATH_OUTPUT_TEMP, "RTB", "Documentazione interna"))
+    os.mkdir(os.path.join(PATH_OUTPUT_TEMP, "RTB", "Documentazione interna", "Verbali interni"))
 
 def latex_to_pdf():
   """
@@ -239,17 +308,31 @@ def latex_to_pdf():
       path_directory, name_file = os.path.split(path_file)
       compile_latex_and_move_pdf(name_file, path_directory)
       
-  if os.path.exists(PATH_VERBALI_INTERNI):
-    list_directory_verbale = os.listdir(PATH_VERBALI_INTERNI)
+  if os.path.exists(PATH_VERBALI_INTERNI_CANDIDATURA):
+    list_directory_verbale = os.listdir(PATH_VERBALI_INTERNI_CANDIDATURA)
     for directory_verbale in list_directory_verbale:
-      path_directory = os.path.join(PATH_VERBALI_INTERNI, directory_verbale)
+      path_directory = os.path.join(PATH_VERBALI_INTERNI_CANDIDATURA, directory_verbale)
       name_file = directory_verbale + ".tex"
       compile_latex_and_move_pdf(name_file, path_directory)
       
-  if os.path.exists(PATH_VERBALI_ESTERNI):
-    list_directory_verbale = os.listdir(PATH_VERBALI_ESTERNI)
+  if os.path.exists(PATH_VERBALI_ESTERNI_CANDIDATURA):
+    list_directory_verbale = os.listdir(PATH_VERBALI_ESTERNI_CANDIDATURA)
     for directory_verbale in list_directory_verbale:
-      path_directory = os.path.join(PATH_VERBALI_ESTERNI, directory_verbale)
+      path_directory = os.path.join(PATH_VERBALI_ESTERNI_CANDIDATURA, directory_verbale)
+      name_file = directory_verbale + ".tex"
+      compile_latex_and_move_pdf(name_file, path_directory)
+
+  if os.path.exists(PATH_VERBALI_INTERNI_RTB):
+    list_directory_verbale = os.listdir(PATH_VERBALI_INTERNI_RTB)
+    for directory_verbale in list_directory_verbale:
+      path_directory = os.path.join(PATH_VERBALI_INTERNI_RTB, directory_verbale)
+      name_file = directory_verbale + ".tex"
+      compile_latex_and_move_pdf(name_file, path_directory)
+      
+  if os.path.exists(PATH_VERBALI_ESTERNI_RTB):
+    list_directory_verbale = os.listdir(PATH_VERBALI_ESTERNI_RTB)
+    for directory_verbale in list_directory_verbale:
+      path_directory = os.path.join(PATH_VERBALI_ESTERNI_RTB, directory_verbale)
       name_file = directory_verbale + ".tex"
       compile_latex_and_move_pdf(name_file, path_directory)
         
