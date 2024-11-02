@@ -42,9 +42,9 @@ from zoneinfo import ZoneInfo
 
 # MOD: Configurazione modificabile
 PATH_DOCUMENTI = [
-    os.path.join("src", "candidatura", "Lettera di Presentazione", "lettera_presentazione_1.0.0.tex"),
-    os.path.join("src", "candidatura", "Preventivo dei costi ed impegni orari", "preventivo_impegni_1.0.0.tex"),
-    os.path.join("src", "candidatura", "Valutazione dei Capitolati", "valutazione_capitolati_1.0.0.tex"),
+    os.path.join("src", "candidatura", "Lettera di Presentazione", "lettera_presentazione_v1.0.0.tex"),
+    os.path.join("src", "candidatura", "Preventivo dei costi ed impegni orari", "preventivo_impegni_v1.0.0.tex"),
+    os.path.join("src", "candidatura", "Valutazione dei Capitolati", "valutazione_capitolati_v1.0.0.tex"),
     os.path.join("src", "template", "template.tex")
     # I verbali non sono elencati in PATH_DOCUMENTI poiché non solo devono essere compilati, ma verranno anche inseriti automaticamente nel sito, e quindi è comodo trattarli a parte
 ]
