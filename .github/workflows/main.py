@@ -42,18 +42,18 @@ from zoneinfo import ZoneInfo
 
 # MOD: Configurazione modificabile
 PATH_DOCUMENTI = [
-    os.path.join("src", "candidatura", "Lettera di Presentazione", "lettera_presentazione_1.0.tex"),
-    os.path.join("src", "candidatura", "Preventivo dei costi ed impegni orari", "preventivo_impegni_1.0.tex"),
-    os.path.join("src", "candidatura", "Valutazione dei Capitolati", "valutazione_capitolati_1.0.tex"),
+    os.path.join("src", "candidatura", "Lettera di Presentazione", "lettera_presentazione_1.0.0.tex"),
+    os.path.join("src", "candidatura", "Preventivo dei costi ed impegni orari", "preventivo_impegni_1.0.0.tex"),
+    os.path.join("src", "candidatura", "Valutazione dei Capitolati", "valutazione_capitolati_1.0.0.tex"),
     os.path.join("src", "template", "template.tex")
-    # I verbali non sono elencati in PATH_DOCUMENTI poiché non sono devono essere compilati, ma verranno anche inseriti automaticamente nel sito, e quindi è comodo trattarli a parte
+    # I verbali non sono elencati in PATH_DOCUMENTI poiché non solo devono essere compilati, ma verranno anche inseriti automaticamente nel sito, e quindi è comodo trattarli a parte
 ]
 PATH_VERBALI_INTERNI = os.path.join("src", "verbali", "verbali interni")
 PATH_VERBALI_ESTERNI = os.path.join("src", "verbali", "verbali esterni")
 
 # Configurazione di default
 NAME_OUTPUT_DIRECTORY = "output"
-NAME_BASE_DIRECTORY = "Documentazione"   # Nome directory radice del progetto
+NAME_BASE_DIRECTORY = "Documentazione_Fork"   # Nome directory radice del progetto
 PATH_WEBSITE_DIRECTORY = os.path.join(".github", "workflows")
 PATH_BASE_DIRECTORY = ""  # Inizializzato in "set_path_base_directory"
 PATH_OUTPUT = ""          # Inizializzato in "set_path_base_directory"
