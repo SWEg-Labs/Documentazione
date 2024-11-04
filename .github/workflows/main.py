@@ -61,7 +61,7 @@ PATH_VERBALI_INTERNI_CANDIDATURA = os.path.join("src", "Candidatura", "Verbali",
 
 # Configurazione di default
 NAME_OUTPUT_DIRECTORY = "output"
-NAME_BASE_DIRECTORY = "Documentazione_Fork"   # Nome directory radice del progetto
+NAME_BASE_DIRECTORY = "Documentazione"   # Nome directory radice del progetto
 PATH_WEBSITE_DIRECTORY = os.path.join(".github", "workflows")
 PATH_BASE_DIRECTORY = ""  # Inizializzato in "set_path_base_directory"
 PATH_OUTPUT = ""          # Inizializzato in "set_path_base_directory"
