@@ -1,226 +1,228 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap');
 
+:root{
+  --sectionLinkColor: #ffd101;
+  --background: #1a1a1a;
+  --bgHeaderLinksLastUpdate: #2d2d2d;
+  --txtcolor: white;
+  --tagLastUpdateColor: gray;
+}
+
 body, html {
-    scroll-padding-top: 4em;
-    margin: 0;
-    padding: 0;
-    font-family: "Lexend", Roboto, sans-serif;
-    font-size: 1.2em;
-    font-weight: bold;
-    background-color: #1a1a1a;
-    color: white;
-  }
+  scroll-padding-top: 4em;
+  margin: 0;
+  padding: 0;
+  font-family: "Lexend", Roboto, sans-serif;
+  font-size: 1.2em;
+  font-weight: bold;
+  background-color: var(--background);
+  color: var(--txtcolor);
+}
 
-  h1{
-    font-size: 2.5rem;
-  }
-  
-  a {
-    color: white;
-    color: #ffd101;
-    text-decoration: underline;
-  }
+h1{
+  font-size: 2.5rem;
+}
 
-  a span.monospace {
-    font-family: "Roboto Mono", monospace;
-  }
-  
-  header{
-    padding: 0 1em;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    height: 7em;
-    /*background-color: white;*/
-    background-color: #2d2d2d;
-    transition-duration: 1s;
-  }
+a {
+  color: var(--sectionLinkColor);
+  text-decoration: underline;
+}
 
-  header.scrolled{
-    height: 4em;
-  }
+a span.monospace {
+  font-family: "Roboto Mono", monospace;
+}
 
-  #header-logo {
-    margin:1em 0em;
-    height: 5em;
-    transition-duration: 1s;
+header{
+  padding: 0 1em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 7em;
+  background-color: var(--bgHeaderLinksLastUpdate);
+  transition-duration: 1s;
+}
+
+header.scrolled{
+  height: 4em;
+}
+
+#header-logo {
+  margin:1em 0em;
+  height: 5em;
+  transition-duration: 1s;
+}
+
+#header-logo.scrolled-logo{
+  margin: 0.5em 0em;
+  height: 3em;
+}
+
+nav {
+  max-width: 40em;
+  margin: auto;
+  padding: 0em 0em 0em 0em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: var(--bgHeaderLinksLastUpdate);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+#nav-navigation a{
+  text-decoration: none;
+  color: var(--background);
+  padding: 7px 15px;
+  display: inline-block;
+  margin: 0px;
+  border-radius: 1.5em;
+  background-color: var(--sectionLinkColor);
+} 
+
+#nav-navigation a:hover{
+  background-color: #fbe26d;
+  color: #201d0e;
+}
+
+#nav-navigation {
+  display: flex;
+}
+
+#nav-navigation p {
+  padding: 0 0.5em;
+}
+
+.firstSection{
+  padding-top: 7em;
+}
+
+section {
+  max-width: 40em;
+  margin: auto;
+  padding: 1em 3em;
+}
+
+section h1, section h2 {
+  text-align: left;
+  border-radius: 1em;
+  color: var(--sectionLinkColor);    
+}
+
+section#RTB p, section#candidatura p {
+  background: linear-gradient(to right, var(--sectionLinkColor) 0.8%, transparent 0.8%);
+  background-color: var(--bgHeaderLinksLastUpdate);
+  border-radius: 8px;
+  padding: 0.5em 1em;
+}
+
+section#RTB p:hover, section#candidatura p:hover {
+  background-color: #333333;
+}
+
+section#RTB p a, section#candidatura p a {
+  color: var(--txtcolor);
+  text-decoration: none;
+}
+
+.indented {
+  padding-left: 2em;
+}
+
+#last-update {
+  background-color: var(--bgHeaderLinksLastUpdate);
+  text-align: center;
+  font-size: 0.7em;
+  color: var(--tagLastUpdateColor);
+}
+
+#link-github {
+  word-break: break-word;
+}
+
+.tag-versione {
+  font-size: 0.9em;
+  color: var(--tagLastUpdateColor);
+}
+
+
+
+
+
+/* Media Queries */
+
+@media (max-width: 67em) {
+  body,html{
+    scroll-padding-top: 0em;
   }
 
   #header-logo.scrolled-logo{
-    margin: 0.5em 0em;
-    height: 3em;
+    margin:1em 0em;
+    height: 5em;
+  }
+
+  .firstSection {
+    padding-top: 0em;
+  }
+
+  header {
+    height: 18.5em;
+    position: relative;
+    transition: 0s;
+  }
+  
+  header.scrolled{
+    height: 18.5em;
+    transition: 0s;
   }
 
   nav {
-    max-width: 40em;
-    margin: auto;
-    padding: 0em 0em 0em 0em;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    /*background-color: white;*/
-    background-color: #2d2d2d;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-  }
-
-  #nav-navigation a{
-    text-decoration: none;
-    color: #1a1a1a;
-    padding: 7px 15px;
-    display: inline-block;
-    margin: 0px;
-    border-radius: 1.5em;
-    background-color: #ffd101;
-  } 
-
-  #nav-navigation a:hover{
-    background-color: #fbe26d;
-    color: #201d0e;
-  }
-  
-  #nav-navigation {
-    display: flex;
-  }
-  
-  #nav-navigation p {
-    padding: 0 0.5em;
-  }
- 
-  #candidatura{
-    padding-top: 7em;
-  }
-
-@media (max-width: 67em) {
-    
-    body,html{
-      scroll-padding-top: 0em;
-    }
-
-    #header-logo.scrolled-logo{
-      margin:1em 0em;
-      height: 5em;
-    }
-
-    #candidatura{
-      padding-top: 0em;
-    }
-
-    header {
-      height: 18.5em;
-      position: relative;
-      transition: 0s;
-    }
-    header.scrolled{
-      height: 18.5em;
-      transition: 0s;
-    }
-
-    nav {
-      flex-direction: column;
-      position: relative;
-    }
-  
-    section {
-      padding: 0.5em;
-    }
-  
-    #nav-navigation {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    #nav-navigation p{
-      margin: 0.5em 0em;
-    }
-  }
-
-  @media (max-width: 29em){
-    #header-logo{
-      max-width: 100%;
-      height: auto;
-    }
-    /*
-    header {
-      background-color: green;
-    }*/
-
-    section h1{
-      font-size: 2rem;
-    }
+    flex-direction: column;
+    position: relative;
   }
 
   section {
-    max-width: 40em;
-    margin: auto;
-    padding: 1em 3em;
-  }
-  
-  section h1 {
-    text-align: left;
-    border-radius: 1em;
-    color: #1a1a1a;
-    color: #ffd101;    
+    padding: 0.5em;
   }
 
-
-  section#candidatura p, section#verbali p {
-    background: linear-gradient(to right, #ffd101 0.8%, transparent 0.8%);
-    background-color: #2d2d2d;
-    border-radius: 8px;
-    padding: 0.5em 1em;
+  #nav-navigation {
+    flex-direction: column;
+    align-items: center;
   }
 
-  section#candidatura p:hover, section#verbali p:hover {
-    background-color: #333333;
+  #nav-navigation p{
+    margin: 0.5em 0em;
+  }
+}
+
+
+@media (max-width: 29em){
+  #header-logo{
+    max-width: 100%;
+    height: auto;
   }
 
-  section#candidatura p a, section#verbali p a {
-    color: white;
-    text-decoration: none;
+  section h1{
+    font-size: 2rem;
+  }
+}
+
+
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
   }
 
-  .indented {
-    padding-left: 2em;
+  section {
+    padding: 0.5em;
   }
-  
-  .unipd {
-    color: #B5121B;
-    color: #ffd101;
+
+  #nav-navigation {
+    flex-direction: column;
+    align-items: center;
   }
-  
-  #last-update {
-    background-color: #2d2d2d;
-    text-align: center;
-    font-size: 0.7em;
-    color: gray;
-  }
-  
-  #link-github {
-    word-break: break-word;
-  }
-  
-  .tag-versione {
-    font-size: 0.9em;
-    color: gray;
-  }
-  
-  @media (max-width: 600px) {
-    nav {
-      flex-direction: column;
-    }
-  
-    section {
-      padding: 0.5em;
-    }
-  
-    #nav-navigation {
-      flex-direction: column;
-      align-items: center;
-    }
-  }
+}
