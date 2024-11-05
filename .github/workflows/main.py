@@ -203,13 +203,13 @@ def update_verbali(file_content):
 
     # Verbali esterni RTB
 
-    file_verbali_list = os.listdir(os.path.join(PATH_OUTPUT, "RTB", "Documentazione interna", "Verbali interni"))
+    file_verbali_list = os.listdir(os.path.join(PATH_OUTPUT, "RTB", "Documentazione esterna", "Verbali esterni"))
         
     descending_order_file_verbali_list = sort_by_date_desc(file_verbali_list)
         
     for file_verbale in descending_order_file_verbali_list:
         html_verbali_esterni_rtb += HTML_TEMPLATE_VERBALE.replace(
-            "<placeholder_link_verbale/>", "output/RTB/Documentazione interna/Verbali interni/" + file_verbale
+            "<placeholder_link_verbale/>", "output/RTB/Documentazione esterna/Verbali esterni/" + file_verbale
         ).replace(
             "<placeholder_titolo_verbale/>", parse_verbale_title(file_verbale)
         ) + "\n"
@@ -217,13 +217,13 @@ def update_verbali(file_content):
 
     # Verbali interni RTB
 
-    file_verbali_list = os.listdir(os.path.join(PATH_OUTPUT, "RTB", "Documentazione esterna", "Verbali esterni"))
+    file_verbali_list = os.listdir(os.path.join(PATH_OUTPUT, "RTB", "Documentazione interna", "Verbali interni"))
         
     descending_order_file_verbali_list = sort_by_date_desc(file_verbali_list)
         
     for file_verbale in descending_order_file_verbali_list:
         html_verbali_interni_rtb += HTML_TEMPLATE_VERBALE.replace(
-            "<placeholder_link_verbale/>", "output/RTB/Documentazione esterna/Verbali esterni/" + file_verbale
+            "<placeholder_link_verbale/>", "output/RTB/Documentazione interna/Verbali interni/" + file_verbale
         ).replace(
             "<placeholder_titolo_verbale/>", parse_verbale_title(file_verbale)
         ) + "\n"

@@ -19,34 +19,28 @@
 \usepackage{amsmath} % Per scrivere formule matematiche, in particolare per il pedice G
 
 \newcommand{\ulhref}[2]{\href{#1}{\uline{#2}}} % Nuovo comando per sottolineare i link
-\newcommand{\ulref}[1]{\uline{\ref{#1}}} % Nuovo comando per sottolineare i collegamenti a immagini
+\newcommand{\ulref}[1]{\uline{\ref{#1}}} % Nuovo comando per sottolineare i collegamenti a immagini e tabelle
 \setlength{\parindent}{0pt} % Rimuove il rientro automatico dei paragrafi
 \usetikzlibrary{calc} % Libreria per il calcolo delle coordinate di TikZ
 \pagestyle{fancy} % Stile della pagina, per l'intestazione e il piè di pagina
 \renewcommand{\footrulewidth}{0.4pt} % Inserimento della linea orizzontale in basso
 
-\graphicspath{ {immagini/} {../../../shared/immagini/} {} }
-
-% Intestazione
-\fancyhead[R]{\includegraphics[width=0.16\textwidth]{sweg_logo_sito_inverted.png}} % Immagine a destra
-
-% Piè di pagina
-\fancyfoot[L]{Norme di Progetto}       % Testo a sinistra
-\fancyfoot[C]{\thepage}                % Numero di pagina al centro
-\fancyfoot[R]{Versione 1.0.0}          % Testo a destra
+\graphicspath{ {immagini/} {../../../shared/immagini/} }
 
 
 
 % Struttura
 \begin{document}
 
-\input{contenuti/intestazione_titolo}
-\input{contenuti/informazioni}
+\input{contenuti/intestazione_titolo.tex}
+\input{contenuti/informazioni.tex}
 
 \newpage
-\input{contenuti/registro_modifiche}
+\input{contenuti/registro_modifiche.tex}
 \newpage
-\tableofcontents
+\input{contenuti/indice.tex}
+\newpage
+\input{contenuti/elenchi.tex}
 \newpage
 
 \input{contenuti/introduzione.tex}
