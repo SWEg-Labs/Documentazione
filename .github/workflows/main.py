@@ -288,81 +288,81 @@ def create_new_output_directory():
         shutil.rmtree(PATH_OUTPUT_TEMP)
     os.mkdir(PATH_OUTPUT_TEMP)
 
-    os.mkdir(os.path.join(PATH_OUTPUT_TEMP, "Candidatura"))
-    os.mkdir(os.path.join(PATH_OUTPUT_TEMP, "Candidatura", "Verbali"))
-    os.mkdir(os.path.join(PATH_OUTPUT_TEMP, "Candidatura", "Verbali", "Verbali esterni"))
-    os.mkdir(os.path.join(PATH_OUTPUT_TEMP, "Candidatura", "Verbali", "Verbali interni"))
-
     os.mkdir(os.path.join(PATH_OUTPUT_TEMP, "RTB"))
     os.mkdir(os.path.join(PATH_OUTPUT_TEMP, "RTB", "Documentazione esterna"))
     os.mkdir(os.path.join(PATH_OUTPUT_TEMP, "RTB", "Documentazione esterna", "Verbali esterni"))
     os.mkdir(os.path.join(PATH_OUTPUT_TEMP, "RTB", "Documentazione interna"))
     os.mkdir(os.path.join(PATH_OUTPUT_TEMP, "RTB", "Documentazione interna", "Verbali interni"))
 
-def latex_to_pdf():
-  """
-  Compila i documenti latex e li sposta nella directory di output.
-  """
-  for path_file in PATH_DOCUMENTI:
-    if os.path.exists(path_file):
-      path_directory, name_file = os.path.split(path_file)
-      compile_latex_and_move_pdf(name_file, path_directory)
-      
-  if os.path.exists(PATH_VERBALI_INTERNI_CANDIDATURA):
-    list_directory_verbale = os.listdir(PATH_VERBALI_INTERNI_CANDIDATURA)
-    for directory_verbale in list_directory_verbale:
-      path_directory = os.path.join(PATH_VERBALI_INTERNI_CANDIDATURA, directory_verbale)
-      name_file = directory_verbale + ".tex"
-      compile_latex_and_move_pdf(name_file, path_directory)
-      
-  if os.path.exists(PATH_VERBALI_ESTERNI_CANDIDATURA):
-    list_directory_verbale = os.listdir(PATH_VERBALI_ESTERNI_CANDIDATURA)
-    for directory_verbale in list_directory_verbale:
-      path_directory = os.path.join(PATH_VERBALI_ESTERNI_CANDIDATURA, directory_verbale)
-      name_file = directory_verbale + ".tex"
-      compile_latex_and_move_pdf(name_file, path_directory)
+    os.mkdir(os.path.join(PATH_OUTPUT_TEMP, "Candidatura"))
+    os.mkdir(os.path.join(PATH_OUTPUT_TEMP, "Candidatura", "Verbali"))
+    os.mkdir(os.path.join(PATH_OUTPUT_TEMP, "Candidatura", "Verbali", "Verbali esterni"))
+    os.mkdir(os.path.join(PATH_OUTPUT_TEMP, "Candidatura", "Verbali", "Verbali interni"))
 
-  if os.path.exists(PATH_VERBALI_INTERNI_RTB):
-    list_directory_verbale = os.listdir(PATH_VERBALI_INTERNI_RTB)
-    for directory_verbale in list_directory_verbale:
-      path_directory = os.path.join(PATH_VERBALI_INTERNI_RTB, directory_verbale)
-      name_file = directory_verbale + ".tex"
-      compile_latex_and_move_pdf(name_file, path_directory)
-      
-  if os.path.exists(PATH_VERBALI_ESTERNI_RTB):
-    list_directory_verbale = os.listdir(PATH_VERBALI_ESTERNI_RTB)
-    for directory_verbale in list_directory_verbale:
-      path_directory = os.path.join(PATH_VERBALI_ESTERNI_RTB, directory_verbale)
-      name_file = directory_verbale + ".tex"
-      compile_latex_and_move_pdf(name_file, path_directory)
+def latex_to_pdf():
+    """
+    Compila i documenti latex e li sposta nella directory di output.
+    """
+    for path_file in PATH_DOCUMENTI:
+        if os.path.exists(path_file):
+        path_directory, name_file = os.path.split(path_file)
+        compile_latex_and_move_pdf(name_file, path_directory)
+
+    if os.path.exists(PATH_VERBALI_INTERNI_RTB):
+        list_directory_verbale = os.listdir(PATH_VERBALI_INTERNI_RTB)
+        for directory_verbale in list_directory_verbale:
+        path_directory = os.path.join(PATH_VERBALI_INTERNI_RTB, directory_verbale)
+        name_file = directory_verbale + ".tex"
+        compile_latex_and_move_pdf(name_file, path_directory)
+        
+    if os.path.exists(PATH_VERBALI_ESTERNI_RTB):
+        list_directory_verbale = os.listdir(PATH_VERBALI_ESTERNI_RTB)
+        for directory_verbale in list_directory_verbale:
+        path_directory = os.path.join(PATH_VERBALI_ESTERNI_RTB, directory_verbale)
+        name_file = directory_verbale + ".tex"
+        compile_latex_and_move_pdf(name_file, path_directory)
+        
+    if os.path.exists(PATH_VERBALI_INTERNI_CANDIDATURA):
+        list_directory_verbale = os.listdir(PATH_VERBALI_INTERNI_CANDIDATURA)
+        for directory_verbale in list_directory_verbale:
+        path_directory = os.path.join(PATH_VERBALI_INTERNI_CANDIDATURA, directory_verbale)
+        name_file = directory_verbale + ".tex"
+        compile_latex_and_move_pdf(name_file, path_directory)
+        
+    if os.path.exists(PATH_VERBALI_ESTERNI_CANDIDATURA):
+        list_directory_verbale = os.listdir(PATH_VERBALI_ESTERNI_CANDIDATURA)
+        for directory_verbale in list_directory_verbale:
+        path_directory = os.path.join(PATH_VERBALI_ESTERNI_CANDIDATURA, directory_verbale)
+        name_file = directory_verbale + ".tex"
+        compile_latex_and_move_pdf(name_file, path_directory)
         
 def replace_old_output_directory():
-  """
-  Sostituisce la directory con i file PDF generati recentemente con quella già esistente, se presente.
-  """
-  if os.path.exists(PATH_OUTPUT):
-    shutil.rmtree(PATH_OUTPUT)
-  os.rename(PATH_OUTPUT_TEMP, PATH_OUTPUT)
+    """
+    Sostituisce la directory con i file PDF generati recentemente con quella già esistente, se presente.
+    """
+    if os.path.exists(PATH_OUTPUT):
+        shutil.rmtree(PATH_OUTPUT)
+    os.rename(PATH_OUTPUT_TEMP, PATH_OUTPUT)
         
 def generate_website():
-  """
-  Genera il sito, aggiornando la sezione verbali e aggiornando la data di "last update".
-  """
-  html_template_website = get_website_html()
-  html_updated_website = update_verbali(html_template_website)
-  html_updated_website = update_last_update_date(html_updated_website)
-  try:
-    file = open("index.html", "w")
-    file.write(html_updated_website)
-    shutil.copytree(os.path.join(PATH_WEBSITE_DIRECTORY, "website"), "website")
-  finally:
-    file.close()
+    """
+    Genera il sito, aggiornando la sezione verbali e aggiornando la data di "last update".
+    """
+    html_template_website = get_website_html()
+    html_updated_website = update_verbali(html_template_website)
+    html_updated_website = update_last_update_date(html_updated_website)
+    try:
+        file = open("index.html", "w")
+        file.write(html_updated_website)
+        shutil.copytree(os.path.join(PATH_WEBSITE_DIRECTORY, "website"), "website")
+    finally:
+        file.close()
 
 def ok_message():
-  """
-  Stampa un messaggio per segnalare la corretta terminazione dello script.
-  """
-  print("\n[" + os.path.basename(__file__) + "] OK\n")
+    """
+    Stampa un messaggio per segnalare la corretta terminazione dello script.
+    """
+    print("\n[" + os.path.basename(__file__) + "] OK\n")
   
   
   
