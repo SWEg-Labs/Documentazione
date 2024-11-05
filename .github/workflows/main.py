@@ -167,38 +167,10 @@ def sort_by_date_desc(verbali_list):
     return sorted(verbali_list, key=extract_date, reverse=True)
 
 def update_verbali(file_content):
-    html_verbali_esterni_candidatura = ""
-    html_verbali_interni_candidatura = ""
     html_verbali_esterni_rtb = ""
     html_verbali_interni_rtb = ""
-    
-
-    # Verbali esterni Candidaura
-
-    file_verbali_list = os.listdir(os.path.join(PATH_OUTPUT, "Candidatura", "Verbali", "Verbali esterni"))
-        
-    descending_order_file_verbali_list = sort_by_date_desc(file_verbali_list)
-        
-    for file_verbale in descending_order_file_verbali_list:
-        html_verbali_esterni_candidatura += HTML_TEMPLATE_VERBALE.replace(
-            "<placeholder_link_verbale/>", "output/Candidatura/Verbali/Verbali esterni/" + file_verbale
-        ).replace(
-            "<placeholder_titolo_verbale/>", parse_verbale_title(file_verbale)
-        ) + "\n"
-
-
-    # Verbali interni Candidaura
-
-    file_verbali_list = os.listdir(os.path.join(PATH_OUTPUT, "Candidatura", "Verbali", "Verbali interni"))
-        
-    descending_order_file_verbali_list = sort_by_date_desc(file_verbali_list)
-        
-    for file_verbale in descending_order_file_verbali_list:
-        html_verbali_interni_candidatura += HTML_TEMPLATE_VERBALE.replace(
-            "<placeholder_link_verbale/>", "output/Candidatura/Verbali/Verbali interni/" + file_verbale
-        ).replace(
-            "<placeholder_titolo_verbale/>", parse_verbale_title(file_verbale)
-        ) + "\n"
+    html_verbali_esterni_candidatura = ""
+    html_verbali_interni_candidatura = ""
 
 
     # Verbali esterni RTB
@@ -224,6 +196,34 @@ def update_verbali(file_content):
     for file_verbale in descending_order_file_verbali_list:
         html_verbali_interni_rtb += HTML_TEMPLATE_VERBALE.replace(
             "<placeholder_link_verbale/>", "output/RTB/Documentazione interna/Verbali interni/" + file_verbale
+        ).replace(
+            "<placeholder_titolo_verbale/>", parse_verbale_title(file_verbale)
+        ) + "\n"
+    
+
+    # Verbali esterni Candidaura
+
+    file_verbali_list = os.listdir(os.path.join(PATH_OUTPUT, "Candidatura", "Verbali", "Verbali esterni"))
+        
+    descending_order_file_verbali_list = sort_by_date_desc(file_verbali_list)
+        
+    for file_verbale in descending_order_file_verbali_list:
+        html_verbali_esterni_candidatura += HTML_TEMPLATE_VERBALE.replace(
+            "<placeholder_link_verbale/>", "output/Candidatura/Verbali/Verbali esterni/" + file_verbale
+        ).replace(
+            "<placeholder_titolo_verbale/>", parse_verbale_title(file_verbale)
+        ) + "\n"
+
+
+    # Verbali interni Candidaura
+
+    file_verbali_list = os.listdir(os.path.join(PATH_OUTPUT, "Candidatura", "Verbali", "Verbali interni"))
+        
+    descending_order_file_verbali_list = sort_by_date_desc(file_verbali_list)
+        
+    for file_verbale in descending_order_file_verbali_list:
+        html_verbali_interni_candidatura += HTML_TEMPLATE_VERBALE.replace(
+            "<placeholder_link_verbale/>", "output/Candidatura/Verbali/Verbali interni/" + file_verbale
         ).replace(
             "<placeholder_titolo_verbale/>", parse_verbale_title(file_verbale)
         ) + "\n"
