@@ -18,7 +18,8 @@
  \usepackage{fancyhdr} % Per l'intestazione e il piè di pagina
  \usepackage{amsmath} % Per scrivere formule matematiche, in particolare per il pedice G
  \usepackage{hyperref} % Per linkare dei documenti
- 
+ \usepackage{comment} %Per commentare un paragrafo
+
  \newcommand{\ulhref}[2]{\href{#1}{\uline{#2}}} % Nuovo comando per sottolineare i link
  \newcommand{\ulref}[1]{\uline{\ref{#1}}} % Nuovo comando per sottolineare i collegamenti a immagini e tabelle
  \setlength{\parindent}{0pt} % Rimuove il rientro automatico dei paragrafi
@@ -33,9 +34,8 @@
  
  
  % Struttura
- \begin{document}
- 
- \input{contenuti/intestazione_titolo.tex}
+\begin{document}
+\input{contenuti/intestazione_titolo.tex}
  \input{contenuti/informazioni.tex}
  
  \newpage
@@ -50,7 +50,8 @@
  \input{contenuti/introduzione.tex}
  \newpage
  \input{contenuti/analisi_dei_rischi.tex}
+\end{document}
  
  
- \end{document}
+ 
  
