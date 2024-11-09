@@ -1,10 +1,89 @@
 % Intestazione
 \fancyhead[L]{1 \hspace{0.2cm} Introduzione} % Testo a sinistra
 
-\pagenumbering{arabic} % Numerazione araba per il contenuto
-
+\pagenumbering{arabic} % Numerazione araba per il contenuto 
 
 \section{Introduzione}
+Questo documento è stato redatto con l'intento di offrire una trattazione esaustiva e dettagliata 
+dei requisiti e dei casi d'uso individuati dal gruppo \textit{sweg labs} nel corso dello sviluppo
+del progetto “BuddyBot”. La raccolta di questi dati è il frutto di un'analisi approfondita
+del documento di presentazione del \textit{capitolato\textsubscript{G}}, di intense discussioni interne al gruppo di lavoro, 
+nonchè di colloqui attivi con il \textit{proponente\textsubscript{G}}, \textit{Azzurrodigitale}.
 
-Esempio che usa una
-\emph{parola da glossario}\textsubscript{\textit{\textbf{G}}}
+L'obiettivo è garantire una comprensione completa ed accurata dei requisiti di progetto,
+fornendo una base solida per la pianificazione e l'implementazione delle successive fasi di lavoro.
+
+Nel documento adottiamo la sintassi \textit{UML\textsubscript{G}} al fine di formalizzare la rappresentazione e
+renderla comprensibile a tutti i potenziali utenti. In particolare, i casi d'uso seguono una
+struttura logica e vengono descritti in dettaglio attraverso i seguenti punti:
+\begin{itemize}
+    \item \textbf{Nominativo:} includiamo il titolo del \textit{caso d'uso\textsubscript{G}} e un breve commento esplicativo;
+    \item \textbf{Attori Principali:} identifichiamo chi sono gli \textit{attori\textsubscript{G}} che eseguono le azioni all’interno 
+                del caso d'uso;
+    \item \textbf{Precondizioni:} specifichiamo lo stato del programma prima dell'esecuzione del caso d'uso;
+    \item \textbf{Postcondizioni:} definiamo lo stato del programma dopo il completamento dello scenario del caso d'uso;
+    \item \textbf{\textit{Scenario Principale\textsubscript{G}}:} descriviamo in modo dettagliato le azioni svolte durante
+                l'esecuzione del caso d'uso, delineando il percorso seguito tra le condizioni iniziali e irisultati ottenuti;
+    \item \textbf{Scenari alternativi:} descriviamo gli scenari che diramano dallo scenario principale o le situazioni nelle quali lo svolgimento delle 
+                azioni dello scenario principale siaimpossibilitato dalla comparsa di condizioni di errore;
+    \item \textbf{\textit{Sottocasi d'uso\textsubscript{G}}:} in alcune circostanze può essere necessaria la definizione di uno
+                o più sottocasi d'uso, che andranno ad utilizzare la stessa struttura dei casi d'uso, e potranno essere 
+                identificati mediante un numero progressivo nella forma:
+                \begin{center}
+                    X.Y
+                \end{center}
+    dove X `e il caso d'uso da cui derivano e Y un numero progressivo ad identificare il sottocaso.
+    \item \textbf{Inclusioni:} descrivono funzionalità in comune fra più casi d'uso;
+    \item \textbf{Specializzazioni:} possono essere di due tipologie:
+    \begin{enumerate}
+        \item di attori, dove i figli condividono tutte le funzionalit`a del padre e in pi`u ne
+            possiedono di proprie;
+        \item di casi d'uso, dove i figli possono aggiungere funzionalit`a rispetto ai padri o
+            modificarne il comportamento.
+    \end{enumerate}
+\end{itemize}
+
+\subsection{Scopo del prodotto}
+Nel corso dell'ultimo anno si è verificato un repentino e significativo mutamento nel panorama
+dello sviluppo e nell'implementazione dell'\textit{Intelligenza Artificiale\textsubscript{G}}.
+Questa trasformazione ha interessato diverse sfaccettature della tecnologia, e si è verificata con il passaggio da un
+ruolo prevalentemente incentrato sull'elaborazione e sulla raccomandazione dei contenuti ad
+una fase in cui l'Intelligenza Artificiale assume attivamente la responsabilità di generare
+contenuti originali. Questa nuova fase ha visto l'emergere di sistemi in grado di creare non
+solo testi, ma anche immagini e tracce audio con un livello di sofisticazione che sfida le
+precedenti aspettative. \\
+Il capitolato\textsubscript{G} C9, 'BuddyBot,' ha come obiettivo la realizzazione di un assistente virtuale (chatbot) 
+capace di raccogliere rapidamente informazioni dalle fonti indicate e di fornirle in risposta a domande poste in 
+linguaggio naturale tramite chat.\\
+Tale assistente virtuale sarà fruibile attraverso una piccola piattaforma web, dove l'utente potrà interagire con l'IA 
+per ottenere le risposte desiderate.
+
+\subsection{Glossario}
+Al fine di evitare possibili ambiguità relative al linguaggio utilizzato nei documenti, viene fornito un \textit{Glossario}
+(attualmente alla sua versione \textit{1.0.0}), nel quale sono contenute le definizioni di termini complessi o aventi uno 
+specifico significato. Tali termini, ove necessario, sono segnati in corsivo e marcati con il simbolo G a pedice
+(\textit{esempio Way of Working\textsubscript{G}}).
+
+\subsection{Miglioramenti al documento}
+La maturità e i miglioramenti sono aspetti fondamentali nella stesura di un documento.
+Questo permette di apportare agevolmente modifiche in base alle esigenze concordate tra i
+membri del gruppo e il \textit{proponente\textsubscript{G}} nel corso del tempo. Di conseguenza, questa versione del
+documento non pu`o essere considerata definitiva o completa, poichè è soggetta a evoluzioni future.
+
+\subsection{Riferimenti}
+\subsubsection{Riferimenti normativi}
+\begin{itemize}
+    \item \href{https://www.sito2.com}{Norme di Progetto (manca link)}
+    \item \href{https://github.com/SWEg-Labs/Documentazione/blob/adea4950d9135916b22ef3af717e955f2c11f975/output/RTB/Documentazione%20esterna/piano_qualifica_v1.0.0.pdf}{Piano di qualifica (v 1.0.0)}
+    \item \href{https://www.math.unipd.it/~tullio/IS-1/2024/Progetto/C9.pdf}{Capitolato d'appalto C9 - BuddyBot}
+    \item \href{https://www.math.unipd.it/~tullio/IS-1/2024/Dispense/PD1.pdf}{Slide PD1 del corso di Ingegneria del Software - Regolamento del Progetto Didattico}
+  \end{itemize}
+
+\subsubsection{Riferimenti informativi}
+\begin{itemize}
+    \item \href{https://github.com/SWEg-Labs/Documentazione/blob/adea4950d9135916b22ef3af717e955f2c11f975/output/RTB/Documentazione%20esterna/glossario_v1.0.0.pdf}{Glossario (v 1.0.0)}
+    \item \href{https://github.com/SWEg-Labs/Documentazione/tree/adea4950d9135916b22ef3af717e955f2c11f975/output/RTB/Documentazione%20interna/Verbali%20interni}{Verbali interni}
+    \item \href{https://github.com/SWEg-Labs/Documentazione/tree/adea4950d9135916b22ef3af717e955f2c11f975/output/RTB/Documentazione%20esterna/Verbali%20esterni}{Verbali esterni}
+    \item \href{https://www.math.unipd.it/~tullio/IS-1/2024/Dispense/T05.pdf}{Slide T05 del corso di Ingegneria del Software - Analisi dei Requisiti}
+    \item \href{https://www.sito3.com}{Diagrammi dei casi d'uso (non ho trovato il documento)}
+  \end{itemize}
