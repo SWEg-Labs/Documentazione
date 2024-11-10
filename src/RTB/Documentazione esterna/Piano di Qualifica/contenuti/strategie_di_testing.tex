@@ -1,0 +1,101 @@
+% Intestazione
+\fancyhead[L]{1 \hspace{0.2cm} Introduzione} % Testo a sinistra
+
+\pagenumbering{arabic} % Numerazione araba per il contenuto
+
+\section{Strategie di testing}
+\label{sec:strategie di testing}
+
+\subsection{Test di sistema}
+
+\subsection{Test di accettazione}
+
+\subsection{Checklist}
+
+\subsubsection{Struttura della documentazione}
+\begin{table}[h!]
+    \centering
+    \renewcommand{\arraystretch}{1.5} % Per aumentare l'altezza delle righe
+    \begin{tabularx}{\textwidth}{|p{0.3\textwidth}|X|}
+    \hline
+    \rowcolor[HTML]{FFD700}
+    \textbf{Aspetto} & \textbf{Spiegazione} \\ \hline
+    A capo & Per facilitare la lettura, le frasi devono essere mantenute su 
+    una sola riga, evitando interruzioni non necessarie. \\ \hline
+    Ordine non alfabetico & I nomi nei documenti devono essere elencati 
+    in ordine alfabetico per una maggiore chiarezza. \\ \hline
+    Caption Assente & Ogni tabella e immagine deve includere una didascalia. \\ \hline
+    Sezioni Fantasma & Le sezioni vuote devono essere rimosse dal documento. \\ \hline
+    Documento non spezzato & I documenti devono essere creati utilizzando più file \texttt{.tex} collegati 
+    con il comando input nella pagina principale. \\ \hline
+    \end{tabularx}
+    \caption{Struttura documentazione}
+\end{table}
+
+
+
+\subsubsection{Errori ortografici}
+\begin{table}[h!]
+    \centering
+    \renewcommand{\arraystretch}{1.5} % Per aumentare l'altezza delle righe
+    \begin{tabularx}{\textwidth}{|p{0.3\textwidth}|X|}
+    \hline
+    \rowcolor[HTML]{FFD700}
+    \textbf{Aspetto} & \textbf{Spiegazione} \\ \hline
+    Accenti invertiti & Usare l'accento grave al posto dell'acuto e viceversa. \\ \hline
+    “D” eufonica & La "d" eufonica va inserita solo quando si incontrano due vocali uguali di seguito. \\ \hline
+    Discordanza soggetto-verbo & Il verbo non concorda correttamente con il soggetto utilizzato. \\ \hline
+    Errori di battitura & La maggior parte degli errori sono dovuti a distrazione o digitazione errata. \\ \hline
+    Forma dei verbi  & È preferibile l’utilizzo del presente indicativo, altre forme verbali andranno valutate opportunamente. \\ \hline
+    Forme impersonali & Il soggetto dev’essere sempre esplicito nella frase. \\ \hline
+
+    \end{tabularx}
+    \caption{Errori ortografici}
+\end{table}
+
+
+\subsubsection{Non conformità con le Norme di Progetto}
+\begin{table}[h!]
+    \centering
+    \renewcommand{\arraystretch}{1.5} % Per aumentare l'altezza delle righe
+    \begin{tabularx}{\textwidth}{|p{0.35\textwidth}|X|}
+    \hline
+    \rowcolor[HTML]{FFD700}
+    \textbf{Aspetto} & \textbf{Spiegazione} \\ \hline
+    Utilizzo scorretto di “:” in grassetto & Evitare l'uso di “:” in grassetto all'interno degli elenchi puntati. \\ \hline
+    Punteggiatura scorretta negli elenchi & Ogni voce dell'elenco deve terminare con “;”, tranne l'ultima che termina con “.”. \\ \hline
+    Minuscolo nei ruoli & I ruoli devono essere scritti con la lettera iniziale maiuscola. \\ \hline
+    Maiuscole nei titoli & La maiuscola deve essere utilizzata solo per la prima lettera del titolo. \\ \hline
+\end{tabularx}
+\end{table}
+    
+\begin{table}[h!]
+    \centering
+    \renewcommand{\arraystretch}{1.5} % Per aumentare l'altezza delle righe
+    \begin{tabularx}{\textwidth}{|p{0.35\textwidth}|X|}
+    \hline
+    \rowcolor[HTML]{FFD700}
+    \textbf{Aspetto} & \textbf{Spiegazione} \\ \hline
+    Mancata segnalazione glossario & Quando viene introdotto un termine del glossario per la prima volta, deve essere segnalato con il comando apposito. \\ \hline
+    Non aggiornare il changelog & È obbligatorio aggiornare il registro delle modifiche dopo ogni verifica. \\ \hline
+    Versione documento mancante & Quando un documento viene citato, è necessario indicare la versione attuale, se presente; in caso contrario, va specificata la versione corretta. \\ \hline
+    \end{tabularx}
+    \caption{Non conformità con Norme di Progetto}
+\end{table}
+
+
+\subsubsection{Analisi dei Requisiti}
+\begin{table}[h!]
+    \centering
+    \renewcommand{\arraystretch}{1.5} % Per aumentare l'altezza delle righe
+    \begin{tabularx}{\textwidth}{|p{0.35\textwidth}|X|}
+    \hline
+    \rowcolor[HTML]{FFD700}
+    \textbf{Aspetto} & \textbf{Spiegazione} \\ \hline
+    Tracciamento UC - R & Ogni caso d'uso deve essere collegato a uno o più requisiti specifici. \\ \hline
+    Numerazione UC & La numerazione dei Use Case di errore deve essere al medesimo livello del caso di successo corrispondente. \\ \hline
+    Requisiti & I requisiti devono essere formulati nella forma “[soggetto] deve [verbo all'infinito]”. \\ \hline
+    \emph{UML}\textsubscript{\textit{\textbf{G}}} degli UC & Estensioni, inclusioni e specializzazioni di un caso d'uso devono essere inclusi nello stesso diagramma UML del caso d'uso principale. \\ \hline
+    \end{tabularx}
+    \caption{Aspetti di qualità per i casi d'uso}
+\end{table}
