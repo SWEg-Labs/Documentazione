@@ -307,6 +307,13 @@ def latex_to_pdf():
         if os.path.exists(path_file):
             path_directory, name_file = os.path.split(path_file)
             compile_latex_and_move_pdf(name_file, path_directory)
+            
+    if os.path.exists(PATH_VERBALI_ESTERNI_RTB):
+        list_directory_verbale = os.listdir(PATH_VERBALI_ESTERNI_RTB)
+        for directory_verbale in list_directory_verbale:
+            path_directory = os.path.join(PATH_VERBALI_ESTERNI_RTB, directory_verbale)
+            name_file = directory_verbale + ".tex"
+            compile_latex_and_move_pdf(name_file, path_directory)
 
     if os.path.exists(PATH_VERBALI_INTERNI_RTB):
         list_directory_verbale = os.listdir(PATH_VERBALI_INTERNI_RTB)
@@ -314,11 +321,11 @@ def latex_to_pdf():
             path_directory = os.path.join(PATH_VERBALI_INTERNI_RTB, directory_verbale)
             name_file = directory_verbale + ".tex"
             compile_latex_and_move_pdf(name_file, path_directory)
-        
-    if os.path.exists(PATH_VERBALI_ESTERNI_RTB):
-        list_directory_verbale = os.listdir(PATH_VERBALI_ESTERNI_RTB)
+            
+    if os.path.exists(PATH_VERBALI_ESTERNI_CANDIDATURA):
+        list_directory_verbale = os.listdir(PATH_VERBALI_ESTERNI_CANDIDATURA)
         for directory_verbale in list_directory_verbale:
-            path_directory = os.path.join(PATH_VERBALI_ESTERNI_RTB, directory_verbale)
+            path_directory = os.path.join(PATH_VERBALI_ESTERNI_CANDIDATURA, directory_verbale)
             name_file = directory_verbale + ".tex"
             compile_latex_and_move_pdf(name_file, path_directory)
         
@@ -326,13 +333,6 @@ def latex_to_pdf():
         list_directory_verbale = os.listdir(PATH_VERBALI_INTERNI_CANDIDATURA)
         for directory_verbale in list_directory_verbale:
             path_directory = os.path.join(PATH_VERBALI_INTERNI_CANDIDATURA, directory_verbale)
-            name_file = directory_verbale + ".tex"
-            compile_latex_and_move_pdf(name_file, path_directory)
-        
-    if os.path.exists(PATH_VERBALI_ESTERNI_CANDIDATURA):
-        list_directory_verbale = os.listdir(PATH_VERBALI_ESTERNI_CANDIDATURA)
-        for directory_verbale in list_directory_verbale:
-            path_directory = os.path.join(PATH_VERBALI_ESTERNI_CANDIDATURA, directory_verbale)
             name_file = directory_verbale + ".tex"
             compile_latex_and_move_pdf(name_file, path_directory)
         
