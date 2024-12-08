@@ -6,10 +6,177 @@
 
 \subsection{Scopo}
 
+Lo scopo di questa sezione è descrivere in maniera dettagliata i casi d’uso individuati dal
+gruppo, in riferimento alle funzionalità dell’applicazione.
+
 
 \subsection{Attori}
+
+L’applicazione prevede la presenza di \dots
 
 
 \subsection{Lista casi d'uso}
 
 
+
+\subsubsection{UC11: Aggiornamento automatico del database vettoriale}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{placeholder.png}
+    \caption{Aggiornamento automatico del database vettoriale}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attori coinvolti}: BuddyBot, \emph{GitHub}\textsubscript{\textbf{\textit{G}}}, \emph{Jira}\textsubscript{\textbf{\textit{G}}}, 
+    \emph{Confluence}\textsubscript{\textbf{\textit{G}}}, \emph{Modello di Embedding}\textsubscript{\textbf{\textit{G}}}, 
+    \emph{Database vettoriale}\textsubscript{\textbf{\textit{G}}}
+    \item \textbf{Precondizioni}: 
+    \begin{itemize}
+        \item Buddybot è stato avviato;
+        \item Il database vettoriale è stato avviato;
+        \item È possibile collegarsi tramite \emph{API}\textsubscript{\textbf{\textit{G}}} a GitHub, Jira, Confluence ed al Modello di Embedding.
+    \end{itemize}
+    \item \textbf{Postcondizioni}: Il database vettoriale è aggiornato con le informazioni più recenti disponibili in GitHub, Jira e Confluence.
+    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
+    \begin{enumerate}
+        \item BuddyBot, periodicamente, si collega a GitHub, Jira e Confluence per ottenere eventuali aggiornamenti;
+        \item Se ci sono aggiornamenti, BuddyBot si collega al Modello di Embedding per convertire le informazioni ottenute in formato vettoriale;
+        \item BuddyBot aggiorna il database vettoriale con le informazioni ottenute;
+        \item Nel caso in cui l'aggiornamento del database vettoriale è fallito, cioè quando sono stati rilevati nuovi dati ma non è stato possibile 
+        farne il retrieval, alle successive domande dell'utente il bot fornisce le risposte normalmente, ma segnalando che queste ultime potrebbero 
+        essere basate su dati obsoleti.
+    \end{enumerate}
+    \item \textbf{Sottocasi d'uso}:
+    \begin{itemize}
+        \item \textbf{UC11.1}: Chiamata API verso GitHub per il retrieval di eventuali nuove modifiche
+        \item \textbf{UC11.2}: Chiamata API verso Jira per il retrieval di eventuali nuove modifiche
+        \item \textbf{UC11.3}: Chiamata API verso Confluence per il retrieval di eventuali nuove modifiche
+        \item \textbf{UC11.4}: Merge dei nuovi dati con i dati già presenti nel database vettoriale
+    \end{itemize}
+\end{itemize}
+
+
+
+\subsubsubsection{UC11.1: Chiamata API verso GitHub per il retrieval di eventuali nuove modifiche}
+
+\begin{itemize}
+    \item \textbf{Attori coinvolti}: BuddyBot, \emph{GitHub}\textsubscript{\textbf{\textit{G}}}
+    \item \textbf{Precondizioni}: 
+    \begin{itemize}
+        \item Buddybot è stato avviato;
+        \item È possibile collegarsi tramite \emph{API}\textsubscript{\textbf{\textit{G}}} a GitHub.
+    \end{itemize}
+    \item \textbf{Postcondizioni}: Vengono restituiti gli aggiornamenti che sono avvenuti su GitHub rispetto all'ultima richiesta, eventualmente nessuno 
+    se GitHub non è stato aggiornato.
+    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
+    \begin{enumerate}
+        \item BuddyBot, periodicamente, si collega a GitHub per ottenere eventuali aggiornamenti.
+    \end{enumerate}
+\end{itemize}
+
+
+
+\subsubsubsection{UC11.2: Chiamata API verso Jira per il retrieval di eventuali nuove modifiche}
+
+\begin{itemize}
+    \item \textbf{Attori coinvolti}: BuddyBot, \emph{Jira}\textsubscript{\textbf{\textit{G}}}
+    \item \textbf{Precondizioni}:
+    \begin{itemize}
+        \item Buddybot è stato avviato;
+        \item È possibile collegarsi tramite \emph{API}\textsubscript{\textbf{\textit{G}}} a Jira.
+    \end{itemize}
+    \item \textbf{Postcondizioni}: Vengono restituiti gli aggiornamenti che sono avvenuti su Jira rispetto all'ultima richiesta, eventualmente nessuno 
+    se Jira non è stato aggiornato.
+    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
+    \begin{enumerate}
+        \item BuddyBot, periodicamente, si collega a Jira per ottenere eventuali aggiornamenti.
+    \end{enumerate}
+\end{itemize}
+
+
+
+\subsubsubsection{UC11.3: Chiamata API verso Confluence per il retrieval di eventuali nuove modifiche}
+
+\begin{itemize}
+    \item \textbf{Attori coinvolti}: BuddyBot, \emph{Confluence}\textsubscript{\textbf{\textit{G}}}
+    \item \textbf{Precondizioni}: 
+    \begin{itemize}
+        \item Buddybot è stato avviato;
+        \item È possibile collegarsi tramite \emph{API}\textsubscript{\textbf{\textit{G}}} a Confluence.
+    \end{itemize}
+    \item \textbf{Postcondizioni}: Vengono restituiti gli aggiornamenti che sono avvenuti su Confluence rispetto all'ultima richiesta, eventualmente nessuno 
+    se Confkuence non è stato aggiornato.
+    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
+    \begin{enumerate}
+        \item BuddyBot, periodicamente, si collega a Confluence per ottenere eventuali aggiornamenti.
+    \end{enumerate}
+\end{itemize}
+
+
+
+\subsubsubsection{UC11.4: Merge dei nuovi dati con i dati già presenti nel database vettoriale}
+
+\begin{itemize}
+    \item \textbf{Attori coinvolti}: BuddyBot, \emph{Modello di Embedding}\textsubscript{\textbf{\textit{G}}}, 
+    \emph{Database vettoriale}\textsubscript{\textbf{\textit{G}}}
+    \item \textbf{Precondizioni}: 
+    \begin{itemize}
+        \item BuddyBot ha ottenuto nuovi dati da GitHub, Jira e Confluence;
+        \item Il Modello di Embedding è stato avviato;
+        \item È possibile collegarsi tramite \emph{API}\textsubscript{\textbf{\textit{G}}} al Modello di Embedding;
+        \item Il database vettoriale è stato avviato.
+    \end{itemize}
+    \item \textbf{Postcondizioni}: Il database vettoriale è aggiornato con le informazioni più recenti disponibili in GitHub, Jira e Confluence.
+    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
+    \begin{enumerate}
+        \item Se ci sono aggiornamenti su GitHub, Jira o Confluence, BuddyBot si collega al Modello di Embedding per convertire le informazioni 
+        ottenute in formato vettoriale;
+        \item BuddyBot aggiorna il database vettoriale con le informazioni ottenute;
+    \end{enumerate}
+    \item \textbf{Sottocasi d'uso}:
+    \begin{itemize}
+        \item \textbf{UC11.4.1}: Conversione dei nuovi dati in formato vettoriale
+    \end{itemize}
+\end{itemize}
+
+
+
+\paragraph{UC11.4.1: Conversione dei nuovi dati in formato vettoriale}
+
+\begin{itemize}
+    \item \textbf{Attori coinvolti}: BuddyBot, \emph{Modello di Embedding}\textsubscript{\textbf{\textit{G}}}
+    \item \textbf{Precondizioni}: 
+    \begin{itemize}
+        \item BuddyBot ha ottenuto nuovi dati da GitHub, Jira e Confluence;
+        \item Il Modello di Embedding è stato avviato;
+        \item È possibile collegarsi tramite \emph{API}\textsubscript{\textbf{\textit{G}}} al Modello di Embedding;
+    \end{itemize}
+    \item \textbf{Postcondizioni}: Le informazioni più recenti disponibili in GitHub, Jira e Confluence sono state convertite in formato vettoriale.
+    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
+    \begin{enumerate}
+        \item Se ci sono aggiornamenti su GitHub, Jira o Confluence, BuddyBot si collega al Modello di Embedding per convertire le informazioni 
+        ottenute in formato vettoriale;
+    \end{enumerate}
+\end{itemize}
+
+
+
+\subsubsection{UC15: Visualizzazione della frase "la risposta è basata su dati che potrebbero essere obsoleti" sotto alle successive risposte del chatbot}
+
+\begin{itemize}
+    \item \textbf{Attori coinvolti}: BuddyBot, Utente
+    \item \textbf{Precondizioni}: 
+    \begin{itemize}
+        \item BuddyBot è stato avviato
+        \item L'utente ha posto una domanda a BuddyBot
+    \end{itemize}
+    \item \textbf{Postcondizioni}: L'utente, oltre alla consueta risposta del chatbot, visualizza una frase che lo avvisa del fatto che i dati usati per 
+    costruire la risposta sono obsoleti.
+    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
+    \begin{enumerate}
+        \item Utente pone una domanda a BuddyBot;
+        \item BuddyBot risponde alla domanda dell'utente;
+        \item L'utente visualizza la risposta del chatbot e subito sotto la frase "la risposta è basata su dati che potrebbero essere obsoleti".
+    \end{enumerate}
+\end{itemize}
