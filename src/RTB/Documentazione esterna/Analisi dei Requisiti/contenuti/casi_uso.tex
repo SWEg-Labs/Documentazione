@@ -19,6 +19,106 @@ L’applicazione prevede la presenza di \dots
 
 
 
+\hypertarget{UC5}{}
+\subsubsection{UC5: Visualizzazione della risposta generata}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{Diagramma UC5 - Visualizzazione della risposta generata.png}
+    \caption{Visualizzazione della risposta generata}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attori coinvolti}: Utente
+    \item \textbf{Precondizioni}: BuddyBot ha generato correttamente la risposta alla domanda dell'utente.
+    \item \textbf{Postcondizioni}: L'utente visualizza la risposta generata da BuddyBot
+    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
+    \begin{enumerate}
+        \item BuddyBot ha generato correttamente la risposta alla domanda dell'utente;
+        \item L'utente visualizza la risposta generata da BuddyBot.
+    \end{enumerate}
+    \item \textbf{Sottocasi d'uso}:
+    \begin{itemize}
+        \item \textbf{UC5.1}: Visualizzazione dell'introduzione della risposta;
+        \item \textbf{UC5.2}: Visualizzazione di uno snippet del contenuto che è stato trovato (es.: codice);
+        \item \textbf{UC5.3}: Visualizzazione di un messaggio di resoconto e conclusione.
+    \end{itemize}
+\end{itemize}
+
+
+
+\subsubsubsection{UC5.1: Visualizzazione dell'introduzione della risposta}
+
+\begin{itemize}
+    \item \textbf{Attori coinvolti}: Utente
+    \item \textbf{Precondizioni}: BuddyBot ha generato correttamente la risposta alla domanda dell'utente.
+    \item \textbf{Postcondizioni}: L'utente visualizza l'introduzione della risposta generata da BuddyBot.
+    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
+    \begin{enumerate}
+        \item BuddyBot ha generato correttamente la risposta alla domanda dell'utente;
+        \item L'utente visualizza l'introduzione della risposta generata da BuddyBot.
+    \end{enumerate}
+\end{itemize}
+
+
+
+\subsubsubsection{UC5.2: Visualizzazione di uno snippet del contenuto che è stato trovato (es.: codice)}
+
+\begin{itemize}
+    \item \textbf{Attori coinvolti}: Utente
+    \item \textbf{Precondizioni}: 
+    \begin{itemize}
+        \item L'utente ha visualizzato l'introduzione della risposta generata da BuddyBot.
+        \item La risposta generata da BuddyBot contiene uno snippet di codice.
+    \end{itemize}
+    \item \textbf{Postcondizioni}: L'utente visualizza uno snippet di codice contenuto della risposta generata da BuddyBot.
+    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
+    \begin{enumerate}
+        \item L'utente ha visualizzato l'introduzione della risposta generata da BuddyBot;
+        \item L'utente visualizza uno snippet del contenuto che è stato trovato (es.: codice).
+    \end{enumerate}
+\end{itemize}
+
+
+
+\subsubsubsection{UC5.3: Visualizzazione di un messaggio di resoconto e conclusione}
+
+\begin{itemize}
+    \item \textbf{Attori coinvolti}: Utente
+    \item \textbf{Precondizioni}: L'utente ha visualizzato almeno l'introduzione della risposta generata da BuddyBot.
+    \item \textbf{Postcondizioni}: L'utente visualizza un messaggio di resoconto e conclusione contenuto nella risposta generata da BuddyBot.
+    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
+    \begin{enumerate}
+        \item L'utente ha visualizzato l'introduzione della risposta generata da BuddyBot, e, se presente, uno snippet di codice in essa contenuto;
+        \item L'utente visualizza un messaggio di resoconto e conclusione che termina la risposta.
+    \end{enumerate}
+\end{itemize}
+
+
+
+\hypertarget{UC6}{}
+\subsubsection{UC6: Visualizzazione di una risposta negativa (informazione non trovata)}
+
+\begin{itemize}
+    \item \textbf{Attori coinvolti}: Utente
+    \item \textbf{Precondizioni}: BuddyBot non ha trovato l'informazione che l'utente ha domandato.
+    \item \textbf{Postcondizioni}: L'utente visualizza come risposta un messaggio di BuddyBot in cui gli viene segnalata la mancanza dell'informazione 
+    richiesta nei dati forniti come contesto.
+    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
+    \begin{enumerate}
+        \item BuddyBot non ha trovato l'informazione che l'utente ha domandato;
+        \item L'utente visualizza come risposta un messaggio di BuddyBot in cui gli viene segnalata la mancanza dell'informazione richiesta 
+        nei dati forniti come contesto.
+    \end{enumerate}
+\end{itemize}
+
+
+
+
+
+
+
+\hypertarget{UC11}{}
 \subsubsection{UC11: Aggiornamento automatico del database vettoriale}
 
 \begin{figure}[h]
@@ -33,9 +133,9 @@ L’applicazione prevede la presenza di \dots
     \emph{Database vettoriale}\textsubscript{\textbf{\textit{G}}}
     \item \textbf{Precondizioni}: 
     \begin{itemize}
-        \item Buddybot è stato avviato;
-        \item Il database vettoriale è stato avviato;
+        \item È giunto il momento periodico in cui aggiornare il database vettoriale;
         \item È possibile collegarsi tramite \emph{API}\textsubscript{\textbf{\textit{G}}} a GitHub, Jira, Confluence ed al Modello di Embedding.
+        \item Il database vettoriale è stato avviato.
     \end{itemize}
     \item \textbf{Postcondizioni}: Il database vettoriale è aggiornato con le informazioni più recenti disponibili in GitHub, Jira e Confluence.
     \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
@@ -49,10 +149,10 @@ L’applicazione prevede la presenza di \dots
     \end{enumerate}
     \item \textbf{Sottocasi d'uso}:
     \begin{itemize}
-        \item \textbf{UC11.1}: Chiamata API verso GitHub per il retrieval di eventuali nuove modifiche
-        \item \textbf{UC11.2}: Chiamata API verso Jira per il retrieval di eventuali nuove modifiche
-        \item \textbf{UC11.3}: Chiamata API verso Confluence per il retrieval di eventuali nuove modifiche
-        \item \textbf{UC11.4}: Merge dei nuovi dati con i dati già presenti nel database vettoriale
+        \item \textbf{UC11.1}: Chiamata API verso GitHub per il retrieval di eventuali nuove modifiche;
+        \item \textbf{UC11.2}: Chiamata API verso Jira per il retrieval di eventuali nuove modifiche;
+        \item \textbf{UC11.3}: Chiamata API verso Confluence per il retrieval di eventuali nuove modifiche;
+        \item \textbf{UC11.4}: Merge dei nuovi dati con i dati già presenti nel database vettoriale.
     \end{itemize}
 \end{itemize}
 
@@ -64,15 +164,12 @@ L’applicazione prevede la presenza di \dots
     \item \textbf{Attori coinvolti}: BuddyBot, \emph{GitHub}\textsubscript{\textbf{\textit{G}}}
     \item \textbf{Precondizioni}: 
     \begin{itemize}
-        \item Buddybot è stato avviato;
+        \item È giunto il momento periodico in cui aggiornare il database vettoriale;
         \item È possibile collegarsi tramite \emph{API}\textsubscript{\textbf{\textit{G}}} a GitHub.
     \end{itemize}
     \item \textbf{Postcondizioni}: Vengono restituiti gli aggiornamenti che sono avvenuti su GitHub rispetto all'ultima richiesta, eventualmente nessuno 
     se GitHub non è stato aggiornato.
-    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
-    \begin{enumerate}
-        \item BuddyBot, periodicamente, si collega a GitHub per ottenere eventuali aggiornamenti.
-    \end{enumerate}
+    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}: BuddyBot, periodicamente, si collega a GitHub per ottenere eventuali aggiornamenti.
 \end{itemize}
 
 
@@ -83,15 +180,12 @@ L’applicazione prevede la presenza di \dots
     \item \textbf{Attori coinvolti}: BuddyBot, \emph{Jira}\textsubscript{\textbf{\textit{G}}}
     \item \textbf{Precondizioni}:
     \begin{itemize}
-        \item Buddybot è stato avviato;
+        \item È giunto il momento periodico in cui aggiornare il database vettoriale;
         \item È possibile collegarsi tramite \emph{API}\textsubscript{\textbf{\textit{G}}} a Jira.
     \end{itemize}
     \item \textbf{Postcondizioni}: Vengono restituiti gli aggiornamenti che sono avvenuti su Jira rispetto all'ultima richiesta, eventualmente nessuno 
     se Jira non è stato aggiornato.
-    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
-    \begin{enumerate}
-        \item BuddyBot, periodicamente, si collega a Jira per ottenere eventuali aggiornamenti.
-    \end{enumerate}
+    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}: BuddyBot, periodicamente, si collega a Jira per ottenere eventuali aggiornamenti.
 \end{itemize}
 
 
@@ -102,15 +196,12 @@ L’applicazione prevede la presenza di \dots
     \item \textbf{Attori coinvolti}: BuddyBot, \emph{Confluence}\textsubscript{\textbf{\textit{G}}}
     \item \textbf{Precondizioni}: 
     \begin{itemize}
-        \item Buddybot è stato avviato;
+        \item È giunto il momento periodico in cui aggiornare il database vettoriale;
         \item È possibile collegarsi tramite \emph{API}\textsubscript{\textbf{\textit{G}}} a Confluence.
     \end{itemize}
     \item \textbf{Postcondizioni}: Vengono restituiti gli aggiornamenti che sono avvenuti su Confluence rispetto all'ultima richiesta, eventualmente nessuno 
     se Confkuence non è stato aggiornato.
-    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
-    \begin{enumerate}
-        \item BuddyBot, periodicamente, si collega a Confluence per ottenere eventuali aggiornamenti.
-    \end{enumerate}
+    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}: BuddyBot, periodicamente, si collega a Confluence per ottenere eventuali aggiornamenti.
 \end{itemize}
 
 
@@ -123,7 +214,6 @@ L’applicazione prevede la presenza di \dots
     \item \textbf{Precondizioni}: 
     \begin{itemize}
         \item BuddyBot ha ottenuto nuovi dati da GitHub, Jira e Confluence;
-        \item Il Modello di Embedding è stato avviato;
         \item È possibile collegarsi tramite \emph{API}\textsubscript{\textbf{\textit{G}}} al Modello di Embedding;
         \item Il database vettoriale è stato avviato.
     \end{itemize}
@@ -136,7 +226,7 @@ L’applicazione prevede la presenza di \dots
     \end{enumerate}
     \item \textbf{Sottocasi d'uso}:
     \begin{itemize}
-        \item \textbf{UC11.4.1}: Conversione dei nuovi dati in formato vettoriale
+        \item \textbf{UC11.4.1}: Conversione dei nuovi dati in formato vettoriale.
     \end{itemize}
 \end{itemize}
 
@@ -149,34 +239,27 @@ L’applicazione prevede la presenza di \dots
     \item \textbf{Precondizioni}: 
     \begin{itemize}
         \item BuddyBot ha ottenuto nuovi dati da GitHub, Jira e Confluence;
-        \item Il Modello di Embedding è stato avviato;
         \item È possibile collegarsi tramite \emph{API}\textsubscript{\textbf{\textit{G}}} al Modello di Embedding;
     \end{itemize}
     \item \textbf{Postcondizioni}: Le informazioni più recenti disponibili in GitHub, Jira e Confluence sono state convertite in formato vettoriale.
-    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
-    \begin{enumerate}
-        \item Se ci sono aggiornamenti su GitHub, Jira o Confluence, BuddyBot si collega al Modello di Embedding per convertire le informazioni 
-        ottenute in formato vettoriale;
-    \end{enumerate}
+    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}: Se ci sono aggiornamenti su GitHub, Jira o Confluence, BuddyBot si collega al Modello di Embedding per convertire le informazioni 
+        ottenute in formato vettoriale.
 \end{itemize}
 
 
 
-\subsubsection{UC15: Visualizzazione della frase "la risposta è basata su dati che potrebbero essere obsoleti" sotto alle successive risposte del chatbot}
+\hypertarget{UC15}{}
+\subsubsection{UC15: Visualizzazione della frase "la risposta è basata su dati che potrebbero essere obsoleti" sopra alle successive risposte del chatbot}
 
 \begin{itemize}
     \item \textbf{Attori coinvolti}: BuddyBot, Utente
-    \item \textbf{Precondizioni}: 
-    \begin{itemize}
-        \item BuddyBot è stato avviato
-        \item L'utente ha posto una domanda a BuddyBot
-    \end{itemize}
-    \item \textbf{Postcondizioni}: L'utente, oltre alla consueta risposta del chatbot, visualizza una frase che lo avvisa del fatto che i dati usati per 
+    \item \textbf{Precondizioni}: L'utente ha posto una domanda a BuddyBot
+    \item \textbf{Postcondizioni}: L'utente, oltre alla consueta risposta del chatbot, visualizza sopra di essa una frase che lo avvisa del fatto che i dati usati per 
     costruire la risposta sono obsoleti.
     \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
     \begin{enumerate}
         \item Utente pone una domanda a BuddyBot;
         \item BuddyBot risponde alla domanda dell'utente;
-        \item L'utente visualizza la risposta del chatbot e subito sotto la frase "la risposta è basata su dati che potrebbero essere obsoleti".
+        \item L'utente visualizza la risposta del chatbot anticipata dalla frase "la risposta è basata su dati che potrebbero essere obsoleti".
     \end{enumerate}
 \end{itemize}
