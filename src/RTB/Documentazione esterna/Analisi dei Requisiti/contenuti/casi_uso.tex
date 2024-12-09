@@ -72,28 +72,92 @@ L’applicazione prevede la presenza di \dots
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{placeholder.png}
-    \caption{Inserimento di interrogazione in linguaggio naturale}
+    \includegraphics[width=\textwidth]{Diagramma UC1.png}
+    \caption{Visualizzazione una risposta di BuddyBot generata utilizzando dati di contesto aggiornati}
 \end{figure}
 
 \begin{itemize}
-    \item \textbf{\emph{Attori}\textsubscript{\textbf{\textit{G}}} principali}: \dots;
-    \item \textbf{Precondizioni}: \dots;
-    \item \textbf{\emph{Trigger}\textsubscript{\textbf{\textit{G}}}}: \dots;
-    \item \textbf{Postcondizioni}: \dots;
+    \item \textbf{\emph{Attori}\textsubscript{\textbf{\textit{G}}} principali}: Utente;
+    \item \textbf{Precondizioni}: L'utente deve avere accesso all'interfaccia dell'applicazione connessa al database;
+    \item \textbf{\emph{Trigger}\textsubscript{\textbf{\textit{G}}}}:  L'utente inserisce un'interrogazione in linguaggio naturale nella barra di input;
+    \item \textbf{Postcondizioni}:L'interrogazione viene inviata e, se valida, genera una risposta adeguata. Se non valida, l'utente riceve un messaggio di errore;
     \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
     \begin{enumerate}
-        \item \dots.
+    \item L'utente accede all'interfaccia dell'applicazione;
+    \item \bulhyperlink{UC1.1}{UC1.1}: L'utente scrive l'interrogazione in linguaggio naturale nella barra di input.
+    \item \bulhyperlink{UC1.3}{UC1.3}: Il sistema valida l'interrogazione.
+    \item \bulhyperlink{UC1.4}{UC1.4}: Il sistema mostra il messaggio generato nella schermata principale.
     \end{enumerate}
     \item \textbf{\emph{Sottocasi d'uso}\textsubscript{\textbf{\textit{G}}}}:
     \begin{itemize}
-        \item \dots.
+        \item \bulhyperlink{UC1.1}{UC1.1}: L'utente scrive l'interrogazione in linguaggio naturale nella barra di input.
+        \item \bulhyperlink{UC1.2}{UC1.2}: L'utente invia l'interrogazione tramite il pulsante dedicato o "Invio" dalla tastiera.
+        \item \bulhyperlink{UC1.3}{UC1.3}: Il sistema valida l'interrogazione.
+        \item \bulhyperlink{UC1.4}{UC1.4}: Il sistema mostra il messaggio generato nella schermata principale.
     \end{itemize}
     \item \textbf{\emph{Scenario alternativo}\textsubscript{\textbf{\textit{G}}}}:
     \begin{enumerate}
-        \item \dots.
+        \item Il sistema non trova una correlazione tra l'interrogazione e il database;
+        \item \bulhyperlink{UC2}: Viene mostrato un messaggio di errore che comunica che l'input è fuori contesto e che non è possibile generare una risposta.
     \end{enumerate}
 \end{itemize}
+
+\hypertarget{UC1.1}{}
+\subsubsubsection{UC1.1: Scrittura del testo dell'interrogazione in una barra di input}
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: L'utente deve avere accesso all'interfaccia dell'applicazione connessa al database;
+    \item \textbf{Trigger}: L'utente inserisce un'interrogazione in linguaggio naturale;
+    \item \textbf{Postcondizioni}: L'utente è riuscito ad inserire l'interrogazione in linguaggio naturale.
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item L'utente deve avere accesso all'interfaccia dell'applicazione connessa al database;
+        \item L'utente inserisce un'interrogazione in linguaggio naturale;
+    \end{enumerate}
+\end{itemize}
+
+\hypertarget{UC1.2}{}
+\subsubsubsection{UC1.2: Invio dell'interrogazione tramite pulsante dedicato oppure "Invio" della tastiera}
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: L'utente è riuscito ad inserire l'interrogazione in linguaggio naturale;
+    \item \textbf{Trigger}: Invio dell'interrogazione tramite pulsante dedicato oppure "Invio" della tastiera;
+    \item \textbf{Postcondizioni}: L'interrogazione è stata inviata. 
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item L'utente è riuscito ad inserire l'interrogazione in linguaggio naturale;
+        \item L'interrogazione è stata inviata.
+    \end{enumerate}
+\end{itemize}
+
+\hypertarget{UC1.3}{}
+\subsubsubsection{UC1.3: Validazione dell'interrogazione}
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: L'interrogazione è stata inviata;
+    \item \textbf{Trigger}: L'interrogazione deve essere validata;
+    \item \textbf{Postcondizioni}: Visualizzazione del messaggio appena scritto nella videata principale.
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item L'interrogazione è stata inviata;
+        \item L'interrogazione deve essere validata.
+    \end{enumerate}
+\end{itemize}
+
+\hypertarget{UC1.4}{}
+\subsubsubsection{UC1.4: Visualizzazione del messaggio appena scritto nella videata principale}
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: L'interrogazione deve essere valida;
+    \item \textbf{Trigger}: Visualizzazione del messaggio appena scritto nella videata principale;
+    \item \textbf{Postcondizioni}: L'utente visualizza sullo schermo il messaggio;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+    \item L'interrogazione è valida;
+    \item L'interrogazione viene visualizzata sullo schermo.
+    \end{enumerate}
+\end{itemize}
+
 
 
 
