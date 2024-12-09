@@ -73,20 +73,20 @@ L’applicazione prevede la presenza di \dots
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{Diagramma UC1.png}
-    \caption{Visualizzazione una risposta di BuddyBot generata utilizzando dati di contesto aggiornati}
+    \caption{Inserimento di interrogazione in linguaggio naturale}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{\emph{Attori}\textsubscript{\textbf{\textit{G}}} principali}: Utente;
     \item \textbf{Precondizioni}: L'utente deve avere accesso all'interfaccia dell'applicazione connessa al database;
-    \item \textbf{\emph{Trigger}\textsubscript{\textbf{\textit{G}}}}:  L'utente inserisce un'interrogazione in linguaggio naturale nella barra di input;
-    \item \textbf{Postcondizioni}:L'interrogazione viene inviata e, se valida, genera una risposta adeguata. Se non valida, l'utente riceve un messaggio di errore;
+    \item \textbf{\emph{Trigger}\textsubscript{\textbf{\textit{G}}}}: L'utente desidera inserire un'interrogazione in linguaggio naturale nella barra di input;
+    \item \textbf{Postcondizioni}: L'interrogazione viene inviata e, se valida, genera una risposta adeguata. Se non valida, l'utente riceve un messaggio di errore;
     \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
     \begin{enumerate}
-    \item L'utente accede all'interfaccia dell'applicazione;
-    \item \bulhyperlink{UC1.1}{UC1.1}: L'utente scrive l'interrogazione in linguaggio naturale nella barra di input.
-    \item \bulhyperlink{UC1.3}{UC1.3}: Il sistema valida l'interrogazione.
-    \item \bulhyperlink{UC1.4}{UC1.4}: Il sistema mostra il messaggio generato nella schermata principale.
+        \item L'utente accede all'interfaccia dell'applicazione;
+        \item \bulhyperlink{UC1.1}{UC1.1}: L'utente scrive l'interrogazione in linguaggio naturale nella barra di input.
+        \item \bulhyperlink{UC1.3}{UC1.3}: Il sistema valida l'interrogazione.
+        \item \bulhyperlink{UC1.4}{UC1.4}: Il sistema mostra il messaggio generato nella schermata principale.
     \end{enumerate}
     \item \textbf{\emph{Sottocasi d'uso}\textsubscript{\textbf{\textit{G}}}}:
     \begin{itemize}
@@ -97,8 +97,8 @@ L’applicazione prevede la presenza di \dots
     \end{itemize}
     \item \textbf{\emph{Scenario alternativo}\textsubscript{\textbf{\textit{G}}}}:
     \begin{enumerate}
-        \item Il sistema non trova una correlazione tra l'interrogazione e il database;
-        \item \bulhyperlink{UC2}: Viene mostrato un messaggio di errore che comunica che l'input è fuori contesto e che non è possibile generare una risposta.
+        \item \bulhyperlink{UC6}{UC6} Il sistema non trova una correlazione tra l'interrogazione e il database;
+        \item \bulhyperlink{UC2}{UC2}: Viene mostrato un messaggio di errore che comunica che l'input è fuori contesto e che non è possibile generare una risposta.
     \end{enumerate}
 \end{itemize}
 
@@ -107,12 +107,12 @@ L’applicazione prevede la presenza di \dots
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: L'utente deve avere accesso all'interfaccia dell'applicazione connessa al database;
-    \item \textbf{Trigger}: L'utente inserisce un'interrogazione in linguaggio naturale;
-    \item \textbf{Postcondizioni}: L'utente è riuscito ad inserire l'interrogazione in linguaggio naturale.
+    \item \textbf{Trigger}: L'utente desidera inserire un'interrogazione in linguaggio naturale;
+    \item \textbf{Postcondizioni}: L'utente è riuscito ad inserire l'interrogazione in linguaggio naturale;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
         \item L'utente deve avere accesso all'interfaccia dell'applicazione connessa al database;
-        \item L'utente inserisce un'interrogazione in linguaggio naturale;
+        \item L'utente inserisce un'interrogazione in linguaggio naturale.
     \end{enumerate}
 \end{itemize}
 
@@ -121,11 +121,12 @@ L’applicazione prevede la presenza di \dots
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: L'utente è riuscito ad inserire l'interrogazione in linguaggio naturale;
-    \item \textbf{Trigger}: Invio dell'interrogazione tramite pulsante dedicato oppure "Invio" della tastiera;
-    \item \textbf{Postcondizioni}: L'interrogazione è stata inviata. 
+    \item \textbf{Trigger}: L'utente desidera inviare l'interrogazione tramite il pulsante dedicato oppure "Invio" della tastiera;
+    \item \textbf{Postcondizioni}: L'interrogazione è stata inviata;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
-        \item L'utente è riuscito ad inserire l'interrogazione in linguaggio naturale;
+        \item \bulhyperlink{UC1.1}{UC1.1}: L'utente è riuscito ad inserire l'interrogazione in linguaggio naturale;
+        \item Invio dell'interrogazione tramite pulsante dedicato oppure "Invio" della tastiera;
         \item L'interrogazione è stata inviata.
     \end{enumerate}
 \end{itemize}
@@ -135,12 +136,13 @@ L’applicazione prevede la presenza di \dots
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: L'interrogazione è stata inviata;
-    \item \textbf{Trigger}: L'interrogazione deve essere validata;
-    \item \textbf{Postcondizioni}: Visualizzazione del messaggio appena scritto nella videata principale.
+    \item \textbf{Trigger}: L'interrogazione desiderare sapere se l'interrogazione che ha scritto è valida;
+    \item \textbf{Postcondizioni}: Visualizzazione del messaggio appena scritto nella videata principale;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
-        \item L'interrogazione è stata inviata;
-        \item L'interrogazione deve essere validata.
+        \item \bulhyperlink{UC1.2}{UC1.2}: L'interrogazione è stata inviata;
+        \item L'interrogazione viene validata;
+        \item \bulhyperlink{UC1.4}{UC1.4}: Visualizzazione del messaggio appena scritto nella videata principale.
     \end{enumerate}
 \end{itemize}
 
@@ -149,12 +151,12 @@ L’applicazione prevede la presenza di \dots
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: L'interrogazione deve essere valida;
-    \item \textbf{Trigger}: Visualizzazione del messaggio appena scritto nella videata principale;
+    \item \textbf{Trigger}: L'utente desidera visualizzare il messaggio appena scritto nella videata principale;
     \item \textbf{Postcondizioni}: L'utente visualizza sullo schermo il messaggio;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
-    \item L'interrogazione è valida;
-    \item L'interrogazione viene visualizzata sullo schermo.
+        \item \bulhyperlink{UC1.3}{UC1.3}: L'interrogazione è stata validata;
+        \item L'interrogazione viene visualizzata sullo schermo.
     \end{enumerate}
 \end{itemize}
 
@@ -171,7 +173,7 @@ L’applicazione prevede la presenza di \dots
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{Diagramma UC5 - Visualizzazione della risposta generata.png}
+    \includegraphics[width=\textwidth]{Diagramma UC5.png}
     \caption{Visualizzazione della risposta generata}
 \end{figure}
 
