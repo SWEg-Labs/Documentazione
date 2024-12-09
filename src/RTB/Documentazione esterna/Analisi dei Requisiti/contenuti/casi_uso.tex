@@ -22,6 +22,86 @@ L’applicazione prevede la presenza di \dots
 
 
 
+
+% TEMPLATE
+
+\begin{comment}
+\hypertarget{UC1}{}
+\subsubsection{UC1: Inserimento di interrogazione in linguaggio naturale}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{placeholder.png}
+    \caption{Visualizzazione una risposta di BuddyBot generata utilizzando dati di contesto aggiornati}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attori} principali}: \dots;
+    \item \textbf{Precondizioni}: \dots;
+    % Oppure, se ci sono più precondizioni:
+    \item \textbf{Precondizioni}: 
+    \begin{itemize}
+        \item \dots;
+        \item \dots.
+    \end{itemize}
+    \item \textbf{Trigger}: \dots;
+    \item \textbf{Postcondizioni}: \dots;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item \dots;
+        \item \dots.
+    \end{enumerate}
+    \item \textbf{Sottocasi d'uso}:
+    \begin{itemize}
+        \item \dots;
+        \item \dots.
+    \end{itemize}
+    \item \textbf{Scenario alternativo}:
+    \begin{enumerate}
+        \item \dots;
+        \item \dots.
+    \end{enumerate}
+\end{itemize}
+\end{comment}
+
+
+
+
+\hypertarget{UC1}{}
+\subsubsection{UC1: Inserimento di interrogazione in linguaggio naturale}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{placeholder.png}
+    \caption{Visualizzazione una risposta di BuddyBot generata utilizzando dati di contesto aggiornati}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{\emph{Attori}\textsubscript{\textbf{\textit{G}}} principali}: \dots;
+    \item \textbf{Precondizioni}: \dots;
+    \item \textbf{\emph{Trigger}\textsubscript{\textbf{\textit{G}}}}: \dots;
+    \item \textbf{Postcondizioni}: \dots;
+    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
+    \begin{enumerate}
+        \item \dots.
+    \end{enumerate}
+    \item \textbf{\emph{Sottocasi d'uso}\textsubscript{\textbf{\textit{G}}}}:
+    \begin{itemize}
+        \item \dots.
+    \end{itemize}
+    \item \textbf{\emph{Scenario alternativo}\textsubscript{\textbf{\textit{G}}}}:
+    \begin{enumerate}
+        \item \dots.
+    \end{enumerate}
+\end{itemize}
+
+
+
+\hypertarget{UC3}{}
+\subsubsection{UC3: Generazione della risposta}
+
+
+
 \hypertarget{UC5}{}
 \subsubsection{UC5: Visualizzazione della risposta generata}
 
@@ -32,67 +112,79 @@ L’applicazione prevede la presenza di \dots
 \end{figure}
 
 \begin{itemize}
-    \item \textbf{Attori coinvolti}: Utente
-    \item \textbf{Precondizioni}: BuddyBot ha generato correttamente la risposta alla domanda dell'utente.
-    \item \textbf{Postcondizioni}: L'utente visualizza la risposta generata da BuddyBot
-    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: BuddyBot ha generato correttamente la risposta alla domanda dell'utente;
+    \item \textbf{Trigger}: L'utente desidera visualizzare la risposta alla domanda che ha posto;
+    \item \textbf{Postcondizioni}: L'utente visualizza la risposta generata da BuddyBot;
+    \item \textbf{Scenario principale}:
     \begin{enumerate}
-        \item BuddyBot ha generato correttamente la risposta alla domanda dell'utente;
+        \item \bulhyperlink{UC3}{UC3}: BuddyBot ha generato correttamente la risposta alla domanda dell'utente;
         \item L'utente visualizza la risposta generata da BuddyBot.
     \end{enumerate}
     \item \textbf{Sottocasi d'uso}:
     \begin{itemize}
-        \item \textbf{UC5.1}: Visualizzazione dell'introduzione della risposta;
-        \item \textbf{UC5.2}: Visualizzazione di uno snippet del contenuto che è stato trovato (es.: codice);
-        \item \textbf{UC5.3}: Visualizzazione di un messaggio di resoconto e conclusione.
+        \item \bulhyperlink{UC5.1}{UC5.1}: Visualizzazione dell'introduzione della risposta;
+        \item \bulhyperlink{UC5.2}{UC5.2}: Visualizzazione di uno snippet del contenuto che è stato trovato (es.: codice);
+        \item \bulhyperlink{UC5.3}{UC5.3}: Visualizzazione di un messaggio di resoconto e conclusione.
     \end{itemize}
+    \item \textbf{Scenario alternativo}:
+    \begin{enumerate}
+        \item \bulhyperlink{UC6}{UC6}: Visualizzazione di una risposta negativa (informazione non trovata).
+    \end{enumerate}
 \end{itemize}
 
 
 
+\hypertarget{UC5.1}{}
 \subsubsubsection{UC5.1: Visualizzazione dell'introduzione della risposta}
 
 \begin{itemize}
-    \item \textbf{Attori coinvolti}: Utente
-    \item \textbf{Precondizioni}: BuddyBot ha generato correttamente la risposta alla domanda dell'utente.
-    \item \textbf{Postcondizioni}: L'utente visualizza l'introduzione della risposta generata da BuddyBot.
-    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: BuddyBot ha generato correttamente la risposta alla domanda dell'utente;
+    \item \textbf{Trigger}: L'utente desidera visualizzare l'introduzione della risposta alla domanda che ha posto;
+    \item \textbf{Postcondizioni}: L'utente visualizza l'introduzione della risposta generata da BuddyBot;
+    \item \textbf{Scenario principale}:
     \begin{enumerate}
-        \item BuddyBot ha generato correttamente la risposta alla domanda dell'utente;
+        \item \bulhyperlink{UC3}{UC3}: BuddyBot ha generato correttamente la risposta alla domanda dell'utente;
         \item L'utente visualizza l'introduzione della risposta generata da BuddyBot.
     \end{enumerate}
 \end{itemize}
 
 
 
+\hypertarget{UC5.2}{}
 \subsubsubsection{UC5.2: Visualizzazione di uno snippet del contenuto che è stato trovato (es.: codice)}
 
 \begin{itemize}
-    \item \textbf{Attori coinvolti}: Utente
+    \item \textbf{Attori coinvolti}: Utente;
     \item \textbf{Precondizioni}: 
     \begin{itemize}
-        \item L'utente ha visualizzato l'introduzione della risposta generata da BuddyBot.
+        \item L'utente ha visualizzato l'introduzione della risposta generata da BuddyBot;
         \item La risposta generata da BuddyBot contiene uno snippet di codice.
     \end{itemize}
-    \item \textbf{Postcondizioni}: L'utente visualizza uno snippet di codice contenuto della risposta generata da BuddyBot.
-    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
+    \item \textbf{Trigger}: L'utente desidera visualizzare lo snippet di codice contenuto nella risposta alla domanda che ha posto;
+    \item \textbf{Postcondizioni}: L'utente visualizza uno snippet di codice contenuto della risposta generata da BuddyBot;
+    \item \textbf{Scenario principale}:
     \begin{enumerate}
-        \item L'utente ha visualizzato l'introduzione della risposta generata da BuddyBot;
+        \item \bulhyperlink{UC5.1}{UC5.1}: L'utente ha visualizzato l'introduzione della risposta generata da BuddyBot;
         \item L'utente visualizza uno snippet del contenuto che è stato trovato (es.: codice).
     \end{enumerate}
 \end{itemize}
 
 
 
+\hypertarget{UC5.3}{}
 \subsubsubsection{UC5.3: Visualizzazione di un messaggio di resoconto e conclusione}
 
 \begin{itemize}
-    \item \textbf{Attori coinvolti}: Utente
-    \item \textbf{Precondizioni}: L'utente ha visualizzato almeno l'introduzione della risposta generata da BuddyBot.
-    \item \textbf{Postcondizioni}: L'utente visualizza un messaggio di resoconto e conclusione contenuto nella risposta generata da BuddyBot.
-    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
+    \item \textbf{Attori coinvolti}: Utente;
+    \item \textbf{Precondizioni}: L'utente ha visualizzato almeno l'introduzione della risposta generata da BuddyBot;
+    \item \textbf{Trigger}: L'utente desidera visualizzare la conclusione della risposta alla domanda che ha posto;
+    \item \textbf{Postcondizioni}: L'utente visualizza un messaggio di resoconto e conclusione contenuto nella risposta generata da BuddyBot;
+    \item \textbf{Scenario principale}:
     \begin{enumerate}
-        \item L'utente ha visualizzato l'introduzione della risposta generata da BuddyBot, e, se presente, uno snippet di codice in essa contenuto;
+        \item \bulhyperlink{UC5.1}{UC5.1}: L'utente ha visualizzato l'introduzione della risposta generata da BuddyBot;
+        \item \bulhyperlink{UC5.2}{UC5.2}: Se presente, l'utente ha visualizzato lo snippet di codice contenuto nella risposta;
         \item L'utente visualizza un messaggio di resoconto e conclusione che termina la risposta.
     \end{enumerate}
 \end{itemize}
@@ -103,13 +195,14 @@ L’applicazione prevede la presenza di \dots
 \subsubsection{UC6: Visualizzazione di una risposta negativa (informazione non trovata)}
 
 \begin{itemize}
-    \item \textbf{Attori coinvolti}: Utente
-    \item \textbf{Precondizioni}: BuddyBot non ha trovato l'informazione che l'utente ha domandato.
+    \item \textbf{Attori coinvolti}: Utente;
+    \item \textbf{Precondizioni}: BuddyBot non ha trovato nei documenti di contesto l'informazione che l'utente ha domandato;
+    \item \textbf{Trigger}: L'utente desidera visualizzare la risposta alla domanda che ha posto;
     \item \textbf{Postcondizioni}: L'utente visualizza come risposta un messaggio di BuddyBot in cui gli viene segnalata la mancanza dell'informazione 
-    richiesta nei dati forniti come contesto.
-    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
+    richiesta nei dati forniti come contesto;
+    \item \textbf{Scenario principale}:
     \begin{enumerate}
-        \item BuddyBot non ha trovato l'informazione che l'utente ha domandato;
+        \item BuddyBot non ha trovato nei documenti di contesto l'informazione che l'utente ha domandato;
         \item L'utente visualizza come risposta un messaggio di BuddyBot in cui gli viene segnalata la mancanza dell'informazione richiesta 
         nei dati forniti come contesto.
     \end{enumerate}
@@ -120,149 +213,148 @@ L’applicazione prevede la presenza di \dots
 
 
 
+\hypertarget{UC8}{}
+\subsubsection{UC8: Visualizzare una risposta generata con dati di contesto provenienti da 
+\emph{GitHub}\textsubscript{\textbf{\textit{G}}}, \emph{Jira}\textsubscript{\textbf{\textit{G}}} e 
+\emph{Confluence}\textsubscript{\textbf{\textit{G}}}}
+
+
+
+
+
 
 \hypertarget{UC11}{}
-\subsubsection{UC11: Aggiornamento automatico del database vettoriale}
+\subsubsection{UC11: Visualizzazione una risposta di BuddyBot generata utilizzando dati di contesto aggiornati}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{placeholder.png}
-    \caption{Aggiornamento automatico del database vettoriale}
+    \caption{Visualizzazione una risposta di BuddyBot generata utilizzando dati di contesto aggiornati}
 \end{figure}
 
 \begin{itemize}
-    \item \textbf{Attori coinvolti}: BuddyBot, \emph{GitHub}\textsubscript{\textbf{\textit{G}}}, \emph{Jira}\textsubscript{\textbf{\textit{G}}}, 
-    \emph{Confluence}\textsubscript{\textbf{\textit{G}}}, \emph{Modello di Embedding}\textsubscript{\textbf{\textit{G}}}, 
-    \emph{Database vettoriale}\textsubscript{\textbf{\textit{G}}}
+    \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: 
     \begin{itemize}
-        \item È giunto il momento periodico in cui aggiornare il database vettoriale;
-        \item È possibile collegarsi tramite \emph{API}\textsubscript{\textbf{\textit{G}}} a GitHub, Jira, Confluence ed al Modello di Embedding.
-        \item Il database vettoriale è stato avviato.
+        \item L'utente ha inserito una interrogazione in linguaggio naturale;
+        \item BuddyBot ha generato correttamente la risposta alla domanda dell'utente.
     \end{itemize}
-    \item \textbf{Postcondizioni}: Il database vettoriale è aggiornato con le informazioni più recenti disponibili in GitHub, Jira e Confluence.
-    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
+    \item \textbf{Trigger}: L'utente desidera visualizzare una risposta basata su dati aggiornati alla domanda che ha posto;
+    \item \textbf{Postcondizioni}: L'utente visualizza una risposta generata su dati di contesto aggiornati;
+    \item \textbf{Scenario principale}:
     \begin{enumerate}
-        \item BuddyBot, periodicamente, si collega a GitHub, Jira e Confluence per ottenere eventuali aggiornamenti;
-        \item Se ci sono aggiornamenti, BuddyBot si collega al Modello di Embedding per convertire le informazioni ottenute in formato vettoriale;
-        \item BuddyBot aggiorna il database vettoriale con le informazioni ottenute;
-        \item Nel caso in cui l'aggiornamento del database vettoriale è fallito, cioè quando sono stati rilevati nuovi dati ma non è stato possibile 
-        farne il retrieval, alle successive domande dell'utente il bot fornisce le risposte normalmente, ma segnalando che queste ultime potrebbero 
-        essere basate su dati obsoleti.
+        \item \bulhyperlink{UC1}{UC1}: L'utente ha inserito una interrogazione in linguaggio naturale;
+        \item \bulhyperlink{UC3}{UC3}: BuddyBot ha generato correttamente la risposta alla domanda dell'utente;
+        \item La risposta è stata generata basandosi su dati aggiornati;
+        \item \bulhyperlink{UC5}{UC5}: L'utente visualizza la risposta.
     \end{enumerate}
     \item \textbf{Sottocasi d'uso}:
     \begin{itemize}
-        \item \textbf{UC11.1}: Chiamata API verso GitHub per il retrieval di eventuali nuove modifiche;
-        \item \textbf{UC11.2}: Chiamata API verso Jira per il retrieval di eventuali nuove modifiche;
-        \item \textbf{UC11.3}: Chiamata API verso Confluence per il retrieval di eventuali nuove modifiche;
-        \item \textbf{UC11.4}: Merge dei nuovi dati con i dati già presenti nel database vettoriale.
+        \item \bulhyperlink{UC11.1}{UC11.1}: Visualizzazione una risposta di BuddyBot generata utilizzando dati di contesto di 
+        GitHub aggiornati;
+        \item \bulhyperlink{UC11.2}{UC11.2}: Visualizzazione di una risposta di BuddyBot generata utilizzando dati di contesto di 
+        Jira aggiornati;
+        \item \bulhyperlink{UC11.3}{UC11.3}: Visualizzazione di una risposta di BuddyBot generata utilizzando dati di contesto di 
+        Confluence aggiornati;
     \end{itemize}
-\end{itemize}
-
-
-
-\subsubsubsection{UC11.1: Chiamata API verso GitHub per il retrieval di eventuali nuove modifiche}
-
-\begin{itemize}
-    \item \textbf{Attori coinvolti}: BuddyBot, \emph{GitHub}\textsubscript{\textbf{\textit{G}}}
-    \item \textbf{Precondizioni}: 
-    \begin{itemize}
-        \item È giunto il momento periodico in cui aggiornare il database vettoriale;
-        \item È possibile collegarsi tramite \emph{API}\textsubscript{\textbf{\textit{G}}} a GitHub.
-    \end{itemize}
-    \item \textbf{Postcondizioni}: Vengono restituiti gli aggiornamenti che sono avvenuti su GitHub rispetto all'ultima richiesta, eventualmente nessuno 
-    se GitHub non è stato aggiornato.
-    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}: BuddyBot, periodicamente, si collega a GitHub per ottenere eventuali aggiornamenti.
-\end{itemize}
-
-
-
-\subsubsubsection{UC11.2: Chiamata API verso Jira per il retrieval di eventuali nuove modifiche}
-
-\begin{itemize}
-    \item \textbf{Attori coinvolti}: BuddyBot, \emph{Jira}\textsubscript{\textbf{\textit{G}}}
-    \item \textbf{Precondizioni}:
-    \begin{itemize}
-        \item È giunto il momento periodico in cui aggiornare il database vettoriale;
-        \item È possibile collegarsi tramite \emph{API}\textsubscript{\textbf{\textit{G}}} a Jira.
-    \end{itemize}
-    \item \textbf{Postcondizioni}: Vengono restituiti gli aggiornamenti che sono avvenuti su Jira rispetto all'ultima richiesta, eventualmente nessuno 
-    se Jira non è stato aggiornato.
-    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}: BuddyBot, periodicamente, si collega a Jira per ottenere eventuali aggiornamenti.
-\end{itemize}
-
-
-
-\subsubsubsection{UC11.3: Chiamata API verso Confluence per il retrieval di eventuali nuove modifiche}
-
-\begin{itemize}
-    \item \textbf{Attori coinvolti}: BuddyBot, \emph{Confluence}\textsubscript{\textbf{\textit{G}}}
-    \item \textbf{Precondizioni}: 
-    \begin{itemize}
-        \item È giunto il momento periodico in cui aggiornare il database vettoriale;
-        \item È possibile collegarsi tramite \emph{API}\textsubscript{\textbf{\textit{G}}} a Confluence.
-    \end{itemize}
-    \item \textbf{Postcondizioni}: Vengono restituiti gli aggiornamenti che sono avvenuti su Confluence rispetto all'ultima richiesta, eventualmente nessuno 
-    se Confkuence non è stato aggiornato.
-    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}: BuddyBot, periodicamente, si collega a Confluence per ottenere eventuali aggiornamenti.
-\end{itemize}
-
-
-
-\subsubsubsection{UC11.4: Merge dei nuovi dati con i dati già presenti nel database vettoriale}
-
-\begin{itemize}
-    \item \textbf{Attori coinvolti}: BuddyBot, \emph{Modello di Embedding}\textsubscript{\textbf{\textit{G}}}, 
-    \emph{Database vettoriale}\textsubscript{\textbf{\textit{G}}}
-    \item \textbf{Precondizioni}: 
-    \begin{itemize}
-        \item BuddyBot ha ottenuto nuovi dati da GitHub, Jira e Confluence;
-        \item È possibile collegarsi tramite \emph{API}\textsubscript{\textbf{\textit{G}}} al Modello di Embedding;
-        \item Il database vettoriale è stato avviato.
-    \end{itemize}
-    \item \textbf{Postcondizioni}: Il database vettoriale è aggiornato con le informazioni più recenti disponibili in GitHub, Jira e Confluence.
-    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
+    \item \textbf{Scenario alternativo}:
     \begin{enumerate}
-        \item Se ci sono aggiornamenti su GitHub, Jira o Confluence, BuddyBot si collega al Modello di Embedding per convertire le informazioni 
-        ottenute in formato vettoriale;
-        \item BuddyBot aggiorna il database vettoriale con le informazioni ottenute;
+        \item \bulhyperlink{UC17}{UC17}: Visualizzazione dell’avviso che i dati potrebbero essere obsoleti.
     \end{enumerate}
-    \item \textbf{Sottocasi d'uso}:
-    \begin{itemize}
-        \item \textbf{UC11.4.1}: Conversione dei nuovi dati in formato vettoriale.
-    \end{itemize}
 \end{itemize}
 
 
 
-\paragraph{UC11.4.1: Conversione dei nuovi dati in formato vettoriale}
+\hypertarget{UC11.1}{}
+\subsubsubsection{UC11.1: Visualizzazione una risposta di BuddyBot generata utilizzando dati di contesto di GitHub aggiornati}
 
 \begin{itemize}
-    \item \textbf{Attori coinvolti}: BuddyBot, \emph{Modello di Embedding}\textsubscript{\textbf{\textit{G}}}
+    \item \textbf{Attori principali}: Utente, GitHub;
     \item \textbf{Precondizioni}: 
     \begin{itemize}
-        \item BuddyBot ha ottenuto nuovi dati da GitHub, Jira e Confluence;
-        \item È possibile collegarsi tramite \emph{API}\textsubscript{\textbf{\textit{G}}} al Modello di Embedding;
+        \item L'utente ha inserito una interrogazione in linguaggio naturale che riguarda GitHub;
+        \item BuddyBot ha generato correttamente la risposta alla domanda dell'utente.
     \end{itemize}
-    \item \textbf{Postcondizioni}: Le informazioni più recenti disponibili in GitHub, Jira e Confluence sono state convertite in formato vettoriale.
-    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}: Se ci sono aggiornamenti su GitHub, Jira o Confluence, BuddyBot si collega al Modello di Embedding per convertire le informazioni 
-        ottenute in formato vettoriale.
+    \item \textbf{Trigger}: L'utente desidera visualizzare una risposta basata su dati di GitHub aggiornati alla domanda che ha posto;
+    \item \textbf{Postcondizioni}: L'utente visualizza una risposta basata sui dati di contesto di GitHub aggiornati;
+    \item \textbf{Scenario principale}: 
+    \begin{enumerate}
+        \item \bulhyperlink{UC1}{UC1}: L'utente ha inserito una interrogazione in linguaggio naturale;
+        \item L'interrogazione in linguaggio naturale riguarda GitHub;
+        \item \bulhyperlink{UC3}{UC3}: BuddyBot ha generato correttamente la risposta alla domanda dell'utente;
+        \item La risposta è stata generata basandosi su dati aggiornati di GitHub;
+        \item \bulhyperlink{UC5}{UC5}: L'utente visualizza la risposta.
+    \end{enumerate}
 \end{itemize}
 
 
 
-\hypertarget{UC15}{}
-\subsubsection{UC15: Visualizzazione della frase "la risposta è basata su dati che potrebbero essere obsoleti" sopra alle successive risposte del chatbot}
+\hypertarget{UC11.2}{}
+\subsubsubsection{UC11.2: Visualizzazione di una risposta di BuddyBot generata utilizzando dati di contesto di Jira aggiornati}
 
 \begin{itemize}
-    \item \textbf{Attori coinvolti}: BuddyBot, Utente
-    \item \textbf{Precondizioni}: L'utente ha posto una domanda a BuddyBot
-    \item \textbf{Postcondizioni}: L'utente, oltre alla consueta risposta del chatbot, visualizza sopra di essa una frase che lo avvisa del fatto che i dati usati per 
-    costruire la risposta sono obsoleti.
-    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
+    \item \textbf{Attori principali}: Utente, Jira;
+    \item \textbf{Precondizioni}: 
+    \begin{itemize}
+        \item L'utente ha inserito una interrogazione in linguaggio naturale che riguarda Jira;
+        \item BuddyBot ha generato correttamente la risposta alla domanda dell'utente.
+    \end{itemize}
+    \item \textbf{Trigger}: L'utente desidera visualizzare una risposta basata su dati di Jira aggiornati alla domanda che ha posto;
+    \item \textbf{Postcondizioni}: L'utente visualizza una risposta basata sui dati di contesto di Jira aggiornati;
+    \item \textbf{Scenario principale}: 
     \begin{enumerate}
-        \item Utente pone una domanda a BuddyBot;
-        \item BuddyBot risponde alla domanda dell'utente;
-        \item L'utente visualizza la risposta del chatbot anticipata dalla frase "la risposta è basata su dati che potrebbero essere obsoleti".
+        \item \bulhyperlink{UC1}{UC1}: L'utente ha inserito una interrogazione in linguaggio naturale;
+        \item L'interrogazione in linguaggio naturale riguarda Jira;
+        \item \bulhyperlink{UC3}{UC3}: BuddyBot ha generato correttamente la risposta alla domanda dell'utente;
+        \item La risposta è stata generata basandosi su dati aggiornati di Jira;
+        \item \bulhyperlink{UC5}{UC5}: L'utente visualizza la risposta.
+    \end{enumerate}
+\end{itemize}
+
+
+
+\hypertarget{UC11.3}{}
+\subsubsubsection{UC11.3: Visualizzazione di una risposta di BuddyBot generata utilizzando dati di contesto di Confluence aggiornati}
+
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente, Confluence;
+    \item \textbf{Precondizioni}: 
+    \begin{itemize}
+        \item L'utente ha inserito una interrogazione in linguaggio naturale che riguarda Confluence;
+        \item BuddyBot ha generato correttamente la risposta alla domanda dell'utente.
+    \end{itemize}
+    \item \textbf{Trigger}: L'utente desidera visualizzare una risposta basata su dati di Confluence aggiornati alla domanda che ha posto;
+    \item \textbf{Postcondizioni}: L'utente visualizza una risposta basata sui dati di contesto di Confluence aggiornati;
+    \item \textbf{Scenario principale}: 
+    \begin{enumerate}
+        \item \bulhyperlink{UC1}{UC1}: L'utente ha inserito una interrogazione in linguaggio naturale;
+        \item L'interrogazione in linguaggio naturale riguarda Confluence;
+        \item \bulhyperlink{UC3}{UC3}: BuddyBot ha generato correttamente la risposta alla domanda dell'utente;
+        \item La risposta è stata generata basandosi su dati aggiornati di Confluence;
+        \item \bulhyperlink{UC5}{UC5}: L'utente visualizza la risposta.
+    \end{enumerate}
+\end{itemize}
+
+
+
+\hypertarget{UC17}{}
+\subsubsection{UC17: Visualizzazione dell’avviso che i dati potrebbero essere obsoleti}
+
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: 
+    \begin{itemize}
+        \item L'utente ha inserito una interrogazione in linguaggio naturale;
+        \item BuddyBot ha generato correttamente la risposta alla domanda dell'utente.
+    \end{itemize}
+    \item \textbf{Trigger}: L'utente desidera visualizzare una risposta basata su dati aggiornati alla domanda che ha posto;
+    \item \textbf{Postcondizioni}: L'utente visualizza la risposta del bot anticipata da una frase che segnala che la
+    risposta potrebbe essere basata su dati obsoleti;
+    \item \textbf{Scenario principale}: 
+    \begin{enumerate}
+        \item \bulhyperlink{UC1}{UC1}: L'utente ha inserito una interrogazione in linguaggio naturale;
+        \item \bulhyperlink{UC3}{UC3}: BuddyBot ha generato correttamente la risposta alla domanda dell'utente;
+        \item L'utente, prima della risposta, visualizza una frase che segnala che la risposta potrebbe essere basata su dati obsoleti;
+        \item \bulhyperlink{UC5}{UC5}: L'utente visualizza la risposta.
     \end{enumerate}
 \end{itemize}
