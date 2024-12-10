@@ -36,7 +36,7 @@ L’applicazione prevede la presenza di \dots
 \end{figure}
 
 \begin{itemize}
-    \item \textbf{Attori} principali}: \dots;
+    \item \textbf{Attori principali}: \dots;
     \item \textbf{Precondizioni}: \dots;
     % Oppure, se ci sono più precondizioni:
     \item \textbf{Precondizioni}: 
@@ -309,7 +309,7 @@ L’applicazione prevede la presenza di \dots
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{placeholder.png}
+    \includegraphics[width=\textwidth]{Diagramma UC11.png}
     \caption{Visualizzazione di una risposta generata utilizzando dati di contesto aggiornati}
 \end{figure}
 
@@ -427,7 +427,7 @@ L’applicazione prevede la presenza di \dots
 \end{figure}
 
 \begin{itemize}
-    \item \textbf{Attori} principali}: Utente;
+    \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: L'utente ha appena cominciato una nuova conversazione;
     \item \textbf{Trigger}: L'utente desidera ricevere delle proposte di possibili domande per iniziare la conversazione;
     \item \textbf{Postcondizioni}: L'utente ha ricevuto una serie di domande suggerite dal sistema, che possono essere utilizzate per iniziare la conversazione;
@@ -447,7 +447,7 @@ L’applicazione prevede la presenza di \dots
 \subsubsection{UC12.1: Visualizzare una singola domanda ideale per iniziare la conversazione}
 
 \begin{itemize}
-    \item \textbf{Attori} principali}: Utente;
+    \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: L'utente ha appena cominciato una nuova conversazione;
     \item \textbf{Trigger}: L'utente desidera ricevere una proposta di domanda per iniziare la conversazione;
     \item \textbf{Postcondizioni}: L'utente visualizza una domanda suggerita dal sistema, che può essere utilizzata per iniziare la conversazione;
@@ -455,7 +455,7 @@ L’applicazione prevede la presenza di \dots
     \begin{enumerate}
         \item L'utente avvia l'applicazione;
         \item Il sistema propone una domanda ideale;
-        \item L'utente seleziona la domanda proposta o inserisce una propria domanda.
+        \item \bulhyperlink{UC1}{UC1}: L'utente seleziona la domanda proposta o inserisce una propria domanda.
     \end{enumerate}
 \end{itemize}
 
@@ -469,7 +469,7 @@ L’applicazione prevede la presenza di \dots
 \end{figure}
 
 \begin{itemize}
-    \item \textbf{Attori} principali}: Utente;
+    \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: L'utente ha appena ricevuto una risposta dal sistema;
     \item \textbf{Trigger}: L'utente desidera ricevere delle proposte di possibili domande per proseguire la conversazione;
     \item \textbf{Postcondizioni}: L'utente ha ricevuto una lista di domande suggerite dal sistema, che possono essere utilizzate per proseguire la conversazione;
@@ -477,7 +477,7 @@ L’applicazione prevede la presenza di \dots
     \begin{enumerate}
         \item \bulhyperlink{UC5}{UC5}: L'utente ha visualizzato la risposta a una domanda precedente;
         \item Il sistema propone una lista di domande considerate utili rispetto ai messaggi precedenti;
-        \item \bulhyperlink{UC1}{UC1}:L'utente seleziona una delle domande proposte o inserisce una propria domanda;
+        \item \bulhyperlink{UC1}{UC1}: L'utente seleziona una delle domande proposte o inserisce una propria domanda;
     \end{enumerate}
     \item \textbf{Sottocasi d'uso}:
     \begin{itemize}
@@ -493,7 +493,7 @@ L’applicazione prevede la presenza di \dots
 \subsubsection{UC14.1: Visualizzare una singola domanda ideale per proseguire la conversazione}
 
 \begin{itemize}
-    \item \textbf{Attori} principali}: Utente;
+    \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: L'utente ha appena ricevuto una risposta dal sistema;
     \item \textbf{Trigger}: L'utente desidera ricevere una proposta di domanda per proseguire la conversazione;
     \item \textbf{Postcondizioni}: L'utente visualizza una domanda suggerita dal sistema, che può essere utilizzata per proseguire la conversazione;
@@ -501,14 +501,14 @@ L’applicazione prevede la presenza di \dots
     \begin{enumerate}
         \item \bulhyperlink{UC5}{UC5}: L'utente ha visualizzato la risposta a una domanda precedente;
         \item Il sistema propone una domanda ideale per proseguire la conversazione;
-        \item \bulhyperlink{UC1}{UC1}:L'utente seleziona la domanda proposta o inserisce una propria domanda;
+        \item \bulhyperlink{UC1}{UC1}: L'utente seleziona la domanda proposta o inserisce una propria domanda;
     \end{enumerate}
 \end{itemize}
 
 \hypertarget{UC15}{}
 \subsubsection{UC15: Errore nella generazione delle domande per proseguire la conversazione}
 \begin{itemize}
-    \item \textbf{Attori} principali}: Utente;
+    \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: L'utente ha appena ricevuto una risposta dal sistema;
     \item \textbf{Trigger}: L'utente desidera ricevere delle proposte di possibili domande per proseguire la conversazione;
     \item \textbf{Postcondizioni}: L'utente ha ricevuto un messaggio di errore che comunica che il sistema non è in grado di proporre delle domande;
