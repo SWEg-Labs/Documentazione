@@ -161,6 +161,27 @@ L’applicazione prevede la presenza di \dots
 \end{itemize}
 
 
+\hypertarget{UC2}{}
+\subsubsection{UC2: Interrogazione fuori contesto}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{placeholder.png}
+    \caption{\dots}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attori} principali}: Utente;
+    \item \textbf{Precondizioni}: L'utente ha inserito un'interrogazione in linguaggio naturale;
+    \item \textbf{Trigger}: L'utente desidera ricevere informazioni legate esclusivamente ai contenuti del database associato al \emph{chatBot}\textsubscript{\textbf{\textit{G}};
+    \item \textbf{Postcondizioni}: Viene visualizzato un messaggio che comunica all'utente che l'input è fuori contesto e che quindi è impossibile generare una risposta;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item Il chatBot analizza la frase e cerca di contestualizzarla utilizzando i dati presenti nel database;
+        \item Il chatBot rileva che la frase è fuori contesto e non può essere associata a nessuna informazione rilevante nel database;
+        \item Il chatBot invia un messaggio all'utente indicando che la frase è fuori contesto e richiede ulteriori chiarimenti.
+    \end{enumerate}
+\end{itemize}
 
 
 \hypertarget{UC3}{}
