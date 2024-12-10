@@ -423,6 +423,108 @@ L’applicazione prevede la presenza di \dots
 \end{itemize}
 
 
+\hypertarget{UC12}{}
+\subsubsection{UC12: Proporre una lista di domande ideali per iniziare la conversazione}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{Diagramma UC12.png}
+    \caption{Proporre una lista di domande ideali per iniziare la conversazione}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attori} principali}: Utente;
+    \item \textbf{Precondizioni}: L'utente ha appena cominciato una nuova conversazione;
+    \item \textbf{Trigger}: L'utente desidera ricevere delle proposte di possibili domande per iniziare la conversazione;
+    \item \textbf{Postcondizioni}: L'utente ha ricevuto una serie di domande suggerite dal sistema, che possono essere utilizzate per iniziare la conversazione;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item L'utente avvia l'applicazione;
+        \item Il sistema propone una lista di domande ideali per iniziare la conversazione;
+        \item L'utente seleziona una delle domande proposte o inserisce una propria domanda.
+    \end{enumerate}
+    \item \textbf{Sottocasi d'uso}:
+    \begin{itemize}
+        \item \bulhyperlink{UC12.1}{UC12.1}: Visualizzare una singola domanda ideale per iniziare la conversazione;
+    \end{itemize}
+\end{itemize}
+
+\hypertarget{UC12.1}{}
+\subsubsection{UC12.1: Visualizzare una singola domanda ideale per iniziare la conversazione}
+
+\begin{itemize}
+    \item \textbf{Attori} principali}: Utente;
+    \item \textbf{Precondizioni}: L'utente ha appena cominciato una nuova conversazione;
+    \item \textbf{Trigger}: L'utente desidera ricevere una proposta di domanda per iniziare la conversazione;
+    \item \textbf{Postcondizioni}: L'utente visualizza una domanda suggerita dal sistema, che può essere utilizzata per iniziare la conversazione;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item L'utente avvia l'applicazione;
+        \item Il sistema propone una domanda ideale;
+        \item L'utente seleziona la domanda proposta o inserisce una propria domanda.
+    \end{enumerate}
+\end{itemize}
+
+\hypertarget{UC14}{}
+\subsubsection{UC14: Visualizzare una lista di domande ideali per proseguire la conversazione}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{Diagramma UC14.png}
+    \caption{\dots}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attori} principali}: Utente;
+    \item \textbf{Precondizioni}: L'utente ha appena ricevuto una risposta dal sistema;
+    \item \textbf{Trigger}: L'utente desidera ricevere delle proposte di possibili domande per proseguire la conversazione;
+    \item \textbf{Postcondizioni}: L'utente ha ricevuto una lista di domande suggerite dal sistema, che possono essere utilizzate per proseguire la conversazione;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item \bulhyperlink{UC5}{UC5}: L'utente ha visualizzato la risposta a una domanda precedente;
+        \item Il sistema propone una lista di domande considerate utili rispetto ai messaggi precedenti;
+        \item \bulhyperlink{UC1}{UC1}:L'utente seleziona una delle domande proposte o inserisce una propria domanda;
+    \end{enumerate}
+    \item \textbf{Sottocasi d'uso}:
+    \begin{itemize}
+        \item \bulhyperlink{UC14.1}{UC14.1}: Visualizzare una singola domanda ideale per proseguire la conversazione.
+    \end{itemize}
+    \item \textbf{Scenario alternativo}:
+    \begin{enumerate}
+        \item \bulhyperlink{UC15}{UC15}: Visualizzazione di un messaggio di errore che comunica che il sistema non è in grado di proporre delle domande.
+    \end{enumerate}
+\end{itemize}
+
+\hypertarget{UC14.1}{}
+\subsubsection{UC14.1: Visualizzare una singola domanda ideale per proseguire la conversazione}
+
+\begin{itemize}
+    \item \textbf{Attori} principali}: Utente;
+    \item \textbf{Precondizioni}: L'utente ha appena ricevuto una risposta dal sistema;
+    \item \textbf{Trigger}: L'utente desidera ricevere una proposta di domanda per proseguire la conversazione;
+    \item \textbf{Postcondizioni}: L'utente visualizza una domanda suggerita dal sistema, che può essere utilizzata per proseguire la conversazione;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item \bulhyperlink{UC5}{UC5}: L'utente ha visualizzato la risposta a una domanda precedente;
+        \item Il sistema propone una domanda ideale per proseguire la conversazione;
+        \item \bulhyperlink{UC1}{UC1}:L'utente seleziona la domanda proposta o inserisce una propria domanda;
+    \end{enumerate}
+\end{itemize}
+
+\hypertarget{UC15}{}
+\subsubsection{UC15: Errore nella generazione delle domande per proseguire la conversazione}
+\begin{itemize}
+    \item \textbf{Attori} principali}: Utente;
+    \item \textbf{Precondizioni}: L'utente ha appena ricevuto una risposta dal sistema;
+    \item \textbf{Trigger}: L'utente desidera ricevere delle proposte di possibili domande per proseguire la conversazione;
+    \item \textbf{Postcondizioni}: L'utente ha ricevuto un messaggio di errore che comunica che il sistema non è in grado di proporre delle domande;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item \bulhyperlink{UC5}{UC5}: L'utente ha visualizzato la risposta a una domanda precedente;
+        \item Il sistema mostra un messaggio di errore che comunica che non è in grado di proporre delle domande.
+    \end{enumerate}
+\end{itemize}
+
 
 \hypertarget{UC17}{}
 \subsubsection{UC17: Visualizzazione dell’avviso che i dati potrebbero essere obsoleti}
