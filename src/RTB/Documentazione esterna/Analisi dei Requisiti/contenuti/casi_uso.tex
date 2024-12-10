@@ -97,8 +97,8 @@ L’applicazione prevede la presenza di \dots
     \end{itemize}
     \item \textbf{\emph{Scenario alternativo}\textsubscript{\textbf{\textit{G}}}}:
     \begin{enumerate}
-        \item \bulhyperlink{UC6}{UC6} Il sistema non trova una correlazione tra l'interrogazione e il database;
-        \item \bulhyperlink{UC2}{UC2}: Viene mostrato un messaggio di errore che comunica che l'input è fuori contesto e che non è possibile generare una risposta.
+        \item \bulhyperlink{UC2}{UC2}: Viene inviato un messaggio all'utente che comunica che l'input è fuori contesto e che quindi non è possibile generare una risposta;
+        \item \bulhyperlink{UC6}{UC6}: Pur riconoscendo il contesto corretto, il sistema non trova una correlazione tra l'interrogazione e il database, e allora viene visualizzata una risposta negativa.
     \end{enumerate}
 \end{itemize}
 
@@ -136,7 +136,7 @@ L’applicazione prevede la presenza di \dots
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: L'interrogazione è stata inviata;
-    \item \textbf{Trigger}: L'interrogazione desiderare sapere se l'interrogazione che ha scritto è valida;
+    \item \textbf{Trigger}: L'utente desidera sapere se l'interrogazione che ha scritto è valida;
     \item \textbf{Postcondizioni}: Visualizzazione del messaggio appena scritto nella videata principale;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
@@ -164,22 +164,16 @@ L’applicazione prevede la presenza di \dots
 \hypertarget{UC2}{}
 \subsubsection{UC2: Interrogazione fuori contesto}
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{placeholder.png}
-    \caption{\dots}
-\end{figure}
-
 \begin{itemize}
-    \item \textbf{Attori} principali}: Utente;
+    \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: L'utente ha inserito un'interrogazione in linguaggio naturale;
-    \item \textbf{Trigger}: L'utente desidera ricevere informazioni legate esclusivamente ai contenuti del database associato al \emph{chatBot}\textsubscript{\textbf{\textit{G}};
+    \item \textbf{Trigger}: L'utente desidera ricevere informazioni legate esclusivamente ai contenuti del database associato al sistema;
     \item \textbf{Postcondizioni}: Viene visualizzato un messaggio che comunica all'utente che l'input è fuori contesto e che quindi è impossibile generare una risposta;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
-        \item Il chatBot analizza la frase e cerca di contestualizzarla utilizzando i dati presenti nel database;
-        \item Il chatBot rileva che la frase è fuori contesto e non può essere associata a nessuna informazione rilevante nel database;
-        \item Il chatBot invia un messaggio all'utente indicando che la frase è fuori contesto e richiede ulteriori chiarimenti.
+        \item Il sistema analizza la frase e cerca di contestualizzarla utilizzando i dati presenti nel database;
+        \item Il sistema rileva che la frase è fuori contesto e non può essere associata a nessuna informazione rilevante nel database;
+        \item Il sistema invia un messaggio all'utente indicando che la frase è fuori contesto e richiede ulteriori chiarimenti.
     \end{enumerate}
 \end{itemize}
 
@@ -346,7 +340,7 @@ L’applicazione prevede la presenza di \dots
     \end{itemize}
     \item \textbf{Scenario alternativo}:
     \begin{enumerate}
-        \item \bulhyperlink{UC17}{UC17}: Visualizzazione dell’avviso che i dati potrebbero essere obsoleti.
+        \item \bulhyperlink{UC16}{UC16}: Visualizzazione dell’avviso che i dati potrebbero essere obsoleti.
     \end{enumerate}
 \end{itemize}
 
@@ -526,8 +520,8 @@ L’applicazione prevede la presenza di \dots
 \end{itemize}
 
 
-\hypertarget{UC17}{}
-\subsubsection{UC17: Visualizzazione dell’avviso che i dati potrebbero essere obsoleti}
+\hypertarget{UC16}{}
+\subsubsection{UC16: Visualizzazione dell’avviso che i dati potrebbero essere obsoleti}
 
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
