@@ -176,12 +176,83 @@ L’applicazione prevede la presenza di \dots
         \item Il sistema invia un messaggio all'utente indicando che la frase è fuori contesto e richiede ulteriori chiarimenti.
     \end{enumerate}
 \end{itemize}
-
+\newpage
 
 \hypertarget{UC3}{}
 \subsubsection{UC3: Generazione della risposta}
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{Diagramma UC3.png}
+    \caption{Generazione della risposta}
+\end{figure}
 
+\begin{itemize}
+    \item \textbf{Attori principali}: Modello di question answering;
+    \item \textbf{Precondizioni}: Il modelo di embedding e il database vettoriale devono essere funzionanti e reperibili;
+    \item \textbf{Trigger}: Una domanda è stata inviata;
+    \item \textbf{Postcondizioni}: Se la risposta viene generata, l'utente visualizza la risposta. Se invece si genera un errore, viene visualizzato un messaggio che lo riporta;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item La domanda viene inviata.
+        \item \bulhyperlink{UC3.1}{UC3.1}: Il database vettoriale si occupa di trovare i documenti inerenti alla domanda;
+        \item \bulhyperlink{UC3.2}{UC3.2}: L'LLM genera la risposta utilizzando la domanda e tutti i documenti inerenti;
+    \end{enumerate}
+    \item \textbf{Sottocasi d'uso}:
+    \begin{itemize}
+        \item \bulhyperlink{UC3.1}{UC3.1}: tramite la domanda il database vettoriale cerca, nei documenti trasformati dal modello di embedding, similarità trovando i documenti inerenti;
+        \item \bulhyperlink{UC3.2}{UC3.2}: L'LLM genera una risposta basata sul prompt iniziale, e i documenti inerenti trovati dal database vettoriale;
+    \end{itemize}
+    \item \textbf{Scenario alternativo}:
+    \begin{enumerate}
+        \item \bulhyperlink{UC4}{UC4}: Viene inviato un messaggio all'utente che comunica un errore durante la generazione della risposta;
+    \end{enumerate}
+\end{itemize}
+
+\hypertarget{UC3.1}{}
+\subsubsubsection{UC3.1: Ricerca dei dati inerenti alla domanda tramite database vettoriale}
+\begin{itemize}
+    \item \textbf{Attori principali}: Database vettoriale;
+    \item \textbf{Precondizioni}: Il modelo di embedding ed il database vettoriale devono essere funzionanti e reperibili;
+    \item \textbf{Trigger}: Una domanda è stata inviata;
+    \item \textbf{Postcondizioni}: vengono restituiti i documenti ritenuti rilevanti se presenti;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item La domanda viene confrontata, tramite il database vettoriale, ai documenti processati dal modello di embedding;
+        \item Vengono restituiti i documenti inerenti.
+    \end{enumerate}
+\end{itemize}
+
+\hypertarget{UC3.2}{}
+\subsubsubsection{UC3.2: Generazione della risposta in linguaggio naturale}
+\begin{itemize}
+    \item \textbf{Attori principali}: LLM;
+    \item \textbf{Precondizioni}: La domanda è stata processata dal database vettoriale;
+    \item \textbf{Trigger}: Fine ricerca di dati rilevanti alla domanda;
+    \item \textbf{Postcondizioni}: La risposta in linguaggio naturale è stata generata;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item \bulhyperlink{UC3.1}{UC3.1}: Vengono restituiti i documenti inerenti alla domanda;
+        \item L'LLM genera la risposta in linguaggo naturale prendendo in considerazione la domanda e i documenti inerenti;
+        \item La risposta viene generata.
+    \end{enumerate}
+\end{itemize}
+
+\hypertarget{UC4}{}
+\subsubsection{UC4: Errore nella generazione della risposta}
+
+\begin{itemize}
+    \item \textbf{Attori principali}: Modello di question answering;
+    \item \textbf{Precondizioni}: Il modelo di embedding e il database vettoriale devono essere funzionanti e reperibili;
+    \item \textbf{Trigger}: Una domanda è stata inviata;
+    \item \textbf{Postcondizioni}: Viene visualizzato un messaggio di errore, chiedendo di riprovare più tardi;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item La domanda viene inviata;
+        \item Si genera un errore durante il processo che non permette la generazione della risposta;
+        \item Viene visualizzato il messaggio di errore.
+    \end{enumerate}
+\end{itemize}
 
 \hypertarget{UC5}{}
 \subsubsection{UC5: Visualizzazione della risposta generata}
