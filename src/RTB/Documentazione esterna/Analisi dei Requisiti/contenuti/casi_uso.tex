@@ -72,7 +72,7 @@ L’applicazione prevede la presenza di \dots
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{Diagramma UC1.png}
+    \includegraphics[width=\textwidth]{Diagramma UC1 - UC2.png}
     \caption{Inserimento di interrogazione in linguaggio naturale}
 \end{figure}
 
@@ -178,12 +178,13 @@ L’applicazione prevede la presenza di \dots
 \end{itemize}
 \newpage
 
+
 \hypertarget{UC3}{}
 \subsubsection{UC3: Generazione della risposta}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{Diagramma UC3.png}
+    \includegraphics[width=\textwidth]{Diagramma UC3 - UC4.png}
     \caption{Generazione della risposta}
 \end{figure}
 
@@ -254,12 +255,13 @@ L’applicazione prevede la presenza di \dots
     \end{enumerate}
 \end{itemize}
 
+
 \hypertarget{UC5}{}
 \subsubsection{UC5: Visualizzazione della risposta generata}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{Diagramma UC5.png}
+    \includegraphics[width=\textwidth]{Diagramma UC5 - UC6.png}
     \caption{Visualizzazione della risposta generata}
 \end{figure}
 
@@ -380,7 +382,7 @@ L’applicazione prevede la presenza di \dots
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{Diagramma UC11.png}
+    \includegraphics[width=\textwidth]{Diagramma UC11 - UC16.png}
     \caption{Visualizzazione di una risposta generata utilizzando dati di contesto aggiornati}
 \end{figure}
 
@@ -488,6 +490,31 @@ L’applicazione prevede la presenza di \dots
 \end{itemize}
 
 
+
+\hypertarget{UC16}{}
+\subsubsection{UC16: Visualizzazione dell’avviso che i dati potrebbero essere obsoleti}
+
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: 
+    \begin{itemize}
+        \item L'utente ha inserito una interrogazione in linguaggio naturale;
+        \item Il sistema ha generato correttamente la risposta alla domanda dell'utente.
+    \end{itemize}
+    \item \textbf{Trigger}: L'utente desidera visualizzare una risposta basata su dati aggiornati alla domanda che ha posto;
+    \item \textbf{Postcondizioni}: L'utente visualizza la risposta del bot anticipata da una frase che segnala che la
+    risposta potrebbe essere basata su dati obsoleti;
+    \item \textbf{Scenario principale}: 
+    \begin{enumerate}
+        \item \bulhyperlink{UC1}{UC1}: L'utente ha inserito una interrogazione in linguaggio naturale;
+        \item \bulhyperlink{UC3}{UC3}: Il sistema ha generato correttamente la risposta alla domanda dell'utente;
+        \item L'utente, prima della risposta, visualizza una frase che segnala che la risposta potrebbe essere basata su dati obsoleti;
+        \item \bulhyperlink{UC5}{UC5}: L'utente visualizza la risposta.
+    \end{enumerate}
+\end{itemize}
+
+
+
 \hypertarget{UC12}{}
 \subsubsection{UC12: Proporre una lista di domande ideali per iniziare la conversazione}
 
@@ -535,7 +562,7 @@ L’applicazione prevede la presenza di \dots
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{Diagramma UC14.png}
+    \includegraphics[width=\textwidth]{Diagramma UC14 - UC15.png}
     \caption{\dots}
 \end{figure}
 
@@ -587,28 +614,5 @@ L’applicazione prevede la presenza di \dots
     \begin{enumerate}
         \item \bulhyperlink{UC5}{UC5}: L'utente ha visualizzato la risposta a una domanda precedente;
         \item Il sistema mostra un messaggio di errore che comunica che non è in grado di proporre delle domande.
-    \end{enumerate}
-\end{itemize}
-
-
-\hypertarget{UC16}{}
-\subsubsection{UC16: Visualizzazione dell’avviso che i dati potrebbero essere obsoleti}
-
-\begin{itemize}
-    \item \textbf{Attori principali}: Utente;
-    \item \textbf{Precondizioni}: 
-    \begin{itemize}
-        \item L'utente ha inserito una interrogazione in linguaggio naturale;
-        \item Il sistema ha generato correttamente la risposta alla domanda dell'utente.
-    \end{itemize}
-    \item \textbf{Trigger}: L'utente desidera visualizzare una risposta basata su dati aggiornati alla domanda che ha posto;
-    \item \textbf{Postcondizioni}: L'utente visualizza la risposta del bot anticipata da una frase che segnala che la
-    risposta potrebbe essere basata su dati obsoleti;
-    \item \textbf{Scenario principale}: 
-    \begin{enumerate}
-        \item \bulhyperlink{UC1}{UC1}: L'utente ha inserito una interrogazione in linguaggio naturale;
-        \item \bulhyperlink{UC3}{UC3}: Il sistema ha generato correttamente la risposta alla domanda dell'utente;
-        \item L'utente, prima della risposta, visualizza una frase che segnala che la risposta potrebbe essere basata su dati obsoleti;
-        \item \bulhyperlink{UC5}{UC5}: L'utente visualizza la risposta.
     \end{enumerate}
 \end{itemize}
