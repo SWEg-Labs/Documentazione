@@ -171,9 +171,9 @@ L’applicazione prevede la presenza di \dots
 \end{figure}
 
 \begin{itemize}
-    \item \textbf{Attori} principali}: Utente;
+    \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: L'utente ha inserito un'interrogazione in linguaggio naturale;
-    \item \textbf{Trigger}: L'utente desidera ricevere informazioni legate esclusivamente ai contenuti del database associato al \emph{chatBot}\textsubscript{\textbf{\textit{G}};
+    \item \textbf{Trigger}: L'utente desidera ricevere informazioni legate esclusivamente ai contenuti del database associato al \emph{chatBot}\textsubscript{\textbf{\textit{G}}};
     \item \textbf{Postcondizioni}: Viene visualizzato un messaggio che comunica all'utente che l'input è fuori contesto e che quindi è impossibile generare una risposta;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
@@ -187,6 +187,65 @@ L’applicazione prevede la presenza di \dots
 \hypertarget{UC3}{}
 \subsubsection{UC3: Generazione della risposta}
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{Diagramma UC3-UC4.png}
+    \caption{Generazione della risposta ed eventuale errore}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attori principali}: modello di questing answering;
+    \item \textbf{Precondizioni}: il sistema ha inviato con successo una richiesta al modello di question-answering;
+    \item \textbf{Trigger}: il modello desidera elaborare la domanda dell'utente e il database vettoriale;
+    \item \textbf{Postcondizioni}: viene generata una risposta da visualizzare;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item il modello di question-answering ha ricevuto con successo una richiesta;
+        \item \bulhyperlink{UC3.1}{UC3.1}: Chiamata verso il database vettoriale, il quale svolge l'analisi di similarità della query con i vettori corrispondenti ai documenti trasformati dal modello embedding;
+        \item \buihyperlink{UC3.2}{UC3.2}: Generazione risposta in linguaggio naturale.
+    \end{enumerate}
+    \item \textbf{Sottocasi d'uso}:
+    \begin{itemize}
+        \item \bulhyperlink{UC3.1}{UC3.1}: Chiamata verso il database vettoriale, il quale svolge l'analisi di similarità della query con i vettori corrispondenti ai documenti trasformati dal modello embedding.
+        \item \buihyperlink{UC3.2}{UC3.2}: Generazione risposta in linguaggio naturale.
+    \end{itemize}
+    \item \textbf{Scenario alternativo}:
+    \begin{enumerate}
+        \item il modello di question-answering ha ricevuto con successo una richiesta;
+        \item il modello di question-answering non restituisce una risposta o restituisce un errore;
+        \item \builhyperlink{UC4}{UC4}: Errore nella generazione della risposta.
+    \end{enumerate}
+\end{itemize}
+
+\hypertarget{UC3.1}{}
+\subsubsection{UC3.1: Chiamata verso il database vettoriale}
+
+\begin{itemize}
+    \item \textbf{Attori principali}: modello di questing answering;
+    \item \textbf{Precondizioni}: il sistema ha inviato con successo una richiesta al modello di question-answering;
+    \item \textbf{Trigger}: il modello desidera elaborare la domanda dell'utente e il database vettoriale;
+    \item \textbf{Postcondizioni}: viene analizzata la similarità della query con i documenti corrispondenti;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item il modello di question-answering ha ricevuto con successo una richiesta;
+        \item \bulhyperlink{UC3.1}{UC3.1}: Chiamata verso il database vettoriale, il quale svolge l'analisi di similarità della query con i vettori corrispondenti ai documenti trasformati dal modello embedding;
+    \end{enumerate}
+\end{itemize}
+
+\hypertarget{UC3.2}{}
+\subsubsection{UC3.2: Generazione risposta in linguaggio naturale.}
+
+\begin{itemize}
+    \item \textbf{Attori principali}: modello di questing answering;
+    \item \textbf{Precondizioni}: è stata analizzata la similarità con il database vettoriale;
+    \item \textbf{Trigger}: viene restituita la risposta analizzata con il database;
+    \item \textbf{Postcondizioni}: è disponibile la risposta in linguaggio naturale;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item \bulhyperlink{UC3.1}{UC3.1}: Chiamata verso il database vettoriale, il quale svolge l'analisi di similarità della query con i vettori corrispondenti ai documenti trasformati dal modello embedding;
+        \item \buihyperlink{UC3.2}{UC3.2}: Generazione risposta in linguaggio naturale.
+    \end{enumerate}
+\end{itemize}
 
 
 \hypertarget{UC5}{}
