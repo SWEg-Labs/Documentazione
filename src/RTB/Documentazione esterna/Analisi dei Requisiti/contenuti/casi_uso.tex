@@ -390,12 +390,13 @@ L’applicazione prevede la presenza di \dots
     \end{itemize}
 \end{itemize}
 
+
 \hypertarget{UC7.1}{}
 \subsubsubsection{UC7.1: Copiare lo \emph{snippet} di codice inserito nella risposta}
 
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
-    \item \textbf{Precondizioni}: Il sistema ha generato una risposta valida con dello \emph{snippet} di codice al suo interno;
+    \item \textbf{Precondizioni}: Il sistema ha generato una risposta valida con uno \emph{snippet} di codice al suo interno;
     \item \textbf{Trigger}:L'utente desidera copiare lo \emph{snippet} di codice inserito nella risposta;
     \item \textbf{Postcondizioni}: Lo \emph{snippet} di codice generato viene copiato con successo nella clipboard del dispositivo e diventa disponibile per l'uso da parte dell'utente in altre applicazioni o contesti;
     \item \textbf{Scenario principale}:
@@ -416,21 +417,19 @@ L’applicazione prevede la presenza di \dots
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{Diagramma UC8.png}
-    \caption{UC8: Visualizzare una risposta generata con dati di contesto provenienti da 
-    \emph{GitHub}\textsubscript{\textbf{\textit{G}}}, \emph{Jira}\textsubscript{\textbf{\textit{G}}} e 
-    \emph{Confluence}\textsubscript{\textbf{\textit{G}}}}
+    \caption{UC8: Visualizzare una risposta generata con dati di contesto provenienti da GitHub, Jira e Confluence}
 \end{figure}
 
 \begin{itemize}
-    \item \textbf{\emph{Attori}\textsubscript{\textbf{\textit{G}}} principali}: Utente;
+    \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: 
     \begin{itemize}
         \item L'utente ha accesso al sistema;
         \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale;
     \end{itemize}
-    \item \textbf{\emph{Trigger}\textsubscript{\textbf{\textit{G}}}}: L'utente desidera visualizzare una risposta basata sui dati di contesto provenienti da \emph{GitHub}, \emph{Jira} e \emph{Confluence};
+    \item \textbf{Trigger}: L'utente desidera visualizzare una risposta basata sui dati di contesto provenienti da \emph{GitHub}, \emph{Jira} e \emph{Confluence};
     \item \textbf{Postcondizioni}: L'utente visualizza la risposta basata sui dati di contesto provenienti da \emph{GitHub}, \emph{Jira} e \emph{Confluence};
-    \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
+    \item \textbf{Scenario principale}:
     \begin{enumerate}
         \item L'utente accede all'interfaccia dell'applicazione.
         \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale.
@@ -438,13 +437,13 @@ L’applicazione prevede la presenza di \dots
         \item \bulhyperlink{U8.2}{UC8.2}: Recupero dati da Jira.
         \item \bulhyperlink{UC8.3}{UC8.3}: Recupero dati da Confluence.
     \end{enumerate}
-    \item \textbf{\emph{Sottocasi d'uso}\textsubscript{\textbf{\textit{G}}}}:
+    \item \textbf{Sottocasi d'uso}:
     \begin{itemize}
         \item \bulhyperlink{UC8.1}{UC8.1}: Recupero dati da GitHub.
-        \item \bulhyperlink{U8.2}{UC8.2}: Recupero dati da Jira.
+        \item \bulhyperlink{UC8.2}{UC8.2}: Recupero dati da Jira.
         \item \bulhyperlink{UC8.3}{UC8.3}: Recupero dati da Confluence.
     \end{itemize}
-    \item \textbf{\emph{Scenario alternativo}\textsubscript{\textbf{\textit{G}}}}:
+    \item \textbf{Scenario alternativo}:
     \begin{enumerate}
         \item \bulhyperlink{UC4}{UC4}: Viene inviato un messaggio all'utente che comunica un errore durante la generazione della risposta;
         \item \bulhyperlink{UC6}{UC6}: Pur riconoscendo il contesto corretto, il sistema non trova una correlazione tra l'interrogazione e il database, e allora viene visualizzata una risposta negativa.
@@ -464,8 +463,8 @@ L’applicazione prevede la presenza di \dots
     \item \textbf{Postcondizioni}: L'utente visualizza la risposta basata sui dati di contesto provenienti da \emph{GitHub};
     \item \textbf{Scenario principale:}
     \begin{enumerate}
-        \item L'utente accede all'interfaccia dell'applicazione.
-        \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale.
+        \item L'utente accede all'interfaccia dell'applicazione;
+        \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale;
         \item \bulhyperlink{UC8.1}{UC8.1}: Recupero dati da \emph{GitHub}.
     \end{enumerate}
 \end{itemize}
@@ -483,14 +482,14 @@ L’applicazione prevede la presenza di \dots
     \item \textbf{Postcondizioni}: L'utente visualizza la risposta basata sui dati di contesto provenienti da \emph{Jira};
     \item \textbf{Scenario principale:}
     \begin{enumerate}
-        \item L'utente accede all'interfaccia dell'applicazione.
-        \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale.
+        \item L'utente accede all'interfaccia dell'applicazione;
+        \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale;
         \item \bulhyperlink{UC8.2}{UC8.2}: Recupero dati da \emph{Jira}.
     \end{enumerate}
 \end{itemize}
 
-\hypertarget{UC8.2}{}
-\subsubsubsection{UC8.2: Recupero dati da Confluence}
+\hypertarget{UC8.3}{}
+\subsubsubsection{UC8.3: Recupero dati da Confluence}
 \begin{itemize}
     \item \textbf{Attori principali}: Utente, Confluence;
     \item \textbf{Precondizioni}: 
@@ -502,8 +501,8 @@ L’applicazione prevede la presenza di \dots
     \item \textbf{Postcondizioni}: L'utente visualizza la risposta basata sui dati di contesto provenienti da \emph{Confluence};
     \item \textbf{Scenario principale:}
     \begin{enumerate}
-        \item L'utente accede all'interfaccia dell'applicazione.
-        \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale.
+        \item L'utente accede all'interfaccia dell'applicazione;
+        \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale;
         \item \bulhyperlink{UC8.3}{UC8.3}: Recupero dati da \emph{Confluence}.
     \end{enumerate}
 \end{itemize}
@@ -696,14 +695,14 @@ L’applicazione prevede la presenza di \dots
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{Diagramma UC13-UC18.png}
+    \includegraphics[width=\textwidth]{Diagramma UC13 - UC18.png}
     \caption{Visualizzazione dei file da cui il sistema ha preso i dati per la risposta alla domanda}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: L'utente ha visualizzato la risposta generata con dati di contesto provenienti da \emph{GitHub}, \emph{Jira} e \emph{Confluence};
-    \item \textbf{Trigger}: L'utente desidera visualizzazione i file da cui il sistema ha preso i dati per la risposta alla domanda;
+    \item \textbf{Trigger}: L'utente desidera visualizzare i file da cui il sistema ha preso i dati per la risposta alla domanda;
     \item \textbf{Postcondizioni}: L'utente visualizza i file da cui il sistema ha preso i dati per la risposta alla domanda;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
@@ -720,7 +719,7 @@ L’applicazione prevede la presenza di \dots
     \end{itemize}
     \item \textbf{Scenario alternativo}:
     \begin{enumerate}
-        \item \bulhyperlink{UC18}{UC18}: Errore nella rilevazione dei file utili per la risposta;
+        \item \bulhyperlink{UC18}{UC18}: Errore nella rilevazione dei file utili per la risposta.
     \end{enumerate}
 \end{itemize}
 
@@ -734,9 +733,9 @@ L’applicazione prevede la presenza di \dots
     \item \textbf{Postcondizioni}: L'utente recupera il nome e il percorso del file preso per elaborare la risposta;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
-        \item L'utente accede all'interfaccia dell'applicazione.
-        \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale.
-        \item \bulhyperlink{UC8}{UC8}: Visualizzare una risposta generata con dati di contesto provenienti da \emph{GitHub}, \emph{Jira} e \emph{Confluence}.
+        \item L'utente accede all'interfaccia dell'applicazione;
+        \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale;
+        \item \bulhyperlink{UC8}{UC8}: Visualizzare una risposta generata con dati di contesto provenienti da \emph{GitHub}, \emph{Jira} e \emph{Confluence};
         \item Recupero del nome e il percorso del file preso per elaborare la risposta.
     \end{enumerate}
 \end{itemize}
@@ -749,14 +748,14 @@ per generare la risposta (es. paragrafo, frase, o parte di codice).}
     \item \textbf{Attori principali}: Utente, GitHub, Jira, Confluence;
     \item \textbf{Precondizioni}: L'utente ha visualizzato la risposta generata con dati di contesto provenienti da \emph{GitHub}, \emph{Jira} e \emph{Confluence};
     \item \textbf{Trigger}: L'utente desidera recuperare il contesto specifico in cui ogni file è stato utilizzato
-    per generare la risposta (es. paragrafo, frase, o parte di codice).
+    per generare la risposta (es. paragrafo, frase, o parte di codice);
     \item \textbf{Postcondizioni}: L'utente recupera il contesto specifico in cui ogni file è stato utilizzato
-    per generare la risposta (es. paragrafo, frase, o parte di codice).
+    per generare la risposta (es. paragrafo, frase, o parte di codice);
     \item \textbf{Scenario principale}:
     \begin{enumerate}
-        \item L'utente accede all'interfaccia dell'applicazione.
-        \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale.
-        \item \bulhyperlink{UC8}{UC8}: Visualizzare una risposta generata con dati di contesto provenienti da \emph{GitHub}, \emph{Jira} e \emph{Confluence}.
+        \item L'utente accede all'interfaccia dell'applicazione;
+        \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale;
+        \item \bulhyperlink{UC8}{UC8}: Visualizzare una risposta generata con dati di contesto provenienti da \emph{GitHub}, \emph{Jira} e \emph{Confluence};
         \item Recupero del contesto specifico in cui ogni file è stato utilizzato
         per generare la risposta (es. paragrafo, frase, o parte di codice).
     \end{enumerate}
