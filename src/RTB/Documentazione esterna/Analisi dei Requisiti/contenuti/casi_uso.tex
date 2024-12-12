@@ -691,6 +691,78 @@ L’applicazione prevede la presenza di \dots
 
 
 \newpage
+\hypertarget{UC13}{}
+\subsubsection{UC13: Visualizzazione dei file da cui il sistema ha preso i dati per la risposta alla domanda}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{Diagramma UC13-UC18.png}
+    \caption{Visualizzazione dei file da cui il sistema ha preso i dati per la risposta alla domanda}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: L'utente ha visualizzato la risposta generata con dati di contesto provenienti da \emph{GitHub}, \emph{Jira} e \emph{Confluence};
+    \item \textbf{Trigger}: L'utente desidera visualizzazione i file da cui il sistema ha preso i dati per la risposta alla domanda;
+    \item \textbf{Postcondizioni}: L'utente visualizza i file da cui il sistema ha preso i dati per la risposta alla domanda;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item L'utente accede all'interfaccia dell'applicazione.
+        \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale.
+        \item \bulhyperlink{UC8}{UC8}: Visualizzare una risposta generata con dati di contesto provenienti da \emph{GitHub}, \emph{Jira} e \emph{Confluence}.
+        \item Visualizzazione dei file da cui il sistema ha preso i dati per la risposta alla domanda.
+    \end{enumerate}
+    \item \textbf{Sottocasi d'uso}:
+    \begin{itemize}
+        \item \bulhyperlink{UC13.1}{UC13.1}: Il sistema recupera il nome e il percorso del file preso per elaborare la risposta;
+        \item \bulhyperlink{UC13.2}{UC13.2}: Il sistema recupera il contesto specifico in cui ogni file è stato utilizzato
+        per generare la risposta (es. paragrafo, frase, o parte di codice).
+    \end{itemize}
+    \item \textbf{Scenario alternativo}:
+    \begin{enumerate}
+        \item \bulhyperlink{UC18}{UC18}: Errore nella rilevazione dei file utili per la risposta;
+    \end{enumerate}
+\end{itemize}
+
+\hypertarget{UC13.1}{}
+\subsubsection{UC13.1: Il sistema recupera il nome e il percorso del file preso per elaborare la risposta}
+
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente, GitHub, Jira, Confluence;
+    \item \textbf{Precondizioni}: L'utente ha visualizzato la risposta generata con dati di contesto provenienti da \emph{GitHub}, \emph{Jira} e \emph{Confluence};
+    \item \textbf{Trigger}: L'utente desidera recuperare il nome e il percorso del file preso per elaborare la risposta;
+    \item \textbf{Postcondizioni}: L'utente recupera il nome e il percorso del file preso per elaborare la risposta;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item L'utente accede all'interfaccia dell'applicazione.
+        \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale.
+        \item \bulhyperlink{UC8}{UC8}: Visualizzare una risposta generata con dati di contesto provenienti da \emph{GitHub}, \emph{Jira} e \emph{Confluence}.
+        \item Recupero del nome e il percorso del file preso per elaborare la risposta.
+    \end{enumerate}
+\end{itemize}
+
+\hypertarget{UC13.2}{}
+\subsubsection{UC13.2: Il sistema recupera il contesto specifico in cui ogni file è stato utilizzato
+per generare la risposta (es. paragrafo, frase, o parte di codice).}
+
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente, GitHub, Jira, Confluence;
+    \item \textbf{Precondizioni}: L'utente ha visualizzato la risposta generata con dati di contesto provenienti da \emph{GitHub}, \emph{Jira} e \emph{Confluence};
+    \item \textbf{Trigger}: L'utente desidera recuperare il contesto specifico in cui ogni file è stato utilizzato
+    per generare la risposta (es. paragrafo, frase, o parte di codice).
+    \item \textbf{Postcondizioni}: L'utente recupera il contesto specifico in cui ogni file è stato utilizzato
+    per generare la risposta (es. paragrafo, frase, o parte di codice).
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item L'utente accede all'interfaccia dell'applicazione.
+        \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale.
+        \item \bulhyperlink{UC8}{UC8}: Visualizzare una risposta generata con dati di contesto provenienti da \emph{GitHub}, \emph{Jira} e \emph{Confluence}.
+        \item Recupero del contesto specifico in cui ogni file è stato utilizzato
+        per generare la risposta (es. paragrafo, frase, o parte di codice).
+    \end{enumerate}
+\end{itemize}
+
+\newpage
 \hypertarget{UC14}{}
 \subsubsection{UC14: Visualizzare una lista di domande ideali per proseguire la conversazione}
 
