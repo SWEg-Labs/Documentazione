@@ -522,13 +522,14 @@ L’applicazione prevede la presenza di \dots
 
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
-    \item \textbf{Precondizioni}: Il sistema deve essere collegato a un database per memorizzare e recuperare lo storico delle sessioni;
+    \item \textbf{Precondizioni}: Il sistema deve essere collegato a un database relazionale per memorizzare e recuperare lo storico delle sessioni;
     \item \textbf{Trigger}: L'utente desidera visualizzare lo storico di sessione;
     \item \textbf{Postcondizioni}: L'utente visualizza lo storico di sessione;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
         \item L'utente desidera recuperare lo storico di sessione;
         \item \bulhyperlink{UC9.1}{UC9.1}: Il sistema recupera i dati dello storico di sessione dal database relazionale e lo mostra a schermo;
+        \item L'utente visualizza lo storico di sessione.
     \end{enumerate}
 
     \item \textbf{Sottocasi d'uso}:
@@ -552,7 +553,8 @@ L’applicazione prevede la presenza di \dots
     \item \textbf{Scenario principale}:
     \begin{enumerate}
         \item L'utente desidera recuperare lo storico di sessione memorizzato nel database relazionale;
-        \item UC9.1: Lo storico di sessione viene recuperato dal database relazionale e viene visualizzato;
+        \item \bulhyperlink{UC9.1}{UC9.1}: Lo storico di sessione viene recuperato dal database relazionale
+        \item \bulhyperlink{UC9}{UC9}: Lo storico di sessione viene visualizzato dall'utente.
     \end{enumerate}
 \end{itemize}
 
@@ -567,7 +569,7 @@ L’applicazione prevede la presenza di \dots
     \item \textbf{Postcondizioni}: Viene visualizzato un messaggio di errore riferendo che c'è stato un errore nel recupero dello storico di sessione;
     \item \textbf{Scenario principale}: 
     \begin{enumerate}
-        \item L'utente desidera recuperare lo storico di sessione memorizzato nel database relazionale;
+        \item L'utente ha richiesto di recuperare lo storico di sessione memorizzato nel database relazionale;
         \item Il sistema ha riscontrato un problema e visualizza un messaggio di errore riferendo che c'è stato un errore nel recupero dello storico di sessione;
     \end{enumerate}
 \end{itemize}
@@ -840,8 +842,9 @@ per generare la risposta (es. paragrafo, frase, o parte di codice).}
     \begin{enumerate}
         \item L'utente accede all'interfaccia dell'applicazione;
         \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale;
-        \item \bulhyperlink{UC8}{UC8}: Visualizzare una risposta generata con dati di contesto provenienti da \emph{GitHub}, \emph{Jira} e \emph{Confluence};
-        \item Il sistema non riesce a ricavare i dati da cui ha generato la risposta e quindi l'utente visualizzera un messaggio di errore che comunica l'impossibilità di rilevare i file da cui è stata ricavata la risposta;
+        \item \bulhyperlink{UC8}{UC8}: Visualizzazione di una risposta generata con dati di contesto provenienti da \emph{GitHub}, \emph{Jira} e \emph{Confluence};
+        \item Il sistema non riesce a rilevare i file da cui ha generato la risposta;
+        \item L'utente visualizzera un messaggio di errore che comunica l'impossibilità di rilevare i file da cui è stata ricavata la risposta.
     \end{enumerate}
 \end{itemize}
 
