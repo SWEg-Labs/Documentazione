@@ -827,6 +827,25 @@ per generare la risposta (es. paragrafo, frase, o parte di codice).}
     \end{enumerate}
 \end{itemize}
 
+
+\hypertarget{UC18}{}
+\subsubsection{UC18: Errore nella rilevazione dei file utili per la risposta}
+
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: L'utente ha visualizzato la risposta generata con dati di contesto provenienti da \emph{GitHub}, \emph{Jira} e \emph{Confluence};
+    \item \textbf{Trigger}: L'utente desidera visualizzare i file da cui il sistema ha preso i dati per la risposta alla domanda;
+    \item \textbf{Postcondizioni}: Viene visualizzato un messaggio di errore riferendo non è stato possibile rilevare i file da cui è stata ricavata la risposta;
+    \item \textbf{Scenario principale}: 
+    \begin{enumerate}
+        \item L'utente accede all'interfaccia dell'applicazione;
+        \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale;
+        \item \bulhyperlink{UC8}{UC8}: Visualizzare una risposta generata con dati di contesto provenienti da \emph{GitHub}, \emph{Jira} e \emph{Confluence};
+        \item Il sistema non riesce a ricavare i dati da cui ha generato la risposta e quindi l'utente visualizzera un messaggio di errore che comunica l'impossibilità di rilevare i file da cui è stata ricavata la risposta;
+    \end{enumerate}
+\end{itemize}
+
+
 \newpage
 \hypertarget{UC14}{}
 \subsubsection{UC14: Visualizzare una lista di domande ideali per proseguire la conversazione}
