@@ -427,7 +427,7 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{Diagramma UC8.png}
-    \caption{UC8: Visualizzare una risposta generata con dati di contesto provenienti da GitHub, Jira e Confluence}
+    \caption{UC8: Visualizzare una risposta generata con dati di contesto provenienti da \emph{GitHub}, \emph{Jira} e \emph{Confluence}}
 \end{figure}
 
 \begin{itemize}
@@ -441,17 +441,17 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
     \item \textbf{Postcondizioni}: L'utente visualizza la risposta basata sui dati di contesto provenienti da \emph{GitHub}, \emph{Jira} e \emph{Confluence};
     \item \textbf{Scenario principale}:
     \begin{enumerate}
-        \item L'utente accede all'interfaccia dell'applicazione.
-        \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale.
-        \item \bulhyperlink{UC8.1}{UC8.1}: Recupero dati da GitHub.
-        \item \bulhyperlink{UC8.2}{UC8.2}: Recupero dati da Jira.
-        \item \bulhyperlink{UC8.3}{UC8.3}: Recupero dati da Confluence.
+        \item L'utente accede all'interfaccia dell'applicazione;
+        \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale;
+        \item \bulhyperlink{UC8.1}{UC8.1}: Recupero dati da \emph{GitHub};
+        \item \bulhyperlink{UC8.2}{UC8.2}: Recupero dati da \emph{Jira};
+        \item \bulhyperlink{UC8.3}{UC8.3}: Recupero dati da \emph{Confluence}.
     \end{enumerate}
     \item \textbf{Sottocasi d'uso}:
     \begin{itemize}
-        \item \bulhyperlink{UC8.1}{UC8.1}: Recupero dati da GitHub.
-        \item \bulhyperlink{UC8.2}{UC8.2}: Recupero dati da Jira.
-        \item \bulhyperlink{UC8.3}{UC8.3}: Recupero dati da Confluence.
+        \item \bulhyperlink{UC8.1}{UC8.1}: Recupero dati da \emph{GitHub};
+        \item \bulhyperlink{UC8.2}{UC8.2}: Recupero dati da \emph{Jira};
+        \item \bulhyperlink{UC8.3}{UC8.3}: Recupero dati da \emph{Confluence}.
     \end{itemize}
     \item \textbf{Scenario alternativo}:
     \begin{enumerate}
@@ -461,9 +461,9 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
 \end{itemize}
 
 \hypertarget{UC8.1}{}
-\subsubsubsection{UC8.1: Recupero dati da GitHub}
+\subsubsubsection{UC8.1: Recupero dati da \emph{GitHub}}
 \begin{itemize}
-    \item \textbf{Attori principali}: Utente, GitHub;
+    \item \textbf{Attori principali}: Utente, \emph{GitHub};
     \item \textbf{Precondizioni}: 
     \begin{itemize}
         \item L'utente ha accesso al sistema;
@@ -480,9 +480,9 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
 \end{itemize}
 
 \hypertarget{UC8.2}{}
-\subsubsubsection{UC8.2: Recupero dati da Jira}
+\subsubsubsection{UC8.2: Recupero dati da \emph{Jira}}
 \begin{itemize}
-    \item \textbf{Attori principali}: Utente, Jira;
+    \item \textbf{Attori principali}: Utente, \emph{Jira};
     \item \textbf{Precondizioni}: 
     \begin{itemize}
         \item L'utente ha accesso al sistema;
@@ -499,9 +499,9 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
 \end{itemize}
 
 \hypertarget{UC8.3}{}
-\subsubsubsection{UC8.3: Recupero dati da Confluence}
+\subsubsubsection{UC8.3: Recupero dati da \emph{Confluence}}
 \begin{itemize}
-    \item \textbf{Attori principali}: Utente, Confluence;
+    \item \textbf{Attori principali}: Utente, \emph{Confluence};
     \item \textbf{Precondizioni}: 
     \begin{itemize}
         \item L'utente ha accesso al sistema;
@@ -516,8 +516,6 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
         \item \bulhyperlink{UC8.3}{UC8.3}: Recupero dati da \emph{Confluence}.
     \end{enumerate}
 \end{itemize}
-
-
 
 
 \newpage
@@ -565,6 +563,82 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
         \item L'utente desidera recuperare lo storico di sessione memorizzato nel database relazionale;
         \item \bulhyperlink{UC9.1}{UC9.1}: Lo storico di sessione viene recuperato dal database relazionale
         \item \bulhyperlink{UC9}{UC9}: Lo storico di sessione viene visualizzato dall'utente.
+    \end{enumerate}
+\end{itemize}
+
+\newpage
+\hypertarget{UC10}{}
+\subsubsection{UC10: Visualizzazione di una risposta generata con dati di contesto provenienti da \emph{Telegram} e \emph{Slack}}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{Diagramma UC10.png}
+    \caption{Visualizzazione di una risposta generata con dati di contesto provenienti da \emph{Telegram} e \emph{Slack}}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: 
+    \begin{itemize}
+        \item L'utente ha accesso al sistema;
+        \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale;
+    \end{itemize}
+    \item \textbf{Trigger}: L'utente desidera visualizzare una risposta basata sui dati di contesto provenienti da \emph{Telegram} e \emph{Slack};
+    \item \textbf{Postcondizioni}: L'utente visualizza la risposta basata sui dati di contesto provenienti da \emph{Telegram} e \emph{Slack};
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item L'utente accede all'interfaccia dell'applicazione;
+        \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale;
+        \item \bulhyperlink{UC10.1}{UC10.1}: Recupero dati da \emph{Telegram};
+        \item \bulhyperlink{UC10.2}{UC10.2}: Recupero dati da \emph{Slack}.
+    \end{enumerate}
+    \item \textbf{Sottocasi d'uso}:
+    \begin{itemize}
+        \item \bulhyperlink{UC10.1}{UC10.1}: Recupero dati da \emph{Telegram};
+        \item \bulhyperlink{UC10.2}{UC10.2}: Recupero dati da \emph{Slack}.
+    \end{itemize}
+    \item \textbf{Scenario alternativo}:
+    \begin{enumerate}
+        \item \bulhyperlink{UC4}{UC4}: Viene inviato un messaggio all'utente che comunica un errore durante la generazione della risposta;
+        \item \bulhyperlink{UC6}{UC6}: Pur riconoscendo il contesto corretto, il sistema non trova una correlazione tra l'interrogazione e il database, e allora viene visualizzata una risposta negativa.
+    \end{enumerate}
+\end{itemize}
+
+\hypertarget{UC10.1}{}
+\subsubsubsection{UC10.1: Recupero dati da \emph{Telegram}}
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente, \emph{Telegram};
+    \item \textbf{Precondizioni}: 
+    \begin{itemize}
+        \item L'utente ha accesso al sistema;
+        \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale;
+    \end{itemize}
+    \item \textbf{Trigger}: L'utente desidera visualizzare una risposta generata con dati di contesto provenienti da \emph{Telegram};
+    \item \textbf{Postcondizioni}: L'utente visualizza la risposta basata sui dati di contesto provenienti da \emph{Telegram};
+    \item \textbf{Scenario principale:}
+    \begin{enumerate}
+        \item L'utente accede all'interfaccia dell'applicazione;
+        \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale;
+        \item \bulhyperlink{UC10.1}{UC10.1}: Recupero dati da \emph{Telegram}.
+    \end{enumerate}
+\end{itemize}
+
+\hypertarget{UC10.2}{}
+\subsubsubsection{UC10.2: Recupero dati da \emph{Slack}}
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente, \emph{Slack};
+    \item \textbf{Precondizioni}: 
+    \begin{itemize}
+        \item L'utente ha accesso al sistema;
+        \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale;
+    \end{itemize}
+    \item \textbf{Trigger}: L'utente desidera visualizzare una risposta generata con dati di contesto provenienti da \emph{Slack};
+    \item \textbf{Postcondizioni}: L'utente visualizza la risposta basata sui dati di contesto provenienti da \emph{Slack};
+    \item \textbf{Scenario principale:}
+    \begin{enumerate}
+        \item L'utente accede all'interfaccia dell'applicazione;
+        \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale;
+        \item \bulhyperlink{UC10.2}{UC10.2}: Recupero dati da \emph{Slack}.
     \end{enumerate}
 \end{itemize}
 
