@@ -1,25 +1,67 @@
+
 \fancyhead[L]{4 \hspace{0.2cm} Requisiti} % Testo a sinistra
 
 \section{Requisiti}
-\label{sec:Requisiti}
+\label{sec:Requisiti}   
 
 \subsection{Requisiti funzionali}
 Questa sezione delinea i requisiti funzionali del sistema. Gli obiettivi e le azioni chiave che
 l'utente deve essere in grado di compiere sono presentati in modo chiaro, fornendo una base
 solida per la \emph{progettazione}\textsubscript{\textit{\textbf{G}}} del sistema.
+\begin{table}[h!]
+    \centering
+    \renewcommand{\arraystretch}{1.6} % Per aumentare l'altezza delle righe
+    \begin{tabularx}{\textwidth}{|p{2cm}|p{3cm}|X|p{4cm}|} \hline
+    \rowcolor[HTML]{FFD700} 
+    \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Fonti} \\ \hline
+    R?F.1 & Obbligatorio & L'utente deve poter inserire un'interrogazione in linguaggio naturale nel sistema. & UC1 \\ \hline
+    R?F.2 & Obbligatorio & Deve essere presente una barra di input per poter inserire l'interrogazione dell'utente. & UC1.1 \\ \hline
+    R?F.3 & Obbligatorio & Deve essere presente un apposito tasto per inviare al sistema le interrogazioni inserite. & UC1.2 \\ \hline
+    ????? & Obbligatorio & ???????????Non è chiaro: cosa si intende con "validato"?. & UC1.3 \\ \hline
+    ????? & Obbligatorio & Nel caso in cui l'utente inserisca un'interrogazione che non riguarda i contenuti del database associato, il sistema non deve generare risposta, e avvisare l'utente di conseguenza. & UC2 \\ \hline
+    ????? & Obbligatorio & Quando l'interrogazione viene invata al sistema, deve essere generata una risposta. & UC3 \\ \hline
+    ????? & Obbligatorio & La risposta deve essere generata tramite ricerca all'interno del database. & UC3.1 \\ \hline
+    ????? & Obbligatorio & La risposta deve essere in linguaggio naturale. & UC3.2 \\ \hline
+    ????? & Obbligatorio & ???????????Sentire Michael. & UC4 \\ \hline
+    ????? & Obbligatorio & La risposta generata deve essere visualizzata all'utente, ed essere identificabile come tale. & UC5 \\ \hline
+    ????? & Obbligatorio & La risposta deve poter contenere del codice, e nel caso rappresentarlo come tale. & UC5.1, UC5.2, UC5.3 \\ \hline
+    ????? & Obbligatorio & ????? Verificare cosa risponde il gruppo, non sono sicuro esista. & UC6 \\ \hline
+    ????? & Obbligatorio & ???????   Nel caso la risposta contenga del codice, per ogni snippet deve essere presente un tasto apposito che se selezionato copia in automatico il codice contenuto nello snippet. & UC7 \\ \hline
+    ????? & Obbligatorio & La risposta deve essere generata prendendo in considerazione i dati di contesto provenienti da GitHub,Jira e Confluence. & UC8, UC8.1, UC8.2, UC8.3 \\ \hline
+    ????? & Obbligatorio & L'utente deve poter visualizzare uno storico di sessione contenente le domande fatte precedentemente e le risposte. & UC9 \\ \hline
+
+
+
+    \end{tabularx}
+    \end{table}
+
+    \vspace{0.5cm}
+    \newpage
+% Seconda parte della tabella
     \begin{table}[h!]
-        \centering
         \renewcommand{\arraystretch}{1.6} % Per aumentare l'altezza delle righe
-        \begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}c|>{\centering\arraybackslash}c|>{\centering\arraybackslash}X|>{\centering\arraybackslash}p{3cm}|} \hline
+        \begin{tabularx}{\textwidth}{|p{2cm}|p{3cm}|X|p{4cm}|} \hline
         \rowcolor[HTML]{FFD700} 
         \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Fonti} \\ \hline
-        prova & prova & prova & prova \\ \hline
-        prova & prova & prova & prova \\ \hline
-        \end{tabularx}
-        \caption{Requisiti funzionali}
-        \label{tab:Requisiti_funzionali}
-    \end{table}
+        ????? & Obbligatorio & In caso di errore nel recuperare lo storico di sessione, all'utente deve venir notificato che c'è stato un errore e non è possibile recuperarlo. & UC17 \\ \hline
+        ????? & Obbligatorio & In caso di errore nel recuperare lo storico di sessione, all'utente deve venir notificato che c'è stato un errore e non è possibile recuperarlo. & UC17 \\ \hline
+    ????? & Obbligatorio & Le risposte generate devono riguardare (se possibile) i dati aggiornati. & UC11, UC11.1, UC11.2, UC11.3 \\ \hline
+    ????? & Obbligatorio & Nel caso non in cui vengono rilevati nuovi dati più aggiornati, ma non è possibile usarli, il sistema deve avvisare l'utente che le informazioni restituite potrebbero essere basate su dati obsoleti. & UC16 \\ \hline
+    ????? & Obbligatorio & Se la conversazione non è ancora avviata l'utente deve poter visualizzare e selezionare alcune domande di partenza proposte. & UC12, UC12.1 \\ \hline
+    ????? & Obbligatorio & Il sistema deve poter ricondurre l'utente ai file utilizzati per rispondere alla sua interrogazione. & UC13, UC13.1, UC13.2 \\ \hline
+    ????? & Obbligatorio & Nel caso il sistema non riesca a individuare i file utilizzati per generare la risposta, verrà avvisato l'utente con un apposito messaggio. & UC18 \\ \hline
+    ????? & Obbligatorio & Durante la conversazione, all'utente devono venire suggerite alcune interrogazioni da porre al sistema. & UC14, UC14.1 \\ \hline
+    ????? & Obbligatorio & Nel caso il sistema vafa in errore nel tentativo di proporre altre domande, deve venire mostrato un messaggio che comunica l'errore all'utente e invita a fare altre domande. & UC15 \\ \hline
+    \end{tabularx}
+
+    \caption{Requisiti funzionali}
+    \label{tab:Requisiti_funzionali}
+\end{table}
+
     
+
+
+
 
 \subsection{Requisiti qualitattivi}
 I requisiti qualitativi del sistema sono trattati in questo sotto-capitolo. Questa sezione
@@ -35,8 +77,14 @@ sistema.
     prova & prova & prova & prova \\ \hline
     \end{tabularx}
     \caption{Requisiti qualitativi}
-    \label{tab:Requisiti_qualitattivi}
+    \label{tab:Requisiti_qualitativi}
 \end{table}
+
+
+
+
+
+
 
 \subsection{Requisiti di vincolo}
 Qui sono presentati i requisiti di vincolo, che rappresentano le restrizioni e le condizioni
