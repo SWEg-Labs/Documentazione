@@ -14,8 +14,20 @@ gruppo, in riferimento alle funzionalità dell’applicazione.
 
 
 \subsection{Attori}
+\label{sec:attori}
 
-L’applicazione prevede la presenza di \dots
+L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{\textit{G}}} principali:
+
+\begin{itemize}
+    \item \textbf{Utente}: Persona che utilizza l'applicazione interagendo direttamente con il sistema e avendo accesso a tutte le funzionalità del chatbot.
+    \item \textbf{\emph{Modello di question answering}\textsubscript{\textbf{\textit{G}}}}: Modello basato su intelligenza artificiale responsabile dell'elaborazione delle domande poste dagli utenti e della generazione di risposte pertinenti. Utilizza i documenti di \emph{GitHub}, \emph{Jira} e \emph{Confluence} per comprendere le richieste e fornire risposte chiare e rilevanti, basate sui contenuti presenti su queste piattaforme.
+    \item \textbf{\emph{GitHub}\textsubscript{\textbf{\textit{G}}}}: Piattaforma di gestione del codice sorgente che fornisce i documenti necessari per il modello di question answering. \emph{GitHub} è utilizzato come fonte di dati, mettendo a disposizione documentazione, repository e informazioni sui progetti. Oltre a fornire i documenti, \emph{GitHub} viene utilizzato anche per gestire i task da svolgere, attraverso l'uso delle issue, che il modello può consultare per rispondere alle domande degli utenti relative al codice, ai progetti e alle attività da completare.
+    \item \textbf{\emph{Jira}\textsubscript{\textbf{\textit{G}}}}: Piattaforma per la gestione dei progetti e il tracciamento delle attività. Il suo compito è fornire documentazione relativa ai task, alle issue e ai progressi dei progetti. \emph{Jira} viene utilizzato come fonte di dati per il modello di question answering, consentendo al sistema di accedere a informazioni su problemi, progressi e attività legate ai progetti per rispondere alle domande degli utenti.
+    \item \textbf{\emph{Confluence}\textsubscript{\textbf{\textit{G}}}}: Piattaforma per la gestione della documentazione collaborativa. \emph{Confluence} offre documenti e altre informazioni condivise tra i membri del team, riguardanti i vari progetti. Viene utilizzata come fonte di dati dal modello di question answering, che sfrutta la documentazione per fornire risposte precise e contestualizzate alle domande degli utenti.
+    \item \textbf{\emph{Database relazionale}\textsubscript{\textbf{\textit{G}}}}: Sistema di gestione del database utilizzato per memorizzare lo storico delle sessioni. Il database relazionale è responsabile della gestione e dell'archiviazione dei dati relativi alle interazioni degli utenti con il sistema, permettendo di tenere traccia delle informazioni storiche in modo organizzato e facilmente consultabile.
+    \item \textbf{\emph{Database vettoriale}\textsubscript{\textbf{\textit{G}}}}: Il database vettoriale è un sistema usato per memorizzare informazioni sotto forma di vettori. È progettato per rendere più semplice e veloce la ricerca semantica, sfruttando algoritmi di intelligenza artificiale e di similarità. Supporta il modello di question answering nell'archiviazione e nel recupero rapido di documenti da GitHub, Jira e Confluence, permettendo al sistema di rispondere in modo efficiente trovando contenuti rilevanti tramite il confronto tra vettori.
+
+\end{itemize}
 
 
 \subsection{Lista casi d'uso}
@@ -77,7 +89,7 @@ L’applicazione prevede la presenza di \dots
 \end{figure}
 
 \begin{itemize}
-    \item \textbf{\emph{Attori}\textsubscript{\textbf{\textit{G}}} principali}: Utente;
+    \item \textbf{\emph{Attori} principali}: Utente;
     \item \textbf{Precondizioni}: L'utente deve avere accesso all'interfaccia dell'applicazione connessa al database;
     \item \textbf{\emph{Trigger}\textsubscript{\textbf{\textit{G}}}}: L'utente desidera inserire un'interrogazione in linguaggio naturale nella barra di input;
     \item \textbf{Postcondizioni}: L'interrogazione viene inviata e, se valida, genera una risposta adeguata. Se non valida, l'utente riceve un messaggio di errore;
@@ -417,7 +429,7 @@ L’applicazione prevede la presenza di \dots
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{Diagramma UC8.png}
-    \caption{UC8: Visualizzare una risposta generata con dati di contesto provenienti da GitHub, Jira e Confluence}
+    \caption{UC8: Visualizzare una risposta generata con dati di contesto provenienti da \emph{GitHub}, \emph{Jira} e \emph{Confluence}}
 \end{figure}
 
 \begin{itemize}
@@ -431,17 +443,18 @@ L’applicazione prevede la presenza di \dots
     \item \textbf{Postcondizioni}: L'utente visualizza la risposta basata sui dati di contesto provenienti da \emph{GitHub}, \emph{Jira} e \emph{Confluence};
     \item \textbf{Scenario principale}:
     \begin{enumerate}
-        \item L'utente accede all'interfaccia dell'applicazione.
-        \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale.
-        \item \bulhyperlink{UC8.1}{UC8.1}: Recupero dati da GitHub.
-        \item \bulhyperlink{UC8.2}{UC8.2}: Recupero dati da Jira.
-        \item \bulhyperlink{UC8.3}{UC8.3}: Recupero dati da Confluence.
+        \item L'utente accede all'interfaccia dell'applicazione;
+        \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale;
+        \item \bulhyperlink{UC8.1}{UC8.1}: Recupero dati da \emph{GitHub};
+        \item \bulhyperlink{UC8.2}{UC8.2}: Recupero dati da \emph{Jira};
+        \item \bulhyperlink{UC8.3}{UC8.3}: Recupero dati da \emph{Confluence};
+        \item L'utente visualizza la risposta basata sui dati di contesto provenienti da \emph{GitHub}, \emph{Jira} e \emph{Confluence};
     \end{enumerate}
     \item \textbf{Sottocasi d'uso}:
     \begin{itemize}
-        \item \bulhyperlink{UC8.1}{UC8.1}: Recupero dati da GitHub.
-        \item \bulhyperlink{UC8.2}{UC8.2}: Recupero dati da Jira.
-        \item \bulhyperlink{UC8.3}{UC8.3}: Recupero dati da Confluence.
+        \item \bulhyperlink{UC8.1}{UC8.1}: Recupero dati da \emph{GitHub};
+        \item \bulhyperlink{UC8.2}{UC8.2}: Recupero dati da \emph{Jira};
+        \item \bulhyperlink{UC8.3}{UC8.3}: Recupero dati da \emph{Confluence}.
     \end{itemize}
     \item \textbf{Scenario alternativo}:
     \begin{enumerate}
@@ -451,9 +464,9 @@ L’applicazione prevede la presenza di \dots
 \end{itemize}
 
 \hypertarget{UC8.1}{}
-\subsubsubsection{UC8.1: Recupero dati da GitHub}
+\subsubsubsection{UC8.1: Recupero dati da \emph{GitHub}}
 \begin{itemize}
-    \item \textbf{Attori principali}: Utente, GitHub;
+    \item \textbf{Attori principali}: Utente, \emph{GitHub};
     \item \textbf{Precondizioni}: 
     \begin{itemize}
         \item L'utente ha accesso al sistema;
@@ -465,14 +478,15 @@ L’applicazione prevede la presenza di \dots
     \begin{enumerate}
         \item L'utente accede all'interfaccia dell'applicazione;
         \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale;
-        \item \bulhyperlink{UC8.1}{UC8.1}: Recupero dati da \emph{GitHub}.
+        \item \bulhyperlink{UC8.1}{UC8.1}: Recupero dati da \emph{GitHub};
+        \item L'utente visualizza la risposta basata sui dati di contesto provenienti da \emph{GitHub}.
     \end{enumerate}
 \end{itemize}
 
 \hypertarget{UC8.2}{}
-\subsubsubsection{UC8.2: Recupero dati da Jira}
+\subsubsubsection{UC8.2: Recupero dati da \emph{Jira}}
 \begin{itemize}
-    \item \textbf{Attori principali}: Utente, Jira;
+    \item \textbf{Attori principali}: Utente, \emph{Jira};
     \item \textbf{Precondizioni}: 
     \begin{itemize}
         \item L'utente ha accesso al sistema;
@@ -484,14 +498,15 @@ L’applicazione prevede la presenza di \dots
     \begin{enumerate}
         \item L'utente accede all'interfaccia dell'applicazione;
         \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale;
-        \item \bulhyperlink{UC8.2}{UC8.2}: Recupero dati da \emph{Jira}.
+        \item \bulhyperlink{UC8.2}{UC8.2}: Recupero dati da \emph{Jira};
+        \item L'utente visualizza la risposta basata sui dati di contesto provenienti da \emph{Jira}.
     \end{enumerate}
 \end{itemize}
 
 \hypertarget{UC8.3}{}
-\subsubsubsection{UC8.3: Recupero dati da Confluence}
+\subsubsubsection{UC8.3: Recupero dati da \emph{Confluence}}
 \begin{itemize}
-    \item \textbf{Attori principali}: Utente, Confluence;
+    \item \textbf{Attori principali}: Utente, \emph{Confluence};
     \item \textbf{Precondizioni}: 
     \begin{itemize}
         \item L'utente ha accesso al sistema;
@@ -503,11 +518,10 @@ L’applicazione prevede la presenza di \dots
     \begin{enumerate}
         \item L'utente accede all'interfaccia dell'applicazione;
         \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale;
-        \item \bulhyperlink{UC8.3}{UC8.3}: Recupero dati da \emph{Confluence}.
+        \item \bulhyperlink{UC8.3}{UC8.3}: Recupero dati da \emph{Confluence};
+        \item L'utente visualizza la risposta basata sui dati di contesto provenienti da \emph{Confluence}.
     \end{enumerate}
 \end{itemize}
-
-
 
 
 \newpage
@@ -555,6 +569,82 @@ L’applicazione prevede la presenza di \dots
         \item L'utente desidera recuperare lo storico di sessione memorizzato nel database relazionale;
         \item \bulhyperlink{UC9.1}{UC9.1}: Lo storico di sessione viene recuperato dal database relazionale
         \item \bulhyperlink{UC9}{UC9}: Lo storico di sessione viene visualizzato dall'utente.
+    \end{enumerate}
+\end{itemize}
+
+\newpage
+\hypertarget{UC10}{}
+\subsubsection{UC10: Visualizzazione di una risposta generata con dati di contesto provenienti da \emph{Telegram} e \emph{Slack}}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{Diagramma UC10.png}
+    \caption{Visualizzazione di una risposta generata con dati di contesto provenienti da \emph{Telegram} e \emph{Slack}}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: 
+    \begin{itemize}
+        \item L'utente ha accesso al sistema;
+        \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale;
+    \end{itemize}
+    \item \textbf{Trigger}: L'utente desidera visualizzare una risposta basata sui dati di contesto provenienti da \emph{Telegram} e \emph{Slack};
+    \item \textbf{Postcondizioni}: L'utente visualizza la risposta basata sui dati di contesto provenienti da \emph{Telegram} e \emph{Slack};
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item L'utente accede all'interfaccia dell'applicazione;
+        \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale;
+        \item \bulhyperlink{UC10.1}{UC10.1}: Recupero dati da \emph{Telegram};
+        \item \bulhyperlink{UC10.2}{UC10.2}: Recupero dati da \emph{Slack}.
+    \end{enumerate}
+    \item \textbf{Sottocasi d'uso}:
+    \begin{itemize}
+        \item \bulhyperlink{UC10.1}{UC10.1}: Recupero dati da \emph{Telegram};
+        \item \bulhyperlink{UC10.2}{UC10.2}: Recupero dati da \emph{Slack}.
+    \end{itemize}
+    \item \textbf{Scenario alternativo}:
+    \begin{enumerate}
+        \item \bulhyperlink{UC4}{UC4}: Viene inviato un messaggio all'utente che comunica un errore durante la generazione della risposta;
+        \item \bulhyperlink{UC6}{UC6}: Pur riconoscendo il contesto corretto, il sistema non trova una correlazione tra l'interrogazione e il database, e allora viene visualizzata una risposta negativa.
+    \end{enumerate}
+\end{itemize}
+
+\hypertarget{UC10.1}{}
+\subsubsubsection{UC10.1: Recupero dati da \emph{Telegram}}
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente, \emph{Telegram};
+    \item \textbf{Precondizioni}: 
+    \begin{itemize}
+        \item L'utente ha accesso al sistema;
+        \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale;
+    \end{itemize}
+    \item \textbf{Trigger}: L'utente desidera visualizzare una risposta generata con dati di contesto provenienti da \emph{Telegram};
+    \item \textbf{Postcondizioni}: L'utente visualizza la risposta basata sui dati di contesto provenienti da \emph{Telegram};
+    \item \textbf{Scenario principale:}
+    \begin{enumerate}
+        \item L'utente accede all'interfaccia dell'applicazione;
+        \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale;
+        \item \bulhyperlink{UC10.1}{UC10.1}: Recupero dati da \emph{Telegram}.
+    \end{enumerate}
+\end{itemize}
+
+\hypertarget{UC10.2}{}
+\subsubsubsection{UC10.2: Recupero dati da \emph{Slack}}
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente, \emph{Slack};
+    \item \textbf{Precondizioni}: 
+    \begin{itemize}
+        \item L'utente ha accesso al sistema;
+        \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale;
+    \end{itemize}
+    \item \textbf{Trigger}: L'utente desidera visualizzare una risposta generata con dati di contesto provenienti da \emph{Slack};
+    \item \textbf{Postcondizioni}: L'utente visualizza la risposta basata sui dati di contesto provenienti da \emph{Slack};
+    \item \textbf{Scenario principale:}
+    \begin{enumerate}
+        \item L'utente accede all'interfaccia dell'applicazione;
+        \item \bulhyperlink{UC1}{UC1}: Inserimento di interrogazione in linguaggio naturale;
+        \item \bulhyperlink{UC10.2}{UC10.2}: Recupero dati da \emph{Slack}.
     \end{enumerate}
 \end{itemize}
 
