@@ -5,6 +5,7 @@
 \label{sec:Requisiti}   
 
 \subsection{Requisiti funzionali}
+\label{sec:requisiti_funzionali}
 Questa sezione delinea i requisiti funzionali del sistema. Gli obiettivi e le azioni chiave che
 l'utente deve essere in grado di compiere sono presentati in modo chiaro, fornendo una base
 solida per la \emph{progettazione}\textsubscript{\textit{\textbf{G}}} del sistema.
@@ -14,22 +15,22 @@ solida per la \emph{progettazione}\textsubscript{\textit{\textbf{G}}} del sistem
     \begin{tabularx}{\textwidth}{|p{2cm}|p{3cm}|X|p{4cm}|} \hline
     \rowcolor[HTML]{FFD700} 
     \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Fonti} \\ \hline
-    ROF1 & Obbligatorio & L'utente deve poter inserire un'interrogazione in linguaggio naturale nel sistema. & UC1 \\ \hline
-    %ROF2 & Obbligatorio & Deve essere presente una barra di input per poter inserire l'interrogazione dell'utente. & UC1.1 \\ \hline
-    %ROF3 & Obbligatorio & Deve essere presente un apposito tasto per inviare al sistema le interrogazioni inserite. & UC1.2 \\ \hline
+    ROF1 & Obbligatorio & L'utente deve poter inserire un'interrogazione in linguaggio naturale nel sistema. & \bulhyperlink{UC1}{UC1} \\ \hline
+    %ROF2 & Obbligatorio & Deve essere presente una barra di input per poter inserire l'interrogazione dell'utente. & \bulhyperlink{UC1.1}{UC1.1} \\ \hline
+    %ROF3 & Obbligatorio & Deve essere presente un apposito tasto per inviare al sistema le interrogazioni inserite. & \bulhyperlink{UC1.2}{UC1.2} \\ \hline
     % UC1.1 e UC 1.2 sono use case? o rispondono alla domanda "come"? Dal momento che riguarda il come l'utente inserisce i dati?
-    %ROF4 & Obbligatorio & ???????????Non è chiaro: cosa si intende con "validato"?. & UC1.3 \\ \hline
-    ROF5 & Obbligatorio & Nel caso in cui l'utente inserisca un'interrogazione che non riguarda i contenuti del database associato, il sistema non deve generare risposta, e avvisare l'utente di conseguenza. & UC2 \\ \hline
-    ROF6 & Obbligatorio & Quando l'interrogazione viene invata al sistema, deve essere generata una risposta. & UC3 \\ \hline
-    ROF7 & Obbligatorio & La risposta deve essere generata tramite ricerca all'interno del database vettoriale. & UC3.1 \\ \hline
-    ROF8 & Obbligatorio & La risposta deve essere in linguaggio naturale. & UC3.2 \\ \hline
-    %ROF9 & Obbligatorio & ???????????Sentire Michael. & UC4 \\ \hline
-    ROF10 & Obbligatorio & La risposta generata deve essere visualizzata all'utente, ed essere identificabile come tale. & UC5 \\ \hline
-    ROF11 & Obbligatorio & La risposta deve poter contenere del codice, e nel caso renderlo identificabile come tale. & UC5.1, UC5.2, UC5.3 \\ \hline
-    %ROF12 & Obbligatorio & ????? Verificare cosa risponde il gruppo, non sono sicuro esista. & UC6 \\ \hline
-    %ROF13 & Obbligatorio & ???????   Nel caso la risposta contenga del codice, per ogni snippet deve essere presente un tasto apposito che se selezionato copia in automatico il codice contenuto nello snippet. & UC7 \\ \hline
-    ROF14 & Obbligatorio & La risposta deve essere generata prendendo in considerazione i dati di contesto provenienti da GitHub,Jira e Confluence. & UC8, UC8.1, UC8.2, UC8.3 \\ \hline
-    ROF15 & Obbligatorio & L'utente deve poter visualizzare uno storico di sessione contenente le domande fatte precedentemente e le risposte. & UC9 \\ \hline
+    %ROF4 & Obbligatorio & ???????????Non è chiaro: cosa si intende con "validato"?. & \bulhyperlink{UC1.3}{UC1.3} \\ \hline
+    ROF5 & Obbligatorio & Nel caso in cui l'utente inserisca un'interrogazione che non riguarda i contenuti del database associato, il sistema non deve generare risposta, e avvisare l'utente di conseguenza. & \bulhyperlink{UC2}{UC2} \\ \hline
+    ROF6 & Obbligatorio & Quando l'interrogazione viene invata al sistema, deve essere generata una risposta. & \bulhyperlink{UC3}{UC3} \\ \hline
+    ROF7 & Obbligatorio & La risposta deve essere generata tramite ricerca all'interno del database vettoriale. & \bulhyperlink{UC3.1}{UC3.1} \\ \hline
+    ROF8 & Obbligatorio & La risposta deve essere in linguaggio naturale. & \bulhyperlink{UC3.2}{UC3.2} \\ \hline
+    %ROF9 & Obbligatorio & ???????????Sentire Michael. & \bulhyperlink{UC4}{UC4} \\ \hline
+    ROF10 & Obbligatorio & La risposta generata deve essere visualizzata all'utente, ed essere identificabile come tale. & \bulhyperlink{UC5}{UC5} \\ \hline
+    ROF11 & Obbligatorio & La risposta deve poter contenere del codice, e nel caso renderlo identificabile come tale. & \bulhyperlink{UC5.2}{UC5.2} \\ \hline
+    %ROF12 & Obbligatorio & ????? Verificare cosa risponde il gruppo, non sono sicuro esista. & \bulhyperlink{UC6}{UC6} \\ \hline
+    %ROF13 & Obbligatorio & ???????   Nel caso la risposta contenga del codice, per ogni snippet deve essere presente un tasto apposito che se selezionato copia in automatico il codice contenuto nello snippet. & \bulhyperlink{UC7}{UC7} \\ \hline
+    ROF14 & Obbligatorio & La risposta deve essere generata prendendo in considerazione i dati di contesto provenienti da GitHub,Jira e Confluence. & \bulhyperlink{UC8}{UC8}, \bulhyperlink{UC8.1}{UC8.1}, \bulhyperlink{UC8.2}{UC8.2}, \bulhyperlink{UC8.3}{UC8.3} \\ \hline
+    ROF15 & Desiderabile & L'utente deve poter visualizzare uno storico di sessione contenente le domande fatte precedentemente e le risposte. & \bulhyperlink{UC9}{UC9} \\ \hline
 
 
 
@@ -44,14 +45,14 @@ solida per la \emph{progettazione}\textsubscript{\textit{\textbf{G}}} del sistem
     \begin{tabularx}{\textwidth}{|p{2cm}|p{3cm}|X|p{4cm}|} \hline
     \rowcolor[HTML]{FFD700} 
     \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Fonti} \\ \hline
-    ROF16 & Obbligatorio & In caso di errore nel recuperare lo storico di sessione, all'utente deve venir notificato che c'è stato un errore e non è possibile recuperarlo. & UC17 \\ \hline
-    ROF17 & Obbligatorio & Le risposte generate devono riguardare (se possibile) i dati aggiornati. & UC11, UC11.1, UC11.2, UC11.3 \\ \hline
-    ROF18 & Obbligatorio & Nel caso in cui vengono rilevati nuovi dati più aggiornati, ma non è possibile usarli, il sistema deve avvisare l'utente che le informazioni restituite potrebbero essere basate su dati obsoleti. & UC16 \\ \hline
-    ROF19 & Obbligatorio & Se la conversazione non è ancora avviata l'utente deve poter visualizzare e selezionare alcune domande di partenza proposte. & UC12, UC12.1 \\ \hline
-    ROF20 & Obbligatorio & Il sistema deve poter ricondurre l'utente ai file utilizzati per rispondere alla sua interrogazione. & UC13, UC13.1, UC13.2 \\ \hline
-    ROF21 & Obbligatorio & Nel caso il sistema non riesca a individuare i file utilizzati per generare la risposta, verrà avvisato l'utente con un apposito messaggio. & UC18 \\ \hline
-    ROF22 & Obbligatorio & Durante la conversazione, all'utente devono venire suggerite alcune interrogazioni da porre al sistema. & UC14, UC14.1 \\ \hline
-    ROF23 & Obbligatorio & Nel caso il sistema vada in errore nel tentativo di proporre altre domande, deve venire mostrato un messaggio che comunica l'errore all'utente e invita a fare altre domande. & UC15 \\ \hline
+    ROF16 & Desiderabile & In caso di errore nel recuperare lo storico di sessione, all'utente deve venir notificato che c'è stato un errore e non è possibile recuperarlo. & \bulhyperlink{UC17}{UC17} \\ \hline
+    ROF17 & Desiderabile & Le risposte generate devono riguardare (se possibile) i dati aggiornati. & \bulhyperlink{UC11}{UC11}, \bulhyperlink{UC11.1}{UC11.1}, \bulhyperlink{UC11.2}{UC11.2}, \bulhyperlink{UC11.3}{UC11.3} \\ \hline
+    ROF18 & Desiderabile & Nel caso in cui vengono rilevati nuovi dati più aggiornati, ma non è possibile usarli, il sistema deve avvisare l'utente che le informazioni restituite potrebbero essere basate su dati obsoleti. & \bulhyperlink{UC16}{UC16} \\ \hline
+    ROF19 & Opzionale & Se la conversazione non è ancora avviata l'utente deve poter visualizzare e selezionare alcune domande di partenza proposte. & \bulhyperlink{UC12}{UC12}, \bulhyperlink{UC12.1}{UC12.1} \\ \hline
+    ROF20 & Desiderabile & Il sistema deve poter ricondurre l'utente ai file utilizzati per rispondere alla sua interrogazione. & \bulhyperlink{UC13}{UC13}, \bulhyperlink{UC13.1}{UC13.1}, \bulhyperlink{UC13.2}{UC13.2} \\ \hline
+    ROF21 & Desiderabile & Nel caso il sistema non riesca a individuare i file utilizzati per generare la risposta, verrà avvisato l'utente con un apposito messaggio. & \bulhyperlink{UC18}{UC18} \\ \hline
+    ROF22 & Opzionale & Durante la conversazione, all'utente devono venire suggerite alcune interrogazioni da porre al sistema. & \bulhyperlink{UC14}{UC14}, \bulhyperlink{UC14.1}{UC14.1} \\ \hline
+    ROF23 & Opzionale & Nel caso il sistema vada in errore nel tentativo di proporre altre domande per proseguire la conversazione, deve venire mostrato un messaggio che comunica l'errore all'utente e invita a fare altre domande. & \bulhyperlink{UC15}{UC15} \\ \hline
     \end{tabularx}
 
     \caption{Requisiti funzionali}
