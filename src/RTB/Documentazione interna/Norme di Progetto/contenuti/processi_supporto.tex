@@ -379,3 +379,60 @@ da sviluppare contribuisce significativamente a ridurre i conflitti. L’obietti
 il \emph{branch}\textsubscript{\textit{\textbf{G}}} principale (\emph{main}) privo di errori, rendendolo inaccessibile a qualsiasi membro 
 del gruppo fino all’approvazione del Responsabile di Progetto. Solo in seguito di tale
 approvazione è consentito effettuare il \emph{merge}\textsubscript{\textit{\textbf{G}}} di uno dei rami minori nel \emph{main}.
+
+
+\subsection{Gestione della Qualità}
+\label{sec:gestione della qualità}
+
+\subsubsection{Scopo}
+Questa sezione ha l'obbiettivo di descrivere le modalità con cui il gruppo intende misurare la qualità dei processi e del prodotto finale, al fine di soddisfare le aspettative del proponente.
+\subsubsection{Descrizione}
+Il processo di gestione della qualità stabilisce le norme e gli strumenti per misurare della qualità dei processi e del prodotto finale. Sono specificati gli obbiettivi prefissati, i metodi per raggiungerli e per verificarne in compimento.
+\subsubsection{Aspettative}
+\begin{itemize}
+    \item Soddisfare i requisiti di qualità richiesti dal proponente;
+    \item Migliorare la qualità dei processi svolti dal gruppo;
+    \item Valutare lo stato di avanzamento del progetto.
+\end{itemize}
+\subsubsection{Piano di Qualifica}
+Per stabilire gli obbiettivi di questo processo utilizziamo il Piano di Qualifica. Ossia un documento contenente:
+\begin{itemize}
+    \item Gli obbiettivi qualitativi da raggiungere;
+    \item Le definizioni e descrizioni delle metriche utilizzate per la misurazione della qualità dei processi, del prodotto, della documentazione e dei software utilizzati;
+    \item La descrizione dei test da svolgere e le relative norme da seguire;
+    \item Lo stato attuale della qualità del progetto, misurato tramite le metriche descritte.
+\end{itemize}
+\subsubsection{Testing}
+Allo scopo di garantire la qualità del software prodotto, vengono effettuati dei test, i quali possono essere dei 5 tipi differenti:
+\begin{itemize}
+    \item \textbf{Test di unità}: Verificano il corretto funzionamento delle singole unità o componenti del software, come funzioni, metodi o moduli, isolandoli dal resto del sistema;
+    \item \textbf{Test d'integrazione}: Controllano che le diverse unità o moduli del software funzionino correttamente quando vengono integrati e comunicano tra loro;
+    \item \textbf{Test di regressione}: Assicurano che nuove modifiche o aggiornamenti al codice non abbiano introdotto errori o rotto funzionalità esistenti;
+    \item \textbf{Test di sistema}: Valutano il comportamento dell'intero sistema software, verificandone la conformità ai requisiti funzionali e non funzionali;
+    \item \textbf{Test di accettazione}: Effettuati dagli utenti o dai clienti, garantiscono che il software soddisfi le loro esigenze e sia pronto per l'uso finale.
+\end{itemize}
+\subsubsection{Strumenti}
+Gli strumenti utilizzati per la gestione della qualità sono le metriche.
+Queste sono le norme che regolano le metriche adottate, le quali rappresentano ognuna un conseguente obiettivo prefissato.
+Le metriche adottate sono presentate e descritte nel documento piano di qualifica, ognuna con i seguenti parametri:
+\begin{itemize}
+    \item \textbf{Nome}: il nome della metrica
+    \item \textbf{Codice}: ogni metrica ha un codice identificativo formato da:
+    \begin{center}
+        M[Tipologia][Id numerico]
+    \end{center}
+    dove
+    \begin{itemize}
+        \item \textbf{Tipologia} può essere:
+        \begin{itemize}
+            \item \textbf{PC} per processo;
+            \item \textbf{PD} per prodotto.
+        \end{itemize}
+        \item \textbf{Id numerico} indica un numero univoco incrementale separato per le due tipologie.
+    \end{itemize}
+    \item \textbf{Processo}: indica a che processo fa riferimento la metrica;
+    \item \textbf{Formula}: come la metrica viene matematicamente calcolata (opzionale);
+    \item \textbf{Descrizione}: spiegazione di cosa rappresenta la metrica e di come valutarla e interpretarla;
+    \item \textbf{Valore di accettabilità}: indica il valore della metrica considerato accettabile;
+    \item \textbf{Valore di Preferibilità}: indica il valore ideale che dovrebbe essere assunto.
+\end{itemize}
