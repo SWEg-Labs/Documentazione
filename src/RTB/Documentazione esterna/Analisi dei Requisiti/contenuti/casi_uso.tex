@@ -614,23 +614,59 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
 \subsubsection{UC17: Visualizzazione errore nel recupero dei log di aggiornamento del database vettoriale}
 \dots
 
+\newpage
 
 \hypertarget{UC18}{}
 \subsubsection{UC18: Visualizzazione di un badge che segnala lo stato di aggiornamento del database vettoriale}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{placeholder.png}
+    \includegraphics[width=\textwidth]{UC18+UC19+UC20.png}
     \caption{Visualizzazione di un badge che segnala lo stato di aggiornamento del database vettoriale}
 \end{figure}
 
-\dots
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: L'utente avvia l'applicazione;
+    \item \textbf{Trigger}: L'utente desidera verificare se il database vettoriale è stato aggiornato;
+    \item \textbf{Postcondizioni}: L'utente visualizza un badge che segnala lo stato di aggiornamento del database vettoriale;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item L'utente avvia l'applicazione;
+        \item Il sistema segnala lo stato di aggiornamento del database vettoriale;
+    \end{enumerate}
+    \item \textbf{Sottocasi d'uso}:
+    \begin{itemize}
+        \item \bulhyperlink{UC19}{UC19}: Visualizzazione database aggiornato;
+        \item \bulhyperlink{UC20}{UC20}: Visualizzazione database non aggiornato;
+    \end{itemize}
+\end{itemize}
 
 \hypertarget{UC19}{}
 \subsubsection{UC19: Visualizzazione database aggiornato}
-\dots
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: L'utente avvia l'applicazione;
+    \item \textbf{Trigger}: L'utente desidera verificare se il database vettoriale è stato aggiornato;
+    \item \textbf{Postcondizioni}: L'utente visualizza un badge indicativo che il database vettoriale è aggiornato;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item L'utente avvia l'applicazione;
+        \item Il sistema segnala che il database vettoriale è aggiornato tramite un badge di colore verde;
+    \end{enumerate}
+\end{itemize}
 
 \hypertarget{UC20}{}
 \subsubsection{UC20: Visualizzazione database non aggiornato}
-\dots
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: L'utente avvia l'applicazione;
+    \item \textbf{Trigger}: L'utente desidera verificare se il database vettoriale è stato aggiornato;
+    \item \textbf{Postcondizioni}: L'utente visualizza un badge indicativo che il database vettoriale non è aggiornato;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item L'utente avvia l'applicazione;
+        \item Il sistema segnala che il database vettoriale non è aggiornato tramite un badge di colore rosso;
+    \end{enumerate}
+\end{itemize}
 
