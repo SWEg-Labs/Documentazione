@@ -161,7 +161,7 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{placeholder.png}
+    \includegraphics[width=\textwidth]{UC2+UC3+UC4+UC5+UC6.png}
     \caption{Visualizzazione della risposta generata}
 \end{figure}
 
@@ -172,53 +172,73 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
     \item \textbf{Postcondizioni}: L'utente visualizza la risposta generata dal sistema;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
-        \item \bulhyperlink{UC3}{UC3}: Il sistema ha generato correttamente la risposta alla domanda dell'utente;
+        \item Il sistema ha generato correttamente la risposta alla domanda dell'utente;
         \item L'utente visualizza la risposta generata dal sistema.
     \end{enumerate}
-    \item \textbf{Sottocasi d'uso}:
-    \begin{itemize}
-        \item \bulhyperlink{UC5.1}{UC5.1}: Visualizzazione dell'introduzione della risposta;
-        \item \bulhyperlink{UC5.2}{UC5.2}: Visualizzazione di uno \emph{snippet}\textsubscript{\textbf{\textit{G}}} del contenuto che è stato trovato (es.: codice);
-        \item \bulhyperlink{UC5.3}{UC5.3}: Visualizzazione di un messaggio di resoconto e conclusione.
-    \end{itemize}
     \item \textbf{Scenario alternativo}:
     \begin{enumerate}
-        \item \bulhyperlink{UC6}{UC6}: Visualizzazione di una risposta negativa (informazione non trovata).
+        \item \bulhyperlink{UC3}{UC3}: Visualizzazione errore nella risposta.
     \end{enumerate}
 \end{itemize}
 
 \hypertarget{UC3}{}
 \subsubsection{UC3: Visualizzazione errore nella risposta}
-\dots
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: Il sistema non ha generato correttamente la risposta alla domanda dell'utente;
+    \item \textbf{Trigger}: L'utente desidera visualizzare la risposta alla domanda che ha posto;
+    \item \textbf{Postcondizioni}: Viene visualizzato un messaggio di errore;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item Il sistema ha generato correttamente la risposta alla domanda dell'utente;
+        \item Avviene un errore (di qualunque tipo) durante il processo di generazione della risposta;
+        \item Viene visualizzato un messaggio di errore.
+    \end{enumerate}
+    \item \textbf{Casi che ereditano}:
+    \begin{itemize}
+        \item \bulhyperlink{UC4}{UC4}: Visualizzazione errore nella generazione della risposta;
+        \item \bulhyperlink{UC5}{UC5}: Visualizzazione errore interrogazione fuori contesto;
+        \item \bulhyperlink{UC6}{UC6}: Visualizzazione errore informazione non trovata.
+    \end{itemize}
+\end{itemize}
 
 \hypertarget{UC4}{}
 \subsubsection{UC4: Visualizzazione errore nella generazione della risposta}
 \begin{itemize}
-    \item \textbf{Attori principali}: Modello di question answering;
-    \item \textbf{Precondizioni}: Il modelo di embedding e il database vettoriale devono essere funzionanti e reperibili;
-    \item \textbf{Trigger}: L'utente desidera ricevere una risposta in linguaggio naturale;
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: Il sistema non è riuscito a generare la risposta alla domanda dell'utente a causa di un errore interno;
+    \item \textbf{Trigger}: L'utente desidera ricevere una risposta in linguaggio naturale alla domanda che ha posto;
     \item \textbf{Postcondizioni}: Viene visualizzato un messaggio di errore, chiedendo di riprovare più tardi;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
-        \item \bulhyperlink{UC1.2}{UC1.2}: La domanda viene inviata;
-        \item Si genera un errore durante il processo che non permette la generazione della risposta;
-        \item Viene visualizzato il messaggio di errore.
+        \item \bulhyperlink{UC1}{UC1}: L'utente inserisce un'interrogazione in linguaggio naturale;
+        \item Si genera un errore durante il processamento della domanda che non permette la generazione della risposta;
+        \item Viene visualizzato un messaggio di errore, chiedendo di riprovare più tardi.
     \end{enumerate}
+    \item \textbf{Eredita da}:
+    \begin{itemize}
+        \item \bulhyperlink{UC3}{UC3}: Visualizzazione errore nella risposta.
+    \end{itemize}
 \end{itemize}
 
 \hypertarget{UC5}{}
 \subsubsection{UC5: Visualizzazione errore interrogazione fuori contesto}
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
-    \item \textbf{Precondizioni}: L'utente ha inserito un'interrogazione in linguaggio naturale;
-    \item \textbf{Trigger}: L'utente desidera ricevere informazioni legate esclusivamente ai contenuti del database associato al sistema;
-    \item \textbf{Postcondizioni}: Viene visualizzato un messaggio che comunica all'utente che l'input è fuori contesto e che quindi è impossibile generare una risposta;
+    \item \textbf{Precondizioni}: Il sistema ha rilevato una bassissima correlazione tra l'interrogazione scritta dall'utente e i documenti del \emph{database vettoriale};
+    \item \textbf{Trigger}: L'utente desidera visualizzare una risposta contenente informazioni legate esclusivamente ai contenuti del \emph{database vettoriale} associato al sistema;
+    \item \textbf{Postcondizioni}: Viene visualizzato un messaggio che comunica all'utente che la domanda inserita è fuori contesto e che quindi è impossibile generare una risposta;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
-        \item Il sistema analizza la frase e cerca di contestualizzarla utilizzando i dati presenti nel database;
+        \item \bulhyperlink{UC1}{UC1}: L'utente inserisce un'interrogazione in linguaggio naturale;
+        \item Il sistema analizza la frase e cerca di contestualizzarla confrontandola con i dati presenti nel database;
         \item Il sistema rileva che la frase è fuori contesto e non può essere associata a nessuna informazione rilevante nel database;
-        \item Il sistema invia un messaggio all'utente indicando che la frase è fuori contesto e richiede ulteriori chiarimenti.
+        \item Il sistema invia un messaggio all'utente indicando che la domanda inserita è fuori contesto e richiede ulteriori chiarimenti.
     \end{enumerate}
+    \item \textbf{Eredita da}:
+    \begin{itemize}
+        \item \bulhyperlink{UC3}{UC3}: Visualizzazione errore nella risposta.
+    \end{itemize}
 \end{itemize}
 
 \hypertarget{UC6}{}
@@ -226,15 +246,20 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
 \begin{itemize}
     \item \textbf{Attori coinvolti}: Utente;
     \item \textbf{Precondizioni}: Il sistema non ha trovato nei documenti di contesto l'informazione che l'utente ha domandato;
-    \item \textbf{Trigger}: L'utente desidera visualizzare la risposta alla domanda che ha posto;
+    \item \textbf{Trigger}: L'utente desidera visualizzare una risposta contenente le informazioni che ha richiesto nella domanda che ha posto al sistema;
     \item \textbf{Postcondizioni}: L'utente visualizza come risposta un messaggio del sistema in cui gli viene segnalata la mancanza dell'informazione 
-    richiesta nei dati forniti come contesto;
+    richiesta nei documenti individuati come contesto;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
-        \item Il sistema non ha trovato nei documenti di contesto l'informazione che l'utente ha domandato;
+        \item Il sistema individua alcuni documenti di contesto nel \emph{database vettoriale} correlati alla domanda dell'utente;
+        \item Il sistema non trova nei documenti di contesto l'informazione che l'utente ha domandato;
         \item L'utente visualizza come risposta un messaggio del sistema in cui gli viene segnalata la mancanza dell'informazione richiesta 
-        nei dati forniti come contesto.
+        nei documenti individuati come contesto.
     \end{enumerate}
+    \item \textbf{Eredita da}:
+    \begin{itemize}
+        \item \bulhyperlink{UC3}{UC3}: Visualizzazione errore nella risposta.
+    \end{itemize}
 \end{itemize}
 
 
@@ -390,111 +415,123 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{placeholder.png}
+    \includegraphics[width=\textwidth]{UC11.png}
     \caption{Aggiornamento automatico del database vettoriale}
 \end{figure}
 
 \begin{itemize}
-    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Attori principali}: Scheduler;
     \item \textbf{Precondizioni}: 
     \begin{itemize}
-        \item L'utente ha inserito una interrogazione in linguaggio naturale;
-        \item Il sistema ha generato correttamente la risposta alla domanda dell'utente.
+        \item L'utente avvia l'applicazione;
+        \item Il sistema è connesso al database vettoriale;
+        \item Lo \emph{Scheduler} è attivo;
+        \item E' arrivato il momento, prefissato dallo Scheduler, di aggiornare il database vettoriale.
     \end{itemize}
-    \item \textbf{Trigger}: L'utente desidera visualizzare una risposta basata su dati aggiornati alla domanda che ha posto;
-    \item \textbf{Postcondizioni}: L'utente visualizza una risposta generata su dati di contesto aggiornati;
+    \item \textbf{Trigger}: L'utente desidera ricevere risposte basate su dati aggiornati provenienti da GitHub, Jira e Confluence;
+    \item \textbf{Postcondizioni}: Lo scheduler ha aggiornato il database vettoriale con i dati più recenti provenienti da GitHub, Jira e Confluence;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
-        \item \bulhyperlink{UC1}{UC1}: L'utente ha inserito una interrogazione in linguaggio naturale;
-        \item \bulhyperlink{UC3}{UC3}: Il sistema ha generato correttamente la risposta alla domanda dell'utente;
-        \item La risposta è stata generata basandosi su dati aggiornati;
-        \item \bulhyperlink{UC5}{UC5}: L'utente visualizza la risposta.
+        \item E' arrivato il momento, prefissato dallo Scheduler, di aggiornare il database vettoriale;
+        \item \bulhyperlink{UC11.1}{UC11.1}: Chiamata \emph{API}\textsubscript{\textbf{\textit{G}}} verso GitHub per il recupero di eventuali nuove modifiche;
+        \item \bulhyperlink{UC11.2}{UC11.2}: Chiamata API verso Jira per il recupero di eventuali nuove modifiche;
+        \item \bulhyperlink{UC11.3}{UC11.3}: Chiamata API verso Confluence per il recupero di eventuali nuove modifiche;
+        \item \bulhyperlink{UC11.4.1}{UC11.4.1}: Conversione dei nuovi dati in formato vettoriale da parte del modello di embedding;
+        \item \bulhyperlink{UC11.4}{UC11.4}: \emph{Merge}\textsubscript{\textbf{\textit{G}}} dei nuovi dati aggiornati di GitHub, Jira e Confluence
+        con i dati già presenti nel database vettoriale.
     \end{enumerate}
     \item \textbf{Sottocasi d'uso}:
     \begin{itemize}
-        \item \bulhyperlink{UC11.1}{UC11.1}: Visualizzazione di una risposta generata utilizzando dati di contesto di 
-        GitHub aggiornati;
-        \item \bulhyperlink{UC11.2}{UC11.2}: Visualizzazione di una risposta generata utilizzando dati di contesto di 
-        Jira aggiornati;
-        \item \bulhyperlink{UC11.3}{UC11.3}: Visualizzazione di una risposta generata utilizzando dati di contesto di 
-        Confluence aggiornati;
+        \item \bulhyperlink{UC11.1}{UC11.1}: Chiamata API verso GitHub per il recupero di eventuali nuove modifiche;
+        \item \bulhyperlink{UC11.2}{UC11.2}: Chiamata API verso Jira per il recupero di eventuali nuove modifiche;
+        \item \bulhyperlink{UC11.3}{UC11.3}: Chiamata API verso Confluence per il recupero di eventuali nuove modifiche;
+        \item \bulhyperlink{UC11.4}{UC11.4}: Merge delle risposte generate utilizzando dati di contesto di GitHub, Jira e Confluence aggiornati.
     \end{itemize}
-    \item \textbf{Scenario alternativo}:
-    \begin{enumerate}
-        \item \bulhyperlink{UC16}{UC16}: Visualizzazione dell’avviso che i dati potrebbero essere obsoleti.
-    \end{enumerate}
 \end{itemize}
 
 \hypertarget{UC11.1}{}
-\subsubsubsection{UC11.1: Chiamata \emph{API}\textsubscript{\textbf{\textit{G}}} verso GitHub per il recupero di eventuali nuove modifiche}
+\subsubsubsection{UC11.1: Chiamata API verso GitHub per il recupero di eventuali nuove modifiche}
 \begin{itemize}
-    \item \textbf{Attori principali}: Utente, GitHub;
-    \item \textbf{Precondizioni}: 
-    \begin{itemize}
-        \item L'utente ha inserito una interrogazione in linguaggio naturale che riguarda GitHub;
-        \item Il sistema ha generato correttamente la risposta alla domanda dell'utente.
-    \end{itemize}
-    \item \textbf{Trigger}: L'utente desidera visualizzare una risposta basata su dati di GitHub aggiornati alla domanda che ha posto;
-    \item \textbf{Postcondizioni}: L'utente visualizza una risposta basata sui dati di contesto di GitHub aggiornati;
+    \item \textbf{Attori principali}: GitHub;
+    \item \textbf{Precondizioni}: E' arrivato il momento, prefissato dallo Scheduler, di aggiornare il database vettoriale;
+    \item \textbf{Trigger}: L'utente desidera ricevere risposte basate su dati aggiornati provenienti da GitHub;
+    \item \textbf{Postcondizioni}: Vengono recuperati i dati aggiornati da GitHub;
     \item \textbf{Scenario principale}: 
     \begin{enumerate}
-        \item \bulhyperlink{UC1}{UC1}: L'utente ha inserito una interrogazione in linguaggio naturale;
-        \item L'interrogazione in linguaggio naturale riguarda GitHub;
-        \item \bulhyperlink{UC3}{UC3}: Il sistema ha generato correttamente la risposta alla domanda dell'utente;
-        \item La risposta è stata generata basandosi su dati aggiornati di GitHub;
-        \item \bulhyperlink{UC5}{UC5}: L'utente visualizza la risposta.
+        \item E' arrivato il momento, prefissato dallo Scheduler, di aggiornare il database vettoriale;
+        \item Avviene una chiamata API verso GitHub per il recupero dei dati più recenti;
+        \item Vengono recuperati i dati aggiornati da GitHub.
     \end{enumerate}
 \end{itemize}
 
 \hypertarget{UC11.2}{}
 \subsubsubsection{UC11.2: Chiamata API verso Jira per il recupero di eventuali nuove modifiche}
 \begin{itemize}
-    \item \textbf{Attori principali}: Utente, Jira;
-    \item \textbf{Precondizioni}: 
-    \begin{itemize}
-        \item L'utente ha inserito una interrogazione in linguaggio naturale che riguarda Jira;
-        \item Il sistema ha generato correttamente la risposta alla domanda dell'utente.
-    \end{itemize}
-    \item \textbf{Trigger}: L'utente desidera visualizzare una risposta basata su dati di Jira aggiornati alla domanda che ha posto;
-    \item \textbf{Postcondizioni}: L'utente visualizza una risposta basata sui dati di contesto di Jira aggiornati;
+    \item \textbf{Attori principali}: Jira;
+    \item \textbf{Precondizioni}: E' arrivato il momento, prefissato dallo Scheduler, di aggiornare il database vettoriale;
+    \item \textbf{Trigger}: L'utente desidera ricevere risposte basate su dati aggiornati provenienti da Jira;
+    \item \textbf{Postcondizioni}: Vengono recuperati i dati aggiornati da Jira;
     \item \textbf{Scenario principale}: 
     \begin{enumerate}
-        \item \bulhyperlink{UC1}{UC1}: L'utente ha inserito una interrogazione in linguaggio naturale;
-        \item L'interrogazione in linguaggio naturale riguarda Jira;
-        \item \bulhyperlink{UC3}{UC3}: Il sistema ha generato correttamente la risposta alla domanda dell'utente;
-        \item La risposta è stata generata basandosi su dati aggiornati di Jira;
-        \item \bulhyperlink{UC5}{UC5}: L'utente visualizza la risposta.
+        \item E' arrivato il momento, prefissato dallo Scheduler, di aggiornare il database vettoriale;
+        \item Avviene una chiamata API verso Jira per il recupero dei dati più recenti;
+        \item Vengono recuperati i dati aggiornati da Jira.
     \end{enumerate}
 \end{itemize}
 
 \hypertarget{UC11.3}{}
 \subsubsubsection{UC11.3: Chiamata API verso Confluence per il recupero di eventuali nuove modifiche}
 \begin{itemize}
-    \item \textbf{Attori principali}: Utente, Confluence;
-    \item \textbf{Precondizioni}: 
-    \begin{itemize}
-        \item L'utente ha inserito una interrogazione in linguaggio naturale che riguarda Confluence;
-        \item Il sistema ha generato correttamente la risposta alla domanda dell'utente.
-    \end{itemize}
-    \item \textbf{Trigger}: L'utente desidera visualizzare una risposta basata su dati di Confluence aggiornati alla domanda che ha posto;
-    \item \textbf{Postcondizioni}: L'utente visualizza una risposta basata sui dati di contesto di Confluence aggiornati;
+    \item \textbf{Attori principali}: Confluence;
+    \item \textbf{Precondizioni}: E' arrivato il momento, prefissato dallo Scheduler, di aggiornare il database vettoriale;
+    \item \textbf{Trigger}: L'utente desidera ricevere risposte basate su dati aggiornati provenienti da Confluence;
+    \item \textbf{Postcondizioni}: Vengono recuperati i dati aggiornati da Confluence;
     \item \textbf{Scenario principale}: 
     \begin{enumerate}
-        \item \bulhyperlink{UC1}{UC1}: L'utente ha inserito una interrogazione in linguaggio naturale;
-        \item L'interrogazione in linguaggio naturale riguarda Confluence;
-        \item \bulhyperlink{UC3}{UC3}: Il sistema ha generato correttamente la risposta alla domanda dell'utente;
-        \item La risposta è stata generata basandosi su dati aggiornati di Confluence;
-        \item \bulhyperlink{UC5}{UC5}: L'utente visualizza la risposta.
+        \item E' arrivato il momento, prefissato dallo Scheduler, di aggiornare il database vettoriale;
+        \item Avviene una chiamata API verso Confluence per il recupero dei dati più recenti;
+        \item Vengono recuperati i dati aggiornati da Confluence.
     \end{enumerate}
 \end{itemize}
 
 \hypertarget{UC11.4}{}
-\subsubsubsection{UC11.4: \emph{Merge}\textsubscript{\textbf{\textit{G}}} dei nuovi dati con i dati già presenti nel database vettoriale}
-\dots
+\subsubsubsection{UC11.4: Merge dei nuovi dati con i dati già presenti nel database vettoriale}
+\begin{itemize}
+    \item \textbf{Attori principali}: Database vettoriale;
+    \item \textbf{Precondizioni}: Sono stati recuperati i dati aggiornati da GitHub, Jira e Confluence;
+    \item \textbf{Trigger}: L'utente desidera ricevere risposte basate su dati aggiornati provenienti da GitHub, Jira e Confluence;
+    \item \textbf{Postcondizioni}: E' stato eseguito il merge dei nuovi dati provenienti da GitHub, Jira e Confluence nel database vettoriale;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item E' arrivato il momento, prefissato dallo Scheduler, di aggiornare il database vettoriale;
+        \item \bulhyperlink{UC11.1}{UC11.1}: Chiamata API verso GitHub per il recupero di eventuali nuove modifiche;
+        \item \bulhyperlink{UC11.2}{UC11.2}: Chiamata API verso Jira per il recupero di eventuali nuove modifiche;
+        \item \bulhyperlink{UC11.3}{UC11.3}: Chiamata API verso Confluence per il recupero di eventuali nuove modifiche;
+        \item \bulhyperlink{UC11.4.1}{UC11.4.1}: I nuovi dati provenienti da GitHub, Jira e Confluence vengono convertiti in formato vettoriale dal modello di embedding;
+        \item Viene eseguito il merge dei nuovi dati in formato vettoriale con i dati già presenti nel database vettoriale.
+    \end{enumerate}
+    \item \textbf{Sottocasi d'uso}:
+    \begin{itemize}
+        \item \bulhyperlink{UC11.4.1}{UC11.4.1}: Conversione dei nuovi dati in formato vettoriale.
+    \end{itemize}
+\end{itemize}
 
 \hypertarget{UC11.4.1}{}
 \paragraph{UC11.4.1: Conversione dei nuovi dati in formato vettoriale}
-\dots
+\begin{itemize}
+    \item \textbf{Attori principali}: Modello di embedding;
+    \item \textbf{Precondizioni}: Sono stati recuperati i dati aggiornati da GitHub, Jira e Confluence;
+    \item \textbf{Trigger}: L'utente desidera ricevere risposte basate su dati aggiornati provenienti da GitHub, Jira e Confluence;
+    \item \textbf{Postcondizioni}: I nuovi dati provenienti da GitHub, Jira e Confluence vengono convertiti in formato vettoriale dal modello di embedding;
+    \item \textbf{Scenario principale}: 
+    \begin{enumerate}
+        \item E' arrivato il momento, prefissato dallo Scheduler, di aggiornare il database vettoriale;
+        \item \bulhyperlink{UC11.1}{UC11.1}: Chiamata API verso GitHub per il recupero di eventuali nuove modifiche;
+        \item \bulhyperlink{UC11.2}{UC11.2}: Chiamata API verso Jira per il recupero di eventuali nuove modifiche;
+        \item \bulhyperlink{UC11.3}{UC11.3}: Chiamata API verso Confluence per il recupero di eventuali nuove modifiche;
+        \item I nuovi dati provenienti da GitHub, Jira e Confluence vengono convertiti in formato vettoriale dal modello di embedding.
+    \end{enumerate}
+\end{itemize}
 
 
 \hypertarget{UC12}{}
