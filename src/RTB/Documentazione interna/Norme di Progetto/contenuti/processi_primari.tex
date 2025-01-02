@@ -82,8 +82,58 @@ Tale documento descrive:
 L’analisi dei requisiti intende raccogliere, chiarire e precisare tutti i requisiti necessari da completare per soddisfare il cliente. Per poter fare ciò è necessario aver letto e compreso al meglio le specifiche del progetto, e poter comunicare al meglio con il proponente.
 
 \subsubsubsection{Casi d'uso}
+Un \emph{caso d'uso}\textsubscript{\textit{\textbf{G}}} è un insieme di \emph{scenari}\textsubscript{\textit{\textbf{G}}} che hanno in comune uno scopo finale per un \emph{attore}\textsubscript{\textit{\textbf{G}}}.\\
+Gli elementi che lo compongono sono i seguenti:
+\begin{itemize}
+    \item l'attore;
+    \item il sistema;
+    \item precondizioni;
+    \item postcondizioni;
+    \item \emph{Scenario principale}\textsubscript{\textit{\textbf{G}}};
+    \item \emph{Scenario alternativo}\textsubscript{\textit{\textbf{G}}};
+    \item inclusione/i;
+    \item estensione/i;
+    \item specializzazione/i;
+    \item commento/i;
+    \item descrizione.  
+\end{itemize}
+I casi d’uso sono identificati nel seguente modo:\\
+\begin{center}
+    \textbf{UC[Numero]+(UC[Numero sottocaso])-[Titolo]}
+\end{center}
+dove:
+\begin{itemize}
+    \item UC: acronimo di "use case";
+    \item Numero: numero identificativo del caso d’uso;
+    \item Numero sottocaso: numero identificativo del sottocaso (se presente);
+    \item Titolo: titolo assegnato al caso d’uso.
+\end{itemize}
 
 \subsubsubsection{Struttura dei requisiti}
+I requisiti sono identificati da un codice univoco strutturato nel seguente modo:\\
+\begin{center}
+    \textbf{R[Importanza][Tipologia] [Codice](+[Codice figlio])}
+\end{center}
+dove:
+\begin{itemize}
+    \item R: acronimo di "Requisito";
+    \item Importanza: indica l’importanza del requisito e può assumere i seguenti valori:
+    \begin{itemize}
+        \item O: requisito obbligatorio, cioè deve essere soddisfatto necessariamente per garantire la realizzazione del prodotto corrispondente agli accordi col \emph{proponente}\textsubscript{\textit{\textbf{G}}};
+        \item D: requisito desiderabile, cioè porterebbe al prodotto ulteriori funzionalità e completezza qualora fosse soddisfatto;
+        \item Z: requisito opzionale, cioè che potrebbe essere implementato solo se ci sono risorse, tempo e budget sufficienti, senza che la sua mancanza impatti negativamente il prodotto.
+    \end{itemize}
+    \item Tipologia:
+        \begin{itemize} 
+            \item F: requisito funzionale che delinea gli obiettivi e le azioni chiave che l’utente deve essere in grado di compiere;
+            \item Q: requisito qualitativo che delinea le specifiche qualitative che devono essere rispettate per garantire la qualità del sistema;
+            \item V: requisito di vincolo che rappresenta le restrizioni e le condizioni che devono essere soddisfatte durante lo sviluppo e l’implementazione del sistema;
+            \item I: requisito implementativo che delinea le specifiche tecniche e operative che indicano come un sistema o una funzionalità deve essere sviluppato per soddisfare i requisiti del progetto;  
+            \item P: requisito prestazionale che definisce le metriche di performance che il sistema deve soddisfare, come tempi di risposta, capacità di elaborazione e scalabilità, per garantire il funzionamento corretto. 
+        \end{itemize}
+    \item Codice: identificatore numerico univoco per quella tipologia di vincolo;
+    \item Codice figlio: numero identificativo del sottorequisito (se presente).
+\end{itemize}
 
 \subsubsection{Progettazione}
 
