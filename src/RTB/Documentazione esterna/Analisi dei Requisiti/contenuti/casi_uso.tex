@@ -640,12 +640,13 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: L'utente ha avviato l'app;
-    \item \textbf{Trigger}: L'utente desidera visualizzare i log di aggiornamento;
+    \item \textbf{Trigger}: L'utente desidera visualizzare i log di aggiornamento del database vettoriale;
     \item \textbf{Postcondizioni}: L'utente visualizza i log di aggiornamento del database vettoriale;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
         \item L'utente clicca il pulsante per il recupero dei log;
-        \item Il sistema recupera e mostra a schermo i log di aggiornamento;
+        \item Il sistema recupera i log di aggiornamento del database vettoriale;
+        \item L'utente visualizza i log di aggiornamento del database vettoriale.
     \end{enumerate}
     \item \textbf{Scenario alternativo}:
     \begin{enumerate}
@@ -658,12 +659,13 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: L'utente ha avviato l'app;
-    \item \textbf{Trigger}: L'utente desidera visualizzare i log di aggiornamento;
-    \item \textbf{Postcondizioni}: L'utente visualizza un segnale di errore segnalante l'impossibilità di recuperare i log di aggiornamento;
+    \item \textbf{Trigger}: L'utente desidera visualizzare i log di aggiornamento del database vettoriale;
+    \item \textbf{Postcondizioni}: L'utente visualizza un segnale di errore segnalante l'impossibilità di recuperare i log;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
         \item L'utente clicca il pulsante per il recupero dei log;
-        \item Il sistema non trova i dati dei log di aggiornamento, e di conseguenza visualizza un messaggio di errore, consigliando all'utente di riprovare più tardi;
+        \item Il sistema non riesce a recuperare i log di aggiornamento del database vettoriale;
+        \item L'utente visualizza un messaggio di errore che invita riprovare più tardi.
     \end{enumerate}
 \end{itemize}
 
