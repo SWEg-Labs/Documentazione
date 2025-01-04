@@ -360,24 +360,24 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
 
 \newpage
 \hypertarget{UC9}{}
-\subsubsection{UC9: Visualizzazione dello storico di sessione}
+\subsubsection{UC9: Visualizzazione dello storico della chat}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{placeholder.png}
-    \caption{Visualizzazione dello storico di sessione}
+    \caption{Visualizzazione dello storico della chat}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
-    \item \textbf{Precondizioni}: Il sistema deve essere collegato a un database relazionale per memorizzare e recuperare lo storico delle sessioni;
-    \item \textbf{Trigger}: L'utente desidera visualizzare lo storico di sessione;
-    \item \textbf{Postcondizioni}: L'utente visualizza lo storico di sessione;
+    \item \textbf{Precondizioni}: Il sistema deve essere collegato a un database relazionale per memorizzare e recuperare lo storico della chat;
+    \item \textbf{Trigger}: L'utente desidera visualizzare lo storico della chat;
+    \item \textbf{Postcondizioni}: L'utente visualizza lo storico della chat;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
-        \item L'utente desidera recuperare lo storico di sessione;
-        \item Il sistema recupera i dati dello storico di sessione dal database relazionale e lo mostra a schermo;
-        \item L'utente visualizza lo storico di sessione.
+        \item L'utente desidera visualizzare lo storico della chat;
+        \item Il sistema recupera i messaggi dello storico della chat dal database relazionale e li mostra a schermo;
+        \item L'utente visualizza lo storico della chat.
     \end{enumerate}
     \item \textbf{Scenario alternativo}:
     \begin{enumerate}
@@ -390,13 +390,14 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
 \subsubsection{UC10: Visualizzazione errore nel recupero dello storico}
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
-    \item \textbf{Precondizioni}: L'utente ha richiesto di recuperare lo storico di sessione;
-    \item \textbf{Trigger}: L'utente desidera visualizzare i dati dello storico di sessione;
-    \item \textbf{Postcondizioni}: Viene visualizzato un messaggio di errore riferendo che c'è stato un errore nel recupero dello storico di sessione;
+    \item \textbf{Precondizioni}: Il sistema deve essere collegato a un database relazionale per memorizzare e recuperare lo storico della chat;
+    \item \textbf{Trigger}: L'utente desidera visualizzare lo storico della chat;
+    \item \textbf{Postcondizioni}: Viene visualizzato un messaggio di errore riferendo che c'è stato un errore nel recupero dello storico;
     \item \textbf{Scenario principale}: 
     \begin{enumerate}
-        \item L'utente ha richiesto di recuperare lo storico di sessione memorizzato nel database relazionale;
-        \item Il sistema ha riscontrato un problema e visualizza un messaggio di errore riferendo che c'è stato un errore nel recupero dello storico di sessione;
+        \item L'utente desidera visualizzare lo storico della chat;
+        \item Il sistema ha riscontrato un problema nel recupero dello storico dal database relazionale;
+        \item L'utente visualizza un messaggio di errore riferendo che c'è stato un errore nel recupero dello storico.
     \end{enumerate}
 \end{itemize}
 
