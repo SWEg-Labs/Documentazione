@@ -36,7 +36,7 @@ solida per la \emph{progettazione}\textsubscript{\textit{\textbf{G}}} del sistem
     \begin{tabularx}{\textwidth}{|p{2cm}|p{3cm}|X|p{4cm}|} \hline
     \rowcolor[HTML]{FFD700} 
     \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Fonti} \\ \hline
-    RDF11 & Desiderabile & Nel caso la risposta contenga uno snippet di codice, deve essere presente un pulsante che copi il singolo snippet nel dispositivo dell'utente. & \bulhyperlink{UC8}{UC8} \\ \hline
+    RDF11 & Desiderabile & Nel caso la risposta contenga uno snippet di codice, deve essere presente un pulsante che permetta di copiare il singolo snippet nel dispositivo dell'utente. & \bulhyperlink{UC8}{UC8} \\ \hline
     RDF12 & Desiderabile & Deve essere presente un sistema di archiviazione delle domande e delle risposte in un database relazionale. & \bulhyperlink{UC9}{UC9} \\ \hline
     RDF13 & Desiderabile & L'utente deve poter visualizzare lo storico della chat, recuperato dal database relazionale. & \bulhyperlink{UC9}{UC9} \\ \hline
     RDF14 & Desiderabile & Nel caso il sistema fallisca nel recuperare lo storico della chat, deve essere fatto visualizzare un messaggio di errore all'utente spiegando che non è stato possibile recuperare lo storico. & \bulhyperlink{UC10}{UC10} \\ \hline
@@ -47,7 +47,7 @@ solida per la \emph{progettazione}\textsubscript{\textit{\textbf{G}}} del sistem
     ROF19 & Obbligatorio & Il sistema deve poter convertire i dati ottenuti in formato vettoriale. & \bulhyperlink{UC11.4.1}{UC11.4.1} \\ \hline
     ROF20 & Obbligatorio & Il sistema deve poter aggiornare il database vettoriale con i nuovi dati ottenuti. & \bulhyperlink{UC11.4}{UC11.4} \\ \hline
     RZF21 & Opzionale & Se la conversazione non è ancora avviata l'utente deve poter visualizzare e selezionare alcune domande di partenza proposte. & \bulhyperlink{UC12}{UC12},\bulhyperlink{UC12.1}{UC12.1} \\ \hline
-    RZF22 & Opzionale & Durante la conversazione, all'utente devono venire suggerite alcune interrogazioni da porre al sistema. & \bulhyperlink{UC13}{UC13},\bulhyperlink{UC13.1}{UC13.1} \\ \hline
+    RZF22 & Opzionale & Dopo la visualizzazione di una risposta, all'utente devono venire suggerite alcune interrogazioni che è possibile porre al sistema per continuare la conversazione. & \bulhyperlink{UC13}{UC13},\bulhyperlink{UC13.1}{UC13.1} \\ \hline
     RZF23 & Opzionale & Nel caso il sistema vada in errore nel tentativo di proporre altre domande per proseguire la conversazione, deve venire mostrato un messaggio che comunica l'errore all'utente e invita a fare altre domande. & \bulhyperlink{UC14}{UC14} \\ \hline
 \end{tabularx}
 
@@ -65,7 +65,7 @@ solida per la \emph{progettazione}\textsubscript{\textit{\textbf{G}}} del sistem
     \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Fonti} \\ \hline
     RZF24 & Opzionale & Il sistema deve registrare data e ora degli aggiornamenti del database vettoriale, in modo da poter scrivere un log di aggiornamento. & \bulhyperlink{UC16}{UC16} \\ \hline
     RZF25 & Opzionale & Deve essere possibile per l'utente visualizzare il log di aggiornamento del database vettoriale. & \bulhyperlink{UC16}{UC16} \\ \hline
-    RZF26 & Opzionale & Il sistema deve mostrare un messaggio di errore nel caso non riesca a recuperare i log di aggiornamento vettoriale. & \bulhyperlink{UC17}{UC17} \\ \hline
+    RZF26 & Opzionale & Il sistema deve mostrare un messaggio di errore nel caso non riesca a recuperare i log di aggiornamento del database vettoriale. & \bulhyperlink{UC17}{UC17} \\ \hline
     RZF27 & Opzionale & Il sistema deve poter mostrare all'utente se il database vettoriale è aggiornato o meno rispetto ai dati più recenti di Github, Jira e Confluence. & \bulhyperlink{UC18}{UC18},\bulhyperlink{UC19}{UC19}, \bulhyperlink{UC20}{UC20} \\ \hline
 \end{tabularx}
 
