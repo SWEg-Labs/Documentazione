@@ -17,14 +17,14 @@ solida per la \emph{progettazione}\textsubscript{\textit{\textbf{G}}} del sistem
     \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Fonti} \\ \hline
     ROF1 & Obbligatorio & L'utente deve poter inserire un'interrogazione in linguaggio naturale nel sistema. & \bulhyperlink{UC1}{UC1} \\ \hline
     ROF2 & Obbligatorio & Deve essere presente una barra di input per poter inserire l'interrogazione dell'utente. & \bulhyperlink{UC1.1}{UC1.1} \\ \hline
-    ROF3 & Obbligatorio & Deve essere presente un apposito tasto per inviare al sistema le interrogazioni inserite. & \bulhyperlink{UC1.2}{UC1.2} \\ \hline
-    ROF4 & Obbligatorio & Il sistema deve validare l'interrogazione dell'utente prima di mostrarla a schermo. & \bulhyperlink{UC1.3}{UC1.3} \\ \hline
-    ROF5 & Obbligatorio & Quando l'interrogazione viene invata al sistema, deve essere generata una risposta. & \bulhyperlink{UC2}{UC2} \\ \hline
-    ROF6 & Obbligatorio & Nel caso il sistema fallisca nel generare una risposta per via di un problema intenrno, deve visualizzare all'utente un messaggio di errore, chiedendo di riprovare più tardi. & \bulhyperlink{UC3}{UC3}, \bulhyperlink{UC4}{UC4} \\ \hline
-    ROF7 & Obbligatorio & Nel caso in cui l'utente inserisca un'interrogazione che non riguarda i contenuti del database associato, il sistema non deve generare risposta, e avvisare l'utente che la domanda inserita è fuori contesto. & \bulhyperlink{UC3}{UC3}, \bulhyperlink{UC5}{UC5} \\ \hline
-    ROF8 & Obbligatorio & Nel caso il sistema non riesca a trovare le informazioni richieste dall'utente, deve visualizzare all'utente un messaggio di errore in cui viene segnalata la mancanza dell'informazione richiesta. & \bulhyperlink{UC3}{UC3}, \bulhyperlink{UC6}{UC6} \\ \hline
-    ROF9 & Obbligatorio & L'utente deve poter visualizzare i file da cui il sistema ha preso i dati per la risposta &\bulhyperlink{UC2.1}{UC2.1} \\ \hline
-    RDF10 & Desiderabile & Nel caso l'utente tenti di accedere ai file utilizzati per genereare la risposta ma questo non sia possibile, deve essere visualizzato un messaggio di errore. &\bulhyperlink{UC15}{UC15} \\ \hline
+    ROF3 & Obbligatorio & Deve essere presente un apposito pulsante per inviare al sistema le interrogazioni inserite. & \bulhyperlink{UC1.2}{UC1.2} \\ \hline
+    ROF4 & Obbligatorio & Quando l'interrogazione viene invata al sistema, deve essere generata una risposta. & \bulhyperlink{UC2}{UC2} \\ \hline
+    ROF5 & Obbligatorio & Nel caso il sistema fallisca nel generare una risposta per via di un problema intenrno, deve far visualizzare all'utente un messaggio di errore, chiedendo di riprovare più tardi. & \bulhyperlink{UC3}{UC3}, \bulhyperlink{UC4}{UC4} \\ \hline
+    ROF6 & Obbligatorio & Nel caso in cui l'utente inserisca un'interrogazione che non riguarda i contenuti del database associato, il sistema non deve generare risposta, bensì deve avvisare l'utente che la domanda inserita è fuori contesto. & \bulhyperlink{UC3}{UC3}, \bulhyperlink{UC5}{UC5} \\ \hline
+    ROF7 & Obbligatorio & Nel caso il sistema non riesca a trovare le informazioni richieste dall'utente, deve far visualizzare all'utente un messaggio di errore in cui viene segnalata la mancanza dell'informazione richiesta. & \bulhyperlink{UC3}{UC3}, \bulhyperlink{UC6}{UC6} \\ \hline
+    ROF8 & Desiderabile & L'utente deve poter visualizzare i file da cui il sistema ha preso i dati per la risposta &\bulhyperlink{UC2.1}{UC2.1} \\ \hline
+    RDF9 & Desiderabile & Nel caso l'utente tenti di accedere ai file utilizzati per genereare la risposta ma questo non sia possibile, deve essere visualizzato un messaggio di errore. &\bulhyperlink{UC15}{UC15} \\ \hline
+    RDF10 & Desiderabile & Deve essere presente un pulsante al cui click la risposta del chatbot viene copiata nel dispositivo dell'utente. & \bulhyperlink{UC7}{UC7} \\ \hline
     \end{tabularx}
     \end{table}
 
@@ -36,20 +36,20 @@ solida per la \emph{progettazione}\textsubscript{\textit{\textbf{G}}} del sistem
     \begin{tabularx}{\textwidth}{|p{2cm}|p{3cm}|X|p{4cm}|} \hline
     \rowcolor[HTML]{FFD700} 
     \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Fonti} \\ \hline
-    RDF11 & Desiderabile & Deve essere presente un pulsante alla cui selezione, la risposta del chatbot viene copiata nel dispositivo dell'utente. & \bulhyperlink{UC7}{UC7} \\ \hline
-    RDF12 & Desiderabile & Nel caso la risposta contenga snippet di codice, deve essere presente un pulsante che copi il singolo snippet nel dispositivo dell'utente. & \bulhyperlink{UC8}{UC8} \\ \hline
-    RDF13 & Desiderabile & Deve essere presente un sistema di archiviazione delle domande e delle risposte in un database relazionale. & \bulhyperlink{UC9}{UC9} \\ \hline
-    RDF14 & Desiderabile & L'utente deve poter visualizzare lo storico della chat, recuperato dal database relazionale. & \bulhyperlink{UC9}{UC9} \\ \hline
-    RDF15 & Desiderabile & Nel caso il sistema fallisca nel recuperare lo storico della chat, deve visualizzare un messaggio di errore all'utente spiegando che non è stato possibile recuperare lo storico. & \bulhyperlink{UC10}{UC10} \\ \hline
-    ROF16 & Obbligatorio & Il sistema deve avere dei collegamenti con uno scheduler, che periodicamente aggiorna il database vettoriale con i dati più aggiornati. & \bulhyperlink{UC11}{UC11} \\ \hline
-    ROF17 & Obbligatorio & Il sistema deve avere dei collegamenti API per chiamare GitHub e richiedere i dati aggiornati. & \bulhyperlink{UC11.1}{UC11.1} \\ \hline
-    ROF18 & Obbligatorio & Il sistema deve avere dei collegamenti API per chiamare Jira e richiedere i dati aggiornati. & \bulhyperlink{UC11.2}{UC11.2} \\ \hline
-    ROF19 & Obbligatorio & Il sistema deve avere dei collegamenti API per chiamare Confluence e richiedere i dati aggiornati. & \bulhyperlink{UC11.3}{UC11.3} \\ \hline
-    ROF20 & Obbligatorio & Il sistema deve poter convertire i dati ottenuti in formato vettoriale. & \bulhyperlink{UC11.4.1}{UC11.4.1} \\ \hline
-    ROF21 & Obbligatorio & Il sistema deve poter aggiornare il database vettoriale con i nuovi dati ottenuti. & \bulhyperlink{UC11.4}{UC11.4} \\ \hline
-    RZF22 & Opzionale & Se la conversazione non è ancora avviata l'utente deve poter visualizzare e selezionare alcune domande di partenza proposte. & \bulhyperlink{UC12}{UC12},\bulhyperlink{UC12.1}{UC12.1} \\ \hline
-    RZF23 & Opzionale & Durante la conversazione, all'utente devono venire suggerite alcune interrogazioni da porre al sistema.. & \bulhyperlink{UC13}{UC13},\bulhyperlink{UC13.1}{UC13.1} \\ \hline
-   \end{tabularx}
+    RDF11 & Desiderabile & Nel caso la risposta contenga uno snippet di codice, deve essere presente un pulsante che copi il singolo snippet nel dispositivo dell'utente. & \bulhyperlink{UC8}{UC8} \\ \hline
+    RDF12 & Desiderabile & Deve essere presente un sistema di archiviazione delle domande e delle risposte in un database relazionale. & \bulhyperlink{UC9}{UC9} \\ \hline
+    RDF13 & Desiderabile & L'utente deve poter visualizzare lo storico della chat, recuperato dal database relazionale. & \bulhyperlink{UC9}{UC9} \\ \hline
+    RDF14 & Desiderabile & Nel caso il sistema fallisca nel recuperare lo storico della chat, deve essere fatto visualizzare un messaggio di errore all'utente spiegando che non è stato possibile recuperare lo storico. & \bulhyperlink{UC10}{UC10} \\ \hline
+    ROF15 & Obbligatorio & Uno scheduler deve collegarsi al sistema e periodicamente aggiornare il database vettoriale con i dati più recenti. & \bulhyperlink{UC11}{UC11} \\ \hline
+    ROF16 & Obbligatorio & Il sistema deve potersi collegare a GitHub tramite API per richiedere i dati aggiornati. & \bulhyperlink{UC11.1}{UC11.1} \\ \hline
+    ROF17 & Obbligatorio & Il sistema deve potersi collegare a Jira tramite API per richiedere i dati aggiornati. & \bulhyperlink{UC11.2}{UC11.2} \\ \hline
+    ROF18 & Obbligatorio & Il sistema deve potersi collegare a Confluence tramite API per richiedere i dati aggiornati. & \bulhyperlink{UC11.3}{UC11.3} \\ \hline
+    ROF19 & Obbligatorio & Il sistema deve poter convertire i dati ottenuti in formato vettoriale. & \bulhyperlink{UC11.4.1}{UC11.4.1} \\ \hline
+    ROF20 & Obbligatorio & Il sistema deve poter aggiornare il database vettoriale con i nuovi dati ottenuti. & \bulhyperlink{UC11.4}{UC11.4} \\ \hline
+    RZF21 & Opzionale & Se la conversazione non è ancora avviata l'utente deve poter visualizzare e selezionare alcune domande di partenza proposte. & \bulhyperlink{UC12}{UC12},\bulhyperlink{UC12.1}{UC12.1} \\ \hline
+    RZF22 & Opzionale & Durante la conversazione, all'utente devono venire suggerite alcune interrogazioni da porre al sistema. & \bulhyperlink{UC13}{UC13},\bulhyperlink{UC13.1}{UC13.1} \\ \hline
+    RZF23 & Opzionale & Nel caso il sistema vada in errore nel tentativo di proporre altre domande per proseguire la conversazione, deve venire mostrato un messaggio che comunica l'errore all'utente e invita a fare altre domande. & \bulhyperlink{UC14}{UC14} \\ \hline
+\end{tabularx}
 
     \caption{Requisiti funzionali}
     \label{tab:Requisiti_funzionali}
@@ -61,14 +61,12 @@ solida per la \emph{progettazione}\textsubscript{\textit{\textbf{G}}} del sistem
 \begin{table}[h!]
 \renewcommand{\arraystretch}{1.6} % Per aumentare l'altezza delle righe
 \begin{tabularx}{\textwidth}{|p{2cm}|p{3cm}|X|p{4cm}|} \hline
-\rowcolor[HTML]{FFD700} 
-\textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Fonti} \\ \hline
-RZF24 & Opzionale & Nel caso il sistema vada in errore nel tentativo di proporre altre domande per proseguire la conversazione, deve venire mostrato un messaggio che comunica l'errore all'utente e invita a fare altre domande. & \bulhyperlink{UC14}{UC14} \\ \hline
-RZF25 & Opzionale & Il sistema deve registrare data e ora degli aggiornamenti del database vettoriale, in modo da poter formare un log di aggiornamento. & \bulhyperlink{UC16}{UC16} \\ \hline
-RZF26 & Opzionale & Deve essere possibile per l'utente visualizzare il log di aggiornamento del database vettoriale. & \bulhyperlink{UC16}{UC16} \\ \hline
-RZF27 & Opzionale & Il sistema deve mostrare un messaggio di errore nel caso non riesca a recuperare i dati del log di aggiornamento vettoriale. & \bulhyperlink{UC17}{UC17} \\ \hline
-RZF28 & Opzionale & Il sistema deve poter mostrare all'utente se il database vettoriale è aggiornato o meno rispetto. & \bulhyperlink{UC18}{UC18},\bulhyperlink{UC19}{UC19}, \bulhyperlink{UC20}{UC20} \\ \hline
-
+    \rowcolor[HTML]{FFD700} 
+    \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Fonti} \\ \hline
+    RZF24 & Opzionale & Il sistema deve registrare data e ora degli aggiornamenti del database vettoriale, in modo da poter scrivere un log di aggiornamento. & \bulhyperlink{UC16}{UC16} \\ \hline
+    RZF25 & Opzionale & Deve essere possibile per l'utente visualizzare il log di aggiornamento del database vettoriale. & \bulhyperlink{UC16}{UC16} \\ \hline
+    RZF26 & Opzionale & Il sistema deve mostrare un messaggio di errore nel caso non riesca a recuperare i log di aggiornamento vettoriale. & \bulhyperlink{UC17}{UC17} \\ \hline
+    RZF27 & Opzionale & Il sistema deve poter mostrare all'utente se il database vettoriale è aggiornato o meno rispetto ai dati più recenti di Github, Jira e Confluence. & \bulhyperlink{UC18}{UC18},\bulhyperlink{UC19}{UC19}, \bulhyperlink{UC20}{UC20} \\ \hline
 \end{tabularx}
 
 \caption{Requisiti funzionali}
