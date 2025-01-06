@@ -24,7 +24,6 @@ solida per la \emph{progettazione}\textsubscript{\textit{\textbf{G}}} del sistem
     ROF7 & Obbligatorio & Nel caso il sistema non riesca a trovare le informazioni richieste dall'utente, deve far visualizzare all'utente un messaggio di errore in cui viene segnalata la mancanza dell'informazione richiesta. & \bulhyperlink{UC3}{UC3}, \bulhyperlink{UC6}{UC6} \\ \hline
     ROF8 & Desiderabile & L'utente deve poter visualizzare i file da cui il sistema ha preso i dati per la risposta &\bulhyperlink{UC2.1}{UC2.1} \\ \hline
     RDF9 & Desiderabile & Nel caso l'utente tenti di accedere ai file utilizzati per genereare la risposta ma questo non sia possibile, deve essere visualizzato un messaggio di errore. &\bulhyperlink{UC15}{UC15} \\ \hline
-    RDF10 & Desiderabile & Deve essere presente un pulsante al cui click la risposta del chatbot viene copiata nel dispositivo dell'utente. & \bulhyperlink{UC7}{UC7} \\ \hline
     \end{tabularx}
     \end{table}
 
@@ -36,6 +35,7 @@ solida per la \emph{progettazione}\textsubscript{\textit{\textbf{G}}} del sistem
     \begin{tabularx}{\textwidth}{|p{2cm}|p{3cm}|X|p{4cm}|} \hline
     \rowcolor[HTML]{FFD700} 
     \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Fonti} \\ \hline
+    RDF10 & Desiderabile & Deve essere presente un pulsante al cui click la risposta del chatbot viene copiata nel dispositivo dell'utente. & \bulhyperlink{UC7}{UC7} \\ \hline
     RDF11 & Desiderabile & Nel caso la risposta contenga uno snippet di codice, deve essere presente un pulsante che permetta di copiare il singolo snippet nel dispositivo dell'utente. & \bulhyperlink{UC8}{UC8} \\ \hline
     RDF12 & Desiderabile & Deve essere presente un sistema di archiviazione delle domande e delle risposte in un database relazionale. & \bulhyperlink{UC9}{UC9} \\ \hline
     RDF13 & Desiderabile & L'utente deve poter visualizzare lo storico della chat, recuperato dal database relazionale. & \bulhyperlink{UC9}{UC9} \\ \hline
@@ -47,8 +47,6 @@ solida per la \emph{progettazione}\textsubscript{\textit{\textbf{G}}} del sistem
     ROF19 & Obbligatorio & Il sistema deve poter convertire i dati ottenuti in formato vettoriale. & \bulhyperlink{UC11.4.1}{UC11.4.1} \\ \hline
     ROF20 & Obbligatorio & Il sistema deve poter aggiornare il database vettoriale con i nuovi dati ottenuti. & \bulhyperlink{UC11.4}{UC11.4} \\ \hline
     RZF21 & Opzionale & Se la conversazione non è ancora avviata l'utente deve poter visualizzare e selezionare alcune domande di partenza proposte. & \bulhyperlink{UC12}{UC12},\bulhyperlink{UC12.1}{UC12.1} \\ \hline
-    RZF22 & Opzionale & Dopo la visualizzazione di una risposta, all'utente devono venire suggerite alcune interrogazioni che è possibile porre al sistema per continuare la conversazione. & \bulhyperlink{UC13}{UC13},\bulhyperlink{UC13.1}{UC13.1} \\ \hline
-    RZF23 & Opzionale & Nel caso il sistema vada in errore nel tentativo di proporre altre domande per proseguire la conversazione, deve venire mostrato un messaggio che comunica l'errore all'utente e invita a fare altre domande. & \bulhyperlink{UC14}{UC14} \\ \hline
 \end{tabularx}
 
     \caption{Requisiti funzionali}
@@ -63,6 +61,8 @@ solida per la \emph{progettazione}\textsubscript{\textit{\textbf{G}}} del sistem
 \begin{tabularx}{\textwidth}{|p{2cm}|p{3cm}|X|p{4cm}|} \hline
     \rowcolor[HTML]{FFD700} 
     \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Fonti} \\ \hline
+    RZF22 & Opzionale & Dopo la visualizzazione di una risposta, all'utente devono venire suggerite alcune interrogazioni che è possibile porre al sistema per continuare la conversazione. & \bulhyperlink{UC13}{UC13},\bulhyperlink{UC13.1}{UC13.1} \\ \hline
+    RZF23 & Opzionale & Nel caso il sistema vada in errore nel tentativo di proporre altre domande per proseguire la conversazione, deve venire mostrato un messaggio che comunica l'errore all'utente e invita a fare altre domande. & \bulhyperlink{UC14}{UC14} \\ \hline
     RZF24 & Opzionale & Il sistema deve registrare data e ora degli aggiornamenti del database vettoriale, in modo da poter scrivere un log di aggiornamento. & \bulhyperlink{UC16}{UC16} \\ \hline
     RZF25 & Opzionale & Deve essere possibile per l'utente visualizzare il log di aggiornamento del database vettoriale. & \bulhyperlink{UC16}{UC16} \\ \hline
     RZF26 & Opzionale & Il sistema deve mostrare un messaggio di errore nel caso non riesca a recuperare i log di aggiornamento del database vettoriale. & \bulhyperlink{UC17}{UC17} \\ \hline
@@ -117,7 +117,6 @@ coerenza e l'\emph{efficienza}\textsubscript{\textit{\textbf{G}}} del prodotto.
     \label{tab:Requisiti_di_vincolo}
 \end{table}
 
-\newpage
 \subsection{Requisiti implementativi}
 \label{sec:Requisiti_implementativi}
 \begin{table}[h!]
@@ -167,18 +166,6 @@ le prestazioni del dispositivo e dall'ottimizzazione specifica per il browser \e
     \bulhyperlink{UC9}{UC9} & RDF12 \\ \hline
     \bulhyperlink{UC9}{UC9} & RDF13 \\ \hline
     \bulhyperlink{UC10}{UC10} & RDF14 \\ \hline
-    \end{tabularx}
-    \caption{Tracciamento Fonte - Requisiti}
-    \label{tab:Tracciamento_fonte_requisiti}
-\end{table}
-
-\label{sec:fonte_requisito}
-\begin{table}[h!]
-    \centering
-    \renewcommand{\arraystretch}{1.6} % Per aumentare l'altezza delle righe
-    \begin{tabularx}{0.8\textwidth}{|>{\centering\arraybackslash}p{2.8cm}|>{\centering\arraybackslash}X|} \hline
-    \rowcolor[HTML]{FFD700} 
-    \textbf{Fonte} & \textbf{Requisiti} \\ \hline
     \bulhyperlink{UC11}{UC11} & ROF15 \\ \hline
     \bulhyperlink{UC11.1}{UC11.1} & ROF16 \\ \hline
     \bulhyperlink{UC11.2}{UC11.2} & ROF17 \\ \hline
@@ -192,11 +179,11 @@ le prestazioni del dispositivo e dall'ottimizzazione specifica per il browser \e
     \bulhyperlink{UC16}{UC16} & RZF25 \\ \hline
     \bulhyperlink{UC17}{UC17} & RZF26 \\ \hline
     \bulhyperlink{UC18}{UC18}, \bulhyperlink{UC19}{UC19}, \bulhyperlink{UC20}{UC20} & RZF27 \\ \hline
-
     \end{tabularx}
     \caption{Tracciamento Fonte - Requisiti}
     \label{tab:Tracciamento_fonte_requisiti}
 \end{table}
+
 
 \newpage
 \subsubsection{Requisito - Fonti}
@@ -228,18 +215,6 @@ le prestazioni del dispositivo e dall'ottimizzazione specifica per il browser \e
     ROF20 & \bulhyperlink{UC11.4.1}{UC11.4.1}\\ \hline
     ROF21 & \bulhyperlink{UC11.4}{UC11.4}\\ \hline
     RZF22 & \bulhyperlink{UC12}{UC12},\bulhyperlink{UC12.1}{UC12.1}\\ \hline
-    \end{tabularx}
-    \caption{Tracciamento Requisito - Fonti}
-    \label{tab:Tracciamento_requisiti_fonti}
-\end{table}
-
-
-\begin{table}[h!]
-    \centering
-    \renewcommand{\arraystretch}{1.6} % Per aumentare l'altezza delle righe
-    \begin{tabularx}{0.8\textwidth}{|>{\centering\arraybackslash}p{2.8cm}|>{\centering\arraybackslash}X|} \hline
-    \rowcolor[HTML]{FFD700} 
-    \textbf{Requisito} & \textbf{Fonti} \\ \hline
     RZF23 & \bulhyperlink{UC13}{UC13},\bulhyperlink{UC13.1}{UC13.1}\\ \hline
     RZF24 & \bulhyperlink{UC14}{UC14}\\ \hline
     RZF25 & \bulhyperlink{UC16}{UC16}\\ \hline
@@ -248,6 +223,19 @@ le prestazioni del dispositivo e dall'ottimizzazione specifica per il browser \e
     RZF28 & \bulhyperlink{UC18}{UC18},\bulhyperlink{UC19}{UC19}, \bulhyperlink{UC20}{UC20}\\ \hline
     ROQ1 & Verbale Interno\\ \hline
     ROQ2 & Verbale Interno\\ \hline
+    \end{tabularx}
+    \caption{Tracciamento Requisito - Fonti}
+    \label{tab:Tracciamento_requisiti_fonti}
+\end{table}
+
+\newpage
+\begin{table}[h!]
+    \centering
+    \renewcommand{\arraystretch}{1.6} % Per aumentare l'altezza delle righe
+    \begin{tabularx}{0.8\textwidth}{|>{\centering\arraybackslash}p{2.8cm}|>{\centering\arraybackslash}X|} \hline
+    \rowcolor[HTML]{FFD700} 
+    \textbf{Requisito} & \textbf{Fonti} \\ \hline
+    
     ROQ3 & Capitolato \\ \hline
     ROQ4 & Capitolato \\ \hline
     ROQ5 & Capitolato \\ \hline
