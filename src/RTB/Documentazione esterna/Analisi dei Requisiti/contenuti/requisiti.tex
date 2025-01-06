@@ -22,7 +22,7 @@ solida per la \emph{progettazione}\textsubscript{\textit{\textbf{G}}} del sistem
     ROF5 & Obbligatorio & Nel caso il sistema fallisca nel generare una risposta per via di un problema intenrno, deve far visualizzare all'utente un messaggio di errore, chiedendo di riprovare più tardi. & \bulhyperlink{UC3}{UC3}, \bulhyperlink{UC4}{UC4} \\ \hline
     ROF6 & Obbligatorio & Nel caso in cui l'utente inserisca un'interrogazione che non riguarda i contenuti del database associato, il sistema non deve generare risposta, bensì deve avvisare l'utente che la domanda inserita è fuori contesto. & \bulhyperlink{UC3}{UC3}, \bulhyperlink{UC5}{UC5} \\ \hline
     ROF7 & Obbligatorio & Nel caso il sistema non riesca a trovare le informazioni richieste dall'utente, deve far visualizzare all'utente un messaggio di errore in cui viene segnalata la mancanza dell'informazione richiesta. & \bulhyperlink{UC3}{UC3}, \bulhyperlink{UC6}{UC6} \\ \hline
-    ROF8 & Desiderabile & L'utente deve poter visualizzare i file da cui il sistema ha preso i dati per la risposta &\bulhyperlink{UC2.1}{UC2.1} \\ \hline
+    ROF8 & Desiderabile & L'utente deve poter visualizzare i file da cui il sistema ha preso i dati per la risposta. &\bulhyperlink{UC2.1}{UC2.1} \\ \hline
     RDF9 & Desiderabile & Nel caso l'utente tenti di accedere ai file utilizzati per genereare la risposta ma questo non sia possibile, deve essere visualizzato un messaggio di errore. &\bulhyperlink{UC15}{UC15} \\ \hline
     \end{tabularx}
     \end{table}
@@ -108,10 +108,10 @@ coerenza e l'\emph{efficienza}\textsubscript{\textit{\textbf{G}}} del prodotto.
     \begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}c|>{\centering\arraybackslash}c|>{\centering\arraybackslash}X|>{\centering\arraybackslash}p{3cm}|} \hline
     \rowcolor[HTML]{FFD700} 
     \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Fonti} \\ \hline
-    ROV1 & Obbligatorio & L'applicazione deve garantire la compatibilità con la versione più recente di \emph{Google Chrome}\textsubscript{\textit{\textbf{G}}} al momento della \emph{demo}\textsubscript{\textit{\textbf{G}}} & Verbale esterno \\ \hline
-    ROV2 & Obbligatorio & Il sistema deve garantire piena integrazione con le \emph{API}\textsubscript{\textit{\textbf{G}}} di \emph{Confluence}\textsubscript{\textit{\textbf{G}}} & Verbale esterno \\ \hline
-    ROV3 & Obbligatorio & Il sistema deve garantire piena integrazione con le \emph{API}\textsubscript{\textit{\textbf{G}}} di \emph{Jira}\textsubscript{\textit{\textbf{G}}} & Verbale esterno\\ \hline
-    ROV4 & Obbligatorio & Il sistema deve garantire piena integrazione con le \emph{API}\textsubscript{\textit{\textbf{G}}} di \emph{GitHub}\textsubscript{\textit{\textbf{G}}} & Verbale esterno \\ \hline
+    ROV1 & Obbligatorio & L'applicazione deve garantire la compatibilità con la versione più recente di \emph{Google Chrome}\textsubscript{\textit{\textbf{G}}} al momento della \emph{demo}\textsubscript{\textit{\textbf{G}}}. & Verbale esterno \\ \hline
+    ROV2 & Obbligatorio & Il sistema deve garantire piena integrazione con le \emph{API}\textsubscript{\textit{\textbf{G}}} di \emph{Confluence}\textsubscript{\textit{\textbf{G}}}. & Verbale esterno \\ \hline
+    ROV3 & Obbligatorio & Il sistema deve garantire piena integrazione con le \emph{API}\textsubscript{\textit{\textbf{G}}} di \emph{Jira}\textsubscript{\textit{\textbf{G}}}. & Verbale esterno\\ \hline
+    ROV4 & Obbligatorio & Il sistema deve garantire piena integrazione con le \emph{API}\textsubscript{\textit{\textbf{G}}} di \emph{GitHub}\textsubscript{\textit{\textbf{G}}}. & Verbale esterno \\ \hline
     \end{tabularx}
     \caption{Requisiti di vincolo}
     \label{tab:Requisiti_di_vincolo}
@@ -125,10 +125,10 @@ coerenza e l'\emph{efficienza}\textsubscript{\textit{\textbf{G}}} del prodotto.
     \begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}c|>{\centering\arraybackslash}c|>{\centering\arraybackslash}X|>{\centering\arraybackslash}p{3cm}|} \hline
     \rowcolor[HTML]{FFD700} 
     \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Fonti} \\ \hline
-    ROI1 & Obbligatorio & Il sistema deve processare i documenti che vengono caricati, creandone i loro \emph{embedding} & Verbale esterno\\ \hline
-    ROI2 & Obbligatorio & Il sistema deve salvare, in modo persistente, il contenuto dei documenti caricati & Verbale esterno\\ \hline
-    ROI3 & Obbligatorio & Il sistema deve salvare, in modo persistente, tutti i metadati dei documenti caricati & Verbale esterno\\ \hline
-    ROI4 & Obbligatorio & Il sistema deve salvare, i commit e i file testuali di \emph{GitHub}, escludendo PDF o immagini & Verbale esterno\\ \hline
+    ROI1 & Obbligatorio & Il sistema deve processare i documenti che vengono caricati, creandone i loro \emph{embedding}. & Verbale esterno\\ \hline
+    ROI2 & Obbligatorio & Il sistema deve salvare, in modo persistente, il contenuto dei documenti caricati. & Verbale esterno\\ \hline
+    ROI3 & Obbligatorio & Il sistema deve salvare, in modo persistente, tutti i metadati dei documenti caricati. & Verbale esterno\\ \hline
+    ROI4 & Obbligatorio & Il sistema deve salvare, i commit e i file testuali di \emph{GitHub}, escludendo PDF o immagini. & Verbale esterno\\ \hline
     \end{tabularx}
     \caption{Requisiti implementativi}
     \label{tab:Requisiti_implementativi}
