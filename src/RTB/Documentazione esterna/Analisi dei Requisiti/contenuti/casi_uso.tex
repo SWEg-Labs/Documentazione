@@ -18,11 +18,6 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
 
 \begin{itemize}
     \item \textbf{Utente}: Persona che utilizza l'applicazione interagendo direttamente con il sistema e avendo accesso a tutte le funzionalità del chatbot.
-    \item \textbf{\emph{GitHub}\textsubscript{\textbf{\textit{G}}}}: Piattaforma di gestione del codice sorgente che fornisce i documenti necessari per il modello di question answering. \emph{GitHub} è utilizzato come fonte di dati, mettendo a disposizione documentazione, repository e informazioni sui progetti. Oltre a fornire i documenti, \emph{GitHub} viene utilizzato anche per gestire i task da svolgere, attraverso l'uso delle issue, che il modello può consultare per rispondere alle domande degli utenti relative al codice, ai progetti e alle attività da completare.
-    \item \textbf{\emph{Jira}\textsubscript{\textbf{\textit{G}}}}: Piattaforma per la gestione dei progetti e il tracciamento delle attività. Il suo compito è fornire documentazione relativa ai task, alle issue e ai progressi dei progetti. \emph{Jira} viene utilizzato come fonte di dati per il modello di question answering, consentendo al sistema di accedere a informazioni su problemi, progressi e attività legate ai progetti per rispondere alle domande degli utenti.
-    \item \textbf{\emph{Confluence}\textsubscript{\textbf{\textit{G}}}}: Piattaforma per la gestione della documentazione collaborativa. \emph{Confluence} offre documenti e altre informazioni condivise tra i membri del team, riguardanti i vari progetti. Viene utilizzata come fonte di dati dal modello di question answering, che sfrutta la documentazione per fornire risposte precise e contestualizzate alle domande degli utenti.
-    \item \textbf{\emph{Database vettoriale}\textsubscript{\textbf{\textit{G}}}}: Il database vettoriale è un sistema usato per memorizzare informazioni sotto forma di vettori. È progettato per rendere più semplice e veloce la ricerca semantica, sfruttando algoritmi di intelligenza artificiale e di similarità. Supporta il modello di question answering nell'archiviazione e nel recupero rapido di documenti da GitHub, Jira e Confluence, permettendo al sistema di rispondere in modo efficiente trovando contenuti rilevanti tramite il confronto tra vettori.
-    \item \textbf{\emph{Modello di embedding}\textsubscript{\textbf{\textit{G}}}}: Il modello di embedding è un sistema di intelligenza artificiale che trasforma i documenti in vettori numerici. Questo modello è utilizzato per convertire i documenti provenienti da \emph{GitHub}, \emph{Jira} e \emph{Confluence} in vettori, in modo da poterli memorizzare e confrontare in maniera efficiente all'interno del database vettoriale. Il modello di embedding è fondamentale per il funzionamento del sistema, in quanto permette di elaborare e confrontare i dati in modo rapido e preciso.
     \item \textbf{\emph{Scheduler}\textsubscript{\textbf{\textit{G}}}}: Lo \emph{Scheduler} è un sistema che si occupa di pianificare e gestire l'aggiornamento automatico periodico del \emph{database vettoriale}. Lo \emph{Scheduler} è fondamentale per mantenere il database aggiornato e garantire che il sistema abbia sempre a disposizione le informazioni più recenti e precise per rispondere alle domande degli utenti.
 
 \end{itemize}
@@ -94,69 +89,20 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
     \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
     \begin{enumerate}
         \item L'utente accede all'interfaccia dell'applicazione;
-        \item \bulhyperlink{UC1.1}{UC1.1}: L'utente scrive l'interrogazione in linguaggio naturale nella barra di input.
-        \item \bulhyperlink{UC1.2}{UC1.2}: L'utente invia l'interrogazione tramite il pulsante dedicato o "Invio" dalla tastiera.
-        \item \bulhyperlink{UC1.3}{UC1.3}: Il sistema mostra il messaggio generato nella schermata principale.
-    \end{enumerate}
-    \item \textbf{\emph{Sottocasi d'uso}\textsubscript{\textbf{\textit{G}}}}:
-    \begin{itemize}
-        \item \bulhyperlink{UC1.1}{UC1.1}: L'utente scrive l'interrogazione in linguaggio naturale nella barra di input.
-        \item \bulhyperlink{UC1.2}{UC1.2}: L'utente invia l'interrogazione tramite il pulsante dedicato o "Invio" dalla tastiera.
-        \item \bulhyperlink{UC1.3}{UC1.3}: Visualizzazione del messaggio appena scritto nella videata principale.
-    \end{itemize}
-\end{itemize}
-
-\hypertarget{UC1.1}{}
-\subsubsubsection{UC1.1: Scrittura del testo dell'interrogazione in una barra di input}
-\begin{itemize}
-    \item \textbf{Attori principali}: Utente;
-    \item \textbf{Precondizioni}: L'utente deve avere accesso all'interfaccia dell'applicazione connessa al database;
-    \item \textbf{Trigger}: L'utente desidera inserire un'interrogazione in linguaggio naturale;
-    \item \textbf{Postcondizioni}: L'utente è riuscito ad inserire l'interrogazione in linguaggio naturale;
-    \item \textbf{Scenario principale}:
-    \begin{enumerate}
-        \item L'utente deve avere accesso all'interfaccia dell'applicazione connessa al database;
-        \item L'utente inserisce un'interrogazione in linguaggio naturale.
+        \item L'utente scrive l'interrogazione in linguaggio naturale nella barra di input.
+        \item L'utente invia l'interrogazione tramite il pulsante dedicato o "Invio" dalla tastiera.
+        \item \bulhyperlink{UC8.1}{UC8.1}: Il sistema mostra il messaggio generato nella schermata principale.
     \end{enumerate}
 \end{itemize}
 
-\hypertarget{UC1.2}{}
-\subsubsubsection{UC1.2: Invio dell'interrogazione tramite pulsante dedicato oppure "Invio" della tastiera}
-\begin{itemize}
-    \item \textbf{Attori principali}: Utente;
-    \item \textbf{Precondizioni}: L'utente è riuscito ad inserire l'interrogazione in linguaggio naturale;
-    \item \textbf{Trigger}: L'utente desidera inviare l'interrogazione tramite il pulsante dedicato oppure "Invio" della tastiera;
-    \item \textbf{Postcondizioni}: L'interrogazione è stata inviata;
-    \item \textbf{Scenario principale}:
-    \begin{enumerate}
-        \item \bulhyperlink{UC1.1}{UC1.1}: L'utente è riuscito ad inserire l'interrogazione in linguaggio naturale;
-        \item Invio dell'interrogazione tramite pulsante dedicato oppure "Invio" della tastiera;
-        \item L'interrogazione è stata inviata.
-    \end{enumerate}
-\end{itemize}
-
-\hypertarget{UC1.3}{}
-\subsubsubsection{UC1.3: Visualizzazione del messaggio appena scritto nella videata principale}
-\begin{itemize}
-    \item \textbf{Attori principali}: Utente;
-    \item \textbf{Precondizioni}: l'interrogazione è stata inviata;
-    \item \textbf{Trigger}: L'utente desidera visualizzare il messaggio appena scritto nella videata principale;
-    \item \textbf{Postcondizioni}: L'utente visualizza sullo schermo il messaggio;
-    \item \textbf{Scenario principale}:
-    \begin{enumerate}
-        \item \bulhyperlink{UC1.1}{UC1.1}: L'utente è riuscito ad inserire l'interrogazione in linguaggio naturale;
-        \item \bulhyperlink{UC1.2}{UC1.2}: L'interrogazione è stata inviata;
-        \item L'interrogazione viene visualizzata sullo schermo.
-    \end{enumerate}
-\end{itemize}
-
+\newpage
 
 \hypertarget{UC2}{}
 \subsubsection{UC2: Visualizzazione della risposta generata}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{UC2+UC3+UC4+UC5+UC6.png}
+    \includegraphics[width=\textwidth]{UC2+UC3+UC4+UC5.png}
     \caption{Visualizzazione della risposta generata}
 \end{figure}
 
@@ -172,33 +118,17 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
     \end{enumerate}
     \item \textbf{Scenario alternativo}:
     \begin{enumerate}
-        \item \bulhyperlink{UC3}{UC3}: Visualizzazione errore nella risposta.
-    \end{enumerate}
-\end{itemize}
-
-\hypertarget{UC3}{}
-\subsubsection{UC3: Visualizzazione errore nella risposta}
-\begin{itemize}
-    \item \textbf{Attori principali}: Utente;
-    \item \textbf{Precondizioni}: Il sistema non ha generato correttamente la risposta alla domanda dell'utente;
-    \item \textbf{Trigger}: L'utente desidera visualizzare la risposta alla domanda che ha posto;
-    \item \textbf{Postcondizioni}: Viene visualizzato un messaggio di errore;
-    \item \textbf{Scenario principale}:
-    \begin{enumerate}
-        \item Il sistema ha generato correttamente la risposta alla domanda dell'utente;
-        \item Avviene un errore (di qualunque tipo) durante il processo di generazione della risposta;
-        \item Viene visualizzato un messaggio di errore.
+        \item \bulhyperlink{UC3}{UC3}: Visualizzazione errore nella generazione della risposta.
     \end{enumerate}
     \item \textbf{Casi che ereditano}:
     \begin{itemize}
-        \item \bulhyperlink{UC4}{UC4}: Visualizzazione errore nella generazione della risposta;
-        \item \bulhyperlink{UC5}{UC5}: Visualizzazione errore interrogazione fuori contesto;
-        \item \bulhyperlink{UC6}{UC6}: Visualizzazione errore informazione non trovata.
+        \item \bulhyperlink{UC4}{UC4}: Visualizzazione interrogazione fuori contesto;
+        \item \bulhyperlink{UC5}{UC5}: Visualizzazione informazione non trovata.
     \end{itemize}
 \end{itemize}
 
-\hypertarget{UC4}{}
-\subsubsection{UC4: Visualizzazione errore nella generazione della risposta}
+\hypertarget{UC3}{}
+\subsubsection{UC3: Visualizzazione errore nella generazione della risposta}
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: Il sistema non è riuscito a generare la risposta alla domanda dell'utente a causa di un errore interno;
@@ -210,14 +140,10 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
         \item Si genera un errore durante il processamento della domanda che non permette la generazione della risposta;
         \item Viene visualizzato un messaggio di errore, chiedendo di riprovare più tardi.
     \end{enumerate}
-    \item \textbf{Eredita da}:
-    \begin{itemize}
-        \item \bulhyperlink{UC3}{UC3}: Visualizzazione errore nella risposta.
-    \end{itemize}
 \end{itemize}
 
-\hypertarget{UC5}{}
-\subsubsection{UC5: Visualizzazione errore interrogazione fuori contesto}
+\hypertarget{UC4}{}
+\subsubsection{UC4: Visualizzazione interrogazione fuori contesto}
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: Il sistema ha rilevato una bassissima correlazione tra l'interrogazione scritta dall'utente e i documenti del \emph{database vettoriale};
@@ -232,14 +158,14 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
     \end{enumerate}
     \item \textbf{Eredita da}:
     \begin{itemize}
-        \item \bulhyperlink{UC3}{UC3}: Visualizzazione errore nella risposta.
+        \item \bulhyperlink{UC2}{UC2}: Visualizzazione della risposta generata.
     \end{itemize}
 \end{itemize}
 
-\hypertarget{UC6}{}
-\subsubsection{UC6: Visualizzazione errore informazione non trovata}
+\hypertarget{UC5}{}
+\subsubsection{UC5: Visualizzazione errore informazione non trovata}
 \begin{itemize}
-    \item \textbf{Attori coinvolti}: Utente;
+    \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: Il sistema non ha trovato nei documenti di contesto l'informazione che l'utente ha domandato;
     \item \textbf{Trigger}: L'utente desidera visualizzare una risposta contenente le informazioni che ha richiesto nella domanda che ha posto al sistema;
     \item \textbf{Postcondizioni}: L'utente visualizza come risposta un messaggio del sistema in cui gli viene segnalata la mancanza dell'informazione 
@@ -253,17 +179,18 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
     \end{enumerate}
     \item \textbf{Eredita da}:
     \begin{itemize}
-        \item \bulhyperlink{UC3}{UC3}: Visualizzazione errore nella risposta.
+        \item \bulhyperlink{UC2}{UC2}: Visualizzazione della risposta generata.
     \end{itemize}
 \end{itemize}
 
+\newpage
 
 \hypertarget{UC2.1}{}
 \subsubsubsection{UC2.1: Visualizzazione dei file da cui il sistema ha preso i dati per la risposta alla domanda}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{UC2.1+UC15.png}
+    \includegraphics[width=\textwidth]{UC2.1+UC14.png}
     \caption{Visualizzazione dei file da cui il sistema ha preso i dati per la risposta alla domanda}
 \end{figure}
 
@@ -282,12 +209,12 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
     \end{enumerate}
     \item \textbf{Scenario alternativo}:
     \begin{enumerate}
-        \item \bulhyperlink{UC15}{UC15}: Visualizzazione errore nella rilevazione dei file utili per la risposta.
+        \item \bulhyperlink{UC14}{UC14}: Visualizzazione errore nella rilevazione dei file utili per la risposta.
     \end{enumerate}
 \end{itemize}
 
-\hypertarget{UC15}{}
-\subsubsection{UC15: Visualizzazione errore nella rilevazione dei file utili per la risposta}
+\hypertarget{UC14}{}
+\subsubsection{UC14: Visualizzazione errore nella rilevazione dei file utili per la risposta}
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: L'utente ha visualizzato la risposta generata;
@@ -303,13 +230,14 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
     \end{enumerate}
 \end{itemize}
 
+\newpage
 
-\hypertarget{UC7}{}
-\subsubsection{UC7: Copia del testo della risposta generata}
+\hypertarget{UC6}{}
+\subsubsection{UC6: Copia del testo della risposta generata}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{placeholder.png}
+    \includegraphics[width=\textwidth]{UC6.png}
     \caption{Copia del testo della risposta generata}
 \end{figure}
 
@@ -317,21 +245,22 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
     \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: Il sistema ha generato una risposta valida e visibile alla domanda posta dall'utente;
     \item \textbf{Trigger}: L'utente desidera copiare il testo della risposta generata;
-    \item \textbf{Postcondizioni}: Il testo della risposta generata viene copiato con successo nella clipboard del dispositivo e diventa disponibile per l'uso da parte dell'utente in altre applicazioni o contesti;
+    \item \textbf{Postcondizioni}: Il testo della risposta generata viene copiato con successo nella clipboard del dispositivo e 
+    diventa disponibile per l'uso da parte dell'utente in altre applicazioni o contesti;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
         \item Il sistema ha generato correttamente la risposta alla domanda dell'utente;
-        \item L'utente copia il testo della risposta generata;
+        \item L'utente copia il testo della risposta generata premendo il pulsante che permette di copiarlo.
     \end{enumerate}
 \end{itemize}
 
 
-\hypertarget{UC8}{}
-\subsubsubsection{UC8: Copia dello \emph{snippet} di codice inserito nella risposta}
+\hypertarget{UC7}{}
+\subsubsubsection{UC7: Copia dello \emph{snippet} di codice inserito nella risposta}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{placeholder.png}
+    \includegraphics[width=\textwidth]{UC7.png}
     \caption{Copia dello \emph{snippet} di codice inserito nella risposta}
 \end{figure}
 
@@ -348,13 +277,12 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
 \end{itemize}
 
 
-\newpage
-\hypertarget{UC9}{}
-\subsubsection{UC9: Visualizzazione dello storico della chat}
+\hypertarget{UC8}{}
+\subsubsection{UC8: Visualizzazione dello storico della chat}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{placeholder.png}
+    \includegraphics[width=\textwidth]{UC8+UC9.png}
     \caption{Visualizzazione dello storico della chat}
 \end{figure}
 
@@ -365,19 +293,38 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
     \item \textbf{Postcondizioni}: L'utente visualizza lo storico della chat;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
-        \item L'utente desidera visualizzare lo storico della chat;
+        \item L'utente avvia il sistema;
         \item Il sistema recupera i messaggi dello storico della chat dal database relazionale e li mostra a schermo;
         \item L'utente visualizza lo storico della chat.
     \end{enumerate}
+    \item \textbf{Sottocasi d'uso}:
+    \begin{itemize}
+        \item \bulhyperlink{UC8.1}{UC8.1}: Visualizzazione singolo messaggio dello storico.
+    \end{itemize}
     \item \textbf{Scenario alternativo}:
     \begin{enumerate}
-        \item \bulhyperlink{UC10}{UC10}: Visualizzazione errore nel recupero dello storico.
+        \item \bulhyperlink{UC9}{UC9}: Visualizzazione errore nel recupero dello storico.
+    \end{enumerate}
+\end{itemize}
+
+\hypertarget{UC8.1}{}
+\subsubsection{UC8.1: Visualizzazione singolo messaggio dello storico}
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: Il sistema deve essere collegato a un database relazionale per memorizzare e recuperare lo storico della chat;
+    \item \textbf{Trigger}: L'utente desidera visualizzare un singolo messaggio dello storico della chat;
+    \item \textbf{Postcondizioni}: L'utente visualizza un singolo messaggio dello storico della chat;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item L'utente avvia il sistema;
+        \item Il sistema recupera il messaggio dal database relazionale e lo mostra a schermo;
+        \item L'utente visualizza il messaggio dello storico della chat.
     \end{enumerate}
 \end{itemize}
 
 
-\hypertarget{UC10}{}
-\subsubsection{UC10: Visualizzazione errore nel recupero dello storico}
+\hypertarget{UC9}{}
+\subsubsection{UC9: Visualizzazione errore nel recupero dello storico}
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: Il sistema deve essere collegato a un database relazionale per memorizzare e recuperare lo storico della chat;
@@ -392,12 +339,12 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
 \end{itemize}
 
 
-\hypertarget{UC11}{}
-\subsubsection{UC11: Aggiornamento automatico del database vettoriale}
+\hypertarget{UC10}{}
+\subsubsection{UC10: Aggiornamento automatico del database vettoriale}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{UC11.png}
+    \includegraphics[width=\textwidth]{UC10.png}
     \caption{Aggiornamento automatico del database vettoriale}
 \end{figure}
 
@@ -410,118 +357,23 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
         \item Lo \emph{Scheduler} è attivo;
         \item E' arrivato il momento, prefissato dallo Scheduler, di aggiornare il database vettoriale.
     \end{itemize}
-    \item \textbf{Trigger}: L'utente desidera ricevere risposte basate su dati aggiornati provenienti da GitHub, Jira e Confluence;
+    \item \textbf{Trigger}: L'utente desidera ricevere risposte basate su dati aggiornati provenienti da \emph{GitHub}\textsubscript{\textbf{\textit{G}}}, 
+    \emph{Jira}\textsubscript{\textbf{\textit{G}}} e \emph{Confluence}\textsubscript{\textbf{\textit{G}}};
     \item \textbf{Postcondizioni}: Lo scheduler ha aggiornato il database vettoriale con i dati più recenti provenienti da GitHub, Jira e Confluence;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
         \item E' arrivato il momento, prefissato dallo Scheduler, di aggiornare il database vettoriale;
-        \item \bulhyperlink{UC11.1}{UC11.1}: Chiamata \emph{API}\textsubscript{\textbf{\textit{G}}} verso GitHub per il recupero di eventuali nuove modifiche;
-        \item \bulhyperlink{UC11.2}{UC11.2}: Chiamata API verso Jira per il recupero di eventuali nuove modifiche;
-        \item \bulhyperlink{UC11.3}{UC11.3}: Chiamata API verso Confluence per il recupero di eventuali nuove modifiche;
-        \item \bulhyperlink{UC11.4.1}{UC11.4.1}: Conversione dei nuovi dati in formato vettoriale da parte del modello di embedding;
-        \item \bulhyperlink{UC11.4}{UC11.4}: \emph{Merge}\textsubscript{\textbf{\textit{G}}} dei nuovi dati aggiornati di GitHub, Jira e Confluence
-        con i dati già presenti nel database vettoriale.
-    \end{enumerate}
-    \item \textbf{Sottocasi d'uso}:
-    \begin{itemize}
-        \item \bulhyperlink{UC11.1}{UC11.1}: Chiamata API verso GitHub per il recupero di eventuali nuove modifiche;
-        \item \bulhyperlink{UC11.2}{UC11.2}: Chiamata API verso Jira per il recupero di eventuali nuove modifiche;
-        \item \bulhyperlink{UC11.3}{UC11.3}: Chiamata API verso Confluence per il recupero di eventuali nuove modifiche;
-        \item \bulhyperlink{UC11.4}{UC11.4}: Merge delle risposte generate utilizzando dati di contesto di GitHub, Jira e Confluence aggiornati.
-    \end{itemize}
-\end{itemize}
-
-\hypertarget{UC11.1}{}
-\subsubsubsection{UC11.1: Chiamata API verso GitHub per il recupero di eventuali nuove modifiche}
-\begin{itemize}
-    \item \textbf{Attori principali}: GitHub;
-    \item \textbf{Precondizioni}: E' arrivato il momento, prefissato dallo Scheduler, di aggiornare il database vettoriale;
-    \item \textbf{Trigger}: L'utente desidera ricevere risposte basate su dati aggiornati provenienti da GitHub;
-    \item \textbf{Postcondizioni}: Vengono recuperati i dati aggiornati da GitHub;
-    \item \textbf{Scenario principale}: 
-    \begin{enumerate}
-        \item E' arrivato il momento, prefissato dallo Scheduler, di aggiornare il database vettoriale;
-        \item Avviene una chiamata API verso GitHub per il recupero dei dati più recenti;
-        \item Vengono recuperati i dati aggiornati da GitHub.
-    \end{enumerate}
-\end{itemize}
-
-\hypertarget{UC11.2}{}
-\subsubsubsection{UC11.2: Chiamata API verso Jira per il recupero di eventuali nuove modifiche}
-\begin{itemize}
-    \item \textbf{Attori principali}: Jira;
-    \item \textbf{Precondizioni}: E' arrivato il momento, prefissato dallo Scheduler, di aggiornare il database vettoriale;
-    \item \textbf{Trigger}: L'utente desidera ricevere risposte basate su dati aggiornati provenienti da Jira;
-    \item \textbf{Postcondizioni}: Vengono recuperati i dati aggiornati da Jira;
-    \item \textbf{Scenario principale}: 
-    \begin{enumerate}
-        \item E' arrivato il momento, prefissato dallo Scheduler, di aggiornare il database vettoriale;
-        \item Avviene una chiamata API verso Jira per il recupero dei dati più recenti;
-        \item Vengono recuperati i dati aggiornati da Jira.
-    \end{enumerate}
-\end{itemize}
-
-\hypertarget{UC11.3}{}
-\subsubsubsection{UC11.3: Chiamata API verso Confluence per il recupero di eventuali nuove modifiche}
-\begin{itemize}
-    \item \textbf{Attori principali}: Confluence;
-    \item \textbf{Precondizioni}: E' arrivato il momento, prefissato dallo Scheduler, di aggiornare il database vettoriale;
-    \item \textbf{Trigger}: L'utente desidera ricevere risposte basate su dati aggiornati provenienti da Confluence;
-    \item \textbf{Postcondizioni}: Vengono recuperati i dati aggiornati da Confluence;
-    \item \textbf{Scenario principale}: 
-    \begin{enumerate}
-        \item E' arrivato il momento, prefissato dallo Scheduler, di aggiornare il database vettoriale;
-        \item Avviene una chiamata API verso Confluence per il recupero dei dati più recenti;
-        \item Vengono recuperati i dati aggiornati da Confluence.
-    \end{enumerate}
-\end{itemize}
-
-\hypertarget{UC11.4}{}
-\subsubsubsection{UC11.4: Merge dei nuovi dati con i dati già presenti nel database vettoriale}
-\begin{itemize}
-    \item \textbf{Attori principali}: Database vettoriale;
-    \item \textbf{Precondizioni}: Sono stati recuperati i dati aggiornati da GitHub, Jira e Confluence;
-    \item \textbf{Trigger}: L'utente desidera ricevere risposte basate su dati aggiornati provenienti da GitHub, Jira e Confluence;
-    \item \textbf{Postcondizioni}: E' stato eseguito il merge dei nuovi dati provenienti da GitHub, Jira e Confluence nel database vettoriale;
-    \item \textbf{Scenario principale}:
-    \begin{enumerate}
-        \item E' arrivato il momento, prefissato dallo Scheduler, di aggiornare il database vettoriale;
-        \item \bulhyperlink{UC11.1}{UC11.1}: Chiamata API verso GitHub per il recupero di eventuali nuove modifiche;
-        \item \bulhyperlink{UC11.2}{UC11.2}: Chiamata API verso Jira per il recupero di eventuali nuove modifiche;
-        \item \bulhyperlink{UC11.3}{UC11.3}: Chiamata API verso Confluence per il recupero di eventuali nuove modifiche;
-        \item \bulhyperlink{UC11.4.1}{UC11.4.1}: I nuovi dati provenienti da GitHub, Jira e Confluence vengono convertiti in formato vettoriale dal modello di embedding;
-        \item Viene eseguito il merge dei nuovi dati in formato vettoriale con i dati già presenti nel database vettoriale.
-    \end{enumerate}
-    \item \textbf{Sottocasi d'uso}:
-    \begin{itemize}
-        \item \bulhyperlink{UC11.4.1}{UC11.4.1}: Conversione dei nuovi dati in formato vettoriale.
-    \end{itemize}
-\end{itemize}
-
-\hypertarget{UC11.4.1}{}
-\paragraph{UC11.4.1: Conversione dei nuovi dati in formato vettoriale}
-\begin{itemize}
-    \item \textbf{Attori principali}: Modello di embedding;
-    \item \textbf{Precondizioni}: Sono stati recuperati i dati aggiornati da GitHub, Jira e Confluence;
-    \item \textbf{Trigger}: L'utente desidera ricevere risposte basate su dati aggiornati provenienti da GitHub, Jira e Confluence;
-    \item \textbf{Postcondizioni}: I nuovi dati provenienti da GitHub, Jira e Confluence vengono convertiti in formato vettoriale dal modello di embedding;
-    \item \textbf{Scenario principale}: 
-    \begin{enumerate}
-        \item E' arrivato il momento, prefissato dallo Scheduler, di aggiornare il database vettoriale;
-        \item \bulhyperlink{UC11.1}{UC11.1}: Chiamata API verso GitHub per il recupero di eventuali nuove modifiche;
-        \item \bulhyperlink{UC11.2}{UC11.2}: Chiamata API verso Jira per il recupero di eventuali nuove modifiche;
-        \item \bulhyperlink{UC11.3}{UC11.3}: Chiamata API verso Confluence per il recupero di eventuali nuove modifiche;
-        \item I nuovi dati provenienti da GitHub, Jira e Confluence vengono convertiti in formato vettoriale dal modello di embedding.
+        \item Lo scheduler ha aggiornato il database vettoriale con i dati più recenti provenienti da GitHub, Jira e Confluence.
     \end{enumerate}
 \end{itemize}
 
 
-\hypertarget{UC12}{}
-\subsubsection{UC12: Visualizzazione di una lista di domande ideali per iniziare la conversazione}
+\hypertarget{UC11}{}
+\subsubsection{UC11: Visualizzazione di una lista di domande ideali per iniziare la conversazione}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{placeholder.png}
+    \includegraphics[width=\textwidth]{UC11.png}
     \caption{Visualizzazione di una lista di domande ideali per iniziare la conversazione}
 \end{figure}
 
@@ -538,12 +390,12 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
     \end{enumerate}
     \item \textbf{Sottocasi d'uso}:
     \begin{itemize}
-        \item \bulhyperlink{UC12.1}{UC12.1}: Visualizzazione di una singola domanda ideale per iniziare la conversazione;
+        \item \bulhyperlink{UC11.1}{UC11.1}: Visualizzazione di una singola domanda ideale per iniziare la conversazione;
     \end{itemize}
 \end{itemize}
 
-\hypertarget{UC12.1}{}
-\subsubsection{UC12.1: Visualizzazione di una singola domanda ideale per iniziare la conversazione}
+\hypertarget{UC11.1}{}
+\subsubsection{UC11.1: Visualizzazione di una singola domanda ideale per iniziare la conversazione}
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: L'utente ha appena cominciato una nuova conversazione;
@@ -558,12 +410,12 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
 \end{itemize}
 
 
-\hypertarget{UC13}{}
-\subsubsection{UC13: Visualizzazione di una lista di domande ideali per proseguire la conversazione}
+\hypertarget{UC12}{}
+\subsubsection{UC12: Visualizzazione di una lista di domande ideali per proseguire la conversazione}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{placeholder.png}
+    \includegraphics[width=\textwidth]{UC12+UC13.png}
     \caption{Visualizzazione di una lista di domande ideali per proseguire la conversazione}
 \end{figure}
 
@@ -574,22 +426,22 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
     \item \textbf{Postcondizioni}: L'utente visualizza una lista di domande suggerite dal sistema, che possono essere utilizzate per proseguire la conversazione;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
-        \item \bulhyperlink{UC5}{UC5}: L'utente ha visualizzato la risposta a una domanda precedente;
+        \item \bulhyperlink{UC2}{UC2}: L'utente ha visualizzato la risposta a una domanda precedente;
         \item Il sistema propone una lista di domande considerate utili rispetto ai messaggi precedenti;
         \item \bulhyperlink{UC1}{UC1}: L'utente seleziona una delle domande proposte o inserisce una propria domanda;
     \end{enumerate}
     \item \textbf{Sottocasi d'uso}:
     \begin{itemize}
-        \item \bulhyperlink{UC13.1}{UC13.1}: Visualizzazione di una singola domanda ideale per proseguire la conversazione.
+        \item \bulhyperlink{UC12.1}{UC12.1}: Visualizzazione di una singola domanda ideale per proseguire la conversazione.
     \end{itemize}
     \item \textbf{Scenario alternativo}:
     \begin{enumerate}
-        \item \bulhyperlink{UC15}{UC15}: Visualizzazione di un messaggio di errore che comunica che il sistema non è in grado di proporre delle domande.
+        \item \bulhyperlink{UC13}{UC13}: Visualizzazione errore nella generazione delle domande per proseguire la conversazione.
     \end{enumerate}
 \end{itemize}
 
-\hypertarget{UC13.1}{}
-\subsubsection{UC13.1: Visualizzazione di una singola domanda ideale per proseguire la conversazione}
+\hypertarget{UC12.1}{}
+\subsubsection{UC12.1: Visualizzazione di una singola domanda ideale per proseguire la conversazione}
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: L'utente ha appena ricevuto una risposta dal sistema;
@@ -599,12 +451,13 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
     \begin{enumerate}
         \item \bulhyperlink{UC2}{UC2}: L'utente ha visualizzato la risposta a una domanda precedente;
         \item Il sistema propone una domanda ideale per proseguire la conversazione;
+        \item L'utente visualizza la domanda proposta;
         \item \bulhyperlink{UC1}{UC1}: L'utente seleziona la domanda proposta o inserisce una propria domanda;
     \end{enumerate}
 \end{itemize}
 
-\hypertarget{UC14}{}
-\subsubsection{UC14: Visualizzazione errore nella generazione delle domande per proseguire la conversazione}
+\hypertarget{UC13}{}
+\subsubsection{UC13: Visualizzazione errore nella generazione delle domande per proseguire la conversazione}
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: L'utente ha appena ricevuto una risposta dal sistema;
@@ -613,60 +466,18 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
     \item \textbf{Scenario principale}:
     \begin{enumerate}
         \item \bulhyperlink{UC2}{UC2}: L'utente ha visualizzato la risposta a una domanda precedente;
-        \item Il sistema mostra un messaggio di errore che comunica che non è in grado di proporre delle domande.
-    \end{enumerate}
-\end{itemize}
-
-
-\hypertarget{UC16}{}
-\subsubsection{UC16: Visualizzazione dei log di aggiornamento del database vettoriale}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{placeholder.png}
-    \caption{Visualizzazione dei log di aggiornamento del database vettoriale}
-\end{figure}
-
-\begin{itemize}
-    \item \textbf{Attori principali}: Utente;
-    \item \textbf{Precondizioni}: L'utente ha avviato l'app;
-    \item \textbf{Trigger}: L'utente desidera visualizzare i log di aggiornamento del database vettoriale;
-    \item \textbf{Postcondizioni}: L'utente visualizza i log di aggiornamento del database vettoriale;
-    \item \textbf{Scenario principale}:
-    \begin{enumerate}
-        \item L'utente clicca il pulsante per il recupero dei log;
-        \item Il sistema recupera i log di aggiornamento del database vettoriale;
-        \item L'utente visualizza i log di aggiornamento del database vettoriale.
-    \end{enumerate}
-    \item \textbf{Scenario alternativo}:
-    \begin{enumerate}
-        \item \bulhyperlink{UC17}{UC17}: Visualizzazione errore nel recupero dei log di aggiornamento del database vettoriale;
-    \end{enumerate}
-\end{itemize}
-
-\hypertarget{UC17}{}
-\subsubsection{UC17: Visualizzazione errore nel recupero dei log di aggiornamento del database vettoriale}
-\begin{itemize}
-    \item \textbf{Attori principali}: Utente;
-    \item \textbf{Precondizioni}: L'utente ha avviato l'app;
-    \item \textbf{Trigger}: L'utente desidera visualizzare i log di aggiornamento del database vettoriale;
-    \item \textbf{Postcondizioni}: L'utente visualizza un segnale di errore segnalante l'impossibilità di recuperare i log;
-    \item \textbf{Scenario principale}:
-    \begin{enumerate}
-        \item L'utente clicca il pulsante per il recupero dei log;
-        \item Il sistema non riesce a recuperare i log di aggiornamento del database vettoriale;
-        \item L'utente visualizza un messaggio di errore che invita riprovare più tardi.
+        \item Il sistema mostra un messaggio che comunica l'errore all'utente, e invita a fare altre domande.
     \end{enumerate}
 \end{itemize}
 
 \newpage
 
-\hypertarget{UC18}{}
-\subsubsection{UC18: Visualizzazione di un badge che segnala lo stato di aggiornamento del database vettoriale}
+\hypertarget{UC15}{}
+\subsubsection{UC15: Visualizzazione di un badge che segnala lo stato di aggiornamento del database vettoriale}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{UC18+UC19+UC20.png}
+    \includegraphics[width=\textwidth]{UC15+UC16+UC17.png}
     \caption{Visualizzazione di un badge che segnala lo stato di aggiornamento del database vettoriale}
 \end{figure}
 
@@ -678,17 +489,17 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
     \item \textbf{Scenario principale}:
     \begin{enumerate}
         \item L'utente avvia l'applicazione;
-        \item Il sistema segnala lo stato di aggiornamento del database vettoriale;
+        \item Il sistema segnala lo stato di aggiornamento del database vettoriale.
     \end{enumerate}
     \item \textbf{Casi che ereditano}:
     \begin{itemize}
-        \item \bulhyperlink{UC19}{UC19}: Visualizzazione database aggiornato;
-        \item \bulhyperlink{UC20}{UC20}: Visualizzazione database non aggiornato;
+        \item \bulhyperlink{UC16}{UC16}: Visualizzazione database aggiornato;
+        \item \bulhyperlink{UC17}{UC17}: Visualizzazione database non aggiornato.
     \end{itemize}
 \end{itemize}
 
-\hypertarget{UC19}{}
-\subsubsection{UC19: Visualizzazione database aggiornato}
+\hypertarget{UC16}{}
+\subsubsection{UC16: Visualizzazione database aggiornato}
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: L'utente avvia l'applicazione;
@@ -697,16 +508,16 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
     \item \textbf{Scenario principale}:
     \begin{enumerate}
         \item L'utente avvia l'applicazione;
-        \item Il sistema segnala che il database vettoriale è aggiornato tramite un badge di colore verde;
+        \item Il sistema segnala che il database vettoriale è aggiornato tramite un badge di colore verde.
     \end{enumerate}
     \item \textbf{Eredita da}:
     \begin{itemize}
-        \item \bulhyperlink{UC18}{UC18}: Visualizzazione di un badge che segnala lo stato di aggiornamento del database vettoriale;
+        \item \bulhyperlink{UC15}{UC15}: Visualizzazione di un badge che segnala lo stato di aggiornamento del database vettoriale.
     \end{itemize}
 \end{itemize}
 
-\hypertarget{UC20}{}
-\subsubsection{UC20: Visualizzazione database non aggiornato}
+\hypertarget{UC17}{}
+\subsubsection{UC17: Visualizzazione database non aggiornato}
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: L'utente avvia l'applicazione;
@@ -715,11 +526,11 @@ L’applicazione prevede la presenza di sei \emph{Attori}\textsubscript{\textbf{
     \item \textbf{Scenario principale}:
     \begin{enumerate}
         \item L'utente avvia l'applicazione;
-        \item Il sistema segnala che il database vettoriale non è aggiornato tramite un badge di colore rosso;
+        \item Il sistema segnala che il database vettoriale non è aggiornato tramite un badge di colore rosso.
     \end{enumerate}
     \item \textbf{Eredita da}:
     \begin{itemize}
-        \item \bulhyperlink{UC18}{UC18}: Visualizzazione di un badge che segnala lo stato di aggiornamento del database vettoriale;
+        \item \bulhyperlink{UC15}{UC15}: Visualizzazione di un badge che segnala lo stato di aggiornamento del database vettoriale.
     \end{itemize}
 \end{itemize}
 
