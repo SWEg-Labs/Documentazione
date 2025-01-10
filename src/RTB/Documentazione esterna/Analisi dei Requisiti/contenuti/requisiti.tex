@@ -17,11 +17,11 @@ solida per la \emph{progettazione}\textsubscript{\textit{\textbf{G}}} del sistem
     \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Fonti} \\ \hline
     ROF1 & Obbligatorio & L'utente deve poter inserire un'interrogazione in linguaggio naturale nel sistema. & \bulhyperlink{UC1}{UC1} \\ \hline
     ROF2 & Obbligatorio & Quando l'interrogazione viene invata al sistema, deve essere generata una risposta. & \bulhyperlink{UC2}{UC2} \\ \hline
-    ROF3 & Obbligatorio & Nel caso il sistema fallisca nel generare una risposta per via di un problema intenrno, deve far visualizzare all'utente un messaggio di errore, chiedendo di riprovare più tardi. & \bulhyperlink{UC2}{UC2}, \bulhyperlink{UC3}{UC3} \\ \hline
+    ROF3 & Obbligatorio & Nel caso il sistema fallisca nel generare una risposta per via di un problema interno, deve far visualizzare all'utente un messaggio di errore, chiedendo di riprovare più tardi. & \bulhyperlink{UC2}{UC2}, \bulhyperlink{UC3}{UC3} \\ \hline
     ROF4 & Obbligatorio & Nel caso in cui l'utente inserisca un'interrogazione che non riguarda i contenuti del database associato, il sistema deve rispondere all'utente che la domanda inserita è fuori contesto. & \bulhyperlink{UC2}{UC2}, \bulhyperlink{UC4}{UC4} \\ \hline
-    ROF5 & Obbligatorio & Nel caso il sistema non riesca a trovare le informazioni richieste dall'utente, deve rispondere all'utente spiegando la mancanza dell'informazione richiesta. & \bulhyperlink{UC2}{UC2}, \bulhyperlink{UC5}{UC5} \\ \hline
+    ROF5 & Obbligatorio & Nel caso il sistema non riesca a trovare le informazioni richieste dall'utente nonostante siano correlate al contesto, deve rispondere all'utente spiegando la mancanza dell'informazione richiesta. & \bulhyperlink{UC2}{UC2}, \bulhyperlink{UC5}{UC5} \\ \hline
     ROF6 & Desiderabile & L'utente deve poter visualizzare i file da cui il sistema ha preso i dati per la risposta. &\bulhyperlink{UC2.1}{UC2.1} \\ \hline
-    RDF7 & Desiderabile & Nel caso l'utente desideri accedere ai file utilizzati per genereare la risposta ma questo non sia possibile, deve essere visualizzato un messaggio di errore. &\bulhyperlink{UC14}{UC14} \\ \hline
+    RDF7 & Desiderabile & Nel caso l'utente desideri accedere ai file utilizzati per generare la risposta ma questo non sia possibile, deve essere visualizzato un messaggio di errore. &\bulhyperlink{UC14}{UC14} \\ \hline
     \end{tabularx}
     \end{table}
 
@@ -60,7 +60,7 @@ solida per la \emph{progettazione}\textsubscript{\textit{\textbf{G}}} del sistem
         RZF18 & Opzionale & Dopo la visualizzazione di una risposta, all'utente devono venire suggerite alcune interrogazioni che è possibile porre al sistema per continuare la conversazione. & \bulhyperlink{UC12}{UC12},\bulhyperlink{UC12.1}{UC12.1} \\ \hline
         RZF19 & Opzionale & Nel caso il sistema vada in errore nel tentativo di proporre altre domande per proseguire la conversazione, deve venire mostrato un messaggio che comunica l'errore all'utente e invita a fare altre domande. & \bulhyperlink{UC13}{UC13} \\ \hline
         RZF20 & Opzionale & Il sistema deve registrare data e ora degli aggiornamenti del database vettoriale, in modo da poter scrivere un log di aggiornamento. & \bulhyperlink{UC15}{UC15} \\ \hline
-        RZF21 & Opzionale & Il sistema deve comunicare o meno se il database vettoriale a cui vengono poste le interrogazioni è aggiornato o meno. & \bulhyperlink{UC15}{UC15}, \bulhyperlink{UC16}{UC16}, \bulhyperlink{UC17}{UC17} \\ \hline
+        RZF21 & Opzionale & Il sistema deve comunicare se il database vettoriale a cui vengono poste le interrogazioni è aggiornato o meno. & \bulhyperlink{UC15}{UC15}, \bulhyperlink{UC16}{UC16}, \bulhyperlink{UC17}{UC17} \\ \hline
 \end{tabularx}
 
 \caption{Requisiti funzionali}
