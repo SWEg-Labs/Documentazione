@@ -406,16 +406,6 @@ Per stabilire gli obbiettivi di questo processo utilizziamo il Piano di Qualific
     \item Lo stato attuale della qualità del progetto, misurato tramite le metriche descritte.
 \end{itemize}
 
-\subsubsection{Testing}
-Allo scopo di garantire la qualità del software prodotto, vengono effettuati dei test, i quali possono essere dei 5 tipi differenti:
-\begin{itemize}
-    \item \textbf{Test di unità}: Verificano il corretto funzionamento delle singole unità o componenti del software, come funzioni, metodi o moduli, isolandoli dal resto del sistema;
-    \item \textbf{Test d'integrazione}: Controllano che le diverse unità o moduli del software funzionino correttamente quando vengono integrati e comunicano tra loro;
-    \item \textbf{Test di regressione}: Assicurano che nuove modifiche o aggiornamenti al codice non abbiano introdotto errori o rotto funzionalità esistenti;
-    \item \textbf{Test di sistema}: Valutano il comportamento dell'intero sistema software, verificandone la conformità ai requisiti funzionali e non funzionali;
-    \item \textbf{Test di accettazione}: Effettuati dagli utenti o dai clienti, garantiscono che il software soddisfi le loro esigenze e sia pronto per l'uso finale.
-\end{itemize}
-
 \subsubsection{Strumenti}
 Gli strumenti utilizzati per la gestione della qualità sono le metriche.
 Queste sono le norme che regolano le metriche adottate, le quali rappresentano ognuna un conseguente obiettivo prefissato.
@@ -424,7 +414,7 @@ Le metriche adottate sono presentate e descritte nel documento piano di qualific
     \item \textbf{Nome}: il nome della metrica
     \item \textbf{Codice}: ogni metrica ha un codice identificativo formato da:
     \begin{center}
-        M[Tipologia]-[Id numerico]
+        M[Tipologia][Id numerico]
     \end{center}
     dove
     \begin{itemize}
@@ -460,12 +450,63 @@ Questa sezione si propone di illustrare come il gruppo ha pianificato e implemen
 Il processo di \emph{verifica}\textsubscript{\textit{\textbf{G}}} si basa su \emph{test}\textsubscript{\textit{\textbf{G}}} e analisi per individuare e correggere eventuali errori emersi durante lo sviluppo del software o la redazione della documentazione, assicurando la conformità ai requisiti. Per una verifica efficace, è fondamentale applicare procedure definite, criteri affidabili e una sequenza di fasi che preparino al passaggio successivo, ossia la validazione. Di seguito sono illustrate le principali attività svolte in questo processo.
 
 \subsubsection{\emph{Analisi statica}\textsubscript{\textit{\textbf{G}}}}
-L’\emph{analisi statica} prende il nome dal fatto che non richiede l’esecuzione del codice e si presta anche all’applicazione sulla documentazione. Questa attività consiste in una revisione dettagliata del codice e dei documenti per assicurarsi che rispettino i vincoli stabiliti, siano privi di difetti e soddisfino le caratteristiche richieste. Il successo di questa analisi dipende in modo significativo dalla competenza e dall’attenzione dei verificatori coinvolti.
+L’\emph{analisi statica} prende il nome dal fatto che non richiede l’esecuzione del codice e si presta anche all’applicazione sulla documentazione. Questa attività consiste in una revisione dettagliata del codice e dei documenti per assicurarsi che rispettino i vincoli stabiliti, siano privi di difetti e soddisfino le caratteristiche richieste
+Il successo di questa analisi dipende in modo significativo dalla competenza e dall’attenzione dei verificatori coinvolti.
 
 \subsubsection{\emph{Analisi dinamica}\textsubscript{\textit{\textbf{G}}}}
-L’\emph{analisi dinamica} comprende tecniche che richiedono l’esecuzione del codice oggetto di verifica, rendendola applicabile esclusivamente al software e non alla documentazione. Questa attività prevede l’esecuzione di \emph{test}\textsubscript{\textit{\textbf{G}}} finalizzati a verificare il corretto funzionamento del software e a identificare eventuali discrepanze tra i risultati attesi e quelli effettivi.
-Un’analisi dinamica efficace richiede test automatizzati, ripetibili e ben strutturati. Ogni \emph{test} deve essere deterministico, ovvero, con gli stessi input deve produrre sempre lo stesso output. 
-Per massimizzare l’efficacia dei \emph{test}, è necessario produrre codice di alta qualità e identificare correttamente sia i requisiti funzionali che quelli non funzionali del sistema.
+L'\emph{analisi dinamica} comprende tecniche che richiedono l'esecuzione del codice da verificare, rendendola applicabile esclusivamente al software, e non alla documentazione. 
+Questa attività prevede l'esecuzione di \emph{test}\textsubscript{\textit{G}} per verificare il corretto funzionamento del software e identificare eventuali discrepanze tra i risultati attesi e quelli effettivi. Questo processo deve essere automatizzato e ripetibile. 
+Per garantire l'efficacia dei test, ciascuno di essi deve essere deterministico, cioè, dati gli stessi input, deve produrre sempre lo stesso output. 
+Inoltre, ogni test deve avere parametri ben definiti, tra cui:
+\begin{itemize}
+    \item descrizione dei parametri di input;
+    \item descrizione dell'output;
+    \item comportamento atteso del software;
+    \item condizioni di esecuzione del test.
+\end{itemize}
+Al fine di agevolare l’automazione dei test, saranno utilizzati i seguenti strumenti:
+\begin{itemize}
+    \item \textbf{Driver:} una componente che fornisce l’ambiente di esecuzione necessario per testare un componente del prodotto software. Un driver è progettato per “attivare” il componente da testare e fornirgli i dati di input necessari;
+    \item \textbf{Stub:} una componente passiva che simula il comportamento di alcune parti mancanti o non ancora implementate nell’applicazione. Questo consente di testare in anticipo le parti del software che dipendono da altre parti non ancora disponibili;
+    \item \textbf{Logger:} uno strumento che registra i risultati ottenuti durante l’esecuzione del test, consentendo un’analisi accurata dei dati prodotti.
+\end{itemize}
+
+\subsubsection{Test di sistema}
+I \emph{Test di sistema}\textsubscript{\textit{\textbf{G}}} hanno l’obiettivo di misurare la copertura dei requisiti specificati nel
+capitolato d’appalto. Essi sono definiti durante l’\emph{Analisi dei Requisiti} e vengono svolti dopo
+i \emph{test di integrazione}, dunque quando tutte le componenti del sistema software sono state
+integrate. Questo tipo di test è svolto anche durante il processo di validazione.
+
+\subsubsection{Test di accettazione}
+I \emph{Test di accettazione}\textsubscript{\textit{\textbf{G}}} servono per dimostrare che i requisiti individuati sono stati
+soddisfatti. Questo tipo di test deve essere svolto obbligatoriamente alla presenza del \emph{committente}.
+
+\subsubsection{Codici relativi ai test}
+Il gruppo ha deciso di classificare i \emph{test} che andranno svolti nell’attività di verifica associando un codice identificativo a ciascuno di essi nel formato
+\begin{center}
+    \textbf{T[tipo][codice]}
+\end{center}T[tipo][codice]
+dove:
+\begin{itemize}
+    \item \textbf{[tipo]} rappresenta il tipo di test, in particolare:
+    \begin{itemize}
+        \item S per i test di sistema;
+        \item A per i test di accettazione.
+    \end{itemize}
+    \item \textbf{[codice]} è un numero progressivo associato al test all’interno del suo tipo.
+\end{itemize}
+
+%Ancora da capire se serve: Se il test in questione ha un padre, si segue il formato [codice padre].[codice figlio]
+%dove [codice figlio] è un numero progressivo che identifica univocamente un test figlio del test con codice pari a [codice padre].
+
+\subsubsection{Stato dei test}
+Ad ogni test verrà associato uno stato che ne rappresenterà l’esito.
+Lo stato pu`o essere:
+\begin{itemize}
+    \item N-I: il test non è ancora stato implementato;
+    \item Superato: il test riporta esito positivo;
+    \item Non superato: il test riporta esito negativo.
+\end{itemize}
 
 \subsection{Validazione}
 \label{sec:validazione}

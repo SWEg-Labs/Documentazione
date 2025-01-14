@@ -147,3 +147,72 @@ La progettazione si articola in più livelli per assicurare una completa copertu
     \item \textbf{Progettazione di dettaglio}: In questa fase si definisce l'\emph{architettura}\textsubscript{\textit{\textbf{G}}} di dettaglio, seguendo quanto stabilito nella progettazione logica e sviluppando una rappresentazione completa delle componenti software.
 \end{itemize}
 
+\subsubsection{Codifica}
+
+\subsubsubsection{Scopo}
+L’attività di \emph{codifica}\textsubscript{\textit{\textbf{G}}} è mirata allo sviluppo del prodotto software da parte dei programmatori, il quale deve soddisfare le esigenze concordate con il \emph{proponente}.
+
+\subsubsubsection{Descrizione}
+
+Durante questa attività, lo sviluppatore si impegna a soddisfare i requisiti implementando il codice nel linguaggio di programmazione scelto.
+Il codice deve rispettare le linee guida definite nella documentazione del progetto. Contestualmente, tutte le nuove unità software sviluppate e le modifiche apportate devono essere adeguatamente documentate.
+
+\subsubsubsection{Stile della codifica}
+Per garantire lo sviluppo del codice di qualità useremo i seguenti criteri:
+
+\begin{itemize}
+    \item Backend:
+    \begin{itemize}
+        \item \textbf{Variabili, attributi, funzioni e metodi:} \emph{Snake Case}\textsubscript{\textit{\textbf{G}}}.
+        \item \textbf{Classi:} \emph{Pascal Case}\textsubscript{\textit{\textbf{G}}}.
+        \item \textbf{Nomi di file:}
+        \begin{itemize}
+            \item Camel Case se il file contiene una classe;
+            \item Snake Case se non contiene una classe.
+        \end{itemize}
+        \item \textbf{Docstring}:Ogni metodo o funzione deve avere un commento descrittivo sotto alla firma, scritto in inglese.
+    \end{itemize}
+    
+    \item Frontend:
+    \begin{itemize}
+        \item \textbf{Variabili, attributi, funzioni e metodi:} \emph{Camel Case}\textsubscript{\textit{\textbf{G}}}.
+        \item \textbf{Classi:} Pascal Case.
+        \item \textbf{Nomi dei file:} \emph{Kebab Case}\textsubscript{\textit{\textbf{G}}}.
+    \end{itemize}
+    
+    \item \textbf{Lunghezza delle righe di codice}:
+    \begin{itemize}
+        \item La lunghezza massima di una riga di codice non deve superare i 100 caratteri.
+    \end{itemize}
+    
+    \item \textbf{Indentazioni}:
+    \begin{itemize}
+        \item I blocchi annidati del codice devono seguire un'indentazione con un carattere di tabulazione equivalente a 4 spazi.
+    \end{itemize}
+\end{itemize}
+
+\subsubsubsection{Tecnologie Utilizzate}
+\begin{itemize}
+    \item Python: un linguaggio di programmazione ad alto livello orientato ad oggetti. Si
+    utilizza per realizzare la logica dell’applicazione.
+    \begin{center}
+        \textbf{\url{https://www.python.org/}}
+    \end{center}
+
+    \item Angular: un framework usato per lo sviluppo dell’interfaccia grafica dell’applicazione.
+    \begin{center}
+        \textbf{\url{https://angular.dev/}}
+    \end{center}
+    
+    \item Chroma DB: un database vettoriale che memorizza e ricerca dati basandosi sulla loro somiglianza semantica.
+    \begin{center}
+        \textbf{\url{https://www.trychroma.com/}}
+    \end{center}
+
+    \item Gpt4o: un \emph{LLM}\textsubscript{\textit{\textbf{G}}}, sviluppato da OpenAI, capace di comprendere e generare testo in modo contestuale.
+    \begin{center}
+        \textbf{\url{https://openai.com/index/hello-gpt-4o/}}
+    \end{center}
+\end{itemize}
+
+
