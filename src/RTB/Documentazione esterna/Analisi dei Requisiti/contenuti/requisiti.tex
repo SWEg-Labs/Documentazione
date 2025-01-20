@@ -46,7 +46,6 @@ solida per la \emph{progettazione}\textsubscript{\textit{\textbf{G}}} del sistem
     \end{tabularx}
 
     \caption{Requisiti funzionali}
-    \label{tab:Requisiti_funzionali}
 \end{table}
 
 \vspace{0.5cm}
@@ -80,9 +79,8 @@ sistema.
     \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Fonti} \\ \hline
     ROQ1 & Obbligatorio & Devono essere rispettate tutte le norme definite in \emph{Norme di Progetto}\textsubscript{\textbf{G}}. & Verbale Interno \\ \hline
     ROQ2 & Obbligatorio & Devono essere rispettate le \emph{metriche}\textsubscript{\textbf{G}} e i vincoli definiti in \emph{Piano di Qualifica}\textsubscript{\textbf{G}}. & Verbale Interno \\ \hline
-    ROQ3 & Obbligatorio & Deve essere fornito un documento che riporti le attività di \emph{bug}\textsubscript{\textbf{G}} reporting svolte. & Capitolato \\ \hline
-    ROQ4 & Obbligatorio & Deve essere fornito al \emph{proponente} il codice sorgente in un \emph{repository}\textsubscript{\textbf{G}} \emph{GitHub}\textsubscript{\textbf{G}}. & Capitolato \\ \hline
-    ROQ5 & Obbligatorio & Deve essere fornito il \emph{Manuale Utente}\textsubscript{\textbf{G}}. & Capitolato \\ \hline
+    ROQ3 & Obbligatorio & Deve essere fornito al \emph{proponente} il codice sorgente in un \emph{repository}\textsubscript{\textbf{G}} \emph{GitHub}\textsubscript{\textbf{G}}. & Capitolato \\ \hline
+    ROQ4 & Obbligatorio & Deve essere fornito il \emph{Manuale Utente}\textsubscript{\textbf{G}}. & Capitolato \\ \hline
     \end{tabularx}
     \caption{Requisiti qualitativi}
     \label{tab:Requisiti_qualitativi}
@@ -103,9 +101,9 @@ coerenza e l'\emph{efficienza}\textsubscript{\textit{\textbf{G}}} del prodotto.
     \rowcolor[HTML]{FFD700} 
     \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Fonti} \\ \hline
     ROV1 & Obbligatorio & L'applicazione deve garantire la compatibilità con la versione più recente di \emph{Google Chrome}\textsubscript{\textit{\textbf{G}}} al momento della \emph{demo}\textsubscript{\textit{\textbf{G}}}. & Verbale esterno \\ \hline
-    ROV2 & Obbligatorio & Il sistema deve garantire piena integrazione con le \emph{API}\textsubscript{\textit{\textbf{G}}} di \emph{Confluence}\textsubscript{\textit{\textbf{G}}}. & Verbale esterno \\ \hline
-    ROV3 & Obbligatorio & Il sistema deve garantire piena integrazione con le \emph{API}\textsubscript{\textit{\textbf{G}}} di \emph{Jira}\textsubscript{\textit{\textbf{G}}}. & Verbale esterno\\ \hline
-    ROV4 & Obbligatorio & Il sistema deve garantire piena integrazione con le \emph{API}\textsubscript{\textit{\textbf{G}}} di \emph{GitHub}\textsubscript{\textit{\textbf{G}}}. & Verbale esterno \\ \hline
+    ROV2 & Obbligatorio & Il sistema deve garantire piena integrazione con le \emph{API}\textsubscript{\textit{\textbf{G}}} di \emph{Confluence}\textsubscript{\textit{\textbf{G}}}. & Capitolato \\ \hline
+    ROV3 & Obbligatorio & Il sistema deve garantire piena integrazione con le \emph{API}\textsubscript{\textit{\textbf{G}}} di \emph{Jira}\textsubscript{\textit{\textbf{G}}}. & Capitolato \\ \hline
+    ROV4 & Obbligatorio & Il sistema deve garantire piena integrazione con le \emph{API}\textsubscript{\textit{\textbf{G}}} di \emph{GitHub}\textsubscript{\textit{\textbf{G}}}. & Capitolato \\ \hline
     \end{tabularx}
     \caption{Requisiti di vincolo}
     \label{tab:Requisiti_di_vincolo}
@@ -119,10 +117,10 @@ coerenza e l'\emph{efficienza}\textsubscript{\textit{\textbf{G}}} del prodotto.
     \begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}c|>{\centering\arraybackslash}c|>{\centering\arraybackslash}X|>{\centering\arraybackslash}p{3cm}|} \hline
     \rowcolor[HTML]{FFD700} 
     \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Fonti} \\ \hline
-    ROI1 & Obbligatorio & Il sistema deve processare i documenti che vengono caricati, creandone i loro \emph{embedding}. & Verbale esterno\\ \hline
-    ROI2 & Obbligatorio & Il sistema deve salvare, in modo persistente, il contenuto dei documenti caricati. & Verbale esterno\\ \hline
-    ROI3 & Obbligatorio & Il sistema deve salvare, in modo persistente, tutti i metadati dei documenti caricati. & Verbale esterno\\ \hline
-    ROI4 & Obbligatorio & Il sistema deve salvare, i commit e i file testuali di \emph{GitHub}, escludendo PDF o immagini. & Verbale esterno\\ \hline
+    ROI1 & Obbligatorio & Il sistema deve processare i documenti che vengono caricati, creandone i loro \emph{embedding}. & Verbale interno\\ \hline
+    ROI2 & Obbligatorio & Il sistema deve salvare, in modo persistente, il contenuto dei documenti caricati. & Verbale interno\\ \hline
+    ROI3 & Obbligatorio & Il sistema deve salvare, in modo persistente, tutti i metadati dei documenti caricati. & Verbale interno\\ \hline
+    ROI4 & Obbligatorio & Il sistema deve salvare, i commit e i file scritti in caratteri testuali di \emph{GitHub}, escludendo PDF o immagini. & Verbale esterno\\ \hline
     \end{tabularx}
     \caption{Requisiti implementativi}
     \label{tab:Requisiti_implementativi}
@@ -131,7 +129,7 @@ coerenza e l'\emph{efficienza}\textsubscript{\textit{\textbf{G}}} del prodotto.
 \subsection{Requisiti prestazionali}
 \label{sec:req_prestazionali}
 Trattandosi di una \emph{applicazione web}\textsubscript{\textit{\textbf{G}}}, i requisiti prestazionali saranno influenzati principalmente dalla connessione Internet, 
-le prestazioni del dispositivo e dall'ottimizzazione specifica per il browser \emph{Google Chrome}, l'unico supportato ufficialmente.
+dalle prestazioni del dispositivo e dall'ottimizzazione specifica per il browser \emph{Google Chrome}, l'unico supportato ufficialmente.
 
 \newpage
 \subsection{Tracciamento}
@@ -206,7 +204,6 @@ le prestazioni del dispositivo e dall'ottimizzazione specifica per il browser \e
     ROQ3 & Capitolato \\ \hline
     \end{tabularx}
     \caption{Tracciamento Requisito - Fonti}
-    \label{tab:Tracciamento_requisiti_fonti}
 \end{table}
 
 \newpage
@@ -217,14 +214,13 @@ le prestazioni del dispositivo e dall'ottimizzazione specifica per il browser \e
     \rowcolor[HTML]{FFD700} 
     \textbf{Requisito} & \textbf{Fonti} \\ \hline
     ROQ4 & Capitolato \\ \hline
-    ROQ5 & Capitolato \\ \hline
     ROV1 & Verbale esterno\\ \hline
-    ROV2 & Verbale esterno\\ \hline
-    ROV3 & Verbale esterno\\ \hline
-    ROV4 & Verbale esterno\\ \hline
-    ROI1 & Verbale esterno\\ \hline
-    ROI2 & Verbale esterno\\ \hline
-    ROI3 & Verbale esterno\\ \hline
+    ROV2 & Capitolato\\ \hline
+    ROV3 & Capitolato\\ \hline
+    ROV4 & Capitolato\\ \hline
+    ROI1 & Verbale interno\\ \hline
+    ROI2 & Verbale interno\\ \hline
+    ROI3 & Verbale interno\\ \hline
     ROI4 & Verbale esterno\\ \hline
     \end{tabularx}
     \caption{Tracciamento Requisito - Fonti}
