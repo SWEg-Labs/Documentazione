@@ -82,7 +82,58 @@ Tale documento descrive:
 L’analisi dei requisiti intende raccogliere, chiarire e precisare tutti i requisiti necessari da completare per soddisfare il cliente. Per poter fare ciò è necessario aver letto e compreso al meglio le specifiche del progetto, e poter comunicare al meglio con il proponente.
 
 \subsubsubsection{Casi d'uso}
+Un \emph{caso d'uso}\textsubscript{\textit{\textbf{G}}} è un insieme di \emph{scenari}\textsubscript{\textit{\textbf{G}}} che hanno in comune uno scopo finale per un \emph{attore}\textsubscript{\textit{\textbf{G}}}.\\
+Gli elementi che lo compongono sono i seguenti:
+\begin{itemize}
+    \item l'attore;
+    \item il sistema;
+    \item precondizioni;
+    \item postcondizioni;
+    \item \emph{Scenario principale}\textsubscript{\textit{\textbf{G}}};
+    \item \emph{Scenario alternativo}\textsubscript{\textit{\textbf{G}}};
+    \item inclusione/i;
+    \item estensione/i;
+    \item specializzazione/i;
+    \item commento/i;
+    \item descrizione.  
+\end{itemize}
+I casi d’uso sono identificati nel seguente modo:\\
+\begin{center}
+    \textbf{UC[Numero]+(UC[Numero sottocaso])-[Titolo]}
+\end{center}
+dove:
+\begin{itemize}
+    \item UC: acronimo di "use case";
+    \item Numero: numero identificativo del caso d’uso;
+    \item Numero sottocaso: numero identificativo del sottocaso (se presente);
+    \item Titolo: titolo assegnato al caso d’uso.
+\end{itemize}
+
 \subsubsubsection{Struttura dei requisiti}
+I requisiti sono identificati da un codice univoco strutturato nel seguente modo:\\
+\begin{center}
+    \textbf{R[Importanza][Tipologia] [Codice](+[Codice figlio])}
+\end{center}
+dove:
+\begin{itemize}
+    \item R: acronimo di "Requisito";
+    \item Importanza: indica l’importanza del requisito e può assumere i seguenti valori:
+    \begin{itemize}
+        \item O: requisito obbligatorio, cioè deve essere soddisfatto necessariamente per garantire la realizzazione del prodotto corrispondente agli accordi col \emph{proponente}\textsubscript{\textit{\textbf{G}}};
+        \item D: requisito desiderabile, cioè porterebbe al prodotto ulteriori funzionalità e completezza qualora fosse soddisfatto;
+        \item Z: requisito opzionale, cioè che potrebbe essere implementato solo se ci sono risorse, tempo e budget sufficienti, senza che la sua mancanza impatti negativamente il prodotto.
+    \end{itemize}
+    \item Tipologia:
+        \begin{itemize} 
+            \item F: requisito funzionale che delinea gli obiettivi e le azioni chiave che l’utente deve essere in grado di compiere;
+            \item Q: requisito qualitativo che delinea le specifiche qualitative che devono essere rispettate per garantire la qualità del sistema;
+            \item V: requisito di vincolo che rappresenta le restrizioni e le condizioni che devono essere soddisfatte durante lo sviluppo e l’implementazione del sistema;
+            \item I: requisito implementativo che delinea le specifiche tecniche e operative che indicano come un sistema o una funzionalità deve essere sviluppato per soddisfare i requisiti del progetto;  
+            \item P: requisito prestazionale che definisce le metriche di performance che il sistema deve soddisfare. 
+        \end{itemize}
+    \item Codice: identificatore numerico univoco per quella tipologia di vincolo;
+    \item Codice figlio: numero identificativo del sottorequisito (se presente).
+\end{itemize}
 
 \subsubsection{Progettazione}
 
@@ -95,4 +146,84 @@ La progettazione si articola in più livelli per assicurare una completa copertu
     \item \textbf{Progettazione logica}: Questa fase definisce le tecnologie, i \emph{framework}\textsubscript{\textit{\textbf{G}}} e le librerie scelti per la realizzazione del prodotto, motivando l'adeguatezza delle scelte e dimostrando la fattibilità tecnica attraverso un \emph{Proof of Concept}\textsubscript{\textit{\textbf{G}}}(PoC);
     \item \textbf{Progettazione di dettaglio}: In questa fase si definisce l'\emph{architettura}\textsubscript{\textit{\textbf{G}}} di dettaglio, seguendo quanto stabilito nella progettazione logica e sviluppando una rappresentazione completa delle componenti software.
 \end{itemize}
+
+\subsubsection{Codifica}
+
+\subsubsubsection{Scopo}
+L’attività di \emph{codifica}\textsubscript{\textit{\textbf{G}}} è mirata allo sviluppo del prodotto software da parte dei programmatori, il quale deve soddisfare le esigenze concordate con il \emph{proponente}.
+
+\subsubsubsection{Descrizione}
+
+Durante questa attività, lo sviluppatore si impegna a soddisfare i requisiti implementando il codice nel linguaggio di programmazione scelto.
+Il codice deve rispettare le linee guida definite nella documentazione del progetto. Contestualmente, tutte le nuove unità software sviluppate e le modifiche apportate devono essere adeguatamente documentate.
+
+\subsubsubsection{Stile della codifica}
+Per garantire lo sviluppo del codice di qualità useremo i seguenti criteri:
+
+\begin{itemize}
+    \item Backend:
+    \begin{itemize}
+        \item \textbf{Variabili, attributi, funzioni e metodi:} \emph{Snake Case}\textsubscript{\textit{\textbf{G}}}.
+        \item \textbf{Classi:} \emph{Pascal Case}\textsubscript{\textit{\textbf{G}}}.
+        \item \textbf{Nomi di file:}
+        \begin{itemize}
+            \item Camel Case se il file contiene una classe;
+            \item Snake Case se non contiene una classe.
+        \end{itemize}
+        \item \textbf{Docstring}: Ogni metodo o funzione deve avere un commento descrittivo sotto alla firma, scritto in inglese.
+    \end{itemize}
+    
+    \item Frontend:
+    \begin{itemize}
+        \item \textbf{Variabili, attributi, funzioni e metodi:} \emph{Camel Case}\textsubscript{\textit{\textbf{G}}}.
+        \item \textbf{Classi:} Pascal Case.
+        \item \textbf{Nomi dei file:} \emph{Kebab Case}\textsubscript{\textit{\textbf{G}}}.
+    \end{itemize}
+    
+    \item \textbf{Lunghezza delle righe di codice}:
+    \begin{itemize}
+        \item La lunghezza massima di una riga di codice non deve superare i 100 caratteri.
+    \end{itemize}
+    
+    \item \textbf{Indentazioni}:
+    \begin{itemize}
+        \item I blocchi annidati del codice devono seguire un'indentazione con un carattere di tabulazione equivalente a 4 spazi.
+    \end{itemize}
+\end{itemize}
+
+\subsubsubsection{Tecnologie Utilizzate}
+\begin{itemize}
+    \item \textbf{\emph{Python}\textsubscript{\textit{\textbf{G}}}}: un linguaggio di programmazione ad alto livello orientato ad oggetti. Si
+    utilizza per realizzare la logica dell’applicazione.
+    \begin{center}
+        \textbf{\url{https://www.python.org/}}
+    \end{center}
+
+    \item \textbf{\emph{Angular}\textsubscript{\textit{\textbf{G}}}}: un framework usato per lo sviluppo dell’interfaccia grafica dell’applicazione.
+    \begin{center}
+        \textbf{\url{https://angular.dev/}}
+    \end{center}
+    
+    \item \textbf{\emph{Chroma}\textsubscript{\textit{\textbf{G}}}}: un database vettoriale che memorizza e ricerca dati basandosi sulla loro somiglianza semantica.
+    \begin{center}
+        \textbf{\url{https://www.trychroma.com/}}
+    \end{center}
+
+    \item \textbf{\emph{GPT-4o}\textsubscript{\textit{\textbf{G}}}}: un \emph{LLM}\textsubscript{\textit{\textbf{G}}}, sviluppato da OpenAI, capace di comprendere e generare testo in modo contestuale.
+    \begin{center}
+        \textbf{\url{https://openai.com/index/hello-gpt-4o/}}
+    \end{center}
+
+    \item \textbf{\emph{Docker}\textsubscript{\textit{\textbf{G}}}}: una piattaforma per eseguire applicazioni in container, ambienti isolati che includono tutto il necessario per funzionare ovunque.
+    \begin{center}
+        \textbf{\url{https://www.docker.com}}
+    \end{center}
+    
+    \item \textbf{\emph{Python-Crontab}\textsubscript{\textit{\textbf{G}}}}: una libreria Python che permette di leggere, scrivere e gestire {\emph{cron job}\textsubscript{\textit{\textbf{G}}}} direttamente da codice Python.
+    \begin{center}
+        \textbf{\url{https://pypi.org/project/python-crontab/}}
+    \end{center}
+   
+\end{itemize}
+
 
