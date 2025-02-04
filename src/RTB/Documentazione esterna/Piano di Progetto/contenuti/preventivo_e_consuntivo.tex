@@ -376,3 +376,119 @@ I rischi occorsi durante il quarto periodo sono stati:
 \end{itemize}
 In particolare, abbiamo riscontrato delle difficoltà nella suddivisione dei compiti di programmazione, perchè un programmatore che è stato incaricato di approfondire una determinata tematica non ha potuto chiedere aiuto riguardo ad essa perché i compagni di ruolo non avevano seguito il suo percorso di apprendimento ma bensì si avevano approfondito altri argomenti.
 Per risolvere questo problema, abbiamo deciso di dedicare più tempo alla formazione e alla condivisione delle conoscenze, in modo da garantire che tutti i membri del team siano in grado di affrontare le sfide e le difficoltà che si presentano durante lo sviluppo del progetto.
+
+\newpage
+%Sommario finale RTB
+\subsubsection{Sommario finale RTB}   
+\label{sec:prev_cons_rtb} 
+\subsubsubsection{Prospetto sulle tempistiche di lavoro} 
+
+\begin{table}[h!]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|c|X|X|X|X|X|X|c|}\hline
+    \rowcolor[HTML]{FFD700} 
+    \textbf{Nominativi dei membri} & \textbf{Re} & \textbf{Am} & \textbf{An} & \textbf{Pg} & \textbf{Pr} & \textbf{Ve} & \textbf{Ore per membro} \\ \hline
+    Federica Bolognini & 9 & 1 & 13 & 0 & 0 & 9 & 32  \\ \hline
+    Michael Fantinato  & 1 & 7 & 8 & 5 & 7 & 4 & 32  \\ \hline
+    Giacomo Loat       & 3 & 11 & 5 & 0 & 10 & 3 & 32 \\ \hline
+    Filippo Righetto   & 3 & 2 & 17 & 0 & 0 & 11 & 33  \\ \hline
+    Riccardo Stefani   & 12 & 2 & 8 & 0 & 13 & 4 & 39 \\ \hline
+    Davide Verzotto    & 1 & 4 & 12 & 0 & 0 & 11 & 28  \\ \hline
+    \rowcolor[HTML]{FFD700} 
+    \textbf{Ore totali per ruolo} & 29 & 27 & 63 & 5 & 30 & 42 & \textbf{Ore totali del gruppo: 196} \\ \hline
+    \end{tabularx}
+    \caption{Prospetto orario dei membri durante l’RTB}
+\end{table}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+        \pie[radius=3,
+            text=pin,
+            pin distance=0.5cm,
+            sum=auto,
+            before number=\footnotesize,
+            after number=\%,
+            color={
+                yellow!90!orange,
+                orange!70,
+                yellow!85!red,
+                orange!80!yellow,
+                yellow!75!orange,
+                orange!100!red
+            }
+        ]{
+            21.43/Verificatore,
+            15.31/Programmatore,
+            2.55/Progettista,
+            14.80/Responsabile,
+            13.78/Amministratore,
+            32.14/Analista
+        }
+    \end{tikzpicture}
+    \caption{Grafico della distribuzione oraria per ruolo durante l’RTB}
+\end{figure}
+
+Rispetto all’orario specificato nel preventivo di costi e impegni orari presentato durante la fase di candidatura, la disponibilità oraria attuale è di 344 ore, a fronte delle 540 ore inizialmente previste.
+
+\newpage
+\subsubsubsection{Distribuzione delle ore nell’RTB} 
+\begin{table}[h!]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|c|X|X|X|}
+        \hline
+        \rowcolor[HTML]{FFD700} 
+        \textbf{Ruolo} & \textbf{Costo Orario} & \textbf{Costo RTB} & \textbf{Saldo per ruolo} \\
+        \hline
+        Responsabile & 30 \euro & 870 \euro & 1110 \euro \\
+        \hline
+        Amministratore & 20 \euro & 540 \euro & 540 \euro \\
+        \hline
+        Analista & 25 \euro & 1575 \euro & 525 \euro \\
+        \hline
+        Progettista & 25 \euro & 125 \euro & 3175 \euro \\
+        \hline
+        Programmatore & 15 \euro & 450 \euro & 1170 \euro \\
+        \hline
+        Verificatore & 15 \euro & 530 \euro & 810 \euro \\
+        \hline
+        \rowcolor[HTML]{FFD700} 
+        \textbf{Totale} & / & 4190 \euro & 7330 \euro \\
+        \hline
+    \end{tabularx}
+    \caption{Costo sostenuto durante l’RTB rispetto al preventivo consegnato}
+\end{table}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}
+        \pie[radius=3,
+            text=pin,
+            pin distance=0.5cm,
+            sum=auto,
+            before number=\footnotesize,
+            after number=\%,
+            color={
+                yellow!90!orange,
+                orange!70,
+                yellow!85!red,
+                orange!80!yellow,
+                yellow!75!orange,
+                orange!100!red
+            }
+        ]{
+            15.04/Verificatore,
+            10.74/Programmatore,
+            2.98/Progettista,
+            20.76/Responsabile,
+            12.89/Amministratore,
+            37.59/Analista
+        }
+    \end{tikzpicture}
+    \caption{Grafico della distribuzione dei costi durante l’RTB}
+\end{figure}
+
+
+Rispetto al costo totale indicato nel preventivo di costi e impegni orari consegnato, risulta un saldo in positivo di 7.330 \euro, netto del lavoro sostenuto durante il periodo di preparazione all’\emph{RTB}.
