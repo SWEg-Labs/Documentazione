@@ -77,7 +77,7 @@ L’applicazione prevede la presenza di due \emph{Attori}\textsubscript{\textbf{
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{UC1.png}
+    \includegraphics[width=\textwidth]{UC1 + UC18 + UC19.png}
     \caption{Inserimento di un'interrogazione in linguaggio naturale}
 \end{figure}
 
@@ -85,14 +85,60 @@ L’applicazione prevede la presenza di due \emph{Attori}\textsubscript{\textbf{
     \item \textbf{\emph{Attori} principali}: Utente;
     \item \textbf{Precondizioni}: L'utente deve avere accesso all'interfaccia dell'applicazione connessa al database;
     \item \textbf{\emph{Trigger}\textsubscript{\textbf{\textit{G}}}}: L'utente desidera inserire un'interrogazione in linguaggio naturale nella barra di input;
-    \item \textbf{Postcondizioni}: L'interrogazione viene inserita e inviata.
+    \item \textbf{Postcondizioni}: L'interrogazione viene inviata al sistema;
     \item \textbf{\emph{Scenario principale}\textsubscript{\textbf{\textit{G}}}}:
     \begin{enumerate}
         \item L'utente accede all'interfaccia dell'applicazione;
-        \item L'utente scrive l'interrogazione in linguaggio naturale nella barra di input.
-        \item L'utente invia l'interrogazione tramite il pulsante dedicato o "Invio" dalla tastiera.
+        \item L'utente inserisce l'interrogazione in linguaggio naturale;
         \item \bulhyperlink{UC8.1}{UC8.1}: Il sistema mostra il messaggio generato nella schermata principale.
     \end{enumerate}
+    \item \textbf{Casi che ereditano}:
+    \begin{itemize}
+        \item \bulhyperlink{UC18}{UC18}: Inserimento di una domanda libera;
+        \item \bulhyperlink{UC19}{UC19}: Inserimento di una domanda dalla lista di domande suggerite.
+    \end{itemize}
+\end{itemize}
+
+\newpage
+
+\hypertarget{UC18}{}
+\subsubsection{UC18: Inserimento di una domanda libera}
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: L'utente deve avere accesso all'interfaccia dell'applicazione connessa al database;
+    \item \textbf{Trigger}: L'utente desidera inserire una domanda libera nella barra di input;
+    \item \textbf{Postcondizioni}: La domanda libera viene inserita e inviata al sistema;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item L'utente accede all'interfaccia dell'applicazione;
+        \item L'utente scrive la domanda libera nella barra di input;
+        \item L'utente invia la domanda libera tramite il pulsante dedicato o "Invio" dalla tastiera;
+        \item \bulhyperlink{UC8.1}{UC8.1}: Il sistema mostra il messaggio generato nella schermata principale.
+    \end{enumerate}
+    \item \textbf{Eredita da}:
+    \begin{itemize}
+        \item \bulhyperlink{UC1}{UC1}: Inserimento di un'interrogazione in linguaggio naturale.
+    \end{itemize}
+\end{itemize}
+
+\hypertarget{UC19}{}
+\subsubsection{UC19: Inserimento di una domanda dalla lista di domande suggerite}
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: L'utente deve avere accesso all'interfaccia dell'applicazione connessa al database;
+    \item \textbf{Trigger}: L'utente desidera inserire una domanda dalla lista di domande suggerite nella barra di input;
+    \item \textbf{Postcondizioni}: La domanda selezionata viene inviata al sistema;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item L'utente accede all'interfaccia dell'applicazione;
+        \item \bulhyperlink{UC11}{UC11}: Il sistema mostra una lista di domande ideali per iniziare la conversazione;
+        \item L'utente seleziona una domanda dalla lista di domande suggerite;
+        \item \bulhyperlink{UC8.1}{UC8.1}: Il sistema mostra il messaggio generato nella schermata principale.
+    \end{enumerate}
+    \item \textbf{Eredita da}:
+    \begin{itemize}
+        \item \bulhyperlink{UC1}{UC1}: Inserimento di un'interrogazione in linguaggio naturale.
+    \end{itemize}
 \end{itemize}
 
 \newpage
@@ -108,14 +154,20 @@ L’applicazione prevede la presenza di due \emph{Attori}\textsubscript{\textbf{
 
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
-    \item \textbf{Precondizioni}: Il sistema ha generato correttamente la risposta alla domanda dell'utente;
+    \item \textbf{Precondizioni}: Il sistema ha generato correttamente la risposta alla domanda dell'utente, sfruttando i dati
+    presenti nel \emph{database vettoriale}, il quale era stato in precedenza riempito con informzioni provenienti da \emph{GitHub}\textsubscript{\textbf{\textit{G}}}, 
+    \emph{Jira}\textsubscript{\textbf{\textit{G}}} e \emph{Confluence}\textsubscript{\textbf{\textit{G}}};
     \item \textbf{Trigger}: L'utente desidera visualizzare la risposta alla domanda che ha posto;
     \item \textbf{Postcondizioni}: L'utente visualizza la risposta generata dal sistema;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
-        \item Il sistema ha generato correttamente la risposta alla domanda dell'utente;
+        \item Il sistema ha generato correttamente la risposta alla domanda dell'utente sfruttando i dati presenti nel \emph{database vettoriale};
         \item L'utente visualizza la risposta generata dal sistema.
     \end{enumerate}
+    \item \textbf{Sottocasi d'uso}:
+    \begin{itemize}
+        \item \bulhyperlink{UC2.1}{UC2.1}: Visualizzazione del nome dei file da cui il sistema ha preso i dati per la risposta alla domanda.
+    \end{itemize}
     \item \textbf{Scenario alternativo}:
     \begin{enumerate}
         \item \bulhyperlink{UC3}{UC3}: Visualizzazione errore nella generazione della risposta.
@@ -186,47 +238,49 @@ L’applicazione prevede la presenza di due \emph{Attori}\textsubscript{\textbf{
 \newpage
 
 \hypertarget{UC2.1}{}
-\subsubsubsection{UC2.1: Visualizzazione dei file da cui il sistema ha preso i dati per la risposta alla domanda}
+\subsubsection{UC2.1: Visualizzazione del nome dei file da cui il sistema ha preso i dati per la risposta alla domanda}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{UC2.1+UC14.png}
-    \caption{Visualizzazione dei file da cui il sistema ha preso i dati per la risposta alla domanda}
+    \includegraphics[width=\textwidth]{UC2.1 + UC14.png}
+    \caption{Visualizzazione del nome dei file da cui il sistema ha preso i dati per la risposta alla domanda}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: L'utente ha visualizzato la risposta generata;
-    \item \textbf{Trigger}: L'utente desidera visualizzare i file da cui il sistema ha preso i dati per la risposta alla domanda;
-    \item \textbf{Postcondizioni}: L'utente visualizza i file da cui il sistema ha preso i dati per la risposta alla domanda;
+    \item \textbf{Trigger}: L'utente desidera visualizzare il nome dei file da cui il sistema ha preso i dati per la risposta alla domanda;
+    \item \textbf{Postcondizioni}: L'utente visualizza il nome dei file da cui il sistema ha preso i dati per la risposta alla domanda;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
         \item L'utente accede all'interfaccia dell'applicazione;
         \item \bulhyperlink{UC1}{UC1}: L'utente inserisce un'interrogazione in linguaggio naturale;
         \item \bulhyperlink{UC2}{UC2}: L'utente visualizza la risposta generata;
-        \item Il sistema rileva il file da cui ha generato la risposta;
-        \item L'utente visualizza i file da cui il sistema ha preso i dati per la risposta alla domanda.
+        \item Il sistema recupera il nome dei file da cui è stata generata la risposta;
+        \item L'utente visualizza il nome dei file da cui il sistema ha preso i dati per la risposta alla domanda.
     \end{enumerate}
     \item \textbf{Scenario alternativo}:
     \begin{enumerate}
-        \item \bulhyperlink{UC14}{UC14}: Visualizzazione errore nella rilevazione dei file utili per la risposta.
+        \item \bulhyperlink{UC14}{UC14}: Visualizzazione errore nel recupero del nome dei file utili per la risposta.
     \end{enumerate}
 \end{itemize}
 
 \hypertarget{UC14}{}
-\subsubsection{UC14: Visualizzazione errore nella rilevazione dei file utili per la risposta}
+\subsubsection{UC14: Visualizzazione errore nel recupero del nome dei file utili per la risposta}
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: L'utente ha visualizzato la risposta generata;
-    \item \textbf{Trigger}: L'utente desidera visualizzare i file da cui il sistema ha preso i dati per la risposta alla domanda;
-    \item \textbf{Postcondizioni}: L'utente visualizza in fondo al messaggio di risposta una segnalazione di errore che comunica che non è stato possibile rilevare i file da cui è stata ricavata la risposta;
+    \item \textbf{Trigger}: L'utente desidera visualizzare il nome dei file da cui il sistema ha preso i dati per la risposta alla domanda;
+    \item \textbf{Postcondizioni}: L'utente visualizza in fondo al messaggio di risposta una segnalazione di errore che comunica che non è
+    stato possibile rilevare il nome dei file da cui è stata ricavata la risposta;
     \item \textbf{Scenario principale}: 
     \begin{enumerate}
         \item L'utente accede all'interfaccia dell'applicazione;
         \item \bulhyperlink{UC1}{UC1}: L'utente inserisce un'interrogazione in linguaggio naturale;
         \item \bulhyperlink{UC2}{UC2}: L'utente visualizza la risposta generata;
-        \item Il sistema non riesce a rilevare i file da cui ha generato la risposta;
-        \item L'utente visualizza in fondo al messaggio di risposta una segnalazione di errore che comunica che non è stato possibile rilevare i file da cui è stata ricavata la risposta.
+        \item Il sistema non riesce a rilevare il nome dei file da cui ha generato la risposta;
+        \item L'utente visualizza in fondo al messaggio di risposta una segnalazione di errore che comunica che non è stato possibile
+        rilevare il nome dei file da cui è stata ricavata la risposta.
     \end{enumerate}
 \end{itemize}
 
@@ -256,22 +310,22 @@ L’applicazione prevede la presenza di due \emph{Attori}\textsubscript{\textbf{
 
 
 \hypertarget{UC7}{}
-\subsubsubsection{UC7: Copia dello \emph{snippet} di codice inserito nella risposta}
+\subsubsubsection{UC7: Copia dello \emph{snippet} di codice presente nella risposta}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{UC7.png}
-    \caption{Copia dello \emph{snippet} di codice inserito nella risposta}
+    \caption{Copia dello \emph{snippet} di codice presente nella risposta}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: Il sistema ha generato una risposta valida con uno \emph{snippet} di codice al suo interno;
-    \item \textbf{Trigger}: L'utente desidera copiare lo \emph{snippet} di codice inserito nella risposta;
+    \item \textbf{Trigger}: L'utente desidera copiare lo \emph{snippet} di codice presente nella risposta;
     \item \textbf{Postcondizioni}: Lo \emph{snippet} di codice generato viene copiato con successo nella clipboard del dispositivo e diventa disponibile per l'uso da parte dell'utente in altre applicazioni o contesti;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
-        \item Il sistema ha generato correttamente la risposta alla domanda dell'utente con al suo interno dello \emph{snippet} di codice;
+        \item Il sistema ha generato correttamente la risposta alla domanda dell'utente con al suo interno uno \emph{snippet} di codice;
         \item L'utente copia lo \emph{snippet} di codice premendo il pulsante che permette di copiarlo.
     \end{enumerate}
 \end{itemize}
@@ -282,7 +336,7 @@ L’applicazione prevede la presenza di due \emph{Attori}\textsubscript{\textbf{
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{UC8+UC9.png}
+    \includegraphics[width=\textwidth]{UC8 + UC9.png}
     \caption{Visualizzazione dello storico della chat}
 \end{figure}
 
@@ -320,6 +374,49 @@ L’applicazione prevede la presenza di due \emph{Attori}\textsubscript{\textbf{
         \item Il sistema recupera il messaggio dal database relazionale e lo mostra a schermo;
         \item L'utente visualizza il messaggio dello storico della chat.
     \end{enumerate}
+    \item \textbf{Casi che ereditano}:
+    \begin{itemize}
+        \item \bulhyperlink{UC8.2}{UC8.2}: Visualizzazione messaggio dell'utente;
+        \item \bulhyperlink{UC8.3}{UC8.3}: Visualizzazione messaggio del chatbot.
+    \end{itemize}
+\end{itemize}
+
+\hypertarget{UC8.2}{}
+\subsubsection{UC8.2: Visualizzazione messaggio dell'utente}
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: Il sistema deve essere collegato a un database relazionale per memorizzare e recuperare lo storico della chat;
+    \item \textbf{Trigger}: L'utente desidera visualizzare un messaggio inviato da lui stesso nello storico della chat;
+    \item \textbf{Postcondizioni}: L'utente visualizza un messaggio inviato da lui stesso nello storico della chat;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item L'utente avvia il sistema;
+        \item Il sistema recupera il messaggio inviato dall'utente dal database relazionale e lo mostra a schermo;
+        \item L'utente visualizza il messaggio inviato da lui stesso nello storico della chat.
+    \end{enumerate}
+    \item \textbf{Eredita da}:
+    \begin{itemize}
+        \item \bulhyperlink{UC8.1}{UC8.1}: Visualizzazione singolo messaggio dello storico.
+    \end{itemize}
+\end{itemize}
+
+\hypertarget{UC8.3}{}
+\subsubsection{UC8.3: Visualizzazione messaggio del chatbot}
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: Il sistema deve essere collegato a un database relazionale per memorizzare e recuperare lo storico della chat;
+    \item \textbf{Trigger}: L'utente desidera visualizzare un messaggio inviato dal chatbot nello storico della chat;
+    \item \textbf{Postcondizioni}: L'utente visualizza un messaggio inviato dal chatbot nello storico della chat;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item L'utente avvia il sistema;
+        \item Il sistema recupera il messaggio inviato dal chatbot dal database relazionale e lo mostra a schermo;
+        \item L'utente visualizza il messaggio inviato dal chatbot nello storico della chat.
+    \end{enumerate}
+    \item \textbf{Eredita da}:
+    \begin{itemize}
+        \item \bulhyperlink{UC8.1}{UC8.1}: Visualizzazione singolo messaggio dello storico.
+    \end{itemize}
 \end{itemize}
 
 
@@ -409,6 +506,7 @@ L’applicazione prevede la presenza di due \emph{Attori}\textsubscript{\textbf{
     \end{enumerate}
 \end{itemize}
 
+\newpage
 
 \hypertarget{UC12}{}
 \subsubsection{UC12: Visualizzazione di una lista di domande ideali per proseguire la conversazione}
