@@ -4,23 +4,30 @@ Per modificare la versione dei documenti è necessario:
 - Cambiare i link nel file "Documentazione\.github\workflows\index.html"
 - Cambiare le versioni indicate negli span nel file "Documentazione\.github\\workflows\index.html"
 
+
 All'arrivo della Product Baseline, ci sono le seguenti cose da fare:
-- Aggiornare il sito, e spostare la classe "firstSection" (attualmente sulla section "RTB") sulla nuova section "PB".
+- Aggiornare il sito✔️
+- Spostare la classe "firstSection" (attualmente sulla section "RTB") sulla nuova section "PB". ✔️
 Nello script:
-- Aggiornare PATH_DOCUMENTI con i percorsi dei nuovi file RTB
-- Creare PATH_VERBALI_ESTERNI_PB e PATH_VERBALI_INTERNI_PB
-- Aggiornare la funzione get_output_file_path inserendo un if "PB" che è praticamente identico all' if "RTB", devi solo sostituire "RTB" con "PB".
+- Aggiornare PATH_DOCUMENTI con i percorsi dei nuovi file RTB ✔️
+- Creare PATH_VERBALI_ESTERNI_PB e PATH_VERBALI_INTERNI_PB ✔️
+- Aggiornare la funzione get_output_file_path inserendo un if "PB" che è praticamente identico all' if "RTB", devi solo
+sostituire "RTB" con "PB". ✔️
 - Aggiornare la funzione update_verbali aggiungendo:
-    html_verbali_esterni_candidatura = ""
-    html_verbali_interni_candidatura = ""
+    html_verbali_esterni_pb = ""
+    html_verbali_interni_pb = "" ✔️
 E le sezioni:
     # Verbali esterni PB
     # Verbali interni PB
+    (identiche a quelle della RTB, basta cambiare il nome. Attento a non dimenticarti html_verbali_interni_pb) ✔️
 E in fondo:
-        .replace("<placeholder_verbali_esterni_rtb/>", html_verbali_esterni_rtb)\
-        .replace("<placeholder_verbali_interni_rtb/>", html_verbali_interni_rtb)\
+        .replace("<placeholder_verbali_esterni_pb/>", html_verbali_esterni_pb)\
+        .replace("<placeholder_verbali_interni_pb/>", html_verbali_interni_pb)\ ✔️
+✔️
 
-- Aggiornare la funzione create_new_output_directory creando anche le cartelle della PB
+- Aggiornare la funzione create_new_output_directory creando anche le cartelle della PB ✔️
 - Aggiornare la funzione latex_to_pdf inserendo:
     if os.path.exists(PATH_VERBALI_ESTERNI_PB):
     if os.path.exists(PATH_VERBALI_INTERNI_PB):
+    (identici alla RTB, e stavolta non ci sono inganni in lettere minuscole)
+✔️
