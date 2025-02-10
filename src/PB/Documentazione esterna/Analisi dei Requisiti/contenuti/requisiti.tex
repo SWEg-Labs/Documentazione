@@ -15,7 +15,7 @@ solida per la \emph{progettazione}\textsubscript{\textit{\textbf{G}}} del sistem
     \begin{tabularx}{\textwidth}{|p{2cm}|p{3cm}|X|p{4cm}|} \hline
     \rowcolor[HTML]{FFD700} 
     \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Fonti} \\ \hline
-    ROF1 & Obbligatorio & L'utente deve poter inserire un'interrogazione in linguaggio naturale nel sistema. & \bulhyperlink{UC1}{UC1} \\ \hline
+    ROF1 & Obbligatorio & L’utente deve poter inserire un’interrogazione in linguaggio naturale nel sistema. & \bulhyperlink{UC1}{UC1} \\ \hline
     ROF2 & Obbligatorio & Quando l'interrogazione viene invata al sistema, deve essere generata una risposta. & \bulhyperlink{UC2}{UC2} \\ \hline
     ROF3 & Obbligatorio & Nel caso il sistema fallisca nel generare una risposta per via di un problema interno, deve far visualizzare all'utente un messaggio di errore, chiedendo di riprovare più tardi. & \bulhyperlink{UC2}{UC2}, \bulhyperlink{UC3}{UC3} \\ \hline
     ROF4 & Obbligatorio & Nel caso in cui l'utente inserisca un'interrogazione che non riguarda i contenuti del database associato, il sistema deve rispondere all'utente che la domanda inserita è fuori contesto. & \bulhyperlink{UC2}{UC2}, \bulhyperlink{UC4}{UC4} \\ \hline
@@ -23,71 +23,67 @@ solida per la \emph{progettazione}\textsubscript{\textit{\textbf{G}}} del sistem
     ROF6 & Desiderabile & L'utente deve poter visualizzare i file da cui il sistema ha preso i dati per la risposta. &\bulhyperlink{UC2.1}{UC2.1} \\ \hline
     RDF7 & Desiderabile & Nel caso l'utente desideri accedere ai file utilizzati per generare la risposta ma questo non sia possibile, deve essere visualizzato un messaggio di errore. &\bulhyperlink{UC14}{UC14} \\ \hline
     \end{tabularx}
-    \end{table}
+    \caption{Requisiti funzionali pt.1}
+\end{table}
 
-    \vspace{0.5cm}
-    \newpage
+\vspace{0.5cm}
+\newpage
 % Seconda parte della tabella
-    \begin{table}[h!]
+\begin{table}[h!]
     \renewcommand{\arraystretch}{1.6} % Per aumentare l'altezza delle righe
     \begin{tabularx}{\textwidth}{|p{2cm}|p{3cm}|X|p{4cm}|} \hline
     \rowcolor[HTML]{FFD700} 
     \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Fonti} \\ \hline
-        RZF8 & Opzionale & Deve essere presente un pulsante al cui click la risposta del chatbot viene copiata nel dispositivo dell'utente. & \bulhyperlink{UC6}{UC6} \\ \hline
-        RDF9 & Desiderabile & Nel caso la risposta contenga uno snippet di codice, deve essere presente un pulsante che permetta di copiare il singolo snippet nel dispositivo dell'utente. & \bulhyperlink{UC7}{UC7} \\ \hline
-        RDF10 & Desiderabile & Deve essere presente un sistema di archiviazione delle domande e delle risposte in un database relazionale. & \bulhyperlink{UC8}{UC8} \\ \hline
-        RDF11 & Desiderabile & L'utente deve poter visualizzare lo storico della chat, recuperato dal database relazionale. & \bulhyperlink{UC8}{UC8}, \bulhyperlink{UC8.1}{UC8.1} \\ \hline
-        RDF12 & Desiderabile & Nel caso il sistema fallisca nel recuperare lo storico della chat, deve essere fatto visualizzare un messaggio di errore all'utente spiegando che non è stato possibile recuperare lo storico. & \bulhyperlink{UC9}{UC9} \\ \hline
-        ROF13 & Obbligatorio & Uno scheduler deve collegarsi al sistema e periodicamente aggiornare il database vettoriale con i dati più recenti. & \bulhyperlink{UC10}{UC10} \\ \hline
-        ROF14 & Obbligatorio & La risposta deve essere generata prendendo in considerazione i dati di contesto provenienti da GitHub,Jira e Confluence & \bulhyperlink{UC10}{UC10}, Capitolato \\ \hline
-        ROF15 & Obbligatorio & Il sistema deve poter convertire i dati ottenuti in formato vettoriale. & Verbale interno \\ \hline
-        ROF16 & Obbligatorio & Il sistema deve poter aggiornare il database vettoriale con i nuovi dati ottenuti. & Verbale interno \\ \hline
-        RZF17 & Opzionale & Se la conversazione non è ancora avviata l'utente deve poter visualizzare e selezionare alcune domande di partenza proposte. & \bulhyperlink{UC11}{UC11},\bulhyperlink{UC11.1}{UC11.1} \\ \hline
+    RZF8 & Opzionale & Deve essere presente un pulsante al cui click la risposta del chatbot viene copiata nel dispositivo dell'utente. & \bulhyperlink{UC6}{UC6} \\ \hline
+    RDF9 & Desiderabile & Nel caso la risposta contenga uno snippet di codice, deve essere presente un pulsante che permetta di copiare il singolo snippet nel dispositivo dell'utente. & \bulhyperlink{UC7}{UC7} \\ \hline
+    RDF10 & Desiderabile & Deve essere presente un sistema di archiviazione delle domande e delle risposte in un database relazionale. & \bulhyperlink{UC8}{UC8} \\ \hline
+    RDF11 & Desiderabile & L'utente deve poter visualizzare lo storico della chat, recuperato dal database relazionale. & \bulhyperlink{UC8}{UC8}, \bulhyperlink{UC8.1}{UC8.1} \\ \hline
+    RDF12 & Desiderabile & Nel caso il sistema fallisca nel recuperare lo storico della chat, deve essere fatto visualizzare un messaggio di errore all'utente spiegando che non è stato possibile recuperare lo storico. & \bulhyperlink{UC9}{UC9} \\ \hline
+    ROF13 & Obbligatorio & Uno scheduler deve collegarsi al sistema e periodicamente aggiornare il database vettoriale con i dati più recenti. & \bulhyperlink{UC10}{UC10} \\ \hline
+    ROF14 & Obbligatorio & La risposta deve essere generata prendendo in considerazione i dati di contesto provenienti da GitHub,Jira e Confluence & \bulhyperlink{UC10}{UC10}, Capitolato \\ \hline
+    ROF15 & Obbligatorio & Il sistema deve poter convertire i dati ottenuti in formato vettoriale. & Verbale interno \\ \hline
+    ROF16 & Obbligatorio & Il sistema deve poter aggiornare il database vettoriale con i nuovi dati ottenuti. & Verbale interno \\ \hline
+    RZF17 & Opzionale & Se la conversazione non è ancora avviata l'utente deve poter visualizzare e selezionare alcune domande di partenza proposte. & \bulhyperlink{UC11}{UC11},\bulhyperlink{UC11.1}{UC11.1} \\ \hline
     \end{tabularx}
-
-    \caption{Requisiti funzionali}
+    \caption{Requisiti funzionali pt.2}
 \end{table}
 
 \vspace{0.5cm}
 \newpage
 % Seconda parte della tabella
 \begin{table}[h!]
-\renewcommand{\arraystretch}{1.6} % Per aumentare l'altezza delle righe
-\begin{tabularx}{\textwidth}{|p{2cm}|p{3cm}|X|p{4cm}|} \hline
+    \renewcommand{\arraystretch}{1.6} % Per aumentare l'altezza delle righe
+    \begin{tabularx}{\textwidth}{|p{2cm}|p{3cm}|X|p{4cm}|} \hline
     \rowcolor[HTML]{FFD700} 
     \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Fonti} \\ \hline
-        RZF18 & Opzionale & Dopo la visualizzazione di una risposta, all'utente devono venire suggerite alcune interrogazioni che è possibile porre al sistema per continuare la conversazione. & \bulhyperlink{UC12}{UC12},\bulhyperlink{UC12.1}{UC12.1} \\ \hline
-        RZF19 & Opzionale & Nel caso il sistema vada in errore nel tentativo di proporre altre domande per proseguire la conversazione, deve venire mostrato un messaggio che comunica l'errore all'utente e invita a fare altre domande. & \bulhyperlink{UC13}{UC13} \\ \hline
-        RZF20 & Opzionale & Il sistema deve registrare data e ora degli aggiornamenti del database vettoriale, in modo da poter scrivere un log di aggiornamento. & \bulhyperlink{UC15}{UC15} \\ \hline
-        RZF21 & Opzionale & Il sistema deve comunicare se il database vettoriale a cui vengono poste le interrogazioni è aggiornato o meno. & \bulhyperlink{UC15}{UC15}, \bulhyperlink{UC16}{UC16}, \bulhyperlink{UC17}{UC17} \\ \hline
-        ROF22 & Obbligatorio & Il sistema deve processare i documenti che vengono caricati, creandone i loro \emph{embedding}. & Verbale interno\\ \hline
-        ROF23 & Obbligatorio & Il sistema deve salvare, in modo persistente, il contenuto dei documenti caricati. & Verbale interno\\ \hline
-        ROF24 & Obbligatorio & Il sistema deve salvare, in modo persistente, tutti i metadati dei documenti caricati. & Verbale interno\\ \hline
-        ROF25 & Obbligatorio & Il sistema deve salvare, i commit e i file scritti in caratteri testuali di \emph{GitHub}, escludendo PDF o immagini. & Verbale esterno\\ \hline
-        RZF26 & Opzionale & Il sistema deve permettere all'utente di digitare una domanda libera in linguaggio naturale tramite una barra di input. & \bulhyperlink{UC18}{UC18} \\ \hline
+    RZF18 & Opzionale & Dopo la visualizzazione di una risposta, all'utente devono venire suggerite alcune interrogazioni che è possibile porre al sistema per continuare la conversazione. & \bulhyperlink{UC12}{UC12},\bulhyperlink{UC12.1}{UC12.1} \\ \hline
+    RZF19 & Opzionale & Nel caso il sistema vada in errore nel tentativo di proporre altre domande per proseguire la conversazione, deve venire mostrato un messaggio che comunica l'errore all'utente e invita a fare altre domande. & \bulhyperlink{UC13}{UC13} \\ \hline
+    RZF20 & Opzionale & Il sistema deve registrare data e ora degli aggiornamenti del database vettoriale, in modo da poter scrivere un log di aggiornamento. & \bulhyperlink{UC15}{UC15} \\ \hline
+    RZF21 & Opzionale & Il sistema deve comunicare se il database vettoriale a cui vengono poste le interrogazioni è aggiornato o meno. & \bulhyperlink{UC15}{UC15}, \bulhyperlink{UC16}{UC16}, \bulhyperlink{UC17}{UC17} \\ \hline
+    ROF22 & Obbligatorio & Il sistema deve processare i documenti che vengono caricati, creandone i loro \emph{embedding}. & Verbale interno\\ \hline
+    ROF23 & Obbligatorio & Il sistema deve salvare, in modo persistente, il contenuto dei documenti caricati. & Verbale interno\\ \hline
+    ROF24 & Obbligatorio & Il sistema deve salvare, in modo persistente, tutti i metadati dei documenti caricati. & Verbale interno\\ \hline
+    ROF25 & Obbligatorio & Il sistema deve salvare, i commit e i file scritti in caratteri testuali di \emph{GitHub}, escludendo PDF o immagini. & Verbale esterno\\ \hline
+    ROF26 & Obbligatorio & Il sistema deve permettere all'utente di digitare una domanda libera in linguaggio naturale tramite una barra di input. & \bulhyperlink{UC18}{UC18} \\ \hline
     \end{tabularx}
-
-\caption{Requisiti funzionali}
-\label{tab:Requisiti_funzionali}
+    \caption{Requisiti funzionali pt.3}
 \end{table}
 
 \vspace{0.5cm}
 \newpage
-% Seconda parte della tabella
+% Terza parte della tabella
 \begin{table}[h!]
-\renewcommand{\arraystretch}{1.6} % Per aumentare l'altezza delle righe
-\begin{tabularx}{\textwidth}{|p{2cm}|p{3cm}|X|p{4cm}|} \hline
+    \renewcommand{\arraystretch}{1.6} % Per aumentare l'altezza delle righe
+    \begin{tabularx}{\textwidth}{|p{2cm}|p{3cm}|X|p{4cm}|} \hline
     \rowcolor[HTML]{FFD700} 
     \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Fonti} \\ \hline
-        RZF27 & Opzionale & Il sistema deve proporre all'utente una lista di possibili domande da porre la chatbot. & \bulhyperlink{UC19}{UC19} \\ \hline
-        RZF28 & Opzionale & L'utente deve poter selezionare una delle domande proposte dal sistema, e inviarla come interrogazione al chatbot. & \bulhyperlink{UC19}{UC19} \\ \hline
-        ROF29 & Obbligatorio & Il sistema deve visualizzare i messaggi dell'utente presenti nello storico. & \bulhyperlink{UC8.2}{UC8.2} \\ \hline
-        ROF30 & Obbligatorio & Il sistema deve visualizzare i messaggi del chatbot presenti nello storico. & \bulhyperlink{UC8.3}{UC8.3} \\ \hline
-        RDF31 & Desiderabile & I messaggi del chatbot e dell'utente visualizzati devono essere distinguibili tra loro tramite una colorazione differente. & \bulhyperlink{UC8.2}{UC8.2}, \bulhyperlink{UC8.3}{UC8.3} \\ \hline
+    RZF27 & Opzionale & L'utente deve poter selezionare una delle domande proposte dal sistema, e inviarla come interrogazione al chatbot. & \bulhyperlink{UC19}{UC19} \\ \hline
+    ROF28 & Obbligatorio & Il sistema deve visualizzare i messaggi dell'utente presenti nello storico. & \bulhyperlink{UC8.2}{UC8.2} \\ \hline
+    ROF29 & Obbligatorio & Il sistema deve visualizzare i messaggi del chatbot presenti nello storico. & \bulhyperlink{UC8.3}{UC8.3} \\ \hline
+    RDF30 & Desiderabile & I messaggi del chatbot e dell'utente visualizzati devono essere distinguibili tra loro tramite una colorazione differente. & \bulhyperlink{UC8.2}{UC8.2}, \bulhyperlink{UC8.3}{UC8.3} \\ \hline
     \end{tabularx}
-
-\caption{Requisiti funzionali}
-\label{tab:Requisiti_funzionali}
+    \caption{Requisiti funzionali pt.4}
+    \label{tab:Requisiti_funzionali}
 \end{table}
 
 \newpage
@@ -150,7 +146,7 @@ dalle prestazioni del dispositivo e dall'ottimizzazione specifica per il browser
     Capitolato & ROQ3, ROQ4, ROQ5 \\ \hline
     Verbali interni & ROQ1, ROQ2, ROF15, ROF16, ROF22, ROF23, ROF24  \\ \hline
     Verbali esterni & ROV1, ROV2, ROV3, ROV4, ROF25\\ \hline
-    \bulhyperlink{UC1}{UC1} & ROF1 \\ \hline
+    \bulhyperlink{UC1}{UC1} & ROF1, RZF26 \\ \hline
     \bulhyperlink{UC2}{UC2} & ROF2 \\ \hline
     \bulhyperlink{UC2}{UC2}, \bulhyperlink{UC3}{UC3} & ROF3 \\ \hline
     \bulhyperlink{UC2}{UC2}, \bulhyperlink{UC4}{UC4} & ROF4 \\ \hline
@@ -175,8 +171,7 @@ dalle prestazioni del dispositivo e dall'ottimizzazione specifica per il browser
     \bulhyperlink{UC18}{UC18} & RZF26 \\ \hline
     \bulhyperlink{UC19}{UC19} & RZF27 \\ \hline
     \bulhyperlink{UC19}{UC19} & RZF28 \\ \hline
-
-\end{tabularx}
+    \end{tabularx}
     \caption{Tracciamento Fonte - Requisiti}
     \label{tab:Tracciamento_fonte_requisiti}
 \end{table}
@@ -216,7 +211,7 @@ dalle prestazioni del dispositivo e dall'ottimizzazione specifica per il browser
     ROF23 & Verbale interno\\ \hline
     ROF24 & Verbale interno\\ \hline
     \end{tabularx}
-    \caption{Tracciamento Requisito - Fonti}
+    \caption{Tracciamento Requisito - Fonti pt.1}
 \end{table}
 
 \newpage
@@ -227,12 +222,11 @@ dalle prestazioni del dispositivo e dall'ottimizzazione specifica per il browser
     \rowcolor[HTML]{FFD700} 
     \textbf{Requisito} & \textbf{Fonti} \\ \hline
     ROF25 & Verbale esterno\\ \hline
-    RZF26 & \bulhyperlink{UC18}{UC18} \\ \hline
+    ROF26 & \bulhyperlink{UC18}{UC18} \\ \hline
     RZF27 & \bulhyperlink{UC19}{UC19} \\ \hline
-    RZF28 & \bulhyperlink{UC19}{UC19} \\ \hline
-    ROF29 & \bulhyperlink{UC8.2}{UC8.2} \\ \hline
-    ROF30 & \bulhyperlink{UC8.3}{UC8.3} \\ \hline
-    RDF31 & \bulhyperlink{UC8.2}{UC8.2}, \bulhyperlink{UC8.3}{UC8.3} \\ \hline
+    ROF28 & \bulhyperlink{UC8.2}{UC8.2} \\ \hline
+    ROF29 & \bulhyperlink{UC8.3}{UC8.3} \\ \hline
+    RDF30 & \bulhyperlink{UC8.2}{UC8.2}, \bulhyperlink{UC8.3}{UC8.3} \\ \hline
     ROQ1 & Verbale Interno\\ \hline
     ROQ2 & Verbale Interno\\ \hline
     ROQ3 & Capitolato \\ \hline
@@ -242,6 +236,6 @@ dalle prestazioni del dispositivo e dall'ottimizzazione specifica per il browser
     ROV3 & Capitolato\\ \hline
     ROV4 & Capitolato\\ \hline
     \end{tabularx}
-    \caption{Tracciamento Requisito - Fonti}
-    \label{tab:Tracciamento_requisiti_fonti}
+    \caption{Tracciamento Requisito - Fonti pt.2}
+    \label{tab:Tracciamento_requisito_fonti}
 \end{table}

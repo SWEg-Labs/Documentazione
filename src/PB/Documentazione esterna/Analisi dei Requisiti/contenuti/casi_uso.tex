@@ -513,7 +513,7 @@ L’applicazione prevede la presenza di due \emph{Attori}\textsubscript{\textbf{
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{UC12+UC13.png}
+    \includegraphics[width=\textwidth]{UC12 + UC13.png}
     \caption{Visualizzazione di una lista di domande ideali per proseguire la conversazione}
 \end{figure}
 
@@ -571,63 +571,69 @@ L’applicazione prevede la presenza di due \emph{Attori}\textsubscript{\textbf{
 \newpage
 
 \hypertarget{UC15}{}
-\subsubsection{UC15: Visualizzazione di un badge che segnala il successo dell'ultimo aggiornamento del database vettoriale}
+\subsubsection{UC15: Visualizzazione di un badge che segnala l'esito dell'ultimo aggiornamento del database vettoriale}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{UC15+UC16+UC17.png}
-    \caption{Visualizzazione di un badge che segnala lo stato di aggiornamento del database vettoriale}
+    \includegraphics[width=\textwidth]{UC15 + UC16 + UC17.png}
+    \caption{Visualizzazione di un badge che segnala l'esito dell'ultimo aggiornamento del database vettoriale}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: L'utente avvia l'applicazione;
-    \item \textbf{Trigger}: L'utente desidera verificare se il database vettoriale è stato aggiornato;
-    \item \textbf{Postcondizioni}: L'utente visualizza un badge che lo informa se l'ultimo aggiornamento tentato è riuscito.;
+    \item \textbf{Trigger}: L'utente desidera visualizzare se l'ultimo tentativo di aggiornamento del database vettoriale
+    ha avuto successo o meno;
+    \item \textbf{Postcondizioni}: L'utente visualizza un badge che lo informa se l'ultimo aggiornamento del database vettoriale
+    è riuscito o meno;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
         \item L'utente avvia l'applicazione;
-        \item Il sistema segnala lo stato di aggiornamento del database vettoriale.
+        \item Il sistema segnala l'esito dell'ultimo aggiornamento del database vettoriale tramite un badge colorato.
     \end{enumerate}
     \item \textbf{Casi che ereditano}:
     \begin{itemize}
-        \item \bulhyperlink{UC16}{UC16}: Visualizzazione successo dell'ultimo tentativo di aggiornamento del database;
-        \item \bulhyperlink{UC17}{UC17}: Visualizzazione fallimento dell'ultimo tentativo di aggiornamento.
+        \item \bulhyperlink{UC16}{UC16}: Visualizzazione di un badge che segnala il successo dell'ultimo tentativo di aggiornamento del database vettoriale;
+        \item \bulhyperlink{UC17}{UC17}: Visualizzazione di un badge che segnala il fallimento dell'ultimo tentativo di aggiornamento del database vettoriale.
     \end{itemize}
 \end{itemize}
 
 \hypertarget{UC16}{}
-\subsubsection{UC16: Visualizzazione database aggiornato}
+\subsubsection{UC16: Visualizzazione di un badge che segnala il successo dell'ultimo tentativo di aggiornamento del database vettoriale}
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: L'utente avvia l'applicazione;
-    \item \textbf{Trigger}: L'utente desidera verificare se il database vettoriale è stato aggiornato;
-    \item \textbf{Postcondizioni}: L'utente visualizza un badge indicativo che il database vettoriale è aggiornato;
+    \item \textbf{Trigger}: L'utente desidera visualizzare se l'ultimo tentativo di aggiornamento del database vettoriale
+    ha avuto successo o meno;
+    \item \textbf{Postcondizioni}: L'utente visualizza un badge che indica che l'ultimo aggiornamento del database vettoriale
+    è avvenuto con successo;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
         \item L'utente avvia l'applicazione;
-        \item Il sistema segnala che il database vettoriale è aggiornato tramite un badge di colore verde.
+        \item Il sistema segnala che l'ultimo aggiornamento del database vettoriale ha avuto successo tramite un badge di colore verde.
     \end{enumerate}
     \item \textbf{Eredita da}:
     \begin{itemize}
-        \item \bulhyperlink{UC15}{UC15}: Visualizzazione di un badge che segnala lo stato di aggiornamento del database vettoriale.
+        \item \bulhyperlink{UC15}{UC15}: Visualizzazione di un badge che segnala l'esito dell'ultimo aggiornamento del database vettoriale.
     \end{itemize}
 \end{itemize}
 
 \hypertarget{UC17}{}
-\subsubsection{UC17: Visualizzazione database non aggiornato}
+\subsubsection{UC17: Visualizzazione di un badge che segnala il fallimento dell'ultimo tentativo di aggiornamento del database vettoriale}
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: L'utente avvia l'applicazione;
-    \item \textbf{Trigger}: L'utente desidera verificare se il database vettoriale è stato aggiornato;
-    \item \textbf{Postcondizioni}: L'utente visualizza un badge indicativo che il database vettoriale non è aggiornato;
+    \item \textbf{Trigger}: L'utente desidera visualizzare se l'ultimo tentativo di aggiornamento del database vettoriale
+    ha avuto successo o meno;
+    \item \textbf{Postcondizioni}: L'utente visualizza un badge che indica che l'ultimo aggiornamento del database vettoriale
+    è fallito;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
         \item L'utente avvia l'applicazione;
-        \item Il sistema segnala che il database vettoriale non è aggiornato tramite un badge di colore rosso.
+        \item Il sistema segnala che l'ultimo aggiornamento del database vettoriale è fallito tramite un badge di colore rosso.
     \end{enumerate}
     \item \textbf{Eredita da}:
     \begin{itemize}
-        \item \bulhyperlink{UC15}{UC15}: Visualizzazione di un badge che segnala lo stato di aggiornamento del database vettoriale.
+        \item \bulhyperlink{UC15}{UC15}: Visualizzazione di un badge che segnala l'esito dell'ultimo aggiornamento del database vettoriale.
     \end{itemize}
 \end{itemize}
