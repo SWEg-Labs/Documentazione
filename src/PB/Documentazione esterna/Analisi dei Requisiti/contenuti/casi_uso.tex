@@ -596,7 +596,7 @@ L’applicazione prevede la presenza di due \emph{Attori}\textsubscript{\textbf{
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{UC15 + UC16 + UC17.png}
+    \includegraphics[width=\textwidth]{UC15 + UC16 + UC17 + UC20.png}
     \caption{Visualizzazione di un badge che segnala l'esito dell'ultimo aggiornamento del database vettoriale}
 \end{figure}
 
@@ -617,6 +617,10 @@ L’applicazione prevede la presenza di due \emph{Attori}\textsubscript{\textbf{
         \item \bulhyperlink{UC16}{UC16}: Visualizzazione di un badge che segnala il successo dell'ultimo tentativo di aggiornamento del database vettoriale;
         \item \bulhyperlink{UC17}{UC17}: Visualizzazione di un badge che segnala il fallimento dell'ultimo tentativo di aggiornamento del database vettoriale.
     \end{itemize}
+    \item \textbf{Scenario alternativo}:
+    \begin{enumerate}
+        \item \bulhyperlink{UC20}{UC20}: Visualizzazione di un badge che segnala un errore nel recupero dell'esito dell'ultimo aggiornamento del database vettoriale.
+    \end{enumerate}
 \end{itemize}
 
 \hypertarget{UC16}{}
@@ -657,4 +661,102 @@ L’applicazione prevede la presenza di due \emph{Attori}\textsubscript{\textbf{
     \begin{itemize}
         \item \bulhyperlink{UC15}{UC15}: Visualizzazione di un badge che segnala l'esito dell'ultimo aggiornamento del database vettoriale.
     \end{itemize}
+\end{itemize}
+
+\hypertarget{UC20}{}
+\subsubsection{UC20: Visualizzazione di un badge che segnala un errore nel recupero dell'esito dell'ultimo aggiornamento del database vettoriale}
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: L'utente avvia l'applicazione;
+    \item \textbf{Trigger}: L'utente desidera visualizzare se l'ultimo tentativo di aggiornamento del database vettoriale
+    ha avuto successo o meno;
+    \item \textbf{Postcondizioni}: L'utente visualizza un badge a forma di X che lo informa che è avvenuto un errore nel recupero
+    dell'esito dell'ultimo aggiornamento del database vettoriale;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item L'utente avvia l'applicazione;
+        \item L'utente visualizza un badge a forma di X che lo informa che è avvenuto un errore nel recupero
+        dell'esito dell'ultimo aggiornamento del database vettoriale.
+    \end{enumerate}
+\end{itemize}
+
+
+\hypertarget{UC21}{}
+\subsubsection{UC21: Visualizzazione di un messaggio che spiega il badge che segnala l'esito dell'ultimo aggiornamento del database vettoriale}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{UC21 + UC22 + UC23 + UC24.png}
+    \caption{Visualizzazione di un messaggio che spiega il badge che segnala l'esito dell'ultimo aggiornamento del database vettoriale}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: L'utente ha visualizzato un badge che segnala l'esito dell'ultimo aggiornamento del database vettoriale;
+    \item \textbf{Trigger}: L'utente desidera comprendere il significato del badge che segnala l'esito dell'ultimo aggiornamento del database vettoriale;
+    \item \textbf{Postcondizioni}: L'utente visualizza un messaggio che spiega il significato del badge;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item L'utente sposta il cursore sopra il badge;
+        \item L'utente visualizza un messaggio che spiega il significato del badge.
+    \end{enumerate}
+    \item \textbf{Casi che ereditano}:
+    \begin{itemize}
+        \item \bulhyperlink{UC22}{UC22}: Visualizzazione di un messaggio che spiega il badge che segnala il successo dell'ultimo aggiornamento del database vettoriale;
+        \item \bulhyperlink{UC23}{UC23}: Visualizzazione di un messaggio che spiega il badge che segnala il fallimento dell'ultimo aggiornamento del database vettoriale;
+    \end{itemize}
+    \item \textbf{Scenario alternativo}:
+    \begin{itemize}
+        \item \bulhyperlink{UC24}{UC24}: Visualizzazione di un messaggio che spiega il badge che segnala un errore nel recupero dell'esito dell'ultimo aggiornamento del database vettoriale.
+    \end{itemize}
+\end{itemize}
+
+\hypertarget{UC22}{}
+\subsubsection{UC22: Visualizzazione di un messaggio che spiega il badge che segnala il successo dell'ultimo aggiornamento del database vettoriale}
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: L'utente ha visualizzato un badge che segnala il successo dell'ultimo aggiornamento del database vettoriale;
+    \item \textbf{Trigger}: L'utente desidera comprendere il significato del badge che segnala il successo dell'ultimo aggiornamento del database vettoriale;
+    \item \textbf{Postcondizioni}: L'utente visualizza un messaggio che spiega che l'ultimo aggiornamento del database vettoriale è avvenuto con successo;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item L'utente sposta il cursore sopra il badge;
+        \item L'utente visualizza un messaggio che spiega che l'ultimo aggiornamento del database vettoriale è avvenuto con successo.
+    \end{enumerate}
+    \item \textbf{Eredita da}:
+    \begin{itemize}
+        \item \bulhyperlink{UC21}{UC21}: Visualizzazione di un messaggio che spiega il badge che segnala l'esito dell'ultimo aggiornamento del database vettoriale.
+    \end{itemize}
+\end{itemize}
+
+\hypertarget{UC23}{}
+\subsubsection{UC23: Visualizzazione di un messaggio che spiega il badge che segnala il fallimento dell'ultimo aggiornamento del database vettoriale}
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: L'utente ha visualizzato un badge che segnala il fallimento dell'ultimo aggiornamento del database vettoriale;
+    \item \textbf{Trigger}: L'utente desidera comprendere il significato del badge che segnala il fallimento dell'ultimo aggiornamento del database vettoriale;
+    \item \textbf{Postcondizioni}: L'utente visualizza un messaggio che spiega che l'ultimo aggiornamento del database vettoriale è fallito;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item L'utente sposta il cursore sopra il badge;
+        \item L'utente visualizza un messaggio che spiega che l'ultimo aggiornamento del database vettoriale è fallito.
+    \end{enumerate}
+    \item \textbf{Eredita da}:
+    \begin{itemize}
+        \item \bulhyperlink{UC21}{UC21}: Visualizzazione di un messaggio che spiega il badge che segnala l'esito dell'ultimo aggiornamento del database vettoriale.
+    \end{itemize}
+\end{itemize}
+
+\hypertarget{UC24}{}
+\subsubsection{UC24: Visualizzazione di un messaggio che spiega il badge che segnala un errore nel recupero dell'esito dell'ultimo aggiornamento del database vettoriale}
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: L'utente ha visualizzato un badge che segnala un errore nel recupero dell'esito dell'ultimo aggiornamento del database vettoriale;
+    \item \textbf{Trigger}: L'utente desidera comprendere il significato del badge che segnala un errore nel recupero dell'esito dell'ultimo aggiornamento del database vettoriale;
+    \item \textbf{Postcondizioni}: L'utente visualizza un messaggio che spiega che è avvenuto un errore nel recupero dell'esito dell'ultimo aggiornamento del database vettoriale;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item L'utente sposta il cursore sopra il badge;
+        \item L'utente visualizza un messaggio che spiega che è avvenuto un errore nel recupero dell'esito dell'ultimo aggiornamento del database vettoriale.
+    \end{enumerate}
 \end{itemize}
