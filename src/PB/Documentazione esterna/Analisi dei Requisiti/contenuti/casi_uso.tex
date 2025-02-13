@@ -342,12 +342,11 @@ L’applicazione prevede la presenza di due \emph{Attori}\textsubscript{\textbf{
 
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
-    \item \textbf{Precondizioni}: Il sistema deve essere collegato a un database relazionale per memorizzare e recuperare lo storico delle sessioni di chat;
+    \item \textbf{Precondizioni}: L'utente avvia il sistema;
     \item \textbf{Trigger}: L'utente desidera visualizzare lo storico delle sessioni della chat;
     \item \textbf{Postcondizioni}: L'utente visualizza lo storico delle sessioni della chat;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
-        \item L'utente avvia il sistema;
         \item Il sistema recupera i messaggi delle sessioni di chat tenutesi in passato dal database relazionale, e li stampa a schermo;
         \item L'utente visualizza i messaggi dello storico della chat, divisi per sessione.
     \end{enumerate}
@@ -365,15 +364,14 @@ L’applicazione prevede la presenza di due \emph{Attori}\textsubscript{\textbf{
 \subsubsection{UC8.1: Visualizzazione di una singola sessione nello storico}
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
-    \item \textbf{Precondizioni}: Il sistema deve essere collegato a un database relazionale per memorizzare e recuperare lo storico delle sessioni di chat;
+    \item \textbf{Precondizioni}: L'utente avvia il sistema;
     \item \textbf{Trigger}: L'utente desidera visualizzare una singola sessione nello storico della chat;
     \item \textbf{Postcondizioni}: L'utente visualizza una singola sessione nello storico della chat;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
-        \item L'utente avvia il sistema;
         \item Il sistema recupera i messaggi delle sessioni di chat tenutesi in passato dal database relazionale, e li stampa a schermo;
-        \item L'utente visualizza una singola sessione di messaggi, cioè la chat tenutasi in un singolo periodo in cui l'applicazione
-        è stata accesa e funzionante.
+        \item L'utente visualizza una singola sessione di messaggi, ovvero la chat avvenuta durante un singolo periodo in cui l'applicazione
+        è stata attiva e funzionante senza interruzioni, delimitata inferiormente da una linea orizzontale.
     \end{enumerate}
     \item \textbf{Sottocasi d'uso}:
     \begin{itemize}
@@ -385,15 +383,14 @@ L’applicazione prevede la presenza di due \emph{Attori}\textsubscript{\textbf{
 \subsubsection{UC8.1.1: Visualizzazione di un singolo messaggio nella sessione}
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
-    \item \textbf{Precondizioni}: Il sistema deve essere collegato a un database relazionale per memorizzare e recuperare lo storico delle sessioni di chat;
+    \item \textbf{Precondizioni}: L'utente avvia il sistema;
     \item \textbf{Trigger}: L'utente desidera visualizzare un singolo messaggio di una sessione dello storico della chat;
     \item \textbf{Postcondizioni}: L'utente visualizza un singolo messaggio di una sessione dello storico della chat;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
-        \item L'utente avvia il sistema;
         \item Il sistema recupera i messaggi delle sessioni di chat tenutesi in passato dal database relazionale, e li stampa a schermo;
-        \item L'utente visualizza una singola sessione di messaggi, cioè la chat tenutasi in un singolo periodo in cui l'applicazione
-        è stata accesa e funzionante;
+        \item L'utente visualizza una singola sessione di messaggi, ovvero la chat avvenuta durante un singolo periodo in cui l'applicazione
+        è stata attiva e funzionante senza interruzioni.
         \item L'utente visualizza un singolo messaggio di una sessione dello storico della chat.
     \end{enumerate}
     \item \textbf{Casi che ereditano}:
@@ -407,15 +404,14 @@ L’applicazione prevede la presenza di due \emph{Attori}\textsubscript{\textbf{
 \subsubsection{UC8.1.2: Visualizzazione messaggio dell'utente}
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
-    \item \textbf{Precondizioni}: Il sistema deve essere collegato a un database relazionale per memorizzare e recuperare lo storico delle sessioni di chat;
+    \item \textbf{Precondizioni}: L'utente avvia il sistema;
     \item \textbf{Trigger}: L'utente desidera visualizzare un messaggio inviato da lui stesso in una sessione dello storico della chat;
     \item \textbf{Postcondizioni}: L'utente visualizza un messaggio inviato da lui stesso in una sessione dello storico della chat;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
-        \item L'utente avvia il sistema;
         \item Il sistema recupera i messaggi delle sessioni di chat tenutesi in passato dal database relazionale, e li stampa a schermo;
-        \item L'utente visualizza una singola sessione di messaggi, cioè la chat tenutasi in un singolo periodo in cui l'applicazione
-        è stata accesa e funzionante;
+        \item L'utente visualizza una singola sessione di messaggi, ovvero la chat avvenuta durante un singolo periodo in cui l'applicazione
+        è stata attiva e funzionante senza interruzioni.
         \item L'utente visualizza un messaggio inviato da lui stesso in una sessione dello storico della chat.
     \end{enumerate}
     \item \textbf{Eredita da}:
@@ -428,15 +424,14 @@ L’applicazione prevede la presenza di due \emph{Attori}\textsubscript{\textbf{
 \subsubsection{UC8.1.3: Visualizzazione messaggio del chatbot}
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
-    \item \textbf{Precondizioni}: Il sistema deve essere collegato a un database relazionale per memorizzare e recuperare lo storico delle sessioni di chat;
+    \item \textbf{Precondizioni}: L'utente avvia il sistema;
     \item \textbf{Trigger}: L'utente desidera visualizzare un messaggio inviato dal chatbot in una sessione dello storico della chat;
     \item \textbf{Postcondizioni}: L'utente visualizza un messaggio inviato dal chatbot in una sessione dello storico della chat;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
-        \item L'utente avvia il sistema;
         \item Il sistema recupera i messaggi delle sessioni di chat tenutesi in passato dal database relazionale, e li stampa a schermo;
-        \item L'utente visualizza una singola sessione di messaggi, cioè la chat tenutasi in un singolo periodo in cui l'applicazione
-        è stata accesa e funzionante;
+        \item L'utente visualizza una singola sessione di messaggi, ovvero la chat avvenuta durante un singolo periodo in cui l'applicazione
+        è stata attiva e funzionante senza interruzioni.
         \item L'utente visualizza un messaggio inviato dal chatbot in una sessione dello storico della chat.
     \end{enumerate}
     \item \textbf{Eredita da}:
@@ -449,12 +444,11 @@ L’applicazione prevede la presenza di due \emph{Attori}\textsubscript{\textbf{
 \subsubsection{UC9: Visualizzazione errore nel recupero dello storico}
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
-    \item \textbf{Precondizioni}: Il sistema deve essere collegato a un database relazionale per memorizzare e recuperare lo storico delle sessioni di chat;
+    \item \textbf{Precondizioni}: L'utente avvia il sistema;
     \item \textbf{Trigger}: L'utente desidera visualizzare lo storico delle sessioni della chat;
     \item \textbf{Postcondizioni}: L'utente visualizza un messaggio di errore che comunica dell'impossibilità di recuperare lo storico;
     \item \textbf{Scenario principale}: 
     \begin{enumerate}
-        \item L'utente avvia il sistema;
         \item Il sistema ha riscontrato un problema nel recupero dello storico dal database relazionale;
         \item L'utente visualizza un messaggio di errore che comunica dell'impossibilità di recuperare lo storico.
     \end{enumerate}
