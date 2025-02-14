@@ -57,8 +57,8 @@ solida per la \emph{progettazione}\textsubscript{\textit{\textbf{G}}} del sistem
     \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Fonti} \\ \hline
     RZF18 & Opzionale & Dopo la visualizzazione di una risposta, all'utente devono venire suggerite alcune interrogazioni che è possibile porre al sistema per continuare la conversazione. & \bulhyperlink{UC12}{UC12},\bulhyperlink{UC12.1}{UC12.1} \\ \hline
     RZF19 & Opzionale & Nel caso il sistema vada in errore nel tentativo di proporre altre domande per proseguire la conversazione, deve venire mostrato un messaggio che comunica l'errore all'utente e invita a fare altre domande. & \bulhyperlink{UC13}{UC13} \\ \hline
-    RZF20 & Opzionale & Il sistema deve mostrare a schermo un badge colorato sopra alla schermata della chat. & \bulhyperlink{UC15}{UC15} \\ \hline
-    RZF21 & Opzionale & Il sistema deve comunicare all'utente l'esito dell'ultimo tentativo di aggiornamento del database vettoriale utilizzando un badge colorato. & \bulhyperlink{UC15}{UC15} \\ \hline
+    RZF20 & Opzionale & Il sistema deve mostrare a schermo un badge sopra alla schermata della chat. & \bulhyperlink{UC15}{UC15} \\ \hline
+    RZF21 & Opzionale & Il sistema deve comunicare all'utente l'esito dell'ultimo tentativo di aggiornamento del database vettoriale utilizzando un badge. & \bulhyperlink{UC15}{UC15} \\ \hline
     ROF22 & Obbligatorio & Il sistema deve processare i documenti che vengono caricati, creandone i loro \emph{embedding}. & Verbale interno\\ \hline
     ROF23 & Obbligatorio & Il sistema deve salvare, in modo persistente, il contenuto dei documenti caricati. & Verbale interno\\ \hline
     ROF24 & Obbligatorio & Il sistema deve salvare, in modo persistente, i metadati dei documenti caricati. & Verbale interno\\ \hline
@@ -86,7 +86,8 @@ solida per la \emph{progettazione}\textsubscript{\textit{\textbf{G}}} del sistem
     RZF34 & Opzionale & Il sistema deve comunicare all'utente se l'ultimo tentativo di aggiornamento del database vettoriale ha avuto successo. & \bulhyperlink{UC16}{UC16} \\ \hline
     RZF35 & Opzionale & Il sistema deve comunicare all'utente se l'ultimo tentativo di aggiornamento del database vettoriale è fallito. & \bulhyperlink{UC17}{UC17} \\ \hline
     RZF36 & Opzionale & Il sistema deve comunicare all'utente se non è stato possibile recuperare l'esito dell'ultimo aggiornamento del database vettoriale. & \bulhyperlink{UC20}{UC20} \\ \hline
-    RZF37 & Opzionale & L'utente, quando sposta il cursore sopra il badge di risultato dell'aggiornamento automatico del database vettoriale, deve visualizzare un messaggio che spiega il significato del badge. & \bulhyperlink{UC21}{UC21} \\ \hline
+    RZF37 & Opzionale & L'utente, quando sposta il cursore sopra il badge che segnala l'esito dell'aggiornamento automatico del
+    database vettoriale, deve visualizzare un messaggio che spiega il significato del badge nella sua forma corrente. & \bulhyperlink{UC21}{UC21} \\ \hline
     \end{tabularx}
 \end{table}
 
@@ -98,9 +99,12 @@ solida per la \emph{progettazione}\textsubscript{\textit{\textbf{G}}} del sistem
     \begin{tabularx}{\textwidth}{|p{2cm}|p{3cm}|X|p{4cm}|} \hline
     \rowcolor[HTML]{FFD700} 
     \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Fonti} \\ \hline
-    RZF38 & Opzionale & Se l'ultimo tentativo di aggiornamento del database vettoriale ha avuto successo, l'utente spostando il cursore sopra il badge deve visualizzare un messaggio che spiega il significato del colore verde del badge. & \bulhyperlink{UC22}{UC22} \\ \hline
-    RZF39 & Opzionale & Se l'ultimo tentativo di aggiornamento del database vettoriale è fallito, l'utente spostando il cursore sopra il badge deve visualizzare un messaggio che spiega il significato del colore rosso del badge. & \bulhyperlink{UC23}{UC23} \\ \hline
-    RZF40 & Opzionale & Se non è stato possibile recuperare l'esito dell'ultimo tentativo di aggiornamento del database vettoriale, l'utente spostando il cursore sopra il badge deve visualizzare un messaggio che spiega il significato della forma a X del badge. & \bulhyperlink{UC24}{UC24} \\ \hline
+    RZF38 & Opzionale & Se l'ultimo tentativo di aggiornamento del database vettoriale ha avuto successo, l'utente spostando il
+    cursore sopra il badge deve visualizzare un messaggio che spiega il significato della forma a spunta del badge. & \bulhyperlink{UC22}{UC22} \\ \hline
+    RZF39 & Opzionale & Se l'ultimo tentativo di aggiornamento del database vettoriale è fallito, l'utente spostando il cursore sopra
+    il badge deve visualizzare un messaggio che spiega il significato della forma a X del badge. & \bulhyperlink{UC23}{UC23} \\ \hline
+    RZF40 & Opzionale & Se non è stato possibile recuperare l'esito dell'ultimo tentativo di aggiornamento del database vettoriale,
+    l'utente spostando il cursore sopra il badge deve visualizzare un messaggio che spiega il significato della forma a segnale di pericolo del badge. & \bulhyperlink{UC24}{UC24} \\ \hline
     \end{tabularx}
     \caption{Requisiti funzionali}
     \label{tab:Requisiti_funzionali}
