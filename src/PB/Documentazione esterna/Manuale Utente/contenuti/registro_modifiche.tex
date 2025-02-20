@@ -1,0 +1,42 @@
+% Intestazione
+\fancyhead[L]{Registro delle modifiche} % Testo a sinistra
+\fancyhead[R]{\includegraphics[width=0.16\textwidth]{sweg_logo_sito_inverted.png}} % Immagine a destra
+
+% Piè di pagina
+\fancyfoot[L]{Manuale Utente}       % Testo a sinistra
+\fancyfoot[C]{\thepage}                % Numero di pagina al centro
+\fancyfoot[R]{Versione 1.0.0}          % Testo a destra
+
+\pagenumbering{roman} % Numerazione romana per l'indice
+
+
+\section*{Registro delle modifiche}
+
+\begin{table}[h]
+    \centering
+    \rowcolors{2}{lightgray}{white}
+    \begin{tabular}{|c|c|p{5cm}|p{3cm}|p{3cm}|}
+        \hline
+        \rowcolor[gray]{0.75}
+        \textbf{Versione} & \textbf{Data} & \multicolumn{1}{|c|}{\textbf{Descrizione}} & 
+        \multicolumn{1}{|c|}{\textbf{Autore}} & \multicolumn{1}{|c|}{\textbf{Verificatore}}\\
+        \hline
+        1.0.0 & ... & Modifiche a ... & ... & Riccardo Stefani\\
+        \hline
+        ... & ... & Modifiche a ... & ... & ...\\
+        \hline
+        ... & ... & ... & ... & ...\\
+        \hline
+        0.1.4 & 13-02-25 & Iniziata la stesura della sezione \S\bulref{sec:guida_utilizzo} & Riccardo Stefani & Michael Fantinato\\
+        \hline
+        0.1.3 & 12-02-25 & Stesura sezione \S\bulref{sec:requisiti} & Riccardo Stefani & Michael Fantinato \\
+        \hline
+        0.1.2 & 08-02-25 & Stesura sezione \S\bulref{sec:supporto_tecnico} & Federica Bolognini & Riccardo Stefani\\
+        \hline
+        0.1.1 & 06-02-25 & Stesura Introduzione & Davide Verzotto & Riccardo Stefani\\
+        \hline
+        0.1.0 & 06-02-25 & Creazione del documento & Riccardo Stefani & Giacomo Loat\\
+        \hline
+    \end{tabular}
+    \caption{Registro delle modifiche}
+\end{table}

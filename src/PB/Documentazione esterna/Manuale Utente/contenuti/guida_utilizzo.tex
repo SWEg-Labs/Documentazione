@@ -1,0 +1,78 @@
+% Intestazione
+\fancyhead[L]{4 \hspace{0.2cm} Guida all’utilizzo} % Testo a sinistra 
+
+\section{Guida all’utilizzo}
+\label{sec:guida_utilizzo}
+% Screenshot di cosa appare all'avvio del chatbot. Descrivere gli elementi presenti nella schermata iniziale.
+
+
+\subsection{Cosa chiedere, e come chiederlo}
+BuddyBot è pensato per essere l'assistente digitale di un'azienda informatica che deve aiutare i neoassunti a muoversi nel codice
+e nella documentazione dei vari progetti aziendali. Più precisamente, ad ogni interrogazione posta dall'utente vengono associati dei
+documenti di contesto, che provengono esclusivamente dai profili \emph{GitHub}\textsubscript{\textbf{\textit{G}}},
+\emph{Jira}\textsubscript{\textbf{\textit{G}}} e \emph{Confluence}\textsubscript{\textbf{\textit{G}}} dell'azienda, e in base alle
+informazioni presenti su tali documenti di contesto il chatbot fornirà la risposta alla domanda fornita.
+Se la domanda viene malposta, il chatbot potrebbe non essere in grado di fornire una risposta, e in tal caso potrebbe restituire
+uno dei seguenti messaggi:
+\begin{itemize}
+    \item \emph{"Domanda fuori contesto"}: la domanda posta non è inerente al contesto informatico aziendale;
+    \item \emph{"Informazione non trovata"}: non è stato possibile trovare nei documenti di contesto informazioni utili per rispondere alla domanda.
+\end{itemize}
+
+E' tuttavia possibile che il chatbot restituisca tali risposte anche in casi in cui non ce lo si aspetta.
+Per evitare di ottenere risposte negative, forniamo qui di seguito delle istruzioni per capire come porre la domanda per
+ottenere una risposta soddisfacente:
+\begin{itemize}
+    \item La domanda deve essere concisa e diretta, senza giri di parole;
+    \item Si devono mettere bene in risalto le parole chiave;
+    \item La domanda deve essere il più breve possibile;
+    \item La domanda deve essere pensata per ottenere una risposta unitaria, e non per aprire una discussione;
+    \item La domanda deve riguardare un contesto chiaro e definito, quindi non può toccare tematiche troppo generali;
+    \item Il suddetto contesto deve essere uno, infatti non si possono porre due o più domande a tema differente in una stessa
+    interrogazione;
+    \item Non si deve chiedere informazioni generiche a riguardo di una risorsa fornendo solo il nome della stessa, ma bisogna
+    bensì specificare più di preciso cosa si vuole sapere a riguardo di tale risorsa;
+    \item La domanda deve essere posta in un linguaggio quanto più possibile formale e tecnico, cercando di rimanere aderenti
+    allo stile di scrittura dei documenti aziendali. Un linguaggio troppo colloquiale quasi sicuramente condurrà a risposte negative;
+    \item Non si devono porre domande che richiedono una risposta soggettiva. In caso ne venga posta una per sbaglio, non ci si deve
+    fidare della risposta fornita, è bensì consigliabile chiedere ad un collega;
+    \item Si devono evitare domande che richiedano ragionamento e/o collegamenti logici, in quanto il chatbot non è in grado di
+    processare informazioni in tal senso;
+    \item Non si devono porre domande per la cui risposta è necessaria una ricerca su internet, in quanto il chatbot fa
+    riferimento esclusivamente ai documenti di contesto, e non è in grado di navigare in rete.
+\end{itemize}
+
+
+\subsection{Interrogazione del chatbot}
+
+\subsubsection{Come inserire una domanda}
+% Parlare dei due metodi di inserimento, o domanda libera o selezione di domande iniziali proposte.
+
+\subsubsection{La risposta del chatbot}
+% Parlare:
+% - della risposta testuale (che può contenere uno snippet di codice);
+% - della possibilità di copiare il testo, e soprattutto di copiare lo snippet di codice, entrambi mediante pulsante apposito;
+% - della visualizzazione del nome dei file da cui è stata presa la risposta (se implementeremo il requisito);
+% - delle domande proposte per proseguire, e che rimane sempre disponibile la domanda libera.
+
+
+\subsection{Visualizzazione dello storico delle sessioni}
+% Parlare della linea orizzontale di suddivisione delle sessioni, e dello scorrimento verso l'alto per visualizzare le
+% sessioni precedenti fino all'inizio della conversazione.
+
+
+\subsection{L'aggiornamento automatico dei documenti}
+% Parlare del fatto che i documenti vengono aggiornati automaticamente ogni tot ore
+% Descrivere il badge di segnalazione dell'esito dell'ultimo aggiornamento: verde se avvenuto con successo, rosso se
+% fallito.
+
+
+\subsection{Possibili errori}
+% Fare un elenco di possibili errori che possono verificarsi durante l'utilizzo del chatbot. Ovviamente per ciascuno va
+% riportato uno screenshot.
+% - Errore nel recupero dello storico (UC9)
+% - Errore nella generazione della risposta (UC3)
+% - Errore nel recupero del nome dei file utili per la risposta (UC14)
+% - Errore nella generazione delle domande per proseguire la conversazione (UC13)
+% - Visualizzazione di un badge che segnala un errore nel recupero dell'esito dell'ultimo aggiornamento del database vettoriale (UC20)
+% - Visualizzazione di un messaggio che spiega il badge che segnala un errore nel recupero dell'esito dell'ultimo aggiornamento del database vettoriale (UC24)
