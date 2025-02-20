@@ -1,6 +1,6 @@
 <h1 align="center">Documentazione</h1>
 
-Repository della documentazione del gruppo SWEg Labs, per il corso di Ingegneria del Software 2024-25, CdL in Informatica, Università degli Studi di Padova.  
+Repository della documentazione del gruppo SWEg Labs, per il corso di Ingegneria del Software 2024-25, CdL triennale in Informatica, Università degli Studi di Padova.  
 
 Accesso alla documentazione: https://sweg-labs.github.io/Documentazione/
 
