@@ -31,3 +31,7 @@ E in fondo:
     if os.path.exists(PATH_VERBALI_INTERNI_PB):
     (identici alla RTB, e stavolta non ci sono inganni in lettere minuscole)
 ✔️
+
+Un aggiornamento che mi sono dimenticato:
+Aggiornare il CSS del sito, c'erano da aggiungere "section#PB p", "section#PB p:hover" e "section#PB p a".
+Li ho aggiunti solamente dopo la pull request.
