@@ -34,10 +34,11 @@ ottenere una risposta soddisfacente:
     \item La domanda deve essere il più breve possibile. Ad esempio "Chi è l'assegnatario del ticket Z?" invece che "Vorrei sapere
     chi è la persona a cui è stato assegnato il ticket Z".
     \item La domanda deve essere pensata per ottenere una risposta unitaria, e non per aprire una discussione. Ad esempio, occorre
-    unificare "Quali commit sono stati fatti oggi? Mostrameli in tabella con assegnatario e data" invece che porre due domande
-    separate "Quali commit sono stati fatti oggi?" e "Mostrameli in tabella con assegnatario e data", perchè in quest'ultimo caso la
-    seconda domanda riceverà come risposta "domanda fuori contesto": infatti, ogni coppia domanda-risposta è a sè stante, il chatbot
-    non "va all'indietro" a riguardare il flusso del discorso prima di rispondere all'interrogazione corrente.
+    unificare "Quali commit sono stati fatti oggi? Mostrameli in forma di tabella con assegnatario e data" invece che porre due domande
+    separate "Quali commit sono stati fatti oggi?" e "Mostrameli in forma di tabella con assegnatario e data", perchè in quest'ultimo
+    caso la seconda domanda riceverà come risposta "Domanda fuori contesto": infatti, ogni coppia domanda-risposta è a sè stante, cioè
+    il chatbot non considera il completo flusso del discorso per generare la risposta all'interrogazione corrente, bensì considera solo
+    quest'ultima.
     \item La domanda deve riguardare un contesto chiaro e definito, quindi non può toccare tematiche troppo generali. Ad esempio
     "Quali sono i task aperti per il progetto A?" invece che "Qual è la situazione dei nostri progetti?".
     \item Il suddetto contesto deve essere uno, infatti non si possono porre due o più domande a tema differente in una stessa
