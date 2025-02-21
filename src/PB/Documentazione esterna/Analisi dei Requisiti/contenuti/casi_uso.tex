@@ -546,7 +546,8 @@ L’applicazione prevede la presenza di due \emph{Attori}\textsubscript{\textbf{
     \item \textbf{Scenario principale}:
     \begin{enumerate}
         \item \bulhyperlink{UC2}{UC2}: L'utente ha visualizzato la risposta a una domanda precedente;
-        \item Il sistema propone una lista di domande considerate utili rispetto ai messaggi precedenti;
+        \item Il sistema propone una lista di domande considerate correlate rispetto all'ultima domanda chiesta
+        e all'ultima risposta ricevuta;
         \item \bulhyperlink{UC1}{UC1}: L'utente seleziona una delle domande proposte o inserisce una propria domanda;
     \end{enumerate}
     \item \textbf{Sottocasi d'uso}:
@@ -569,7 +570,8 @@ L’applicazione prevede la presenza di due \emph{Attori}\textsubscript{\textbf{
     \item \textbf{Scenario principale}:
     \begin{enumerate}
         \item \bulhyperlink{UC2}{UC2}: L'utente ha visualizzato la risposta a una domanda precedente;
-        \item Il sistema propone una domanda ideale per proseguire la conversazione;
+        \item Il sistema propone una domanda correlata rispetto all'ultima domanda chiesta
+        e all'ultima risposta ricevuta;
         \item L'utente visualizza la domanda proposta;
         \item \bulhyperlink{UC1}{UC1}: L'utente seleziona la domanda proposta o inserisce una propria domanda;
     \end{enumerate}
@@ -585,6 +587,8 @@ L’applicazione prevede la presenza di due \emph{Attori}\textsubscript{\textbf{
     \item \textbf{Scenario principale}:
     \begin{enumerate}
         \item \bulhyperlink{UC2}{UC2}: L'utente ha visualizzato la risposta a una domanda precedente;
+        \item Il sistema non è in grado di generare delle domande correlate rispetto all'ultima domanda chiesta
+        e all'ultima risposta ricevuta;
         \item Il sistema mostra un messaggio che comunica l'errore all'utente, e invita a fare altre domande.
     \end{enumerate}
 \end{itemize}
