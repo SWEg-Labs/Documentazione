@@ -166,7 +166,7 @@ L’applicazione prevede la presenza di due \emph{Attori}\textsubscript{\textbf{
     \end{enumerate}
     \item \textbf{Sottocasi d'uso}:
     \begin{itemize}
-        \item \bulhyperlink{UC2.1}{UC2.1}: Visualizzazione del nome dei file da cui il sistema ha preso i dati per la risposta alla domanda.
+        \item \bulhyperlink{UC2.1}{UC2.1}: Visualizzazione del link dei file da cui il sistema ha preso i dati per la risposta alla domanda.
     \end{itemize}
     \item \textbf{Scenario alternativo}:
     \begin{enumerate}
@@ -238,49 +238,49 @@ L’applicazione prevede la presenza di due \emph{Attori}\textsubscript{\textbf{
 \newpage
 
 \hypertarget{UC2.1}{}
-\subsubsection{UC2.1: Visualizzazione del nome dei file da cui il sistema ha preso i dati per la risposta alla domanda}
+\subsubsection{UC2.1: Visualizzazione del link dei file da cui il sistema ha preso i dati per la risposta alla domanda}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{UC2.1 + UC14.png}
-    \caption{Visualizzazione del nome dei file da cui il sistema ha preso i dati per la risposta alla domanda}
+    \caption{Visualizzazione del link dei file da cui il sistema ha preso i dati per la risposta alla domanda}
 \end{figure}
 
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: L'utente ha visualizzato la risposta generata;
-    \item \textbf{Trigger}: L'utente desidera visualizzare il nome dei file da cui il sistema ha preso i dati per la risposta alla domanda;
-    \item \textbf{Postcondizioni}: L'utente visualizza il nome dei file da cui il sistema ha preso i dati per la risposta alla domanda;
+    \item \textbf{Trigger}: L'utente desidera visualizzare il link dei file da cui il sistema ha preso i dati per la risposta alla domanda;
+    \item \textbf{Postcondizioni}: L'utente visualizza il link dei file da cui il sistema ha preso i dati per la risposta alla domanda;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
         \item L'utente accede all'interfaccia dell'applicazione;
         \item \bulhyperlink{UC1}{UC1}: L'utente inserisce un'interrogazione in linguaggio naturale;
         \item \bulhyperlink{UC2}{UC2}: L'utente visualizza la risposta generata;
-        \item Il sistema recupera il nome dei file da cui è stata generata la risposta;
-        \item L'utente visualizza il nome dei file da cui il sistema ha preso i dati per la risposta alla domanda.
+        \item Il sistema recupera il link dei file da cui è stata generata la risposta;
+        \item L'utente visualizza il link dei file da cui il sistema ha preso i dati per la risposta alla domanda.
     \end{enumerate}
     \item \textbf{Scenario alternativo}:
     \begin{enumerate}
-        \item \bulhyperlink{UC14}{UC14}: Visualizzazione errore nel recupero del nome dei file utili per la risposta.
+        \item \bulhyperlink{UC14}{UC14}: Visualizzazione errore nel recupero del link dei file utili per la risposta.
     \end{enumerate}
 \end{itemize}
 
 \hypertarget{UC14}{}
-\subsubsection{UC14: Visualizzazione errore nel recupero del nome dei file utili per la risposta}
+\subsubsection{UC14: Visualizzazione errore nel recupero del link dei file utili per la risposta}
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
     \item \textbf{Precondizioni}: L'utente ha visualizzato la risposta generata;
-    \item \textbf{Trigger}: L'utente desidera visualizzare il nome dei file da cui il sistema ha preso i dati per la risposta alla domanda;
+    \item \textbf{Trigger}: L'utente desidera visualizzare il link dei file da cui il sistema ha preso i dati per la risposta alla domanda;
     \item \textbf{Postcondizioni}: L'utente visualizza in fondo al messaggio di risposta una segnalazione di errore che comunica che non è
-    stato possibile rilevare il nome dei file da cui è stata ricavata la risposta;
+    stato possibile rilevare il link dei file da cui è stata ricavata la risposta;
     \item \textbf{Scenario principale}: 
     \begin{enumerate}
         \item L'utente accede all'interfaccia dell'applicazione;
         \item \bulhyperlink{UC1}{UC1}: L'utente inserisce un'interrogazione in linguaggio naturale;
         \item \bulhyperlink{UC2}{UC2}: L'utente visualizza la risposta generata;
-        \item Il sistema non riesce a rilevare il nome dei file da cui ha generato la risposta;
+        \item Il sistema non riesce a recuperare il link dei file da cui ha generato la risposta;
         \item L'utente visualizza in fondo al messaggio di risposta una segnalazione di errore che comunica che non è stato possibile
-        rilevare il nome dei file da cui è stata ricavata la risposta.
+        rilevare il link dei file da cui è stata ricavata la risposta.
     \end{enumerate}
 \end{itemize}
 
