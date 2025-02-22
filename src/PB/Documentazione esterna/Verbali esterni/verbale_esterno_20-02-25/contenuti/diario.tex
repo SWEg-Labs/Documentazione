@@ -4,32 +4,34 @@
 \section{Diario della riunione}
 
 \begin{itemize}
-    \item È stato presentato il Proof of Concept, vedendo in dettaglio le funzionalità implementate dallo scorso incontro;
-    \item È stata discussa, come possibile miglioria per le future \emph{demo}\textsubscript{\textbf{\textit{G}}}, la possibilità di porre
-    al chatbot una domanda che necessiti di coinvolgere più piattaforme per ottenere la risposta, tra 
-    \emph{GitHub}\textsubscript{\textbf{\textit{G}}}, \emph{Jira}\textsubscript{\textbf{\textit{G}}} e 
-    \emph{Confluence}\textsubscript{\textbf{\textit{G}}};
-    \item È stato aggiornato il proponente sullo stato della documentazione del progetto, cioè è stato spiegato che
-    ci mancano da completare i documenti di \emph{Piano di Progetto}\textsubscript{\textbf{\textit{G}}} e
-    \emph{Piano di Qualifica}\textsubscript{\textbf{\textit{G}}};
-    \item Per quanto riguarda la documentazione da consegnare al proponente per la RTB, è stato chiarito che ciò che verrà consegnato
-    sarà il repository del PoC ed il sito contenente la documentazione del progetto;
-    \item Per quanto riguarda la documentazione da consegnare al proponente per la \emph{PB}\textsubscript{\textbf{\textit{G}}}, è stato chiarito che ciò che verrà consegnato
-    sarà:
-    \begin{itemize}
-        \item Un documento di analisi funzionale e tecnica, coincidente con la \emph{Specifica Tecnica}\textsubscript{\textbf{\textit{G}}}
-        richiesta dal corso di Ingegneria del Software;
-        \item I \emph{Test}\textsubscript{\textbf{\textit{G}}} implementati;
-        \item Il verbale di collaudo, cioè il verbale di fine progetto;
-        \item Il documento \emph{Manuale Utente}\textsubscript{\textbf{\textit{G}}};
-        \item Il repository del codice sorgente dell'\emph{MVP}\textsubscript{\textbf{\textit{G}}};
-        \item Il link al sito web della documentazione.
-    \end{itemize}
-    \item È stata comunicata al proponente la nostra aspettativa temporale per la revisione RTB, cioè ci aspettiamo di svolgere
-    il primo incontro con il professor Cardin entro la fine di gennaio ed il secondo incontro con il professor Vardanega entro
-    la metà di febbraio;
-    \item E' stato proposto al proponente di interrompere per qualche settimana le riunioni esterne, in quanto il gruppo
-    dovrà intraprendere la revisione RTB e sostenere gli esami della sessione invernale. Il proponente ha accettato la proposta,
-    ed è stata fissata provvisoriamente la prossima riunione esterna per giovedì 13 febbraio 2025. Il gruppo si impegnerà
-    a comunicare al proponente eventuali cambiamenti di data.
+    \item Sono stati presentati al \emph{proponente} i nostri obiettivi di funzionalità per l'\emph{MVP}\textsubscript{\textbf{\textit{G}}}, ovvero: 
+        \begin{itemize}
+            \item Salvataggio e recupero dello storico di sessione.
+            \item Proporre domande per iniziare la conversazione.
+            \item Proporre domande per proseguire la conversazione.
+            \item Visualizzazione del badge dell’esito dell’aggiornamento automatico.
+            \item Migliorare l’aggiornamento automatico per gestire l’eliminazione di file.
+            \item Migliorare l’aggiornamento automatico dei file che subiscono modifiche.
+        \end{itemize}
+    \item Sono state presentate al \emph{proponente} le funzionalità che verranno trattate per ultime, nel caso in cui avessimo ancora del tempo a disposizione, ovvero:
+        \begin{itemize}
+            \item Visualizzazione dei file da cui il bot ha preso la risposta.
+            \item \emph{API}\textsubscript{\textbf{\textit{G}}} verso \emph{Telegram}\textsubscript{\textbf{\textit{G}}} e \emph{Slack}\textsubscript{\textbf{\textit{G}}}.
+        \end{itemize}
+
+    \item Abbiamo fornito al \emph{proponente} un aggiornamento sullo stato attuale della progettazione, ovvero: 
+        \begin{itemize}
+            \item riferito che stiamo applicando l'architettura esagonale.
+            \item riferito che abbiamo scelto un sistema in cui una sessione è il periodo di tempo in cui l'app è accesa. Inoltre abbiamo chiesto se approvavano l'utilizzo del Singleton per modellare la sessione corrente.
+        \end{itemize}
+    \item Abbiamo chiesto consigli al \emph{proponente} riguardanti la progettazione.
+    \item Abbiamo trattato con il \emph{proponente} sui vari test che dovremmo implementare, ovvero:
+        \begin{itemize}
+            \item Abbiamo riferito che abbiamo scelto i framework PyTest e Jasmine, e abbiamo riferito che prepareremo l'ambiente di test a livello di struttura di cartelle. 
+            \item Abbiamo riferito che per i test du unità a breve sceglieremo i metodi più importanti da testare.
+        \end{itemize}
+    \item Abbiamo effettuato un resoconto al \emph{proponente} sullo stato di avanzamento relativo alla documentazione.
+    \item Abbiamo confermato lo scheduling dei prossimi incontri e della durata delle sprint.
+
+
 \end{itemize}
