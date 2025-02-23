@@ -1,0 +1,84 @@
+% Intestazione
+\fancyhead[L]{1 \hspace{0.2cm} Introduzione} % Testo a sinistra
+
+\pagenumbering{arabic} % Numerazione araba per il contenuto 
+
+\section{installazzione}
+\label{sec:installazzione}
+
+\subsection{Verifica e Installazione di Docker}
+Prima di procedere con l'installazione di \textit{BuddyBot} è importante verificare che Docker sia installato e pronto all'uso.  
+Per farlo, digitare nel terminale:
+\begin{verbatim}
+docker --version
+\end{verbatim}
+Se la console fornisce un output (ad esempio un numero di versione), Docker è correttamente installato e funzionante.  
+Nel caso in cui il terminale non rilasci alcun output, è possibile scaricare Docker direttamente 
+\href{https://www.docker.com/products/docker-desktop}{cliccando qui}.
+
+\subsection{Download dell'Applicazione}
+Clonare la repository GitHub di \textit{BuddyBot} dal seguente indirizzo:
+\begin{verbatim}
+https://github.com/SWEg-Labs/BuddyBot.git
+\end{verbatim}
+
+\subsection{Configurazione del file \texttt{.env}}
+Tutte le variabili di sistema di configurazione sono già incluse nel \texttt{Dockerfile}.  
+Tuttavia, per le impostazioni sensibili e personalizzabili, occorre inserire nella directory \texttt{src/backend} un file \texttt{.env} contenente le seguenti voci (adattandole alle proprie esigenze):
+\begin{verbatim}
+OPENAI_API_KEY = la_tua_chiave_openai
+OPENAI_MODEL_NAME = modello_llm_scelto
+
+GITHUB_TOKEN = il_tuo_token_github
+OWNER = owner_repository
+REPO = nome_repository
+
+ATLASSIAN_TOKEN = il_tuo_token_atlassian
+ATLASSIAN_USER_EMAIL = la_tua_mail_atlassian
+
+JIRA_BASE_URL = url_base_jira
+JIRA_PROJECT_KEY = jira_project_key
+
+CONFLUENCE_BASE_URL = confluence_base_key
+CONFLUENCE_SPACE_KEY = confluence_space_key
+\end{verbatim}
+
+\subsection{Avvio del Container}
+Una volta pronti, è possibile avviare il container Docker posizionandosi nella cartella del progetto ed eseguendo:
+\begin{verbatim}
+docker compose up --build
+\end{verbatim}
+Il comando provvederà a costruire ed avviare il container. Al termine delle operazioni è possibile fermarlo con:
+\begin{verbatim}
+docker compose down
+\end{verbatim}
+
+\subsection{Esecuzione dell'Applicazione da Terminale}
+Per avviare l'applicazione \textit{BuddyBot} dal terminale del container, seguire questi passi:
+\begin{enumerate}
+    \item Aprire Docker Desktop e, nella sezione \textit{Containers}, selezionare \texttt{backend}.
+    \item Fare clic su \texttt{Exec} per aprire il terminale del container.
+    \item Digitare il comando:
+    \begin{verbatim}
+    python backend/main.py
+    \end{verbatim}
+    \item Attendere da 2 a 5 minuti dall'inizio di un minuto che finisce per 0 
+    (es.: 10:40, 16:30, 14:10). Quindi, nel ChatBot, inserire il comando \texttt{v} 
+    per verificare i documenti presenti nel database; si noterà che il database non è vuoto.
+    \item Per visionare i log dell’aggiornamento, uscire dall’app con \texttt{exit} e digitare:
+    \begin{verbatim}
+    cat /var/log/cron.log
+    \end{verbatim}
+\end{enumerate}
+
+In alternativa, dal terminale della propria macchina locale, è possibile accedere al container 
+\texttt{buddybot-backend} eseguendo:
+\begin{verbatim}
+docker exec -it buddybot-backend /bin/bash
+\end{verbatim}
+
+\subsection{Esecuzione dell'Applicazione da Browser}
+Per avviare la parte front-end, è sufficiente aprire un browser e digitare:
+\begin{verbatim}
+localhost:4200
+\end{verbatim}
