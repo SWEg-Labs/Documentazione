@@ -14,13 +14,12 @@ docker --version
 \end{verbatim}
 Se la console fornisce un output (ad esempio un numero di versione), Docker è correttamente installato e funzionante.  
 Nel caso in cui il terminale non rilasci alcun output, è possibile scaricare Docker direttamente 
-\href{https://www.docker.com/products/docker-desktop}{cliccando qui}.
+\bulhref{https://www.docker.com/products/docker-desktop}{cliccando qui}\emph{(Ultimo accesso: 03/04/2025)}.
 
 \subsection{Download dell'Applicazione}
 Clonare la repository GitHub di \textit{BuddyBot} dal seguente indirizzo:
-\begin{verbatim}
-https://github.com/SWEg-Labs/BuddyBot.git
-\end{verbatim}
+\bulhref{https://github.com/SWEg-Labs/BuddyBot.git}{https://github.com/SWEg-Labs/BuddyBot.git}
+\emph{(Ultimo accesso: 03/04/2025)}.\\
 
 \subsection{Configurazione del file \texttt{.env}}
 Tutte le variabili di sistema di configurazione sono già incluse nel \texttt{Dockerfile}.  
@@ -61,13 +60,6 @@ Per avviare l'applicazione \textit{BuddyBot} dal terminale del container, seguir
     \item Digitare il comando:
     \begin{verbatim}
     python backend/main.py
-    \end{verbatim}
-    \item Attendere da 2 a 5 minuti dall'inizio di un minuto che finisce per 0 
-    (es.: 10:40, 16:30, 14:10). Quindi, nel ChatBot, inserire il comando \texttt{v} 
-    per verificare i documenti presenti nel database; si noterà che il database non è vuoto.
-    \item Per visionare i log dell’aggiornamento, uscire dall’app con \texttt{exit} e digitare:
-    \begin{verbatim}
-    cat /var/log/cron.log
     \end{verbatim}
 \end{enumerate}
 
