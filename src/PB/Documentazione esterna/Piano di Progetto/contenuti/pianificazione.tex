@@ -317,9 +317,19 @@ Le fasi principali del \emph{Product Baseline} saranno suddivise come segue:
     \end{tabularx}
     \caption{Quinto periodo dedicato alla PB}
 \end{table}
-Il quinto periodo che va dal 6 al 20 febbraio 2025, abbiamo lavorato al salvataggio e recupero dello storico di sessione, migliorato la proposta di domande per guidare la conversazione e ottimizzato l’aggiornamento automatico, introducendo la visualizzazione dell’esito e una gestione più efficiente delle modifiche ai file, specialmente su \emph{GitHub} (sebbene con qualche ritardo dovuto al secondo appello di Ingegneria del Software).
-Abbiamo avviato la scrittura della \emph{Specifica Tecnica} e del \emph{Manuale Utente}, focalizzandoci sulla sezione "come fare le domande". Inoltre, aggiorniamo i \emph{casi d’uso} man mano che emergono nuove funzionalità.
-Dal punto di vista architetturale, stiamo adottando l’{\emph{architettura esagonale}}\textsubscript{\textit{\textbf{G}}} per garantire maggiore modularità e manutenibilità del sistema. 
+Il quinto periodo che va dal 6 al 20 febbraio 2025, abbiamo continuato a scrivere l'\emph{Analisi dei Requisiti}. Ci siamo occupati della progettazione di alcune funzionalità quali:
+\begin{itemize}
+\item Generazione di una risposta;
+\item Aggiornamento automatico del {\emph{database vettoriale}}\textsubscript{\textit{\textbf{G}}};
+\item Inizializzazione, refresh e scroll dell'interfaccia grafica;
+\item Rendering grafico di domanda e risposta;
+\item Aggiornamento del badge di segnalazione esito aggiornamento automatico lato {\emph{backend}}\textsubscript{\textit{\textbf{G}}} e lato {\emph{frontend}}\textsubscript{\textit{\textbf{G}}};
+\item Salvataggio dei messaggi nello storico;
+\item Recupero dei messaggi dallo storico;
+\item Generazione di domande per proseguire la conversazione.
+\end{itemize}
+Abbiamo avviato la scrittura della \emph{Specifica Tecnica} e del \emph{Manuale Utente}, focalizzandoci sulla sezione "cosa chiedere e come chiederlo".
+Dal punto di vista architetturale, abbiamo deciso di adottare l’{\emph{architettura esagonale}}\textsubscript{\textit{\textbf{G}}} per garantire maggiore modularità e manutenibilità del sistema. 
 
 \newpage
 \begin{figure}[h] 
