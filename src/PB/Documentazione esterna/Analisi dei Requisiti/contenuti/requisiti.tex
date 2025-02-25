@@ -105,6 +105,10 @@ solida per la \emph{progettazione}\textsubscript{\textit{\textbf{G}}} del sistem
     badge deve visualizzare un messaggio che spiega il significato della forma a X di quest'ultimo. & \bulhyperlink{UC23}{UC23} \\ \hline
     RZF40 & Opzionale & Se non è stato possibile recuperare l'esito dell'ultimo tentativo di aggiornamento del database vettoriale,
     l'utente accanto al badge deve visualizzare un messaggio che spiega il significato della forma a segnale di pericolo di quest'ultimo. & \bulhyperlink{UC24}{UC24} \\ \hline
+    RZF41 & Opzionale & Ad ogni tentativo di aggiornamento del database vettoriale il sistema deve salvare in un file di testo un log che contenga le seguenti informazioni: 
+    fonte dei dati (GitHub, Jira o Confluence), esito, orario. & Verbale esterno \\ \hline
+    RZF42 & Opzionale & Ad ogni tentativo di aggiornamento del database vettoriale il sistema deve salvare in un file di testo un log che contenga le seguenti informazioni: 
+    fonte dei dati (GitHub, Jira o Confluence), esito, orario, numero di file aggiunti, numero di file modificati, numero di file eliminati. & Verbale esterno \\ \hline
     \end{tabularx}
     \caption{Requisiti funzionali}
     \label{tab:Requisiti_funzionali}
@@ -169,7 +173,7 @@ dalle prestazioni del dispositivo e dall'ottimizzazione specifica per il browser
     \textbf{Fonte} & \textbf{Requisiti} \\ \hline
     Capitolato & ROQ3, ROQ4, ROQ5, ROF14 \\ \hline
     Verbali interni & ROQ1, ROQ2, ROF15, ROF16, ROF22, ROF23, ROF24  \\ \hline
-    Verbali esterni & ROV1, ROV2, ROV3, ROV4, ROF25\\ \hline
+    Verbali esterni & ROV1, ROV2, ROV3, ROV4, ROF25, RZF41, RZF42 \\ \hline
     \bulhyperlink{UC1}{UC1} & ROF1 \\ \hline
     \bulhyperlink{UC2}{UC2} & ROF2, ROF3, ROF4, ROF5 \\ \hline
     \bulhyperlink{UC2.1}{UC2.1} & RDF6 \\ \hline
@@ -276,6 +280,8 @@ dalle prestazioni del dispositivo e dall'ottimizzazione specifica per il browser
     RZF38 & \bulhyperlink{UC22}{UC22} \\ \hline
     RZF39 & \bulhyperlink{UC23}{UC23} \\ \hline
     RZF40 & \bulhyperlink{UC24}{UC24} \\ \hline
+    RZF41 & Verbale esterno\\ \hline
+    RZF42 & Verbale esterno\\ \hline
     ROQ1 & Verbale Interno\\ \hline
     ROQ2 & Verbale Interno\\ \hline
     ROQ3 & Capitolato \\ \hline
