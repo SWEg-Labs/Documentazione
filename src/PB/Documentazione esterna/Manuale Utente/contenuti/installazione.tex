@@ -68,39 +68,12 @@ Se si vuole continuare ad interagire da terminale con il container, è possibile
 \end{verbatim}
 per avviarlo, e poi, come sopra, Ctrl+C per stopparlo.
 
-\subsection{Esecuzione dell'Applicazione da Terminale}
-BuddyBot ha una variante che può essere eseguita da terminale.
-Per avviare l'applicazione dal terminale integrato in Docker, seguire questi passi:
-\begin{enumerate}
-    \item Aprire Docker Desktop e, nella sezione \textit{Containers}, selezionare \texttt{buddybot}
-    \item Poi, nella schermata successiva, selezionare \texttt{buddybot-backend}.
-    \item Nella schermata che si apre, dal menù selezionare la voce \texttt{Exec} per accedere al terminale del container.
-    \item Una volta lì, digitare il comando:
-    \begin{verbatim}
-    python main.py
-    \end{verbatim}
-\end{enumerate}
-
-In alternativa, dal terminale della propria macchina locale, è possibile accedere al terminale del container 
-\texttt{buddybot-backend} eseguendo:
-\begin{verbatim}
-    docker exec -it buddybot-backend /bin/bash
-\end{verbatim}
-A questo punto, come sopra, è possibile eseguire il comando:
-\begin{verbatim}
-    python main.py
-\end{verbatim}
-
-Qualunque strada si scelga, l'applicazione da terminale che si avvierà fornirà le istruzioni dettagliate per procedere nel suo
-utilizzo, che non sono dunque affrontate in questo documento.
-
-\subsection{Esecuzione dell'Applicazione da Browser}
-BuddyBot è però prima di tutto un'\emph{applicazione web}\textsubscript{\textbf{\textit{G}}}.\\
-Per avviare l'applicazione web, è sufficiente aprire un \emph{browser}\textsubscript{\textbf{\textit{G}}} e digitare nella barra
+\subsection{Esecuzione dell'Applicazione}
+Per avviare \emph{BuddyBot}, è sufficiente aprire un \emph{browser}\textsubscript{\textbf{\textit{G}}} e digitare nella barra
 degli indirizzi:
 \begin{verbatim}
     localhost:4200
 \end{verbatim}
-Si aprirà dunque l'interfaccia grafica di \textit{BuddyBot}, pronta per ricevere domande dalla barra di input visibile nella parte
-inferiore dello schermo.\\
+Si aprirà dunque l'interfaccia grafica dell'\emph{applicazione web}\textsubscript{\textbf{\textit{G}}}, pronta per ricevere domande
+dalla barra di input visibile nella parte inferiore dello schermo.\\
 Le istruzioni per l'utilizzo dell'applicazione sono fornite nella sezione \S\bulref{sec:guida_utilizzo}.
