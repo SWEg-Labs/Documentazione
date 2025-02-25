@@ -7,28 +7,26 @@
 \label{sec:architettura}
 
 Questa sezione fornisce una descrizione dettagliata dell'architettura del prodotto software, illustrando le scelte progettuali adottate per garantire la corretta realizzazione del sistema. Saranno presentati le principali scelte e \emph{pattern architetturali}\textsubscript{\textbf{\textit{G}}}, e le \emph{componenti software}\textsubscript{\textbf{\textit{G}}} che compongono il sistema.
+
 \subsection{Architettura logica}
 L’architettura adottata nella realizzazione dell’applicativo si basa sul modello di architettura esagonale. Il livello di \emph{business}\textsubscript{\textbf{\textit{G}}} del software è quindi indipendente dagli altri componenti, ovvero nulla presente all’esterno della logica di business può conoscere la sua \emph{implementazione}\textsubscript{\textbf{\textit{G}}}. Questo principio alla base dell’architettura esagonale ci permette di ottenere un prodotto software facilmente testabile e \emph{manutenibile}\textsubscript{\textbf{\textit{G}}}. Le componenti che devono restare indipendenti sono rappresentate dal \emph{Domain business model}\textsubscript{\textbf{\textit{G}}}, che non comunica mai direttamente con l’esterno.
 Gli elementi che permettono il funzionamento dell’architettura esagonale sono i seguenti:
 \begin{itemize}
-    \item \textbf{Port}: Possono essere presenti in numero variabile. Una port definisce un set di operazioni e permette alla business logic di interagire con l’esterno. Si tratta degli unici componenti comunicanti con il Domain Business Model. Ci sono due tipi di port:
-    \begin{itemize}
-        \item \textbf{Inbound Port}: si tratta di API esposte dalla business logic, implementatate proprio da quest’ultima in modo da poter essere invocate da un’applicazione esterna;
-        \item \textbf{Outbound Port}: definiscono i metodi tramite i quali la business logic può invocare i sistemi esterni. 
-    \end{itemize}
-    \item \textbf{\emph{Adapter}\textsubscript{\textbf{\textit{G}}}}: si tratta di componenti che permettono di adattare i dati provenienti dall’esterno in modo che possano essere utilizzati dalla business logic. Sono presenti tra le port e la business logic. Un elemento fondamentale dell'architettura esagonale è che la logica di business non dipende dagli adapter; al contrario, sono questi ultimi a dipendere da essa. Analogamente alle port, gli adapter si suddividono in due categorie:
-    \begin{itemize}
-        \item \textbf{Inbound Adapter}: gestiscono la conversione dei dati provenienti dall'esterno invocando una inbound port. È possibile che più inbound adapter utilizzino la stessa inbound port;
-        \item \textbf{Outbound Adapter}: implementano i metodi definiti da una outbound port, permettendo alla business logic di interagire con i sistemi esterni.
-    \end{itemize}
+    \item \textbf{Controller}: contiene l'\emph{application logic}\textsubscript{\textbf{\textit{G}}} del sistema: gestisce le richieste in ingresso, valida i dati ricevuti in input, e adatta l'oggetto \emph{DTO}\textsubscript{\textbf{\textit{G}}} ricevuto in input ad un tipo di dato di business. Il \emph{Controller}\textsubscript{\textbf{\textit{G}}} ha il compito di chiamare uno \emph{UseCase}\textsubscript{\textbf{\textit{G}}} per eseguire la logica di business e restituire le risposte appropriate, anch'esse convertite in DTO prima di essere fornite in output.
+    \item \textbf{UseCase}: rappresenta un caso d'uso specifico del sistema, che viene implementato da un \emph{Service}\textsubscript{\textbf{\textit{G}}} per realizzare la logica di business.
+    \item \textbf{Service}: contiene la \emph{business logic}textsubscript{\textbf{\textit{G}}} del sistema: esegue operazioni specifiche esclusive del dominio di interesse e delega le interazioni con le altre componenti ai \emph{Port}\textsubscript{\textbf{\textit{G}}}. I \emph{Service} possono interagire unicamente con tipi di dato di business, garantendo l'indipendenza della logica di business dal resto del sistema.
+    \item \textbf{Port}: definisce le interfacce attraverso le quali i \emph{Service}\textsubscript{\textbf{\textit{G}}} interagiscono con il mondo esterno, permettendo il salvataggio e recupero di dati persistenti senza modificare la logica di business.
+    \item \textbf{Adapter}: implementa una o più interfacce definite dai \emph{Port}, permettendo la comunicazione tra la logica di business e le tecnologie esterne di persistent logic. L'\emph{adapter}\textsubscript{\textbf{\textit{G}}} si occupa di adattare i dati ricevuti dalla logica di business in un tipo \emph{Entity}\textsubscript{\textbf{\textit{G}}} adatto per la persistenza, e viceversa.
+    \item \textbf{Repository}: contiene la \emph{persistent logic}textsubscript{\textbf{\textit{G}}} del sistema: gestisce la persistenza dei dati, interagendo con un database o altre forme di storage per salvare e recuperare le informazioni necessarie. I tipi di dato gestiti dal \emph{repository}\textsubscript{\textbf{\textit{G}}} sono gli Entity, che rappresentano i dati persistenti del sistema.
 \end{itemize}
 
 È stato scelto di utilizzare un'architettura esagonale per i seguenti motivi:
 \begin{itemize}
-    \item Facilità di test: l'architettura esagonale permette di testare facilmente la business logic, in quanto è possibile sostituire gli adapter con degli \emph{stub}\textsubscript{\textbf{\textit{G}}} o dei \emph{mock}\textsubscript{\textbf{\textit{G}}};
-    \item \emph{Manutenibilità}\textsubscript{\textbf{\textit{G}}}: l'architettura esagonale permette di mantenere la business logic indipendente dagli altri componenti, facilitando la manutenzione del codice;
-    \item \emph{Scalabilità}\textsubscript{\textbf{\textit{G}}}: l'architettura esagonale permette di aggiungere nuovi adapter senza dover modificare la business logic.
+    \item \textbf{Facilità di test}: l'architettura esagonale permette di testare facilmente la business logic, in quanto è possibile sostituire gli adapter con degli \emph{stub}\textsubscript{\textbf{\textit{G}}} o dei \emph{mock}\textsubscript{\textbf{\textit{G}}};
+    \item \textbf{\emph{Manutenibilità}}\textsubscript{\textbf{\textit{G}}}: l'architettura esagonale permette di mantenere la business logic indipendente dagli altri componenti, facilitando la manutenzione del codice;
+    \item \textbf{\emph{Scalabilità}}\textsubscript{\textbf{\textit{G}}}: l'architettura esagonale permette di aggiungere nuovi adapter senza dover modificare la business logic.
 \end{itemize}
+
 
 \subsection{Architettura di Deployment}
 
