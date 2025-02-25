@@ -13,6 +13,16 @@ In Pascal Case, ogni parola della stringa inizia con una lettera maiuscola e non
 Soluzione generale e riutilizzabile a un problema che si verifica comunemente nell’ambito dello sviluppo del software. I pattern 
 architetturali forniscono un approccio testato e comprovato per la progettazione e l’implementazione del software.
 
+\hypertarget{sec:persistent_logic}{}
+\subsection*{Persistent logic}
+La logica di persistenza è la parte di un'applicazione che si occupa di salvare e recuperare i dati da un database o da un altro
+meccanismo di memorizzazione permanente. Questa logica è responsabile della gestione delle operazioni di lettura e scrittura dei dati,
+dell'interazione con il database e della sincronizzazione dei dati tra l'applicazione e lo storage persistente. Essa, nell'architettura
+esagonale, è rappresentata da un repository, che riceve un input un oggetto Entity dall'adapter, che lo aveva convertito partendo da
+un tipo di business logic, e lo salva nella piattaforma di storage collegata. In modo speculare, quando viene richiesto, il repository
+preleva i dati dalla piattaforma di persistenza, li converte in oggetti Entity e li restituisce all'Adapter, che si occupa di
+convertirli in tipi di business logic e di fornirli all'applicazione.
+
 \subsection*{Piano di Progetto}
 Documento formale che delinea in dettaglio la pianificazione, l’esecuzione, il monitoraggio e il controllo di tutte le attività coinvolte nella 
 realizzazione di un progetto. Questo documento fornisce una roadmap chiara e organizzata, comprensiva di obiettivi, risorse, scadenze e strategie di 

@@ -89,6 +89,14 @@ Draw.io (ora chiamato diagrams.net) è uno strumento gratuito per la creazione d
 vari sistemi operativi. Viene utilizzato ampiamente per progettare e documentare diagrammi di flusso, architetture software, diagrammi UML, organigrammi, 
 mappe mentali, wireframe, e altri tipi di rappresentazioni visive.
 
+\hypertarget{sec:dto}{}
+\subsection*{DTO (Data Transfer Object)}
+Un DTO (Data Transfer Object) è un oggetto utilizzato per trasferire dati tra sottosistemi di un'applicazione. È progettato per essere semplice, leggero e
+contenere solo i dati necessari per la comunicazione tra i diversi componenti del sistema. I DTO sono spesso utilizzati per ridurre il traffico di rete e
+migliorare le prestazioni dell'applicazione. In particolare, nell'architettura esagonale, i DTO sono il tipo di dati gestito dall'application logic,
+la quale riceve DTO dall'esterno e li adatta per inviarli alla business logic, e riceve dati di dominio dalla business logic e li adatta per inviarli
+all'esterno.
+
 \newpage
 
 
@@ -111,6 +119,12 @@ Un Modello di embedding è un modello di intelligenza artificiale progettato per
 vettoriali numeriche in uno spazio multidimensionale. Questi vettori catturano caratteristiche semantiche o strutturali dei dati, rendendoli utili per 
 confronti, analisi o classificazioni basate su similarità. I modelli di embedding sono comunemente utilizzati in applicazioni come la ricerca semantica, 
 il clustering e il machine learning.
+
+\hypertarget{sec:entity}{}
+\subsection*{Entity}
+Una Entity è un oggetto di persistenza di una applicazione, che nell'architettura esagonale viene gestita da un repository.
+Essa rappresenta l'adattamento interno all'applicazione di un tipo di dato giunto da un servizio esterno, come ad esempio un database,
+ed ha il compito di fornire un layer intermedio tra tipi di dato di business e tipi di dato esterni.
 
 \hypertarget{sec:eslint}{}
 \subsection*{ESLint}
