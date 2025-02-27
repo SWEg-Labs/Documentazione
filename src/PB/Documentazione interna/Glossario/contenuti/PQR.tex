@@ -193,6 +193,17 @@ In termini informatici, un luogo o un archivio dove vengono conservati e gestiti
 progetto. Nell'ambito dei sistemi di controllo delle versioni come Git, un repository è una struttura dati che archivia anche la cronologia completa delle 
 modifiche apportate al codice sorgente di un progetto.
 
+\hypertarget{sec:repository_arch_esagonale}{}
+\subsection*{Repository (Architettura Esagonale)}
+Nell'architettura esagonale, il repository è un componente che si occupa della persistenza dei dati, fornendo un'interfaccia per l'accesso ai dati
+e nascondendo i dettagli della loro implementazione. Il repository è responsabile di recuperare, salvare e aggiornare i dati da e verso una piattaforma
+di persistenza, come un database o un servizio esterno. Questo componente è essenziale per separare la logica di business dalla logica di persistenza,
+garantendo che le operazioni di accesso ai dati siano incapsulate e gestite in modo indipendente dal resto dell'applicazione.
+Il repository riceve oggetti Entity dall'adapter, li converte in un formato compatibile con la piattaforma di persistenza e li salva o li recupera
+secondo le richieste dell'applicazione. Dopo che li ha recuperati, li fornisce all'adapter come Entity, e poi l'adapter li convertirà in
+tipi di dato di business. In questo modo, il repository fornisce un'interfaccia uniforme per l'accesso ai dati, indipendentemente dal
+tipo di storage utilizzato, semplificando la gestione e l'evoluzione della persistenza dei dati.
+
 \subsection*{Requirement and Technology Retrospective (RTB)}
 La prima revisione di avanzamento del progetto didattico. Fissa i requisiti da soddisfare in accordo con il proponente, motiva le tecnologie, i framework 
 e le librerie adottate dimostrandone adeguatezza e compatibilità tramite il Proof of Concept (PoC).
