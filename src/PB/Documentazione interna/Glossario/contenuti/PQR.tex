@@ -200,7 +200,7 @@ e nascondendo i dettagli della loro implementazione. Il repository è responsabi
 di persistenza, come un database o un servizio esterno. Questo componente è essenziale per separare la logica di business dalla logica di persistenza,
 garantendo che le operazioni di accesso ai dati siano incapsulate e gestite in modo indipendente dal resto dell'applicazione.
 Il repository riceve oggetti Entity dall'adapter, li converte in un formato compatibile con la piattaforma di persistenza e li salva o li recupera
-secondo le richieste dell'applicazione. Dopo che li ha recuperati, li fornisce all'adapter come Entity, e poi l'adapter li convertirà in
+secondo le richieste dell'applicazione. In caso di recupero di dati, il repository li fornisce all'adapter come Entity, e poi l'adapter li convertirà in
 tipi di dato di business. In questo modo, il repository fornisce un'interfaccia uniforme per l'accesso ai dati, indipendentemente dal
 tipo di storage utilizzato, semplificando la gestione e l'evoluzione della persistenza dei dati.
 
