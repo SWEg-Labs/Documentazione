@@ -22,6 +22,14 @@ Capacità di rendere le informazioni sono più facilmente fruibili, condivisibil
 Design pattern strutturale che consente di convertire l'interfaccia di una classe in un'altra interfaccia che il client si aspetta.
 L'adapter permette a classi con interfacce incompatibili di lavorare insieme, facilitando l'integrazione di componenti software eterogenee.
 
+\hypertarget{sec_adapter_arch_esagonale}{}
+\subsection*{Adapter (Architettura esagonale)}
+Nell'architettura esagonale, l'adapter è un componente che si occupa di adattare le richieste provenienti dall'esterno del sistema alle interfacce interne,
+e viceversa. L'adapter permette di isolare il core del sistema dalle dipendenze esterne, garantendo una maggiore flessibilità e facilità di manutenzione.
+In particolare, esso converte i tipi di dato di business in oggetti Entity, e li fornisce alla classe Repository per l'interazione con il database o con
+lo strumento di persistenza dei dati utilizzato. In caso di recupero di dati dal database, l'adapter converte gli oggetti Entity che
+arrivano dal repository in tipi di dato di business, e li fornisce alla business logic per l'elaborazione.
+
 \hypertarget{sec:modello_agile}{}
 \subsection*{Agile, modello di sviluppo}
 Approccio alla gestione dei progetti e allo sviluppo del software che enfatizza la flessibilità, la collaborazione e il miglioramento continuo. 
