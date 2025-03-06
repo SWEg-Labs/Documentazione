@@ -91,6 +91,7 @@ nav {
 
 #nav-navigation {
   display: flex;
+  margin-left: 1em;
 }
 
 #nav-navigation p {
@@ -113,18 +114,18 @@ section h1, section h2 {
   color: var(--sectionLinkColor);    
 }
 
-section#RTB p, section#candidatura p {
+section#PB p, section#RTB p, section#candidatura p {
   background: linear-gradient(to right, var(--sectionLinkColor) 0.8%, transparent 0.8%);
   background-color: var(--bgHeaderLinksLastUpdate);
   border-radius: 8px;
   padding: 0.5em 1em;
 }
 
-section#RTB p:hover, section#candidatura p:hover {
+section#PB p:hover, section#RTB p:hover, section#candidatura p:hover {
   background-color: #333333;
 }
 
-section#RTB p a, section#candidatura p a {
+section#PB p a, section#RTB p a, section#candidatura p a {
   color: var(--txtcolor);
   text-decoration: none;
 }
@@ -192,6 +193,7 @@ section#RTB p a, section#candidatura p a {
   #nav-navigation {
     flex-direction: column;
     align-items: center;
+    margin-left: 0em;
   }
 
   #nav-navigation p{
