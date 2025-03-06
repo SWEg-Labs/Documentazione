@@ -6,6 +6,58 @@
 \section{Strategie di testing}
 \label{sec:strategie di testing}
 
+\subsection{Test di integrazione}
+\label{sec:Test di integrazione}
+I test di integrazione servono a verificare che i vari moduli o unità di codice dell’applicazione collaborino correttamente tra loro, individuando eventuali problemi di interazione o incompatibilità. In questo modo si garantisce che l’intero sistema operi come previsto quando i singoli componenti vengono combinati.\\
+\begin{table}[h!]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|p{0.15\textwidth}|X|p{0.15\textwidth}|p{0.15\textwidth}|}\hline
+    \rowcolor[HTML]{FFD700}
+    \textbf{Codice} & \textbf{Descrizione}  & \textbf{Stato} \\ \hline
+    TI1 & Verifica che il metodo get\_answer di ChatController chiami il metodo get\_answer di ChatUseCase. &  N-I \\ \hline
+    TI2 & Verifica che il metodo generate\_answer di ChatService chiami il metodo generate\_answer di GenerateAnswerService. &  N-I \\ \hline
+    TI3 & Verifica che il metodo similarity\_search di ChatService chiami il metodo similarity\_search di SimilaritySearchService. &  N-I \\ \hline
+    TI4 & Verifica che il metodo similarity\_search di ChromaVectorStoreAdapter chiami il metodo similarity\_search di ChromaVectorStoreRepository. &  N-I \\ \hline
+    TI5 & Verifica che il metodo load di ChromaVectorStoreAdapter chiami il metodo load di ChromaVectorStoreRepository. &  N-I \\ \hline
+    TI6 & Verifica che il metodo load\_confluence\_pages del ConfluenceAdapter chiami il metodo load\_confluence\_pages del ConfluenceRepository. &  N-I \\ \hline
+    TI7 & Verifica che il metodo generate\_answer di GenerateAnswerService chiami il metodo generate\_answer di GenerateAnswerPort. &  N-I \\ \hline
+    TI8 & Verifica che il metodo get\_messages di GetMessagesController chiami il metodo get\_messages di GetMessagesUseCase. &  N-I \\ \hline
+    TI9 & Verifica che il metodo get\_messages di GetMessagesService chiami il metodo get\_messages di GetMessagesPort. &  N-I \\ \hline
+    TI10 & Verifica che il metodo load\_github\_commits di GitHubAdapter chiami il metodo load\_github\_commits di GitHubRepository. &  N-I \\ \hline
+    TI11 & Verifica che il metodo load\_github\_files di GitHubAdapter chiami il metodo load\_github\_files di GitHubRepository. &  N-I \\ \hline
+    TI12 & Verifica che il metodo load\_jira\_issues di JiraAdapter chiami il metodo load\_jira\_issues di JiraRepository. &  N-I \\ \hline
+    TI13 & Verifica che il metodo generate\_answer di LangChainAdapter chiami il metodo generate\_answer di LangChainRepository. &  N-I \\ \hline
+    TI14 & Verifica che il metodo load\_github\_commits di LoadFilesService chiami il metodo load\_github\_commits di GitHubPort. &  N-I \\ \hline
+    TI15 & Verifica che il metodo load\_github\_files di LoadFilesService chiami il metodo load\_github\_files di GitHubPort. &  N-I \\ \hline
+    TI16 & Verifica che il metodo load di LoadFilesController chiami il metodo load di LoadFilesUseCase. &  N-I \\ \hline
+    TI17 & Verifica che il metodo clean\_confluence\_pages di LoadFilesService chiami il metodo clean\_confluence\_pages di ConfluenceCleanerService. &  N-I \\ \hline
+    \end{tabularx}
+\end{table}
+
+\newpage
+
+\begin{table}[h!]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|p{0.15\textwidth}|X|p{0.15\textwidth}|p{0.15\textwidth}|}\hline
+    \rowcolor[HTML]{FFD700}
+    \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
+    TI18 & Verifica che il metodo load\_confluence\_pages di LoadFilesService chiami il metodo load\_confluence\_pages di ConfluencePort. &  N-I \\ \hline
+    TI19 & Verifica che il metodo load\_jira\_issues di LoadFilesService chiami il metodo load\_jira\_issues di JiraPort. &  N-I \\ \hline
+    TI20 & Verifica che il metodo load\_in\_vector\_store di LoadFilesService chiami il metodo load di LoadFilesInVectorStorePort. &  N-I \\ \hline
+    TI21 & Verifica che il metodo save\_loading\_attempt\_in\_db di LoadFilesService chiami il metodo save\_loading\_attempt di SaveLoadingAttemptInDbPort &  N-I \\ \hline
+    TI22 & Verifica che il metodo save\_message di PostgresAdapter chiami il metodo save\_message di PostgresRepository. &  N-I \\ \hline
+    TI23 & Verifica che il metodo get\_messages di PostgresAdapter chiami il metodo get\_messages di PostgresRepository. & N-I \\ \hline
+    TI24 & Verifica che il metodo save\_loading\_attempt di PostgresAdapter chiami il metodo save\_loading\_attempt di PostgresRepository. &  N-I \\ \hline
+    TI25 & Verifica che il metodo save di SaveMessageController chiami il metodo save di SaveMessageUseCase. &  N-I \\ \hline
+    TI26 & Verifica che il metodo save di SaveMessageService chiami il metodo save\_message di SaveMessagePort. &  N-I \\ \hline
+    TI27 & Verifica che il metodo similarity\_search di SimilaritySearchService chiami il metodo similarity\_search di SimilaritySearchPort. &  N-I \\ \hline
+    \end{tabularx}
+\end{table}
+
+\newpage
+
 \subsection{Test di sistema}
 \label{sec:Test di sistema}
 I test di accettazione descritti di seguito rappresentano la base per la validazione del \emph{Minimum Viable Product}\textsubscript{\textit{\textbf{G}}}. Questi test sono stati progettati per verificare l’implementazione delle funzionalità previste nel prodotto, con l’obiettivo di garantire che risponda agli standard di un prodotto completo e pronto per il collaudo.

@@ -17,6 +17,19 @@ rende il sistema più flessibile, modulare e facile da mantenere.
 \subsection*{Accessibilità}
 Capacità di rendere le informazioni sono più facilmente fruibili, condivisibili e adattabili alle esigenze di ciascun utente.
 
+\hypertarget{sec:adapter}{}
+\subsection*{Adapter}
+Design pattern strutturale che consente di convertire l'interfaccia di una classe in un'altra interfaccia che il client si aspetta.
+L'adapter permette a classi con interfacce incompatibili di lavorare insieme, facilitando l'integrazione di componenti software eterogenee.
+
+\hypertarget{sec_adapter_arch_esagonale}{}
+\subsection*{Adapter (Architettura esagonale)}
+Nell'architettura esagonale, l'adapter è un componente che si occupa di adattare le richieste provenienti dall'esterno del sistema alle interfacce interne,
+e viceversa. L'adapter permette di isolare il core del sistema dalle dipendenze esterne, garantendo una maggiore flessibilità e facilità di manutenzione.
+In particolare, esso converte i tipi di dato di business in oggetti Entity, e li fornisce alla classe Repository per l'interazione con il database o con
+lo strumento di persistenza dei dati utilizzato. In caso di recupero di dati dal database, l'adapter converte gli oggetti Entity che
+arrivano dal repository in tipi di dato di business, e li fornisce alla business logic per l'elaborazione.
+
 \hypertarget{sec:modello_agile}{}
 \subsection*{Agile, modello di sviluppo}
 Approccio alla gestione dei progetti e allo sviluppo del software che enfatizza la flessibilità, la collaborazione e il miglioramento continuo. 
@@ -65,6 +78,13 @@ il data binding bidirezionale e strumenti integrati per lo sviluppo di interfacc
 Acronimo di Application Programming Interface, è un insieme di regole e protocolli che consente a diverse applicazioni software di comunicare tra loro 
 per scambiare dati, caratteristiche e funzionalità. Le API fungono da intermediari, permettendo lo scambio di informazioni tra software diversi, semplificando 
 e accelerando lo sviluppo di applicazioni.
+
+\hypertarget{sec:application_logic}{}
+\subsection*{Application logic}
+Parte di un'applicazione software che implementa la logica di business e le regole di funzionamento del sistema in una applicazione specifica.
+L'application logic è responsabile della validazione dei dati che arrivano in input dall'applicazione esterna, chiamati DTO, e li adatta
+verso tipi di business per poterli trasmettere alla business logic che ci compie le operazioni di dominio. I dati ricevuti in output dalla business logic
+vengono poi adattati verso tipi di DTO per poterli trasmettere all'applicazione esterna.
 
 \hypertarget{sec:applicazione_web}{}
 \subsection*{Applicazione web}
@@ -168,6 +188,12 @@ Esso mostra la diminuzione progressiva (“burn down”) delle attività o dei p
 consentendo al team di progetto di valutare il proprio progresso e adattare la pianificazione in base alle esigenze. 
 A differenza del diagramma di Gantt, il diagramma di Burndown si concentra sulla visualizzazione dell’avanzamento reale rispetto al piano temporale.
 
+\hypertarget{sec:business_logic}{}
+\subsection*{Business logic}
+Parte di un'applicazione software che implementa le regole di business e la logica di funzionamento del sistema. La business logic è responsabile
+dell'elaborazione dei dati, della gestione delle regole aziendali e delle operazioni di calcolo necessarie per il funzionamento dell'applicazione.
+
+
 \newpage
 
 
@@ -229,6 +255,11 @@ finanzia lo sviluppo di un sistema software. Il committente è colui che ha un i
 di chi determina le aspettative per il prodotto software finale. Il committente svolge un ruolo chiave nel processo di sviluppo del software, 
 in quanto fornisce la visione iniziale del progetto, identifica le esigenze degli utenti finali e stabilisce i criteri di successo.
 
+\hypertarget{sec:componente software}{}
+\subsection*{Componente software}
+Unità logica e funzionale di un sistema software, progettata per svolgere specifiche funzioni o compiti. Le componenti software sono i mattoni
+fondamentali di un'applicazione, e possono essere riutilizzate, combinate e integrate per creare sistemi più complessi.
+
 \hypertarget{sec:confluence}{}
 \subsection*{Confluence}
 Piattaforma di collaborazione e gestione della conoscenza, utilizzata per creare, condividere e collaborare su documenti, progetti e informazioni all'interno 
@@ -252,6 +283,11 @@ Il controller è responsabile di interpretare le azioni dell'utente, di invocare
 \hypertarget{sec:controllo_versione}{}
 \subsection*{Controllo di versione}
 Strumento che consente di gestire e tracciare le modifiche apportate al codice sorgente o ad altri file di progetto.
+
+\hypertarget{sec:coverage}{}
+\subsection*{Coverage}
+Metric a che misura la percentuale di codice eseguita durante i test. Include vari livelli, come la copertura delle istruzioni, dei rami e delle condizioni, per valutare l’efficacia dei test e individuare parti di codice non verificate.
+
 
 \hypertarget{sec:cron}{}
 \subsection*{Cron}

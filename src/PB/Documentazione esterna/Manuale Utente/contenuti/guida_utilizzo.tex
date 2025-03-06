@@ -7,39 +7,60 @@
 
 
 \subsection{Cosa chiedere, e come chiederlo}
-BuddyBot è pensato per essere l'assistente digitale di un'azienda informatica che deve aiutare i neoassunti a muoversi nel codice
-e nella documentazione dei vari progetti aziendali. Più precisamente, ad ogni interrogazione posta dall'utente vengono associati dei
-documenti di contesto, che provengono esclusivamente dai profili \emph{GitHub}\textsubscript{\textbf{\textit{G}}},
+\label{subsec:cosa_come_chiedere}
+
+BuddyBot è pensato per essere l'assistente digitale di un'azienda informatica che desidera aiutare i propri dipendenti a ricercare in
+modo veloce delle informazioni di interesse nel codice e nella documentazione dei vari progetti aziendali. Più precisamente, ad
+ogni interrogazione posta dall'utente vengono associati
+dei documenti di contesto, che provengono esclusivamente dai profili \emph{GitHub}\textsubscript{\textbf{\textit{G}}},
 \emph{Jira}\textsubscript{\textbf{\textit{G}}} e \emph{Confluence}\textsubscript{\textbf{\textit{G}}} dell'azienda, e in base alle
 informazioni presenti su tali documenti di contesto il chatbot fornirà la risposta alla domanda fornita.
 Se la domanda viene malposta, il chatbot potrebbe non essere in grado di fornire una risposta, e in tal caso potrebbe restituire
 uno dei seguenti messaggi:
 \begin{itemize}
     \item \emph{"Domanda fuori contesto"}: la domanda posta non è inerente al contesto informatico aziendale;
-    \item \emph{"Informazione non trovata"}: non è stato possibile trovare nei documenti di contesto informazioni utili per rispondere alla domanda.
+    \item \emph{"Informazione non trovata"}: non è stato possibile trovare nei documenti di contesto informazioni utili per rispondere
+    alla domanda.
 \end{itemize}
 
 E' tuttavia possibile che il chatbot restituisca tali risposte anche in casi in cui non ce lo si aspetta.
 Per evitare di ottenere risposte negative, forniamo qui di seguito delle istruzioni per capire come porre la domanda per
 ottenere una risposta soddisfacente:
 \begin{itemize}
-    \item La domanda deve essere concisa e diretta, senza giri di parole;
-    \item Si devono mettere bene in risalto le parole chiave;
-    \item La domanda deve essere il più breve possibile;
-    \item La domanda deve essere pensata per ottenere una risposta unitaria, e non per aprire una discussione;
-    \item La domanda deve riguardare un contesto chiaro e definito, quindi non può toccare tematiche troppo generali;
+    \item La domanda deve essere concisa e diretta, senza giri di parole. Ad esempio "Qual è lo stato del progetto X su Jira?" invece
+    che "Potresti gentilmente dirmi qual è lo stato attuale del progetto X su Jira, per favore?".
+    \item Si devono mettere bene in risalto le parole chiave. Ad esempio "Qual è l'errore di build nel progetto Y?" invece che "Qual
+    è il problema con il progetto Y?".
+    \item La domanda deve essere il più breve possibile. Ad esempio "Chi è l'assegnatario del ticket Z?" invece che "Vorrei sapere
+    chi è la persona a cui è stato assegnato il ticket Z".
+    \item La domanda deve essere pensata per ottenere una risposta unitaria, e non per aprire una discussione. Ad esempio, occorre
+    unificare "Quali commit sono stati fatti oggi? Mostrameli in forma di tabella con assegnatario e data" invece che porre due domande
+    separate "Quali commit sono stati fatti oggi?" e "Mostrameli in forma di tabella con assegnatario e data", perchè in quest'ultimo
+    caso la seconda domanda riceverà come risposta "Domanda fuori contesto": infatti, ogni coppia domanda-risposta è a sè stante, cioè
+    il chatbot non considera il completo flusso del discorso per generare la risposta all'interrogazione corrente, bensì considera solo
+    quest'ultima.
+    \item La domanda deve riguardare un contesto chiaro e definito, quindi non può toccare tematiche troppo generali. Ad esempio
+    "Quali sono i task aperti per il progetto A?" invece che "Qual è la situazione dei nostri progetti?".
     \item Il suddetto contesto deve essere uno, infatti non si possono porre due o più domande a tema differente in una stessa
-    interrogazione;
-    \item Non si deve chiedere informazioni generiche a riguardo di una risorsa fornendo solo il nome della stessa, ma bisogna
-    bensì specificare più di preciso cosa si vuole sapere a riguardo di tale risorsa;
+    interrogazione. Ad esempio, invece che "Chi è l'assegnatario del ticket Z su Jira
+    e quali sono i suoi relativi commit su GitHub?", è meglio separare in "Chi è l'assegnatario del ticket Z su Jira?" e poi, una 
+    volta ricevuta la risposta, "Quali sono i commit di persona Y su GitHub?".
+    \item Non si devono chiedere informazioni generiche a riguardo di una risorsa fornendo solo il nome della stessa, ma bisogna
+    bensì specificare più di preciso cosa si vuole sapere a riguardo di tale risorsa. Ad esempio "Qual è la descrizione del ticket
+    Z su Jira?" invece che "Dimmi qualcosa sul ticket Z".
     \item La domanda deve essere posta in un linguaggio quanto più possibile formale e tecnico, cercando di rimanere aderenti
-    allo stile di scrittura dei documenti aziendali. Un linguaggio troppo colloquiale quasi sicuramente condurrà a risposte negative;
+    allo stile di scrittura dei documenti aziendali. Un linguaggio troppo colloquiale quasi sicuramente condurrà a risposte negative.
+    Ad esempio "Qual è la copertura dei test per il modulo B?" invece che "Come stanno andando i test per il modulo B?".
     \item Non si devono porre domande che richiedono una risposta soggettiva. In caso ne venga posta una per sbaglio, non ci si deve
-    fidare della risposta fornita, è bensì consigliabile chiedere ad un collega;
+    fidare della risposta fornita, è bensì consigliabile chiedere ad un collega. Ad esempio "A quanto ammonta la copertura del codice
+    nel progetto C?" invece che "Pensi che il codice del progetto C sia buono?".
     \item Si devono evitare domande che richiedano ragionamento e/o collegamenti logici, in quanto il chatbot non è in grado di
-    processare informazioni in tal senso;
+    processare informazioni in tal senso. Ad esempio "Quali sono i commit recenti nel progetto D?" invece che "Quali sono i
+    commit nel progetto D dall'inizio della sprint ad ora?".
     \item Non si devono porre domande per la cui risposta è necessaria una ricerca su internet, in quanto il chatbot fa
-    riferimento esclusivamente ai documenti di contesto, e non è in grado di navigare in rete.
+    riferimento esclusivamente ai documenti di contesto, e non è in grado di navigare in rete. Ad esempio, invece che "Nel
+    progetto Y viene utilizzata l'ultima versione rilasciata del framework X?", bisogna chiedere "Qual è la versione del framework X
+    che viene utilizzata nel progetto Y?" e poi cercare manualmente su internet se tale versione è l'ultima rilasciata o meno.
 \end{itemize}
 
 

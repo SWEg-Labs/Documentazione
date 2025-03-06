@@ -13,6 +13,16 @@ In Pascal Case, ogni parola della stringa inizia con una lettera maiuscola e non
 Soluzione generale e riutilizzabile a un problema che si verifica comunemente nell’ambito dello sviluppo del software. I pattern 
 architetturali forniscono un approccio testato e comprovato per la progettazione e l’implementazione del software.
 
+\hypertarget{sec:persistent_logic}{}
+\subsection*{Persistent logic}
+La logica di persistenza è la parte di un'applicazione che si occupa di salvare e recuperare i dati da un database o da un altro
+meccanismo di memorizzazione permanente. Questa logica è responsabile della gestione delle operazioni di lettura e scrittura dei dati,
+dell'interazione con il database e della sincronizzazione dei dati tra l'applicazione e lo storage persistente. Essa, nell'architettura
+esagonale, è rappresentata da un repository, che riceve un input un oggetto Entity dall'adapter, che lo aveva convertito partendo da
+un tipo di business logic, e lo salva nella piattaforma di storage collegata. In modo speculare, quando viene richiesto, il repository
+preleva i dati dalla piattaforma di persistenza, li converte in oggetti Entity e li restituisce all'Adapter, che si occupa di
+convertirli in tipi di business logic e di fornirli all'applicazione.
+
 \subsection*{Piano di Progetto}
 Documento formale che delinea in dettaglio la pianificazione, l’esecuzione, il monitoraggio e il controllo di tutte le attività coinvolte nella 
 realizzazione di un progetto. Questo documento fornisce una roadmap chiara e organizzata, comprensiva di obiettivi, risorse, scadenze e strategie di 
@@ -35,6 +45,10 @@ Pinecone è una piattaforma cloud-native progettata per l'indicizzazione e il re
 ricerca vettoriale altamente scalabili, spesso utilizzati in applicazioni di intelligenza artificiale come motori di raccomandazione, ricerca semantica 
 e assistenti virtuali. Pinecone offre un'infrastruttura ottimizzata per il retrieval basato su similarità, supportando scenari di alto volume e 
 garantendo basse latenze, con un'interfaccia API intuitiva per integrarsi facilmente con applicazioni esistenti.
+
+\hypertarget{sec:port}{}
+\subsection*{Port}
+Interfaccia che definisce i punti di comunicazione tra la logica di business e il mondo esterno. Permette ai Service di interagire con sistemi di persistenza e altre componenti senza dipendere direttamente dalla loro implementazione.
 
 \hypertarget{sec:postgres}{}
 \subsection*{Postgres (PostgreSQL)}
@@ -179,9 +193,25 @@ In termini informatici, un luogo o un archivio dove vengono conservati e gestiti
 progetto. Nell'ambito dei sistemi di controllo delle versioni come Git, un repository è una struttura dati che archivia anche la cronologia completa delle 
 modifiche apportate al codice sorgente di un progetto.
 
+\hypertarget{sec:repository_arch_esagonale}{}
+\subsection*{Repository (Architettura Esagonale)}
+Nell'architettura esagonale, il repository è un componente che si occupa della persistenza dei dati, fornendo un'interfaccia per l'accesso ai dati
+e nascondendo i dettagli della loro implementazione. Il repository è responsabile di recuperare, salvare e aggiornare i dati da e verso una piattaforma
+di persistenza, come un database o un servizio esterno. Questo componente è essenziale per separare la logica di business dalla logica di persistenza,
+garantendo che le operazioni di accesso ai dati siano incapsulate e gestite in modo indipendente dal resto dell'applicazione.
+Il repository riceve oggetti Entity dall'adapter, li converte in un formato compatibile con la piattaforma di persistenza e li salva o li recupera
+secondo le richieste dell'applicazione. In caso di recupero di dati, il repository li fornisce all'adapter come Entity, e poi l'adapter li convertirà in
+tipi di dato di business. In questo modo, il repository fornisce un'interfaccia uniforme per l'accesso ai dati, indipendentemente dal
+tipo di storage utilizzato, semplificando la gestione e l'evoluzione della persistenza dei dati.
+
 \subsection*{Requirement and Technology Retrospective (RTB)}
 La prima revisione di avanzamento del progetto didattico. Fissa i requisiti da soddisfare in accordo con il proponente, motiva le tecnologie, i framework 
 e le librerie adottate dimostrandone adeguatezza e compatibilità tramite il Proof of Concept (PoC).
+
+\hypertarget{sec:requisiti_software}{}
+\subsection*{Requisiti software}
+I requisiti software sono le specifiche che definiscono le funzionalità, le prestazioni, i vincoli e le caratteristiche che 
+un sistema software deve soddisfare per rispondere alle esigenze degli utenti e degli stakeholder.
 
 \subsection*{Retrospettiva}
 Vedi \bulhyperlink{sec:sprint_reptrospective}{Sprint Retrospective}.

@@ -23,6 +23,11 @@ sistema rispetto ai requisiti stabiliti. Le demo sono solitamente presentate a s
 funzionalità e orientare lo sviluppo futuro. Le demo sono particolarmente utili nei processi iterativi e agili, dove è importante monitorare e comunicare 
 costantemente i progressi del progetto.
 
+\hypertarget{sec:design_pattern}{}
+\subsection*{Design pattern}
+Soluzione generale e riutilizzabile a un problema che si verifica comunemente nell’ambito dello sviluppo del software.
+I design pattern forniscono un approccio testato e comprovato per la progettazione e l’implementazione del software.
+
 \hypertarget{sec:diagramma_Gantt}{}
 \subsection*{Diagramma di Gantt}
 Strumento di visualizzazione temporale utilizzato nella gestione dei progetti per rappresentare le attività pianificate nel tempo. È composto da una barra 
@@ -66,16 +71,36 @@ e distribuzione digitale progettata per la comunicazione.
 Docker è un software progettato per eseguire processi informatici in ambienti isolabili, minimali e facilmente distribuibili chiamati 
 container, con l’obiettivo di semplificare i processi di deployment di applicazioni software.
 
+\hypertarget{sec:docker_compose}{}
+\subsection*{Docker Compose}
+Strumento progettato per gestire il deploy di applicazioni tramite la definizione di
+container. Questo tool di Docker permette di raggruppare e avviare un insieme di
+container con un solo comando.
+
+
 \hypertarget{sec:docstring}{}
 \subsection*{Docstring}
 Una docstring è una stringa speciale inserita all'interno del codice sorgente di un programma per documentare una funzione, un modulo 
 o una classe. In pratica, è una descrizione dettagliata e concisa dello scopo, dei parametri, del valore di ritorno e di eventuali 
 eccezioni sollevate da un elemento di codice.
 
+\hypertarget{sec:domain business model}{}
+\subsection*{Domain business model}
+Il Domain business model è il nucleo dell'architettura esagonale, contenente la logica di business e le regole di dominio dell'applicazione.
+
+
 \subsection*{Draw.io}
 Draw.io (ora chiamato diagrams.net) è uno strumento gratuito per la creazione di diagrammi, disponibile sia come applicazione web che come app desktop per 
 vari sistemi operativi. Viene utilizzato ampiamente per progettare e documentare diagrammi di flusso, architetture software, diagrammi UML, organigrammi, 
 mappe mentali, wireframe, e altri tipi di rappresentazioni visive.
+
+\hypertarget{sec:dto}{}
+\subsection*{DTO (Data Transfer Object)}
+Un DTO (Data Transfer Object) è un oggetto utilizzato per trasferire dati tra sottosistemi di un'applicazione. È progettato per essere semplice, leggero e
+contenere solo i dati necessari per la comunicazione tra i diversi componenti del sistema. I DTO sono spesso utilizzati per ridurre il traffico di rete e
+migliorare le prestazioni dell'applicazione. In particolare, nell'architettura esagonale, i DTO sono il tipo di dati gestito dall'application logic,
+la quale riceve DTO dall'esterno e li adatta per inviarli alla business logic, e riceve dati di dominio dalla business logic e li adatta per inviarli
+all'esterno.
 
 \newpage
 
@@ -99,6 +124,12 @@ Un Modello di embedding è un modello di intelligenza artificiale progettato per
 vettoriali numeriche in uno spazio multidimensionale. Questi vettori catturano caratteristiche semantiche o strutturali dei dati, rendendoli utili per 
 confronti, analisi o classificazioni basate su similarità. I modelli di embedding sono comunemente utilizzati in applicazioni come la ricerca semantica, 
 il clustering e il machine learning.
+
+\hypertarget{sec:entity}{}
+\subsection*{Entity}
+Una Entity è un oggetto di persistenza di una applicazione, che nell'architettura esagonale viene gestita da un repository.
+Essa rappresenta l'adattamento interno all'applicazione di un tipo di dato giunto da un servizio esterno, come ad esempio un database,
+ed ha il compito di fornire un layer intermedio tra tipi di dato di business e tipi di dato esterni.
 
 \hypertarget{sec:eslint}{}
 \subsection*{ESLint}
