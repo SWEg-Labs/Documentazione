@@ -1,0 +1,31 @@
+% Intestazione
+\fancyhead[L]{3 \hspace{0.2cm} Diario della riunione} % Testo a sinistra
+
+\section{Diario della riunione}
+
+\begin{itemize}
+    \item Ci siamo confrontati sui vari punti emersi durante la riunione con il \emph{proponente}, tra cui:
+    \begin{itemize}
+        \item È stato accettato di non porre domande iniziali per avviare la conversazione del chatbot.
+        \item La modifica dei file in \emph{Chroma}\textsubscript{\textit{\textbf{G}}} deve avvenire tenendo conto della data di ultima modifica.
+        \item Per l’eliminazione dei file in \emph{Chroma} si procederà prelevando solamente gli ID. 
+        \item Non è necessaria la gestione del riavvio di \emph{Postgres}\textsubscript{\textit{\textbf{G}}} né del caso di errore nel salvataggio ma riuscita nel recupero.
+        \item Per il meccanismo di aggiornamento dei dati, si potrà optare tra due soluzioni: un richiamo all’avvio o ad ogni refresh della pagina.
+        \item È stata approvata anche la gestione e visualizzazione dei file di log.
+        \item È stato stabilito che il non funzionamento del chatbot durante gli aggiornamenti deve essere segnalato.
+        \item Non sono emerse richieste grafiche aggiuntive per il \emph{frontend}.
+        \item I link verranno mostrati all’interno di un riquadro posizionato in fondo al messaggio.
+        \item È stata accettata la visualizzazione di data e ora nei messaggi. 
+        \item È stata confermata la necessità di impostare una coverage delle righe adeguata per i test.
+    \end{itemize}
+    \item Abbiamo discusso dei contenuti da inserire nella documentazione durante la prossima sprint e concordato che, prima di aggiungere nuovi requisiti al Piano di Qualifica e alla Specifica Tecnica, è necessario testare la gestione dello storico.
+    \item Abbiamo discusso delle attività di sviluppo da svolgere che non sono molto urgenti, tra cui: 
+    \begin{itemize}
+        \item Disattivare visivamente il pulsante "Invia" durante il caricamento.
+        \item Migliorare la gestione delle variabili d'ambiente usando "environment".
+        \item Esplorare l'uso dei volumi \emph{Docker}\textsubscript{\textit{\textbf{G}}} per mettere in cache l'installazione dei pacchetti.
+    \end{itemize}
+    \item Gestione dei formalismi di fine \emph{Sprint}, che include l'aggiornamento dei documenti e la verifica delle modifiche.
+\end{itemize}
+
+
