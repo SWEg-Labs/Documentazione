@@ -110,11 +110,23 @@ solida per la \emph{progettazione}\textsubscript{\textit{\textbf{G}}} del sistem
     RZF42 & Opzionale & Ad ogni tentativo di aggiornamento del database vettoriale il sistema deve salvare in un file di testo un log che contenga le seguenti informazioni: 
     fonte dei dati (GitHub, Jira o Confluence), esito, orario, numero di file aggiunti, numero di file modificati, numero di file eliminati. & Verbale esterno \\ \hline
     \end{tabularx}
+\end{table}
+
+\vspace{0.5cm}
+\newpage
+% Sesta parte della tabella
+\begin{table}[h!]
+    \renewcommand{\arraystretch}{1.6} % Per aumentare l'altezza delle righe
+    \begin{tabularx}{\textwidth}{|p{2cm}|p{3cm}|X|p{4cm}|} \hline
+    \rowcolor[HTML]{FFD700} 
+    \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Fonti} \\ \hline
+    RDF43 & Desiderabile & Il sistema deve mostrare a schermo la data e l'ora di ogni messaggio presente nello storico. & \bulhyperlink{UC8.1.1}{UC8.1.1} \\ \hline
+    RDF44 & Desiderabile & Nel caso non sia possibile recuperare la data e l'ora di un messaggio presente nello storico, deve essere visualizzato al suo posto un avviso di errore. & \bulhyperlink{UC28}{UC28} \\ \hline
+    \end{tabularx}
     \caption{Requisiti funzionali}
     \label{tab:Requisiti_funzionali}
 \end{table}
 
-\newpage
 \subsection{Requisiti qualitativi}
 \label{sec:Requisiti_qualitativi}
 I requisiti qualitativi del sistema sono trattati in questo sotto-capitolo. Questa sezione
@@ -161,7 +173,6 @@ coerenza e l'\emph{efficienza}\textsubscript{\textit{\textbf{G}}} del prodotto.
 Trattandosi di una \emph{applicazione web}\textsubscript{\textit{\textbf{G}}}, i requisiti prestazionali saranno influenzati principalmente dalla connessione Internet, 
 dalle prestazioni del dispositivo e dall'ottimizzazione specifica per il browser \emph{Google Chrome}, l'unico supportato ufficialmente.
 
-\newpage
 \subsection{Tracciamento}
 \subsubsection{Fonte - Requisiti}
 \label{sec:fonte_requisito}
@@ -183,6 +194,7 @@ dalle prestazioni del dispositivo e dall'ottimizzazione specifica per il browser
     \bulhyperlink{UC6}{UC6} & RZF8 \\ \hline
     \bulhyperlink{UC7}{UC7} & RDF9 \\ \hline
     \bulhyperlink{UC8}{UC8} & RDF10, RDF11 \\ \hline
+    \bulhyperlink{UC8.1.1}{UC8.1.1} & RDF43 \\ \hline
     \bulhyperlink{UC8.2}{UC8.2} & RDF28, RDF30 \\ \hline
     \bulhyperlink{UC8.3}{UC8.3} & RDF29, RDF30 \\ \hline
     \bulhyperlink{UC9}{UC9} & RDF12 \\ \hline
@@ -198,10 +210,6 @@ dalle prestazioni del dispositivo e dall'ottimizzazione specifica per il browser
     \bulhyperlink{UC17}{UC17} & RZF35 \\ \hline
     \bulhyperlink{UC18}{UC18} & RZF26 \\ \hline
     \bulhyperlink{UC19}{UC19} & RZF27 \\ \hline
-    \bulhyperlink{UC20}{UC20} & RZF36 \\ \hline
-    \bulhyperlink{UC21}{UC21} & RZF37 \\ \hline
-    \bulhyperlink{UC22}{UC22} & RZF38 \\ \hline
-    \bulhyperlink{UC23}{UC23} & RZF39 \\ \hline
     \end{tabularx}
 \end{table}
 
@@ -211,17 +219,20 @@ dalle prestazioni del dispositivo e dall'ottimizzazione specifica per il browser
     \begin{tabularx}{0.8\textwidth}{|>{\centering\arraybackslash}p{2.8cm}|>{\centering\arraybackslash}X|} \hline
     \rowcolor[HTML]{FFD700} 
     \textbf{Fonte} & \textbf{Requisiti} \\ \hline
+    \bulhyperlink{UC20}{UC20} & RZF36 \\ \hline
+    \bulhyperlink{UC21}{UC21} & RZF37 \\ \hline
+    \bulhyperlink{UC22}{UC22} & RZF38 \\ \hline
+    \bulhyperlink{UC23}{UC23} & RZF39 \\ \hline
     \bulhyperlink{UC24}{UC24} & RZF40 \\ \hline
     \bulhyperlink{UC25}{UC25} & RDF31 \\ \hline
     \bulhyperlink{UC26}{UC26} & RDF32 \\ \hline
     \bulhyperlink{UC27}{UC27} & RDF33 \\ \hline
+    \bulhyperlink{UC28}{UC28} & RDF44 \\ \hline
     \end{tabularx}
     \caption{Tracciamento Fonte - Requisiti}
     \label{tab:Tracciamento_fonte_requisiti}
 \end{table}
 
-
-\newpage
 \subsubsection{Requisito - Fonti}
 \label{sec:requisito_fonte}
 \begin{table}[h!]
@@ -251,9 +262,6 @@ dalle prestazioni del dispositivo e dall'ottimizzazione specifica per il browser
     RZF19 & \bulhyperlink{UC13}{UC13}\\ \hline
     RZF20 & \bulhyperlink{UC15}{UC15}\\ \hline
     RZF21 & \bulhyperlink{UC15}{UC15}\\ \hline
-    ROF22 & Verbale interno\\ \hline
-    ROF23 & Verbale interno\\ \hline
-    ROF24 & Verbale interno\\ \hline
     \end{tabularx}
 \end{table}
 
@@ -264,6 +272,9 @@ dalle prestazioni del dispositivo e dall'ottimizzazione specifica per il browser
     \begin{tabularx}{0.8\textwidth}{|>{\centering\arraybackslash}p{2.8cm}|>{\centering\arraybackslash}X|} \hline
     \rowcolor[HTML]{FFD700} 
     \textbf{Requisito} & \textbf{Fonti} \\ \hline
+    ROF22 & Verbale interno\\ \hline
+    ROF23 & Verbale interno\\ \hline
+    ROF24 & Verbale interno\\ \hline
     ROF25 & Verbale esterno\\ \hline
     ROF26 & \bulhyperlink{UC18}{UC18} \\ \hline
     RZF27 & \bulhyperlink{UC19}{UC19} \\ \hline
@@ -282,6 +293,8 @@ dalle prestazioni del dispositivo e dall'ottimizzazione specifica per il browser
     RZF40 & \bulhyperlink{UC24}{UC24} \\ \hline
     RZF41 & Verbale esterno\\ \hline
     RZF42 & Verbale esterno\\ \hline
+    RDF43 & \bulhyperlink{UC8.1.1}{UC8.1.1} \\ \hline
+    RDF44 & \bulhyperlink{UC28}{UC28} \\ \hline
     ROQ1 & Verbale Interno\\ \hline
     ROQ2 & Verbale Interno\\ \hline
     ROQ3 & Capitolato \\ \hline

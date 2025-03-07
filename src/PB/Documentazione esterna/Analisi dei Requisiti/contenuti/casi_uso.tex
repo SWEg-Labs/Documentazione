@@ -361,6 +361,34 @@ L’applicazione prevede la presenza di due \emph{Attori}\textsubscript{\textbf{
     \end{enumerate}
 \end{itemize}
 
+\hypertarget{UC9}{}
+\subsubsection{UC9: Visualizzazione errore nel recupero dello storico}
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: L'utente avvia il sistema;
+    \item \textbf{Trigger}: L'utente desidera visualizzare lo storico della chat;
+    \item \textbf{Postcondizioni}: L'utente visualizza un messaggio di errore che comunica dell'impossibilità di recuperare lo storico;
+    \item \textbf{Scenario principale}: 
+    \begin{enumerate}
+        \item Il sistema ha riscontrato un problema nel recupero dello storico dal database relazionale;
+        \item L'utente visualizza un messaggio di errore che comunica dell'impossibilità di recuperare lo storico.
+    \end{enumerate}
+\end{itemize}
+
+\hypertarget{UC27}{}
+\subsubsection{UC27: Visualizzazione fine storico}
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: L'utente ha visualizzato tutti i messaggi presenti nel database;
+    \item \textbf{Trigger}: L'utente desidera visualizzare un messaggio che comunica che non ci sono altri messaggi da visualizzare;
+    \item \textbf{Postcondizioni}: L'utente visualizza un messaggio che comunica che non ci sono altri messaggi da visualizzare;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item L'utente visualizza tutti i messaggi presenti nel database;
+        \item L'utente visualizza un messaggio che comunica che non ci sono altri messaggi da visualizzare;
+    \end{enumerate}
+\end{itemize}
+
 \hypertarget{UC8.1}{}
 \subsubsection{UC8.1: Visualizzazione di un singolo messaggio nella lista}
 \begin{itemize}
@@ -373,6 +401,10 @@ L’applicazione prevede la presenza di due \emph{Attori}\textsubscript{\textbf{
         \item Il sistema recupera una lista dei messaggi più recenti presenti nel database, e li stampa a schermo;
         \item L'utente visualizza un singolo messaggio nella lista dei messaggi recuperati.
     \end{enumerate}
+    \item \textbf{Sottocasi d'uso}:
+    \begin{itemize}
+        \item \bulhyperlink{UC8.1.1}{UC8.1.1}: Visualizzazione della data e ora di invio del messaggio.
+    \end{itemize}
     \item \textbf{Casi che ereditano}:
     \begin{itemize}
         \item \bulhyperlink{UC8.2}{UC8.2}: Visualizzazione messaggio dell'utente;
@@ -416,35 +448,44 @@ L’applicazione prevede la presenza di due \emph{Attori}\textsubscript{\textbf{
     \end{itemize}
 \end{itemize}
 
-\hypertarget{UC9}{}
-\subsubsection{UC9: Visualizzazione errore nel recupero dello storico}
-\begin{itemize}
-    \item \textbf{Attori principali}: Utente;
-    \item \textbf{Precondizioni}: L'utente avvia il sistema;
-    \item \textbf{Trigger}: L'utente desidera visualizzare lo storico della chat;
-    \item \textbf{Postcondizioni}: L'utente visualizza un messaggio di errore che comunica dell'impossibilità di recuperare lo storico;
-    \item \textbf{Scenario principale}: 
-    \begin{enumerate}
-        \item Il sistema ha riscontrato un problema nel recupero dello storico dal database relazionale;
-        \item L'utente visualizza un messaggio di errore che comunica dell'impossibilità di recuperare lo storico.
-    \end{enumerate}
-\end{itemize}
+\hypertarget{UC8.1.1}{}
+\subsubsection{UC8.1.1: Visualizzazione della data e ora di invio del messaggio}
 
-\hypertarget{UC27}{}
-\subsubsection{UC27: Visualizzazione fine storico}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{UC8.1.1 + UC28.png}
+    \caption{Visualizzazione della data e ora di invio del messaggio}
+\end{figure}
+
 \begin{itemize}
     \item \textbf{Attori principali}: Utente;
-    \item \textbf{Precondizioni}: L'utente ha visualizzato tutti i messaggi presenti nel database;
-    \item \textbf{Trigger}: L'utente desidera visualizzare un messaggio che comunica che non ci sono altri messaggi da visualizzare;
-    \item \textbf{Postcondizioni}: L'utente visualizza un messaggio che comunica che non ci sono altri messaggi da visualizzare;
+    \item \textbf{Precondizioni}: L'utente ha visualizzato un singolo messaggio nella lista dei messaggi recuperati;
+    \item \textbf{Trigger}: L'utente desidera visualizzare la data e l'ora di invio del messaggio;
+    \item \textbf{Postcondizioni}: L'utente visualizza la data e l'ora di invio del messaggio;
     \item \textbf{Scenario principale}:
     \begin{enumerate}
-        \item L'utente visualizza tutti i messaggi presenti nel database;
-        \item L'utente visualizza un messaggio che comunica che non ci sono altri messaggi da visualizzare;
+        \item Il sistema recupera la data e l'ora di invio del messaggio;
+        \item L'utente visualizza la data e l'ora di invio del messaggio.
+    \end{enumerate}
+    \item \textbf{Scenario alternativo}:
+    \begin{enumerate}
+        \item \bulhyperlink{UC28}{UC28}: Visualizzazione errore nel recupero della data e ora di invio del messaggio.
     \end{enumerate}
 \end{itemize}
 
-\newpage
+\hypertarget{UC28}{}
+\subsubsection{UC28: Visualizzazione errore nel recupero della data e ora di invio del messaggio}
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: L'utente ha visualizzato un singolo messaggio nella lista dei messaggi recuperati;
+    \item \textbf{Trigger}: L'utente desidera visualizzare la data e l'ora di invio del messaggio;
+    \item \textbf{Postcondizioni}: L'utente visualizza un messaggio di errore che comunica dell'impossibilità di recuperare la data e l'ora di invio del messaggio;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item Il sistema ha riscontrato un problema nel recupero della data e l'ora di invio del messaggio;
+        \item L'utente visualizza un messaggio di errore che comunica dell'impossibilità di recuperare la data e l'ora di invio del messaggio.
+    \end{enumerate}
+\end{itemize}
 
 \hypertarget{UC10}{}
 \subsubsection{UC10: Aggiornamento automatico del database vettoriale}
