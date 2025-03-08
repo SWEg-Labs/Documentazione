@@ -170,28 +170,25 @@ La risposta viene quindi convertita in un oggetto Answer di \emph{Business Logic
 \subsection{Design pattern utilizzati}
 \label{sec:design_pattern_utilizzati}
 
-\subsubsection{Architettura esagonale}
-\label{sec:architettura_esagonale}
-
-\dots
-
 
 \subsubsection{Facade}
 \label{sec:facade}
 
-\dots
+Il pattern \emph{Facade}\textsubscript{\textbf{\textit{G}}} è stato adottato per permettere al \emph{cron}\textsubscript{\textbf{\textit{G}}} di accedere ad unica classe LoadFilesService avente il compito di caricare tutti i tipi di file necessari per l'aggiornamento del database vettoriale. Questo pattern permette di nascondere la complessità del sistema, fornendo un'interfaccia semplificata per l'accesso alle funzionalità offerte dalla classe LoadFilesService. In questo modo, il cron non deve preoccuparsi di come i file vengono caricati, ma può semplicemente chiamare il metodo \texttt{load} della suddetta classe per ottenere il risultato desiderato.
+E' stato inoltre adottato un piccolo Facade anche per l'architettura di generazione di una risposta, dove ChatService si occupa di nascondere la complessità della logica di business, fornendo un'interfaccia semplificata per l'accesso alle funzionalità offerte da SimilaritySearchService e GenerateAnswerService.
+Grazie a questo pattern, è possibile mantenere il codice più pulito e manutenibile, in quanto la complessità è nascosta all'esterno e le interazioni con le classi interne sono semplificate.
 
 
 \subsubsection{Dependency Injection}
 \label{sec:dependency_injection}
 
-\dots
+Il pattern \emph{Dependency Injection}\textsubscript{\textbf{\textit{G}}} è stato adottato per permettere l'iniezione delle dipendenze all'interno delle classi del sistema. Questo pattern permette di separare la creazione degli oggetti dal loro utilizzo, semplificando la gestione delle dipendenze e rendendo il codice più manutenibile e testabile. In questo modo, le classi non devono preoccuparsi di come vengono creati gli oggetti di cui hanno bisogno, ma possono semplicemente riceverli come parametri di costruzione. Questo permette di sostituire facilmente le implementazioni delle dipendenze, senza dover modificare il codice di tutte le classi che le utilizzano. Inoltre, grazie all'utilizzo di un \emph{framework}\textsubscript{\textbf{\textit{G}}} di \emph{Dependency Injection}, come \emph{Angular}\textsubscript{\textbf{\textit{G}}}, è possibile automatizzare il processo di creazione e iniezione delle dipendenze, semplificando ulteriormente lo sviluppo del \emph{frontend}\textsubscript{\textbf{\textit{G}}}. Il pattern è stato implementato anche in \emph{Python}\textsubscript{\textbf{\textit{G}}} nel \emph{backend}\textsubscript{\textbf{\textit{G}}}, attraverso due funzioni, \texttt{dependency\_injection\_frontend} e \texttt{dependenc\_injection\_cron}, che si occupano di iniettare le dipendenze rispettivamente nel file di endpoint \emph{FastAPI}\textsubscript{\textbf{\textit{G}}} a cui accede il frontend per contattare il backend e nel file che viene eseguito periodicamente dal cron per l'aggiornamento del \emph{database vettoriale}\textsubscript{\textbf{\textit{G}}}.
 
 
 \subsubsection{MVVM}
 \label{sec:mvvm}
 
-\dots
+Il pattern \emph{MVVM}\textsubscript{\textbf{\textit{G}}} è stato adottato per la progettazione dell'architettura del \emph{frontend}, in particolare per separare la logica di presentazione dalla logica di business, semplificando la gestione delle interazioni tra i componenti dell'applicazione. Nello specifico, il \emph{Model}\textsubscript{\textbf{\textit{G}}} rappresenta i dati e la logica di business dell'applicazione, il \emph{View}\textsubscript{\textbf{\textit{G}}} si occupa della presentazione dei dati all'utente, e il \emph{ViewModel}\textsubscript{\textbf{\textit{G}}} si occupa di gestire la logica di presentazione e di coordinare le interazioni tra il \emph{Model} e la \emph{View}. Questo permette di mantenere il codice più pulito e manutenibile, in quanto la logica di business è separata dalla logica di presentazione, e le interazioni tra i componenti sono semplificate. Inoltre, grazie all'utilizzo di un \emph{framework} come \emph{Angular}, è possibile automatizzare il processo di creazione e gestione dei componenti, semplificando ulteriormente lo sviluppo del \emph{frontend}. Il pattern è stato implementato in \emph{Angular} attraverso la creazione di componenti per la \emph{View} e il \emph{ViewModel}, e la creazione di servizi per la gestione della logica di business del \emph{Model}.
 
 
 
