@@ -40,10 +40,10 @@ solida per la \emph{progettazione}\textsubscript{\textit{\textbf{G}}} del sistem
     RDF11 & Desiderabile & L'utente deve poter visualizzare lo storico dei messaggi, recuperato dal database relazionale. & \bulhyperlink{UC8}{UC8} \\ \hline
     RDF12 & Desiderabile & Nel caso il sistema fallisca nel recuperare lo storico della chat, deve essere fatto visualizzare un messaggio di errore all'utente spiegando che non è stato possibile recuperare lo storico. & \bulhyperlink{UC9}{UC9} \\ \hline
     ROF13 & Obbligatorio & Uno scheduler deve collegarsi al sistema e periodicamente aggiornare il database vettoriale con i dati più recenti. & \bulhyperlink{UC10}{UC10} \\ \hline
-    ROF14 & Obbligatorio & La risposta deve essere generata prendendo in considerazione i dati di contesto provenienti da GitHub,Jira e Confluence & \bulhyperlink{UC10}{UC10}, Capitolato \\ \hline
-    ROF15 & Obbligatorio & Il sistema deve poter convertire i dati ottenuti in formato vettoriale. & Verbale interno \\ \hline
-    ROF16 & Obbligatorio & Il sistema deve poter aggiornare il database vettoriale con i nuovi dati ottenuti. & Verbale interno \\ \hline
-    RZF17 & Opzionale & Se la conversazione non è ancora avviata l'utente deve poter visualizzare e selezionare alcune domande di partenza proposte. & \bulhyperlink{UC11}{UC11},\bulhyperlink{UC11.1}{UC11.1} \\ \hline
+    ROF14 & Obbligatorio & La risposta deve essere generata prendendo in considerazione i dati di contesto provenienti da GitHub, Jira e Confluence & \bulhyperlink{UC10}{UC10}, Capitolato \\ \hline
+    ROF15 & Obbligatorio & Il sistema deve poter convertire i documenti ottenuti in formato vettoriale. & Verbale interno \\ \hline
+    ROF16 & Obbligatorio & Il sistema deve poter aggiornare il database vettoriale con i nuovi documenti ottenuti. & Verbale interno \\ \hline
+    RZF17 & Opzionale & Se la conversazione non è ancora avviata l'utente deve poter visualizzare e selezionare alcune domande di partenza proposte. & \bulhyperlink{UC11}{UC11}, \bulhyperlink{UC11.1}{UC11.1} \\ \hline
     \end{tabularx}
 \end{table}
 
@@ -55,14 +55,14 @@ solida per la \emph{progettazione}\textsubscript{\textit{\textbf{G}}} del sistem
     \begin{tabularx}{\textwidth}{|p{2cm}|p{3cm}|X|p{4cm}|} \hline
     \rowcolor[HTML]{FFD700} 
     \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Fonti} \\ \hline
-    RZF18 & Opzionale & Dopo la visualizzazione di una risposta, all'utente devono venire suggerite alcune interrogazioni che è possibile porre al sistema per continuare la conversazione. & \bulhyperlink{UC12}{UC12}, \bulhyperlink{UC12.1}{UC12.1} \\ \hline
+    RZF18 & Opzionale & Dopo la visualizzazione di una risposta, all'utente devono venire suggerite alcune interrogazioni che è possibile porre al sistema per proseguire la conversazione. & \bulhyperlink{UC12}{UC12}, \bulhyperlink{UC12.1}{UC12.1} \\ \hline
     RZF19 & Opzionale & Nel caso il sistema vada in errore nel tentativo di proporre alcune interrogazioni per proseguire la conversazione, deve venire mostrato un messaggio che comunica l'errore all'utente e invita a fare altre domande. & \bulhyperlink{UC13}{UC13} \\ \hline
     RZF20 & Opzionale & Il sistema deve mostrare a schermo un badge sopra alla schermata della chat. & \bulhyperlink{UC15}{UC15} \\ \hline
     RZF21 & Opzionale & Il sistema deve comunicare all'utente l'esito dell'ultimo tentativo di aggiornamento del database vettoriale utilizzando un badge. & \bulhyperlink{UC15}{UC15} \\ \hline
-    ROF22 & Obbligatorio & Il sistema deve processare i documenti che vengono caricati, creandone i loro \emph{embedding}. & Verbale interno\\ \hline
+    ROF22 & Obbligatorio & Il sistema deve processare i documenti che vengono caricati, creandone i loro embedding. & Verbale interno\\ \hline
     ROF23 & Obbligatorio & Il sistema deve salvare, in modo persistente, il contenuto dei documenti caricati. & Verbale interno\\ \hline
     ROF24 & Obbligatorio & Il sistema deve salvare, in modo persistente, i metadati dei documenti caricati. & Verbale interno\\ \hline
-    ROF25 & Obbligatorio & Il sistema deve salvare, i commit e i file scritti in caratteri testuali di \emph{GitHub}, escludendo PDF o immagini. & Verbale esterno\\ \hline
+    ROF25 & Obbligatorio & Il sistema deve salvare, i commit e i file scritti in caratteri testuali di GitHub, escludendo PDF o immagini. & Verbale esterno\\ \hline
     ROF26 & Obbligatorio & Il sistema deve permettere all'utente di digitare una domanda libera in linguaggio naturale tramite una barra di input. & \bulhyperlink{UC18}{UC18} \\ \hline
     \end{tabularx}
 \end{table}
@@ -161,8 +161,8 @@ coerenza e l'\emph{efficienza}\textsubscript{\textit{\textbf{G}}} del prodotto.
     \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Fonti} \\ \hline
 	ROV1 & Obbligatorio & L'applicazione deve garantire la compatibilità con la versione 131.0.6778.204/.205 di \emph{Google Chrome}\textsubscript{\textit{\textbf{G}}}, ovvero l'ultima disponibile al 19 dicembre, data in cui è stato richiesto questo vincolo. & Verbale esterno \\ \hline
     ROV2 & Obbligatorio & Il sistema deve garantire integrazione con le \emph{API}\textsubscript{\textit{\textbf{G}}} di \emph{Confluence}\textsubscript{\textit{\textbf{G}}}. & Capitolato \\ \hline
-    ROV3 & Obbligatorio & Il sistema deve garantire integrazione con le \emph{API}\textsubscript{\textit{\textbf{G}}} di \emph{Jira}\textsubscript{\textit{\textbf{G}}}. & Capitolato \\ \hline
-    ROV4 & Obbligatorio & Il sistema deve garantire integrazione con le \emph{API}\textsubscript{\textit{\textbf{G}}} di \emph{GitHub}\textsubscript{\textit{\textbf{G}}}. & Capitolato \\ \hline
+    ROV3 & Obbligatorio & Il sistema deve garantire integrazione con le \emph{API} di \emph{Jira}\textsubscript{\textit{\textbf{G}}}. & Capitolato \\ \hline
+    ROV4 & Obbligatorio & Il sistema deve garantire integrazione con le \emph{API} di \emph{GitHub}\textsubscript{\textit{\textbf{G}}}. & Capitolato \\ \hline
     \end{tabularx}
     \caption{Requisiti di vincolo}
     \label{tab:Requisiti_di_vincolo}
