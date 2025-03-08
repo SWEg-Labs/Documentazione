@@ -51,6 +51,8 @@ Quando il \emph{frontend}\textsubscript{\textbf{\textit{G}}} invia al backend il
 ChatService, quindi, chiama SimilaritySearchService, componente responsabile della ricerca di \emph{similarità}\textsubscript{\textbf{\textit{G}}} nel \emph{database vettoriale}\textsubscript{\textbf{\textit{G}}}, il quale si collega con SimilaritySearchPort verso l'esterno, sfruttando l'\emph{architettura esagonale}\textsubscript{\textbf{\textit{G}}}. La Porta viene implementata da ChromaVectorStoreAdapter, che adatta la Question verso un tipo stringa inviato a ChromaVectorStoreRepository, che gestisce il collegamento con il database vettoriale \emph{Chroma}\textsubscript{\textbf{\textit{G}}}, sul quale avviene la ricerca di similarità. Una volta ottenuti i risultati della ricerca e trasformati in \emph{Entity}\textsubscript{\textbf{\textit{G}}}, essi vengono convertiti nel tipo di Business Document e poi restituiti a ChatService, il quale dunque li invia assieme all'input dell'utente a GenerateAnswerService, classe di servizio munita di un attributo Header che consente di fornire un introduzione di contesto al chatbot. Header, input utente e documenti rilevanti vengono quindi forniti a LangChainAdapter, che si assicura che la somma dei \emph{token}\textsubscript{\textbf{\textit{G}}} dei parametri non superi la soglia limite per l'\emph{LLM}\textsubscript{\textbf{\textit{G}}} configurato. Infine, i parametri vengono forniti a LangChainRepository, che li combina assieme in unico prompt e, sfruttando gli strumenti forniti dalla libreria \emph{LangChain}\textsubscript{\textbf{\textit{G}}}, effettua una chiamata verso l'LLM di \emph{OpenAI}\textsubscript{\textbf{\textit{G}}}, selezionato tramite una variabile d'ambiente, per ottenere una risposta. 
 La risposta viene quindi convertita in un oggetto Answer di \emph{Business Logic}\textsubscript{\textbf{\textit{G}}} ed infine convertita in stringa per essere inserita in un dizionario in ChatController, il quale restituisce la risposta al frontend.
 
+\newpage
+
 
 \subsubsection{Architettura dell'aggiornamento automatico del database vettoriale}
 \label{sec:architettura_aggiornamento_database_vettoriale}
@@ -62,6 +64,8 @@ La risposta viene quindi convertita in un oggetto Answer di \emph{Business Logic
 \end{figure}
 
 \dots
+
+\newpage
 
 
 \subsubsection{Architettura dell’inizializzazione, refresh e scroll di Angular}
@@ -75,6 +79,8 @@ La risposta viene quindi convertita in un oggetto Answer di \emph{Business Logic
 
 \dots
 
+\newpage
+
 
 \subsubsection{Architettura dell’aggiornamento del rendering grafico durante la chat}
 \label{sec:architettura_aggiornamento_rendering_chat}
@@ -86,6 +92,8 @@ La risposta viene quindi convertita in un oggetto Answer di \emph{Business Logic
 \end{figure}
 
 \dots
+
+\newpage
 
 
 \subsubsection{Architettura frontend dell’aggiornamento del badge di segnalazione dell’esito dell’ultimo aggiornamento automatico}
@@ -99,6 +107,8 @@ La risposta viene quindi convertita in un oggetto Answer di \emph{Business Logic
 
 \dots
 
+\newpage
+
 
 \subsubsection{Architettura backend dell’aggiornamento del badge di segnalazione dell’esito dell’ultimo aggiornamento automatico}
 \label{sec:architettura_backend_badge_aggiornamento}
@@ -110,6 +120,8 @@ La risposta viene quindi convertita in un oggetto Answer di \emph{Business Logic
 \end{figure}
 
 \dots
+
+\newpage
 
 
 \subsubsection{Architettura del salvataggio dei messaggi nello storico}
@@ -123,6 +135,8 @@ La risposta viene quindi convertita in un oggetto Answer di \emph{Business Logic
 
 \dots
 
+\newpage
+
 
 \subsubsection{Architettura del recupero dei messaggi dallo storico}
 \label{sec:architettura_recupero_messaggi_storico}
@@ -135,6 +149,8 @@ La risposta viene quindi convertita in un oggetto Answer di \emph{Business Logic
 
 \dots
 
+\newpage
+
 
 \subsubsection{Architettura della generazione di domande per proseguire la conversazione}
 \label{sec:architettura_generazione_domande_conversazione}
@@ -146,6 +162,8 @@ La risposta viene quindi convertita in un oggetto Answer di \emph{Business Logic
 \end{figure}
 
 \dots
+
+\newpage
 
 
 
@@ -186,25 +204,51 @@ La risposta viene quindi convertita in un oggetto Answer di \emph{Business Logic
 \subsubsubsection{Controller}
 \label{sec:controller}
 
-\dots
+\paragraph{ChatController}
+\label{sec:chat_controller}
+La classe ChatController si occupa di mettere in contatto il frontend con il backend nell'architettura di generazione di una risposta. Attraverso il metodo \texttt{get\_answer(user\_input: Request): dict[string, string]}, riceve il messaggio dell'utente di tipo Request, dal quale ricava un dizionario, che poi converte in un oggetto di Business, Question, e lo invia all'interfaccia ChatUseCase. Riceve poi da essa in output un oggetto Answer, lo converte in stringa, lo inserisce in un dizionario e infine lo restituisce al frontend.
 
 
 \subsubsubsection{Use Case}
 \label{sec:use_case}
 
-\dots
+\paragraph{ChatUseCase}
+\label{sec:chat_use_case}
+La classe ChatUseCase è un'interfaccia che definisce il caso d'uso della risposta ad una domanda dell'utente. Essa contiene un solo metodo, \texttt{get\_answer(question: Question): Answer}, che prende in input un oggetto di Business, Question, e restituisce un oggetto di Business, Answer. Questa interfaccia fa da attributo a ChatController e viene implementata da ChatService.
 
 
 \subsubsubsection{Service}
 \label{sec:service_backend}
 
-\dots
+\paragraph{ChatService}
+\label{sec:chat_service}
+La classe ChatService implementa l'interfaccia ChatUseCase e si occupa di eseguire la logica di business per la generazione di una risposta all'interrogazione di un utente.
+Essa espone i seguenti tre metodi:
+\begin{itemize}
+    \item \texttt{get\_answer(question: Question): Answer}: Riceve in input un oggetto di Business, Question, e lo invia a SimilaritySearchService per la ricerca di similarità nel database vettoriale. Riceve in output i documenti rilevanti di tipo Document, li invia a GenerateAnswerService insieme all'input dell'utente, e infine restituisce la risposta di tipo Answer alla classe ChatController, di cui è attributo.
+    \item \texttt{similarity\_search(user\_input: Question): Document*}: Riceve in input un oggetto di Business, Question, e lo invia a SimilaritySearchService per la ricerca di similarità nel database vettoriale. Restituisce i documenti rilevanti di tipo Document.
+    \item \texttt{generate\_answer(user\_input: Question, relevant\_docs: Document*): Answer}: Riceve in input un oggetto di Business, Question, e i documenti rilevanti di tipo Document, e li invia a GenerateAnswerService per la generazione di una risposta. Restituisce la risposta di tipo Answer.
+\end{itemize}
+
+\paragraph{SimilaritySearchService}
+\label{sec:similarity_search_service}
+La classe SimilaritySearchService si occupa di eseguire la ricerca di \emph{similarità}\textsubscript{\textbf{\textit{G}}} nel database vettoriale. Essa espone un solo metodo, \texttt{similarity\_search(user\_input: Question): Document*}, che prende in input un oggetto di Business, Question, e chiama l'interfaccia SimilaritySearchPort per svolgere la ricerca di similarità in un database vettoriale. La porta restituisce una grande quantità di documenti rilevanti di tipo Document, i quali vengono sottoposti ad un filtraggio utilizzando un attributo di tipo DocumentConstraints (che possiede un attributo threshold e un attributo max\_gap), che impone che la distanza di similarità dei documenti dalla domanda rispetti un threshold, e impone che, se un documento è distante dal successivo elemento della lista di più del max\_gap, tutti i documenti successivi non passino il filtro. Infine, i documenti filtrati vengono restituiti al chiamante ChatService.
+
+\paragraph{GenerateAnswerService}
+\label{sec:generate_answer_service}
+La classe GenerateAnswerService si occupa di generare una risposta all'interrogazione di un utente. Essa espone un solo metodo, \texttt{generate\_answer(user\_input: Question, relevant\_docs: Document*): Answer}, che prende in input un oggetto di Business, Question, e i documenti rilevanti di tipo Document, e ci associa l'oggetto di tipo Header presente come attributo, per poter così chiamare l'interfaccia GenerateAnswerPort allo scopo di generare una risposta. La risposta, di tipo Answer, viene restituita al chiamante ChatService. 
 
 
 \subsubsubsection{Port}
 \label{sec:port}
 
-\dots
+\paragraph{SimilaritySearchPort}
+\label{sec:similarity_search_port}
+L'interfaccia SimilaritySearchPort definisce l'interfaccia attraverso la quale SimilaritySearchService interagisce con il mondo esterno, permettendo il recupero di dati persistenti senza modificare la logica di business. Essa espone un solo metodo, \texttt{similarity\_search(user\_input: Question): Document*}, che prende in input la domanda dell'utente di tipo Question, e si occupa di svolgere la ricerca di similarità in un \emph{database vettoriale}\textsubscript{\textbf{\textit{G}}} per ottenere una lista di documenti rilevanti di tipo Document. La porta viene implementata da ChromaVectorStoreAdapter.
+
+\paragraph{GenerateAnswerPort}
+\label{sec:generate_answer_port}
+L'interfaccia GenerateAnswerPort definisce l'interfaccia attraverso la quale GenerateAnswerService interagisce con il mondo esterno, permettendo la generazione di dati da parte di un \emph{LLM}\textsubscript{\textbf{\textit{G}}} senza modificare la logica di business. Essa espone un solo metodo, \texttt{generate\_answer(user\_input: Question, relevant\_docs: Document*, header: Header): Answer}, che prende in input la domanda dell'utente di tipo Question, i documenti rilevanti di tipo Document, e un oggetto Header che fornisce il contesto introduttivo al chatbot, e si occupa di generare una risposta di tipo Answer. La porta viene implementata da LangChainAdapter.
 
 
 \subsubsubsection{Adapter}
