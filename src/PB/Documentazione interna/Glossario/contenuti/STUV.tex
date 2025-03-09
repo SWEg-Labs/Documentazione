@@ -253,6 +253,18 @@ rischio di errori e difetti. Si svolge a periodi regolari durante il corso del p
 Processo che realizza il cosiddetto “controllo di versione”, stabilendo la storia cronologica delle azioni fatte per una certa attività, tracciando i 
 cambiamenti occorsi e permettendo di tornare a uno stadio precedente qualora necessario.
 
+\hypertarget{sec:view_mvvm}{}
+\subsection*{View (MVVM)}
+Nel pattern architetturale MVVM (Model-View-ViewModel), la View rappresenta l'interfaccia utente dell'applicazione. La View è responsabile della
+presentazione dei dati e della gestione delle interazioni dell'utente, senza dipendere direttamente dal Model o dal ViewModel. La View riceve i dati
+dal ViewModel e li visualizza in modo appropriato per l'utente, gestendo anche gli eventi e le azioni dell'utente.
+
+\hypertarget{sec:viewmodel}{}
+\subsection*{ViewModel}
+Nel pattern architetturale MVVM (Model-View-ViewModel), il ViewModel funge da intermediario tra il Model e la View. Il ViewModel è responsabile di
+preparare i dati del Model in un formato adatto alla visualizzazione nella View, gestendo anche la logica di presentazione e le interazioni dell'utente.
+Il ViewModel non contiene la logica di business o l'accesso ai dati, ma si concentra sulla presentazione e sulla gestione delle interazioni dell'utente.
+
 \hypertarget{sec:VSC}{}
 \subsection*{Visual Studio Code (VSC)}
 IDE libero e gratuito sviluppato da Microsoft per Windows, Linux e macOS. Permette sia di scrivere codice 

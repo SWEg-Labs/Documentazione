@@ -63,7 +63,9 @@ La risposta viene quindi convertita in un oggetto Answer di \emph{Business Logic
     \caption{Architettura dell'aggiornamento automatico del database vettoriale}
 \end{figure}
 
-\dots
+L'UML in questione rappresenta l'architettura dell'aggiornamento automatico del \emph{database vettoriale}\textsubscript{\textbf{\textit{G}}}, il quale viene svolto da un \emph{cron}\textsubscript{\textbf{\textit{G}}} configurato periodicamente per eseguire un apposito script \emph{Python}\textsubscript{\textbf{\textit{G}}}. Il cron chiama l'apposito metodo della classe LoadFilesController, che a sua volta chiama l'interfaccia LoadFilesUseCase implementata da LoadFilesService.
+LoadFilesService implementa il pattern \emph{Facade}\textsubscript{\textbf{\textit{G}}} per fornire un'unica interfaccia di collegamento alle piattaforme dalle quali caricare i file e alle piattaforme per il salvataggio degli stessi file e dei log di tutte le operazioni. In particolare, LoadFilesService si collega alle interfacce GitHubPort, JiraPort e ConfluencePort, che poi verranno implementate dai rispettivi adapter, che possiederanno i rispettivi repositories, rispettando l'Architettura Esagonale. Da queste piattaforme vengono recuperati i Commits e i Files da \emph{GitHub}\textsubscript{\textbf{\textit{G}}}, le Issues da \emph{Jira}\textsubscript{\textbf{\textit{G}}} e le pagine da \emph{Confluence}\textsubscript{\textbf{\textit{G}}}, estratti dagli account configurati, che vengono prima convertiti in \emph{Entity} e poi nel tipo di business Document mediante gli adapter. La lista di oggetti Document ritorna a LoadFilesService, che la invia a LoadFilesInVectorStorePort, implementata da ChromaVectorStoreAdapter, che si occupa di adattare i Document in DocumentEntity per poi inviarli a ChromaVectorStoreRepository, che si occupa di salvare i documenti nel database vettoriale \emph{Chroma}\textsubscript{\textbf{\textit{G}}}.
+Ogni classe di repository, oltre a svolgere il proprio di compito, si occupa anche di creare e restituire uno specifico oggetto di log, di tipo PlatformLog per GitHUb, Jira e Confluence e di tipo VectorStoreLog per il database vettoriale, che vengono uniti assieme in un oggetto LoadingAttempt e poi inviati all'interfaccia SaveLoadingAttemptInDbPort, implementata da PostgresAdapter, che si occupa di adattare l'oggetto in PostgresLoadingAttempt e di inviarlo a PostgresRepository che lo salva nel database \emph{Postgres}\textsubscript{\textbf{\textit{G}}}, per tenere traccia dell'esito di ogni tentativo di caricamento di documenti nel database vettoriale. Successivamente, lo stesso log, opportunamente formattato, viene salvato in un file di testo, situato dentro la cartella src/backend.
 
 \newpage
 
@@ -185,28 +187,25 @@ Infine GetMessagesController riceve una lista di Message e la usa per creare una
 \subsection{Design pattern utilizzati}
 \label{sec:design_pattern_utilizzati}
 
-\subsubsection{Architettura esagonale}
-\label{sec:architettura_esagonale}
-
-\dots
-
 
 \subsubsection{Facade}
 \label{sec:facade}
 
-\dots
+Il pattern \emph{Facade}\textsubscript{\textbf{\textit{G}}} è stato adottato per permettere al \emph{cron}\textsubscript{\textbf{\textit{G}}} di accedere ad unica classe LoadFilesService avente il compito di caricare tutti i tipi di file necessari per l'aggiornamento del database vettoriale. Questo pattern permette di nascondere la complessità del sistema, fornendo un'interfaccia semplificata per l'accesso alle funzionalità offerte dalla classe LoadFilesService. In questo modo, il cron non deve preoccuparsi di come i file vengono caricati, ma può semplicemente chiamare il metodo \texttt{load} della suddetta classe per ottenere il risultato desiderato.
+E' stato inoltre adottato un piccolo Facade anche per l'architettura di generazione di una risposta, dove ChatService si occupa di nascondere la complessità della logica di business, fornendo un'interfaccia semplificata per l'accesso alle funzionalità offerte da SimilaritySearchService e GenerateAnswerService.
+Grazie a questo pattern, è possibile mantenere il codice più pulito e manutenibile, in quanto la complessità è nascosta all'esterno e le interazioni con le classi interne sono semplificate.
 
 
 \subsubsection{Dependency Injection}
 \label{sec:dependency_injection}
 
-\dots
+Il pattern \emph{Dependency Injection}\textsubscript{\textbf{\textit{G}}} è stato adottato per permettere l'iniezione delle dipendenze all'interno delle classi del sistema. Questo pattern permette di separare la creazione degli oggetti dal loro utilizzo, semplificando la gestione delle dipendenze e rendendo il codice più manutenibile e testabile. In questo modo, le classi non devono preoccuparsi di come vengono creati gli oggetti di cui hanno bisogno, ma possono semplicemente riceverli come parametri di costruzione. Questo permette di sostituire facilmente le implementazioni delle dipendenze, senza dover modificare il codice di tutte le classi che le utilizzano. Inoltre, grazie all'utilizzo di un \emph{framework}\textsubscript{\textbf{\textit{G}}} di \emph{Dependency Injection}, come \emph{Angular}\textsubscript{\textbf{\textit{G}}}, è possibile automatizzare il processo di creazione e iniezione delle dipendenze, semplificando ulteriormente lo sviluppo del \emph{frontend}\textsubscript{\textbf{\textit{G}}}. Il pattern è stato implementato anche in \emph{Python}\textsubscript{\textbf{\textit{G}}} nel \emph{backend}\textsubscript{\textbf{\textit{G}}}, attraverso due funzioni, \texttt{dependency\_injection\_frontend} e \texttt{dependenc\_injection\_cron}, che si occupano di iniettare le dipendenze rispettivamente nel file di endpoint \emph{FastAPI}\textsubscript{\textbf{\textit{G}}} a cui accede il frontend per contattare il backend e nel file che viene eseguito periodicamente dal cron per l'aggiornamento del \emph{database vettoriale}\textsubscript{\textbf{\textit{G}}}.
 
 
 \subsubsection{MVVM}
 \label{sec:mvvm}
 
-\dots
+Il pattern \emph{MVVM}\textsubscript{\textbf{\textit{G}}} è stato adottato per la progettazione dell'architettura del \emph{frontend}, in particolare per separare la logica di presentazione dalla logica di business, semplificando la gestione delle interazioni tra i componenti dell'applicazione. Nello specifico, il \emph{Model}\textsubscript{\textbf{\textit{G}}} rappresenta i dati e la logica di business dell'applicazione, il \emph{View}\textsubscript{\textbf{\textit{G}}} si occupa della presentazione dei dati all'utente, e il \emph{ViewModel}\textsubscript{\textbf{\textit{G}}} si occupa di gestire la logica di presentazione e di coordinare le interazioni tra il \emph{Model} e la \emph{View}. Questo permette di mantenere il codice più pulito e manutenibile, in quanto la logica di business è separata dalla logica di presentazione, e le interazioni tra i componenti sono semplificate. Inoltre, grazie all'utilizzo di un \emph{framework} come \emph{Angular}, è possibile automatizzare il processo di creazione e gestione dei componenti, semplificando ulteriormente lo sviluppo del \emph{frontend}. Il pattern è stato implementato in \emph{Angular} attraverso la creazione di componenti per la \emph{View} e il \emph{ViewModel}, e la creazione di servizi per la gestione della logica di business del \emph{Model}.
 
 
 
