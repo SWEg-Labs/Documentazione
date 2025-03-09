@@ -49,7 +49,7 @@ Il deployment del prodotto viene gestito attraverso la containerizzazione con \t
 L'\emph{UML}\textsubscript{\textbf{\textit{G}}} in questione rappresenta l'\emph{architettura}\textsubscript{\textbf{\textit{G}}} della generazione di una risposta all'interrogazione di un utente, dal punto di vista del \emph{backend}\textsubscript{\textbf{\textit{G}}}.
 Il \emph{frontend}\textsubscript{\textbf{\textit{G}}} invoca il metodo \texttt{chat} esposto dal \emph{backend}\textsubscript{\textbf{\textit{G}}} tramite \emph{FastAPI}\textsubscript{\textbf{\textit{G}}}, passando la domanda dell'utente in forma di dizionario.
 La domanda viene recuperata dal ChatController, che converte la stringa interna al dizionario in un oggetto di Business, Question, e lo invia all'interfaccia ChatUseCase, implementata da ChatService.
-ChatService, che implementa il \emph{Design Pattern} \emph{Facade}\textsubscript{\textbf{\textit{G}}}, chiama SimilaritySearchService, componente responsabile della ricerca di \emph{similarità}\textsubscript{\textbf{\textit{G}}} nel \emph{database vettoriale}\textsubscript{\textbf{\textit{G}}}, il quale si collega con SimilaritySearchPort verso l'esterno, sfruttando l'\emph{architettura esagonale}\textsubscript{\textbf{\textit{G}}}. La Porta viene implementata da ChromaVectorStoreAdapter, che adatta la Question verso un tipo stringa inviato a ChromaVectorStoreRepository, che gestisce il collegamento con il database vettoriale \emph{Chroma}\textsubscript{\textbf{\textit{G}}}, sul quale avviene la ricerca di similarità. Una volta ottenuti i risultati della ricerca e trasformati in \emph{Entity}\textsubscript{\textbf{\textit{G}}}, essi vengono convertiti nel tipo di Business Document e poi restituiti a ChatService, il quale dunque li invia assieme all'input dell'utente a GenerateAnswerService, classe di servizio munita di un attributo Header che consente di fornire un introduzione di contesto al chatbot. Header, input utente e documenti rilevanti vengono quindi forniti a LangChainAdapter, che si assicura che la somma dei \emph{token}\textsubscript{\textbf{\textit{G}}} dei parametri non superi la soglia limite per l'\emph{LLM}\textsubscript{\textbf{\textit{G}}} configurato. Infine, i parametri vengono forniti a LangChainRepository, che li combina assieme in unico prompt e, sfruttando gli strumenti forniti dalla libreria \emph{LangChain}\textsubscript{\textbf{\textit{G}}}, effettua una chiamata verso l'LLM di \emph{OpenAI}\textsubscript{\textbf{\textit{G}}}, selezionato tramite una variabile d'ambiente, per ottenere una risposta. 
+ChatService, che implementa il \emph{Design Pattern} \emph{Facade}\textsubscript{\textbf{\textit{G}}}, chiama SimilaritySearchService, componente responsabile della ricerca di \emph{similarità}\textsubscript{\textbf{\textit{G}}} nel \emph{database vettoriale}\textsubscript{\textbf{\textit{G}}}, il quale si collega con SimilaritySearchPort verso l'esterno, sfruttando l'\emph{architettura esagonale}\textsubscript{\textbf{\textit{G}}}. La Porta viene implementata da ChromaVectorStoreAdapter, che adatta la Question verso un tipo stringa inviato a ChromaVectorStoreRepository, che gestisce il collegamento con il database vettoriale \emph{Chroma}\textsubscript{\textbf{\textit{G}}}, sul quale avviene la ricerca di similarità. Una volta ottenuti i risultati della ricerca e trasformati in \emph{Entity}\textsubscript{\textbf{\textit{G}}}, essi vengono convertiti nel tipo di Business Document e poi restituiti a ChatService, il quale dunque li invia assieme all'input dell'utente a GenerateAnswerService, classe di servizio munita di un attributo Header che consente di fornire un introduzione di contesto al chatbot. Header, input utente e documenti rilevanti vengono quindi forniti a LangChainAdapter, che si assicura che la somma dei \emph{token}\textsubscript{\textbf{\textit{G}}} dei parametri non superi la soglia limite per l'\emph{LLM}\textsubscript{\textbf{\textit{G}}} configurato. Infine, i parametri vengono forniti a LangChainRepository, che li combina assieme in unico prompt e, sfruttando gli strumenti forniti dalla libreria \emph{LangChain}\textsubscript{\textbf{\textit{G}}}, effettua una chiamata verso l'LLM di \emph{OpenAI}\textsubscript{\textbf{\textit{G}}} configurato per ottenere una risposta. 
 La risposta viene quindi convertita in un oggetto Answer di \emph{Business Logic}\textsubscript{\textbf{\textit{G}}} ed infine convertita in stringa per essere inserita in un dizionario in ChatController, il quale restituisce la risposta al frontend.
 
 \newpage
@@ -143,8 +143,8 @@ SaveMessageService, quindi, chiama l'interfaccia SaveMessagePort, che è impleme
 PostgresAdapter si occupa di convertire il tipo di dato Message nel tipo PostgresMessage, e invoca il metodo \texttt{save\_message} esposto dalla classe PostgresRepository.
 PostgresRepository gestisce il collegamento con il \emph{database relazionale}\textsubscript{\textbf{\textit{G}}} \emph{Postgres}\textsubscript{\textbf{\textit{G}}},
 esegue l'operazione di salvataggio del messaggio sul database e restituisce un oggetto di tipo PostgresSaveOperationResponse che indica il successo o fallimento dell'operazione di salvataggio e la descrizione del successo o dell'eventuale errore.
-Successivamente PostgresAdapter si occupa anche di convertire l'oggetto PostgresSaveOperationResponse in un DbSaveOperationResponse corrispondente e lo restituisce al chiamante SaveMessageService.
-Infine SaveMessageController riceve la DbSaveOperationResponse e la converte in un dizionario da restituire al chiamante frontend, che gestirà appositamente il successo o l'errore.
+Successivamente PostgresAdapter si occupa anche di convertire l'oggetto PostgresSaveOperationResponse in un DbSaveOperationResponse corrispondente e lo restituisce a SaveMessageService.
+Infine SaveMessageController riceve la DbSaveOperationResponse e la converte in un dizionario da restituire a frontend, che gestirà appositamente il successo o l'errore.
 
 \newpage
 
@@ -164,8 +164,8 @@ Il metodo \texttt{get\_messages} chiama GetMessagesController, che converte il d
 GetMessagesService, quindi, chiama l'interfaccia GetMessagesPort, che è implementata da PostgresAdapter.
 PostgresAdapter converte l'oggetto Quantity in un intero da passare come parametro alla classe PostgresRepository, che gestisce il collegamento con il database relazionale Postgres. 
 PostgresRepository esegue l’operazione di recupero della quantità di messaggi richiesti e restituisce una lista di messaggi di tipo PostgresMessage.
-Allora PostgresAdapter si occupa di convertirla in una lista di oggetti Message, che viene restituita all'indietro al chiamante GetMessagesService.
-Infine GetMessagesController riceve una lista di Message e la usa per creare una lista di MessageDTO che restituisce al chiamante frontend.
+Allora PostgresAdapter si occupa di convertirla in una lista di oggetti Message, che viene restituita all'indietro a GetMessagesService.
+Infine GetMessagesController riceve una lista di Message e la usa per creare una lista di MessageDTO che restituisce al frontend.
 
 \newpage
 
@@ -181,10 +181,10 @@ Infine GetMessagesController riceve una lista di Message e la usa per creare una
 
 L'UML in figura rappresenta l'architettura della generazione di domande per proseguire la conversazione.
 Il frontend invoca il metodo \texttt{get\_next\_possible\_questions} esposto dal backend tramite FastAPI, passando come parametro un dizionario che contiene l'ultima domanda dell'utente, l'ultima risposta del chatbot e la quantità di domande da ottenere.
-Il metodo \texttt{get\_next\_possible\_questions} chiama GetNextPossibleQuestionsController, che converte il dizionario in un oggetto QuestionAnswerCouple contenente domanda e risposta e in un oggetto Quantity contenente la quantità richiesta, e lo passa all'interfaccia GetNextPossibleQuestionsUseCase, implementata da GetNextPossibleQuestionsService.
+Il metodo \texttt{get\_next\_possible\_questions} chiama GetNextPossibleQuestionsController, che converte il dizionario in un oggetto QuestionAnswerCouple contenente domanda (di tipo Question) e risposta (di tipo Answer) e in un oggetto Quantity contenente la quantità richiesta, e lo passa all'interfaccia GetNextPossibleQuestionsUseCase, implementata da GetNextPossibleQuestionsService.
 GetNextPossibleQuestionsService possiede un attributo di tipo Header contenente un'introduzione di contesto per l'\emph{LLM}\textsubscript{\textbf{\textit{G}}}, templatizzata sulla base del numero di domande da richiedere, che a questo punto viene stabilito in base al parametro Quantity. L'attributo di tipo Header contiene anche importanti istruzioni di sintassi che l'\emph{LLM} deve rispettare, cioè impone che le possibili domande generate sia l'unico contenuto del messaggio e siano separate da \_\_. La classe GetNextPossibleQuestionsService chiama dunque l'interfaccia GetNextPossibleQuestionsPort con parametri QuestionAnswerCouple ed Header.
-L'interfaccia è implementata da LangChainAdapter, che si occupa di adattare i parametri da QuestionAnswerCouple ed Header a due tipi stringa, per poi inviarli a LangChainRepository, che si occupa di invocare l'\emph{LLM} configurato per ottenere le possibili domande successive, in forma di un'unica stringa. Quest'ultima nell'Adapter viene suddivisa in 3 oggetti PossibleQuestion, sfruttando il fatto che l'header ha imposto all'LLM che le domande siano separate da \_\_, e, insieme ad un intero num\_questions che indica il numero di domande, vengono poi riunite in un oggetto NextPossibleQuestions, per essere quindi restituite al chiamante GetNextPossibleQuestionsService.
-Infine GetNextPossibleQuestionsController riceve l'oggetto NextPossibleQuestions, converte le domande contenute in un dizionario di stringhe, e lo restituisce al chiamante frontend.
+L'interfaccia è implementata da LangChainAdapter, che si occupa di adattare i parametri da QuestionAnswerCouple ed Header a due tipi stringa, per poi inviarli a LangChainRepository, che si occupa di invocare l'\emph{LLM} configurato per ottenere le possibili domande successive, in forma di un'unica stringa. Quest'ultima nell'Adapter viene suddivisa in 3 oggetti PossibleQuestion, sfruttando il fatto che l'header ha imposto all'LLM che le domande siano separate da \_\_, e, insieme ad un intero num\_questions che indica il numero di domande, vengono poi riunite in un oggetto NextPossibleQuestions, per essere quindi restituite a GetNextPossibleQuestionsService.
+Infine GetNextPossibleQuestionsController riceve l'oggetto NextPossibleQuestions, converte le domande contenute in un dizionario di stringhe, e lo restituisce al frontend.
 
 \newpage
 
@@ -242,6 +242,10 @@ La classe GetMessagesController si occupa di mettere in contatto il frontend con
 \label{sec:save_message_controller}
 La classe SaveMessageController si occupa di mettere in contatto il frontend con il backend nell'architettura del salvataggio dei messaggi nello storico. Attraverso il metodo \texttt{save(message: MessageDTO): dict[string, bool | string]}, riceve il messaggio dell'utente di tipo MessageDTO, lo converte in un oggetto di Business, Message, e lo invia all'interfaccia SaveMessageUseCase. Riceve poi da essa in output un DbSaveOperationResponse, lo converte in un dizionario e lo restituisce al frontend.
 
+\paragraph{GetNextPossibleQuestionsController}
+\label{sec:get_next_possible_questions_controller}
+La classe GetNextPossibleQuestionsController si occupa di mettere in contatto il frontend con il backend nell'architettura della generazione di domande per proseguire la conversazione. Attraverso il metodo \texttt{get\_next\_possible\_questions\\(question\_answer\_couple: dict[string, string], num\_questions: int): dict[string,\\ string]}, riceve un dizionario che contiene l'ultima domanda dell'utente e l'ultima risposta del chatbot, e un intero che indica il numero di domande da generare, li converte in un oggetto QuestionAnswerCouple (contenente un oggetto Question e un oggetto Answer) e un oggetto Quantity, e li invia all'interfaccia GetNextPossibleQuestionsUseCase. Riceve poi da essa in output un oggetto NextPossibleQuestions, converte le domande contenute in un dizionario di stringhe, e lo restituisce al frontend.
+
 \newpage
 
 
@@ -250,19 +254,23 @@ La classe SaveMessageController si occupa di mettere in contatto il frontend con
 
 \paragraph{ChatUseCase}
 \label{sec:chat_use_case}
-La classe ChatUseCase è un'interfaccia che definisce il caso d'uso della risposta ad una domanda dell'utente. Essa contiene un solo metodo, \texttt{get\_answer(question: Question): Answer}, che prende in input un oggetto di Business, Question, e restituisce un oggetto di Business, Answer. Questa interfaccia fa da attributo a ChatController e viene implementata da ChatService.
+ChatUseCase è un'interfaccia che definisce il caso d'uso della risposta ad una domanda dell'utente. Essa contiene un solo metodo, \texttt{get\_answer(question: Question): Answer}, che prende in input una domanda, Question, e restituisce una risposta, Answer. Questa interfaccia fa da attributo a ChatController e viene implementata da ChatService.
 
 \paragraph{LoadFilesUseCase}
 \label{sec:load_files_use_case}
-La classe LoadFilesUseCase è un'interfaccia che definisce il caso d'uso dell'aggiornamento automatico del database vettoriale. Essa contiene un solo metodo, \texttt{load()}, la cui implementazione avvia il caricamento dei dati. Questa interfaccia fa da attributo a LoadFilesController e viene implementata da LoadFilesService.
+LoadFilesUseCase è un'interfaccia che definisce il caso d'uso dell'aggiornamento automatico del database vettoriale. Essa contiene un solo metodo, \texttt{load()}, la cui implementazione avvia il caricamento dei dati. Questa interfaccia fa da attributo a LoadFilesController e viene implementata da LoadFilesService.
 
 \paragraph{GetMessagesUseCase}
 \label{sec:get_messages_use_case}
-La classe GetMessagesUseCase è un'interfaccia che definisce il caso d'uso del recupero dei messaggi dallo storico. Essa contiene un solo metodo, \texttt{get\_messages(quantity: Quantity): Message*}, che prende in input un oggetto di Business, Quantity, e restituisce una lista di oggetti di Business, Message. Questa interfaccia fa da attributo a GetMessagesController e viene implementata da GetMessagesService.
+GetMessagesUseCase è un'interfaccia che definisce il caso d'uso del recupero dei messaggi dallo storico. Essa contiene un solo metodo, \texttt{get\_messages(quantity: Quantity): Message*}, che prende in input la quantità dei messaggi da recuperare, Quantity, e restituisce una lista di messaggi di tipo Message. Questa interfaccia fa da attributo a GetMessagesController e viene implementata da GetMessagesService.
 
 \paragraph{SaveMessageUseCase}
 \label{sec:save_message_use_case}
-La classe SaveMessageUseCase è un'interfaccia che definisce il caso d'uso del salvataggio dei messaggi nello storico. Essa contiene un solo metodo, \texttt{save(message: Message): DbSaveOperationResponse}, che prende in input un oggetto di Business, Message, e restituisce un oggetto di Business, DbSaveOperationResponse. Questa interfaccia fa da attributo a SaveMessageController e viene implementata da SaveMessageService.
+SaveMessageUseCase è un'interfaccia che definisce il caso d'uso del salvataggio dei messaggi nello storico. Essa contiene un solo metodo, \texttt{save(message: Message): DbSaveOperationResponse}, che prende in input un messaggio, Message, e restituisce una risposta dal database, DbSaveOperationResponse. Questa interfaccia fa da attributo a SaveMessageController e viene implementata da SaveMessageService.
+
+\paragraph{GetNextPossibleQuestionsUseCase}
+\label{sec:get_next_possible_questions_use_case}
+GetNextPossibleQuestionsUseCase è un'interfaccia che definisce il caso d'uso della generazione di domande per proseguire la conversazione. Essa contiene un solo metodo, \texttt{get\_next\_possible\_questions(question\_answer\_couple: QuestionAnswerCouple, header: Header): NextPossibleQuestions}, che prende in input una coppia domanda-risposta, QuestionAnswerCouple, e un'introduzione per dare contesto al chatbot, Header, e restituisce le possibili domande successive, NextPossibleQuestions. Questa interfaccia fa da attributo a GetNextPossibleQuestionsController e viene implementata da GetNextPossibleQuestionsService.
 
 \newpage
 
@@ -282,11 +290,11 @@ Essa espone i seguenti tre metodi:
 
 \paragraph{SimilaritySearchService}
 \label{sec:similarity_search_service}
-La classe SimilaritySearchService si occupa di eseguire la ricerca di \emph{similarità}\textsubscript{\textbf{\textit{G}}} nel database vettoriale. Essa espone un solo metodo, \texttt{similarity\_search(user\_input: Question): Document*}, che prende in input un oggetto di Business, Question, e chiama l'interfaccia SimilaritySearchPort per svolgere la ricerca di similarità in un database vettoriale. La porta restituisce una grande quantità di documenti rilevanti di tipo Document, i quali vengono sottoposti ad un filtraggio utilizzando un attributo di tipo DocumentConstraints (che possiede un attributo threshold e un attributo max\_gap), che impone che la distanza di similarità dei documenti dalla domanda rispetti un threshold, e impone che, se un documento è distante dal successivo elemento della lista di più del max\_gap, tutti i documenti successivi non passino il filtro. Infine, i documenti filtrati vengono restituiti al chiamante ChatService.
+La classe SimilaritySearchService si occupa di eseguire la ricerca di \emph{similarità}\textsubscript{\textbf{\textit{G}}} nel database vettoriale. Essa espone un solo metodo, \texttt{similarity\_search(user\_input: Question): Document*}, che prende in input un oggetto di Business, Question, e chiama l'interfaccia SimilaritySearchPort per svolgere la ricerca di similarità in un database vettoriale. La porta restituisce una grande quantità di documenti rilevanti di tipo Document, i quali vengono sottoposti ad un filtraggio utilizzando un attributo di tipo DocumentConstraints (che possiede un attributo threshold e un attributo max\_gap), che impone che la distanza di similarità dei documenti dalla domanda rispetti un threshold, e impone che, se un documento è distante dal successivo elemento della lista di più del max\_gap, tutti i documenti successivi non passino il filtro. Infine, i documenti filtrati vengono restituiti a ChatService.
 
 \paragraph{GenerateAnswerService}
 \label{sec:generate_answer_service}
-La classe GenerateAnswerService si occupa di generare una risposta all'interrogazione di un utente. Essa espone un solo metodo, \texttt{generate\_answer(user\_input: Question, relevant\_docs: Document*): Answer}, che prende in input un oggetto di Business, Question, e i documenti rilevanti di tipo Document, e ci associa l'oggetto di tipo Header presente come attributo, per poter così chiamare l'interfaccia GenerateAnswerPort allo scopo di generare una risposta. La risposta, di tipo Answer, viene restituita al chiamante ChatService.
+La classe GenerateAnswerService si occupa di generare una risposta all'interrogazione di un utente. Essa espone un solo metodo, \texttt{generate\_answer(user\_input: Question, relevant\_docs: Document*): Answer}, che prende in input un oggetto di Business, Question, e i documenti rilevanti di tipo Document, e ci associa l'oggetto di tipo Header presente come attributo, per poter così chiamare l'interfaccia GenerateAnswerPort allo scopo di generare una risposta. La risposta, di tipo Answer, viene restituita a ChatService.
 
 \paragraph{LoadFilesService}
 \label{sec:load_files_service}
@@ -317,11 +325,15 @@ Inoltre, contiene i seguenti metodi privati:
 
 \paragraph{GetMessagesService}
 \label{sec:get_messages_service}
-La classe GetMessagesService implementa l'interfaccia GetMessagesUseCase e si occupa di eseguire la logica di business per il recupero dei messaggi dallo storico. Essa espone un solo metodo, \texttt{get\_messages(quantity: Quantity): Message*}, che prende in input un oggetto di Business, Quantity, e chiama l'interfaccia GetMessagesPort per recuperare la quantità di messaggi richiesta. La porta restituisce una lista di messaggi, che vengono a loro volta restituiti al chiamante GetMessagesController.
+La classe GetMessagesService implementa l'interfaccia GetMessagesUseCase e si occupa di eseguire la logica di business per il recupero dei messaggi dallo storico. Essa espone un solo metodo, \texttt{get\_messages(quantity: Quantity): Message*}, che prende in input un oggetto di Business, Quantity, e chiama l'interfaccia GetMessagesPort per recuperare la quantità di messaggi richiesta. La porta restituisce una lista di messaggi, che vengono a loro volta restituiti a GetMessagesController.
 
 \paragraph{SaveMessageService}
 \label{sec:save_message_service}
-La classe SaveMessageService implementa l'interfaccia SaveMessageUseCase e si occupa di eseguire la logica di business per il salvataggio dei messaggi nello storico. Essa espone un solo metodo, \texttt{save(message: Message): DbSaveOperationResponse}, che prende in input un oggetto di Business, Message, e chiama l'interfaccia SaveMessagePort per salvare il messaggio sul database. La porta restituisce un oggetto di Business, DbSaveOperationResponse, che viene a sua volta restituito al chiamante SaveMessageController.
+La classe SaveMessageService implementa l'interfaccia SaveMessageUseCase e si occupa di eseguire la logica di business per il salvataggio dei messaggi nello storico. Essa espone un solo metodo, \texttt{save(message: Message): DbSaveOperationResponse}, che prende in input un oggetto di Business, Message, e chiama l'interfaccia SaveMessagePort per salvare il messaggio sul database. La porta restituisce un oggetto di Business, DbSaveOperationResponse, che viene a sua volta restituito a SaveMessageController.
+
+\paragraph{GetNextPossibleQuestionsService}
+\label{sec:get_next_possible_questions_service}
+La classe GetNextPossibleQuestionsService implementa l'interfaccia GetNextPossibleQuestionsUseCase e si occupa di eseguire la logica di business per la generazione di domande per proseguire la conversazione. Essa espone un solo metodo,\\ \texttt{get\_next\_possible\_questions(question\_answer\_couple: QuestionAnswerCouple, header:\\ Header): NextPossibleQuestions}, che prende in input una coppia domanda-risposta, QuestionAnswerCouple, e un'introduzione per dare contesto al chatbot, Header, e chiama l'interfaccia GetNextPossibleQuestionsPort per generare le possibili domande successive. La porta restituisce le possibili domande racchiuse in un oggetto di Business, NextPossibleQuestions, che viene a sua volta restituito a GetNextPossibleQuestionsController.
 
 \newpage
 
@@ -331,15 +343,15 @@ La classe SaveMessageService implementa l'interfaccia SaveMessageUseCase e si oc
 
 \paragraph{SimilaritySearchPort}
 \label{sec:similarity_search_port}
-L'interfaccia SimilaritySearchPort definisce l'interfaccia attraverso la quale SimilaritySearchService interagisce con il mondo esterno, permettendo il recupero di dati persistenti senza modificare la logica di business. Essa espone un solo metodo,\\ \texttt{similarity\_search(user\_input: Question): Document*}, che prende in input la domanda dell'utente di tipo Question, e si occupa di svolgere la ricerca di similarità in un \emph{database vettoriale}\textsubscript{\textbf{\textit{G}}} per ottenere una lista di documenti rilevanti di tipo Document. La porta viene implementata da ChromaVectorStoreAdapter.
+SimilaritySearchPort definisce l'interfaccia attraverso la quale SimilaritySearchService interagisce con il mondo esterno, permettendo il recupero di dati persistenti senza modificare la logica di business. Essa espone un solo metodo,\\ \texttt{similarity\_search(user\_input: Question): Document*}, che prende in input la domanda dell'utente di tipo Question, e si occupa di svolgere la ricerca di similarità in un \emph{database vettoriale}\textsubscript{\textbf{\textit{G}}} per ottenere una lista di documenti rilevanti di tipo Document. La porta viene implementata da ChromaVectorStoreAdapter.
 
 \paragraph{GenerateAnswerPort}
 \label{sec:generate_answer_port}
-L'interfaccia GenerateAnswerPort definisce l'interfaccia attraverso la quale GenerateAnswerService interagisce con il mondo esterno, permettendo la generazione di dati da parte di un \emph{LLM}\textsubscript{\textbf{\textit{G}}} senza modificare la logica di business. Essa espone un solo metodo,\\ \texttt{generate\_answer(user\_input: Question, relevant\_docs: Document*, header: Header):\\ Answer}, che prende in input la domanda dell'utente di tipo Question, i documenti rilevanti di tipo Document, e un oggetto Header che fornisce il contesto introduttivo al chatbot, e si occupa di generare una risposta di tipo Answer. La porta viene implementata da LangChainAdapter.
+GenerateAnswerPort definisce l'interfaccia attraverso la quale GenerateAnswerService interagisce con il mondo esterno, permettendo la generazione di dati da parte di un \emph{LLM}\textsubscript{\textbf{\textit{G}}} senza modificare la logica di business. Essa espone un solo metodo,\\ \texttt{generate\_answer(user\_input: Question, relevant\_docs: Document*, header: Header):\\ Answer}, che prende in input la domanda dell'utente di tipo Question, i documenti rilevanti di tipo Document, e un oggetto Header che fornisce il contesto introduttivo al chatbot, e si occupa di generare una risposta di tipo Answer. La porta viene implementata da LangChainAdapter.
 
 \paragraph{GitHubPort}
 \label{sec:github_port}
-L'interfaccia GitHubPort definisce una delle interfacce attraverso le quali LoadFilesService interagisce con il mondo esterno, permettendo il recupero di dati persistenti senza modificare la logica di business. Essa espone due metodi:
+GitHubPort definisce una delle interfacce attraverso le quali LoadFilesService interagisce con il mondo esterno, permettendo il recupero di dati persistenti senza modificare la logica di business. Essa espone due metodi:
 \begin{itemize}
     \item \texttt{load\_github\_commits(): (PlatformLog, Document*)}: Si occupa di recuperare i Commits da GitHub e di salvare i rispettivi log. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti ai commits;
     \item \texttt{load\_github\_files(): (PlatformLog, Document*)}: Si occupa di recuperare i Files da GitHub e di salvare i rispettivi log. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti ai files.
@@ -348,27 +360,31 @@ La porta viene implementata da GitHubAdapter.
 
 \paragraph{JiraPort}
 \label{sec:jira_port}
-L'interfaccia JiraPort definisce una delle interfacce attraverso le quali LoadFilesService interagisce con il mondo esterno, permettendo il recupero di dati persistenti senza modificare la logica di business. Essa espone un solo metodo, \texttt{load\_jira\_issues(): (PlatformLog, Document*)}, che si occupa di recuperare le Issues da Jira e di salvare i rispettivi log. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti alle issues. La porta viene implementata da JiraAdapter.
+JiraPort definisce una delle interfacce attraverso le quali LoadFilesService interagisce con il mondo esterno, permettendo il recupero di dati persistenti senza modificare la logica di business. Essa espone un solo metodo, \texttt{load\_jira\_issues(): (PlatformLog, Document*)}, che si occupa di recuperare le Issues da Jira e di salvare i rispettivi log. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti alle issues. La porta viene implementata da JiraAdapter.
 
 \paragraph{ConfluencePort}
 \label{sec:confluence_port}
-L'interfaccia ConfluencePort definisce una delle interfacce attraverso le quali LoadFilesService interagisce con il mondo esterno, permettendo il recupero di dati persistenti senza modificare la logica di business. Essa espone un solo metodo, \texttt{load\_confluence\_pages(): (PlatformLog, Document*)}, che si occupa di recuperare le Pagine da Confluence e di salvare i rispettivi log. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti alle pagine. La porta viene implementata da ConfluenceAdapter.
+ConfluencePort definisce una delle interfacce attraverso le quali LoadFilesService interagisce con il mondo esterno, permettendo il recupero di dati persistenti senza modificare la logica di business. Essa espone un solo metodo, \texttt{load\_confluence\_pages(): (PlatformLog, Document*)}, che si occupa di recuperare le Pagine da Confluence e di salvare i rispettivi log. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti alle pagine. La porta viene implementata da ConfluenceAdapter.
 
 \paragraph{LoadFilesInVectorStorePort}
 \label{sec:load_files_in_vector_store_port}
-L'interfaccia LoadFilesInVectorStorePort definisce una\\ delle interfacce attraverso le quali LoadFilesService interagisce con il mondo esterno, permettendo il caricamento dei documenti nel database vettoriale senza modificare la logica di business. Essa espone un solo metodo, \texttt{load(documents: Document*): VectorStoreLog}, che prende in input una lista di documenti di tipo Document, e si occupa di caricare i documenti nel database vettoriale configurato e di restituito il corrispondente log. La porta viene implementata da ChromaVectorStoreAdapter.
+LoadFilesInVectorStorePort definisce una\\ delle interfacce attraverso le quali LoadFilesService interagisce con il mondo esterno, permettendo il caricamento dei documenti nel database vettoriale senza modificare la logica di business. Essa espone un solo metodo, \texttt{load(documents: Document*): VectorStoreLog}, che prende in input una lista di documenti di tipo Document, e si occupa di caricare i documenti nel database vettoriale configurato e di restituito il corrispondente log. La porta viene implementata da ChromaVectorStoreAdapter.
 
 \paragraph{SaveLoadingAttemptInDbPort}
 \label{sec:save_loading_attempt_in_db_port}
-L'interfaccia SaveLoadingAttemptInDbPort definisce una delle interfacce attraverso le quali LoadFilesService interagisce con il mondo esterno, permettendo il salvataggio di dati persistenti senza modificare la logica di business. Essa espone un solo metodo, \texttt{save\_loading\_attempt(loading\_attempt: LoadingAttempt):\\ DbSaveOperationResponse}, che prende in input un oggetto di Business, LoadingAttempt, e si occupa di salvare l'esito del caricamento dei documenti nel database relazionale configurato e di restituire la corrispondente risposta. La porta viene implementata da PostgresAdapter.
+SaveLoadingAttemptInDbPort definisce una delle interfacce attraverso le quali LoadFilesService interagisce con il mondo esterno, permettendo il salvataggio di dati persistenti senza modificare la logica di business. Essa espone un solo metodo,\\ \texttt{save\_loading\_attempt(loading\_attempt: LoadingAttempt): DbSaveOperationResponse}, che prende in input un oggetto di Business, LoadingAttempt, e si occupa di salvare l'esito del caricamento dei documenti nel database relazionale configurato e di restituire la corrispondente risposta. La porta viene implementata da PostgresAdapter.
 
 \paragraph{GetMessagesPort}
 \label{sec:get_messages_port}
-L'interfaccia GetMessagesPort definisce l'interfaccia attraverso la quale GetMessagesService interagisce con il mondo esterno, permettendo il recupero di dati persistenti senza modificare la logica di business. Essa espone un solo metodo, \texttt{get\_messages(quantity: Quantity):\\ Message*}, che prende in input la quantità di messaggi da recuperare di tipo Quantity, e si occupa di recuperare i messaggi dallo storico. La porta viene implementata da PostgresAdapter.
+GetMessagesPort definisce l'interfaccia attraverso la quale GetMessagesService interagisce con il mondo esterno, permettendo il recupero di dati persistenti senza modificare la logica di business. Essa espone un solo metodo, \texttt{get\_messages(quantity: Quantity):\\ Message*}, che prende in input la quantità di messaggi da recuperare di tipo Quantity, e si occupa di recuperare i messaggi dallo storico. La porta viene implementata da PostgresAdapter.
 
 \paragraph{SaveMessagePort}
 \label{sec:save_message_port}
-L'interfaccia SaveMessagePort definisce l'interfaccia attraverso la quale SaveMessageService interagisce con il mondo esterno, permettendo il salvataggio di dati persistenti senza modificare la logica di business. Essa espone un solo metodo, \texttt{save(message: Message):\\ DbSaveOperationResponse}, che prende in input il messaggio da salvare di tipo Message, e si occupa di salvare il messaggio nello storico e riportare la risposta del database. La porta viene implementata da PostgresAdapter.
+SaveMessagePort definisce l'interfaccia attraverso la quale SaveMessageService interagisce con il mondo esterno, permettendo il salvataggio di dati persistenti senza modificare la logica di business. Essa espone un solo metodo, \texttt{save(message: Message):\\ DbSaveOperationResponse}, che prende in input il messaggio da salvare di tipo Message, e si occupa di salvare il messaggio nello storico e riportare la risposta del database. La porta viene implementata da PostgresAdapter.
+
+\paragraph{GetNextPossibleQuestionsPort}
+\label{sec:get_next_possible_questions_port}
+GetNextPossibleQuestionsPort definisce l'interfaccia attraverso la quale GetNextPossibleQuestionsService interagisce con il mondo esterno, permettendo la generazione di possibili domande successive senza modificare la logica di business. Essa espone un solo metodo, \texttt{get\_next\_possible\_questions(question\_answer\_couple: QuestionAnswerCouple, header:\\ Header): NextPossibleQuestions}, che prende in input una coppia domanda-risposta, QuestionAnswerCouple, e un'introduzione per dare contesto al chatbot, Header, e si occupa di generare le possibili domande successive. La porta viene implementata da LangChainAdapter.
 
 \newpage
 
@@ -386,14 +402,25 @@ Essa possiede, oltre a chroma\_vector\_store\_repository, un altro attributo pri
 Essa espone i seguenti due metodi pubblici:
 \begin{itemize}
     \item \texttt{load(documents: Document*): VectorStoreLog}: Riceve in input una lista di documenti di tipo Document, chiama il proprio metodo split per dividerli in chunk e convertirli in oggetti ChromaDocumentEntity, e si occupa di chiamare il metodo di ChromaVectorStoreRepository per caricare i documenti nel database vettoriale. Restituisce un oggetto di tipo VectorStoreLog, corrispondente al log del caricamento;
-    \item \texttt{similarity\_search(user\_input: Question): Document*}: Riceve in input la domanda dell'utente di tipo Question, la converte in una stringa, e si occupa di chiamare il metodo di ChromaVectorStoreRepository per cercare i documenti similari alla domanda nel database vettoriale. Da tal metodo riceve un oggetto QueryResultEntity, che converte in una lista di documenti di tipo Document, corrispondenti ai documenti rilevanti. Questi ultimi vengono restituiti al chiamante SimilaritySearchService.
+    \item \texttt{similarity\_search(user\_input: Question): Document*}: Riceve in input la domanda dell'utente di tipo Question, la converte in una stringa, e si occupa di chiamare il metodo di ChromaVectorStoreRepository per cercare i documenti similari alla domanda nel database vettoriale. Da tal metodo riceve un oggetto QueryResultEntity, che converte in una lista di documenti di tipo Document, corrispondenti ai documenti rilevanti. Questi ultimi vengono restituiti a SimilaritySearchService.
 \end{itemize}
 Essa contiene inoltre il seguente metodo privato:
 \begin{itemize}
     \item \texttt{split(documents: Document*): ChromaDocumentEntity*}: Riceve in input una lista di documenti di tipo Document, li converte in oggetti DocumentEntity, e si occupa di dividere i documenti in chunk di dimensione massima max\_chunk\_size. Restituisce una lista di oggetti di tipo ChromaDocumentEntity, corrispondenti ai chunk di documenti.
 \end{itemize}
 
-\dots
+\paragraph{LangChainAdapter}
+\label{sec:langchain_adapter}
+La classe LangChainAdapter implementa le interfacce GenerateAnswerPort e GetNextPossibleQuestionsPort, e si occupa di adattare i dati ricevuti dalla logica di business in un tipo Entity adatto per la comunicazione con il mondo esterno, e viceversa. 
+Essa possiede, oltre a lang\_chain\_repository, un altro attributo privato, ricevuto tramite il costruttore, che viene chiamato da una funzione di Dependency Injection:
+\begin{itemize}
+    \item \texttt{max\_num\_tokens: int}: Indica il numero massimo di token che è possibile utilizzare per generare una risposta. Per l'LLM \emph{OpenAI}\textsubscript{\textbf{\textit{G}}} GPT-4o, questo valore equivale a 128.000.
+\end{itemize}
+Essa espone i seguenti due metodi pubblici:
+\begin{itemize}
+    \item \texttt{generate\_answer(user\_input: Question, relevant\_docs: Document*, header: Header): Answer}: Riceve in input la domanda dell'utente di tipo Question, che converte in una stringa, una lista di documenti rilevanti di tipo Document, che converte in una lista di LangChainDocumentEntity, e un oggetto Header che fornisce il contesto introduttivo al chatbot, che converte in una stringa, e si occupa di chiamare il metodo di LangChainRepository per generare una risposta. Riceve da quest'ultimo una risposta di tipo stringa, la converte in un tipo Answer e la restituisce a GenerateAnswerService;
+    \item \texttt{get\_next\_possible\_questions(question\_answer\_couple: QuestionAnswerCouple, header:\\ Header): NextPossibleQuestions}: Riceve in input una coppia domanda-risposta di tipo QuestionAnswerCouple (contenente una Question e una Answer), che converte in una lista di due stringhe, e un'introduzione per dare contesto al chatbot di tipo Header, che converte in una stringa, e si occupa di chiamare il metodo di LangChainRepository per generare le possibili domande successive. Riceve da quest'ultimo una stringa, che, grazie alle istruzioni fornite dall'header, possiederà unicamente le domande e le possiederà suddivise da \_\_. Quindi, effettua il parsing della stringa ed estrapola le domande per crearci una lista di oggetti PossibleQuestion, che poi, assieme all'intero num\_questions, il cui valore eguaglia la lunghezza della lista, vengono incapsulate in un oggetto NextPossibleQuestions, che viene restituito a GetNextPossibleQuestionsService.
+\end{itemize}
 
 \paragraph{GitHubAdapter}
 \label{sec:github_adapter}
@@ -454,7 +481,17 @@ Essa espone i seguenti metodi pubblici:
     \item \texttt{similarity\_search(user\_input: string): QueryResultEntity}: Si occupa di cercare i documenti similari alla domanda dell'utente nel database vettoriale Chroma. Riceve in input la domanda dell'utente di tipo string e la utilizza per cercare i documenti similari nel database vettoriale. Restituisce un oggetto di tipo QueryResultEntity, contenente i documenti rilevanti.
 \end{itemize}
 
-\dots
+\paragraph{LangChainRepository}
+\label{sec:langchain_repository}
+La classe LangChainRepository si occupa di gestire parte della \emph{persistent logic}\textsubscript{\textbf{\textit{G}}} del sistema, ovvero di generare risposte a partire da domande e documenti rilevanti, e di generare possibili domande successive a partire da una domanda e una risposta. Essa contiene un singolo attributo privato, ricevuto tramite il costruttore, che viene chiamato da una funzione di \emph{Dependency Injection}:
+\begin{itemize}
+    \item \texttt{llm: ChatOpenAI}: Modello di \emph{LLM}\textsubscript{\textbf{\textit{G}}} di \emph{OpenAI}\textsubscript{\textbf{\textit{G}}}, più precisamente GPT-4o.
+\end{itemize}
+Essa espone i seguenti metodi pubblici:
+\begin{itemize}
+    \item \texttt{generate\_answer(user\_input: string, relevant\_docs: LangChainDocumentEntity*,\\ header: string): string}: Si occupa di generare una risposta a partire dalla domanda dell'utente e dai documenti rilevanti. Riceve in input la domanda dell'utente di tipo string, i documenti rilevanti di tipo LangChainDocumentEntity e un'introduzione per dare contesto al chatbot di tipo string. Sfrutta le funzioni della libreria \emph{LangChain}\textsubscript{\textbf{\textit{G}}} per creare il prompt e contattare l'LLM. Restituisce una stringa, corrispondente alla risposta generata;
+    \item \texttt{get\_next\_possible\_questions(question: string, answer: string, header: string):\\ string}: Si occupa di generare possibili domande successive a partire da una domanda e una risposta. Riceve in input una lista di stringhe contenente la domanda dell'utente e la risposta ricevuta, e un'introduzione per dare contesto al chatbot di tipo string. Sfrutta le funzioni della libreria \emph{LangChain} per creare il prompt e contattare l'LLM. Restituisce una stringa, contenente unicamente 3 possibili domande successive, separate da \_\_, come da istruzioni dell'header.
+\end{itemize}
 
 \paragraph{GitHubRepository}
 \label{sec:github_repository}
