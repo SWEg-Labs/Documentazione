@@ -133,7 +133,15 @@ La risposta viene quindi convertita in un oggetto Answer di \emph{Business Logic
     \caption{Architettura del salvataggio dei messaggi nello storico}
 \end{figure}
 
-\dots
+L'\emph{UML}\textsubscript{\textbf{\textit{G}}} in figura rappresenta l'\emph{architettura}\textsubscript{\textbf{\textit{G}}} del salvataggio dei messaggi nello storico.
+Il \emph{frontend}\textsubscript{\textbf{\textit{G}}} invoca il metodo save\_message esposto dal \emph{backend}\textsubscript{\textbf{\textit{G}}}, passando il messaggio in forma di MessageBaseModel.
+Il messaggio viene recuperato dal SaveMessageController, che converte il messaggio in un oggetto di Business, Message, e lo invia all'\emph{interfaccia}\textsubscript{\textbf{\textit{G}}} SaveMessageUseCase, implementata da SaveMessageService.
+SaveMessageService, quindi, chiama l'interfaccia SaveMessagePort, che è implementata da PostgresAdapter.
+PostgresAdapter si occupa di convertire il tipo di dato Message nel tipo PostgresMessage, e invoca il metodo save\_message esposto dalla classe PostgresRepository.
+PostgresRepository gestisce il collegamento con il \emph{database relazionale}\textsubscript{\textbf{\textit{G}}} \emph{Postgres}\textsubscript{\textbf{\textit{G}}},
+esegue l'operazione di salvataggio del messaggio sul database e restituisce un oggetto di tipo PostgresSaveOperationResponse che indica il successo o fallimento dell'operazione di salvataggio e la descrizione dell'eventuale errore.
+Successivamente PostgresAdapter si occupa anche di convertire l'oggetto PostgresSaveOperationResponse in un DbSaveOperationResponse corrispondente e lo restituisce al chiamante.
+Infine SaveMessageController riceve la DbSaveOperationResponse e la converte in un dizionario da restituire al chiamante.
 
 \newpage
 
@@ -147,7 +155,14 @@ La risposta viene quindi convertita in un oggetto Answer di \emph{Business Logic
     \caption{Architettura del recupero dei messaggi dallo storico}
 \end{figure}
 
-\dots
+L'UML in figura rappresenta l'architettura del recupero dei messaggi nello storico.
+Il frontend invoca il metodo get\_messages esposto dal backend, passando come parametro un dizionario che indica la quantità di messaggi da ottenere.
+Il metodo get\_messages chiama GetMessagesController, che converte il dizionario in un oggetto Quantity e lo passa all'interfaccia GetMessagesUseCase, implementata da GetMessagesService.
+GetMessagesService, quindi, chiama l'interfaccia GetMessagesPort, che è implementata da PostgresAdapter.
+PostgresAdapter converte l'oggetto Quantity in un intero da passare come parametro alla classe PostgresRepository, che gestisce il collegamento con il database relazionale Postgres. 
+PostgresRepository esegue l’operazione di recupero della quantità di messaggi richiesti e restituisce una lista di messaggi nel formato PostgresMessage.
+Allora PostgresAdapter si occupa di convertirla in una lista di oggetti Message.
+Infine GetMessagesController riceve una lista di Message e la usa per creare una lista di MessageBaseModel che restituisce al chiamante.
 
 \newpage
 
@@ -208,6 +223,14 @@ La risposta viene quindi convertita in un oggetto Answer di \emph{Business Logic
 \label{sec:chat_controller}
 La classe ChatController si occupa di mettere in contatto il frontend con il backend nell'architettura di generazione di una risposta. Attraverso il metodo \texttt{get\_answer(user\_input: Request): dict[string, string]}, riceve il messaggio dell'utente di tipo Request, dal quale ricava un dizionario, che poi converte in un oggetto di Business, Question, e lo invia all'interfaccia ChatUseCase. Riceve poi da essa in output un oggetto Answer, lo converte in stringa, lo inserisce in un dizionario e infine lo restituisce al frontend.
 
+\paragraph{GetMessagesController}
+\label{sec:get_messages_controller}
+La classe GetMessagesController si occupa di mettere in contatto il frontend con il backend nell'architettura del recupero dei messaggi dallo storico. Attraverso il metodo \texttt{get\_messages(quantity: dict[string, int]): MessageBaseModel*}, riceve un dizionario che indica la quantità di messaggi da recuperare, lo converte in un oggetto Quantity, e lo invia all'interfaccia GetMessagesUseCase. Riceve poi da essa in output una lista di messaggi, la converte in una lista di MessageBaseModel e la restituisce al frontend.
+
+\paragraph{SaveMessageController}
+\label{sec:save_message_controller}
+La classe SaveMessageController si occupa di mettere in contatto il frontend con il backend nell'architettura del salvataggio dei messaggi nello storico. Attraverso il metodo \texttt{save(message: MessageBaseModel): dict[string, bool | string]}, riceve il messaggio dell'utente di tipo MessageBaseModel, lo converte in un oggetto di Business, Message, e lo invia all'interfaccia SaveMessageUseCase. Riceve poi da essa in output un DbSaveOperationResponse, lo converte in un dizionario e lo restituisce al frontend.
+
 
 \subsubsubsection{Use Case}
 \label{sec:use_case}
@@ -215,6 +238,14 @@ La classe ChatController si occupa di mettere in contatto il frontend con il bac
 \paragraph{ChatUseCase}
 \label{sec:chat_use_case}
 La classe ChatUseCase è un'interfaccia che definisce il caso d'uso della risposta ad una domanda dell'utente. Essa contiene un solo metodo, \texttt{get\_answer(question: Question): Answer}, che prende in input un oggetto di Business, Question, e restituisce un oggetto di Business, Answer. Questa interfaccia fa da attributo a ChatController e viene implementata da ChatService.
+
+\paragraph{GetMessagesUseCase}
+\label{sec:get_messages_use_case}
+La classe GetMessagesUseCase è un'interfaccia che definisce il caso d'uso del recupero dei messaggi dallo storico. Essa contiene un solo metodo, \texttt{get\_messages(quantity: Quantity): Message*}, che prende in input un oggetto di Business, Quantity, e restituisce una lista di oggetti di Business, Message. Questa interfaccia fa da attributo a GetMessagesController e viene implementata da GetMessagesService.
+
+\paragraph{SaveMessageUseCase}
+\label{sec:save_message_use_case}
+La classe SaveMessageUseCase è un'interfaccia che definisce il caso d'uso del salvataggio dei messaggi nello storico. Essa contiene un solo metodo, \texttt{save(message: Message): DbSaveOperationResponse}, che prende in input un oggetto di Business, Message, e restituisce un oggetto di Business, DbSaveOperationResponse. Questa interfaccia fa da attributo a SaveMessageController e viene implementata da SaveMessageService.
 
 
 \subsubsubsection{Service}
@@ -238,28 +269,79 @@ La classe SimilaritySearchService si occupa di eseguire la ricerca di \emph{simi
 \label{sec:generate_answer_service}
 La classe GenerateAnswerService si occupa di generare una risposta all'interrogazione di un utente. Essa espone un solo metodo, \texttt{generate\_answer(user\_input: Question, relevant\_docs: Document*): Answer}, che prende in input un oggetto di Business, Question, e i documenti rilevanti di tipo Document, e ci associa l'oggetto di tipo Header presente come attributo, per poter così chiamare l'interfaccia GenerateAnswerPort allo scopo di generare una risposta. La risposta, di tipo Answer, viene restituita al chiamante ChatService. 
 
+\paragraph{GetMessagesService}
+\label{sec:get_messages_service}
+La classe GetMessagesService implementa l'interfaccia GetMessagesUseCase e si occupa di eseguire la logica di business per il recupero dei messaggi dallo storico. Essa espone un solo metodo, \texttt{get\_messages(quantity: Quantity): Message*}, che prende in input un oggetto di Business, Quantity, e chiama l'interfaccia GetMessagesPort per recuperare la quantità di messaggi richiesta. La porta restituisce una lista di messaggi, che vengono restituiti al chiamante GetMessagesController.
+
+\paragraph{SaveMessageService}
+\label{sec:save_message_service}
+La classe SaveMessageService implementa l'interfaccia SaveMessageUseCase e si occupa di eseguire la logica di business per il salvataggio dei messaggi nello storico. Essa espone un solo metodo, \texttt{save(message: Message): DbSaveOperationResponse}, che prende in input un oggetto di Business, Message, e chiama l'interfaccia SaveMessagePort per salvare il messaggio sul database. La porta restituisce un oggetto di Business, DbSaveOperationResponse, che viene restituito al chiamante SaveMessageController.
+
 
 \subsubsubsection{Port}
 \label{sec:port}
 
 \paragraph{SimilaritySearchPort}
 \label{sec:similarity_search_port}
-L'interfaccia SimilaritySearchPort definisce l'interfaccia attraverso la quale SimilaritySearchService interagisce con il mondo esterno, permettendo il recupero di dati persistenti senza modificare la logica di business. Essa espone un solo metodo, \texttt{similarity\_search(user\_input: Question): Document*}, che prende in input la domanda dell'utente di tipo Question, e si occupa di svolgere la ricerca di similarità in un \emph{database vettoriale}\textsubscript{\textbf{\textit{G}}} per ottenere una lista di documenti rilevanti di tipo Document. La porta viene implementata da ChromaVectorStoreAdapter.
+L'interfaccia SimilaritySearchPort definisce l'interfaccia attraverso la quale SimilaritySearchService interagisce con il mondo esterno, permettendo il recupero di dati persistenti senza modificare la logica di business. Essa espone un solo metodo,\\ \texttt{similarity\_search(user\_input: Question): Document*}, che prende in input la domanda dell'utente di tipo Question, e si occupa di svolgere la ricerca di similarità in un \emph{database vettoriale}\textsubscript{\textbf{\textit{G}}} per ottenere una lista di documenti rilevanti di tipo Document. La porta viene implementata da ChromaVectorStoreAdapter.
 
 \paragraph{GenerateAnswerPort}
 \label{sec:generate_answer_port}
-L'interfaccia GenerateAnswerPort definisce l'interfaccia attraverso la quale GenerateAnswerService interagisce con il mondo esterno, permettendo la generazione di dati da parte di un \emph{LLM}\textsubscript{\textbf{\textit{G}}} senza modificare la logica di business. Essa espone un solo metodo, \texttt{generate\_answer(user\_input: Question, relevant\_docs: Document*, header: Header): Answer}, che prende in input la domanda dell'utente di tipo Question, i documenti rilevanti di tipo Document, e un oggetto Header che fornisce il contesto introduttivo al chatbot, e si occupa di generare una risposta di tipo Answer. La porta viene implementata da LangChainAdapter.
+L'interfaccia GenerateAnswerPort definisce l'interfaccia attraverso la quale GenerateAnswerService interagisce con il mondo esterno, permettendo la generazione di dati da parte di un \emph{LLM}\textsubscript{\textbf{\textit{G}}} senza modificare la logica di business. Essa espone un solo metodo, \texttt{generate\_answer(user\_input: Question, relevant\_docs: Document*, header: Header):\\ Answer}, che prende in input la domanda dell'utente di tipo Question, i documenti rilevanti di tipo Document, e un oggetto Header che fornisce il contesto introduttivo al chatbot, e si occupa di generare una risposta di tipo Answer. La porta viene implementata da LangChainAdapter.
+
+\paragraph{GetMessagesPort}
+\label{sec:get_messages_port}
+L'interfaccia GetMessagesPort definisce l'interfaccia attraverso la quale GetMessagesService interagisce con il mondo esterno, permettendo il recupero di dati persistenti senza modificare la logica di business. Essa espone un solo metodo, \texttt{get\_messages(quantity: Quantity): Message*}, che prende in input la quantità di messaggi da recuperare di tipo Quantity, e si occupa di recuperare i messaggi dallo storico. La porta viene implementata da PostgresAdapter.
+
+\paragraph{SaveMessagePort}
+\label{sec:save_message_port}
+L'interfaccia SaveMessagePort definisce l'interfaccia attraverso la quale SaveMessageService interagisce con il mondo esterno, permettendo il salvataggio di dati persistenti senza modificare la logica di business. Essa espone un solo metodo, \texttt{save(message: Message): DbSaveOperationResponse}, che prende in input il messaggio da salvare di tipo Message, e si occupa di salvare il messaggio nello storico. La porta viene implementata da PostgresAdapter.
 
 
 \subsubsubsection{Adapter}
 \label{sec:adapter}
 
-\dots
+\paragraph{PostgresAdapter}
+\label{sec:postgres_adapter}
+La classe PostgresAdapter implementa le interfacce GetMessagesPort, SaveMessagePort e SaveLoadingAttemptInDbPort, e si occupa di adattare i dati ricevuti dalla logica di business in un tipo Entity adatto per la persistenza, e viceversa. Essa espone i seguenti metodi pubblici:
+\begin{itemize}
+    \item \texttt{get\_messages(quantity: Quantity): Message*}: Riceve in input la quantità di messaggi da recuperare di tipo Quantity, e si occupa di recuperare i messaggi dallo storico. Restituisce una lista di messaggi di tipo Message;
+    \item \texttt{save\_message(message: Message): DbSaveOperationResponse}: Riceve in input il messaggio da salvare di tipo Message, e si occupa di salvare il messaggio nello storico. Restituisce un oggetto di tipo DbSaveOperationResponse;
+    \item \texttt{save\_loading\_attempt(loading\_attempt: LoadingAttempt): DbSaveOperationResponse}: Riceve in input il tentativo di caricamento da salvare di tipo LoadingAttempt, e si occupa di salvare il tentativo di caricamento nello storico. Restituisce un oggetto di tipo DbSaveOperationResponse;
+    \item \texttt{get\_last\_load\_outcome(): LoadingAttempt}: Si occupa di recuperare l'ultimo tentativo di caricamento dallo storico. Restituisce un oggetto di tipo LoadingAttempt.
+\end{itemize}
+Inoltre contiene i seguenti metodi privati:
+\begin{itemize}
+    \item \texttt{postgres\_message\_converter(message: Message): PostgresMessage}: Riceve in input un messaggio di tipo Message, e si occupa di convertirlo in un messaggio di tipo PostgresMessage;
+    \item \texttt{message\_converter(postgres\_message: PostgresMessage): Message}: Riceve in input un messaggio di tipo PostgresMessage, e si occupa di convertirlo in un messaggio di tipo Message;
+    \item \texttt{dsor\_converter(psor: PostgresSaveOperationResponse): DbSaveOperationResponse}: Riceve in input un oggetto di tipo PostgresSaveOperationResponse, e si occupa di convertirlo in un oggetto di tipo DbSaveOperationResponse;
+    \item \texttt{postgres\_loading\_attempt\_converter(loading\_attempt: LoadingAttempt): PostgresLoadingAttempt}: Riceve in input un tentativo di caricamento di tipo LoadingAttempt, e si occupa di convertirlo in un tentativo di caricamento di tipo PostgresLoadingAttempt;
+    \item \texttt{last\_load\_outcome\_converter(pllo: PostgresLastLoadOutcome): LastLoadOutcome}: Riceve in input un oggetto di tipo PostgresLastLoadOutcome, e si occupa di convertirlo in un oggetto di tipo LastLoadOutcome.
+\end{itemize}
+
 
 
 \subsubsubsection{Repository}
 \label{sec:repository}
 
+\paragraph{PostgresRepository}
+\label{sec:postgres_repository}
+La classe PostgresRepository si occupa di gestire parte della \emph{persistent logic}\textsubscript{\textbf{\textit{G}}} del sistema, ovvero di gestire la persistenza dei dati, interagendo con un \emph{database relazionale}\textsubscript{\textbf{\textit{G}}} per salvare e/o recuperare le informazioni necessarie. 
+Essa contiene un singolo attributo privato:
+\begin{itemize}
+    \item \texttt{conn: Connection}: Connessione al database Postgres ricevuta tramite il costruttore.
+\end{itemize}
+Essa espone i seguenti metodi pubblici:
+\begin{itemize}
+    \item \texttt{get\_messages(quantity: int): PostgresMessage*}: Riceve in input la quantità di messaggi da recuperare, e si occupa di recuperare i messaggi dallo storico. Restituisce una lista di messaggi di tipo PostgresMessage.
+    \item \texttt{save\_message(message: PostgresMessage): PostgresSaveOperationResponse}: Riceve in input il messaggio da salvare, e si occupa di salvare il messaggio nello storico. Restituisce un oggetto di tipo PostgresSaveOperationResponse.
+    \item \texttt{save\_loading\_attempt(loading\_attempt: PostgresLoadingAttempt): PostgresSaveOperationResponse}: Riceve in input il tentativo di caricamento da salvare, e si occupa di salvare il tentativo di caricamento nello storico. Restituisce un oggetto di tipo PostgresSaveOperationResponse.
+    \item \texttt{get\_last\_load\_outcome(): PostgresLoadingAttempt}: Si occupa di recuperare l'ultimo tentativo di caricamento dallo storico. Restituisce un oggetto di tipo PostgresLoadingAttempt.
+\end{itemize}
+Inoltre contiene il seguente metodo privato:
+\begin{itemize}
+    \item \texttt{execute\_query(query: string, params: tuple, fetch\_one: bool, fetch\_all: bool): tuple | list | None}: Riceve in input una query SQL, i parametri della query, e due booleani che indicano se la query deve restituire un solo risultato o tutti i risultati. Si occupa di eseguire la query sul database e restituire i risultati.
+\end{itemize}
 \dots
 
 
