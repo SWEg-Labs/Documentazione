@@ -63,9 +63,9 @@ La risposta viene quindi convertita in un oggetto Answer di \emph{Business Logic
     \caption{Architettura dell'aggiornamento automatico del database vettoriale}
 \end{figure}
 
-L'UML in questione rappresenta l'architettura dell'aggiornamento automatico del \emph{database vettoriale}\textsubscript{\textbf{\textit{G}}}, il quale viene svolto da un \emph{cron}\textsubscript{\textbf{\textit{G}}} configurato periodicamente per eseguire un apposito script \emph{Python}\textsubscript{\textbf{\textit{G}}}. Il cron chiama l'apposito metodo della classe LoadFilesController, che a sua volta chiama l'interfaccia LoadFilesUseCase implementata da LoadFilesService.
-LoadFilesService implementa il pattern \emph{Facade}\textsubscript{\textbf{\textit{G}}} per fornire un'unica interfaccia di collegamento alle piattaforme dalle quali caricare i file e alle piattaforme per il salvataggio degli stessi file e dei log di tutte le operazioni. In particolare, LoadFilesService si collega alle interfacce GitHubPort, JiraPort e ConfluencePort, che poi verranno implementate dai rispettivi adapter, che possiederanno i rispettivi repositories, rispettando l'Architettura Esagonale. Da queste piattaforme vengono recuperati i Commits e i Files da \emph{GitHub}\textsubscript{\textbf{\textit{G}}}, le Issues da \emph{Jira}\textsubscript{\textbf{\textit{G}}} e le pagine da \emph{Confluence}\textsubscript{\textbf{\textit{G}}}, estratti dagli account configurati, che vengono prima convertiti in \emph{Entity} e poi nel tipo di business Document mediante gli adapter. La lista di oggetti Document ritorna a LoadFilesService, che la invia a LoadFilesInVectorStorePort, implementata da ChromaVectorStoreAdapter, che si occupa di adattare i Document in DocumentEntity per poi inviarli a ChromaVectorStoreRepository, che si occupa di salvare i documenti nel database vettoriale \emph{Chroma}\textsubscript{\textbf{\textit{G}}}.
-Ogni classe di repository, oltre a svolgere il proprio di compito, si occupa anche di creare e restituire uno specifico oggetto di log, di tipo PlatformLog per GitHUb, Jira e Confluence e di tipo VectorStoreLog per il database vettoriale, che vengono uniti assieme in un oggetto LoadingAttempt e poi inviati all'interfaccia SaveLoadingAttemptInDbPort, implementata da PostgresAdapter, che si occupa di adattare l'oggetto in PostgresLoadingAttempt e di inviarlo a PostgresRepository che lo salva nel database \emph{Postgres}\textsubscript{\textbf{\textit{G}}}, per tenere traccia dell'esito di ogni tentativo di caricamento di documenti nel database vettoriale. Successivamente, lo stesso log, opportunamente formattato, viene salvato in un file di testo, situato dentro la cartella src/backend.
+L'UML in questione rappresenta l'architettura dell'aggiornamento automatico del \emph{database vettoriale}\textsubscript{\textbf{\textit{G}}}, il quale viene svolto da un \emph{cron}\textsubscript{\textbf{\textit{G}}} configurato periodicamente per eseguire un apposito script \emph{Python}\textsubscript{\textbf{\textit{G}}}. Il cron chiama l'apposito metodo della classe LoadFilesController, che a sua volta chiama l'interfaccia LoadFilesUseCase implementata da LoadFilesService.\\
+LoadFilesService implementa il pattern \emph{Facade}\textsubscript{\textbf{\textit{G}}} per fornire un'unica interfaccia di collegamento alle piattaforme dalle quali caricare i file e alle piattaforme per il salvataggio degli stessi file e dei log di tutte le operazioni. In particolare, LoadFilesService si collega alle interfacce GitHubPort, JiraPort e ConfluencePort, che poi verranno implementate dai rispettivi adapter, che possiederanno i rispettivi repositories, rispettando l'\emph{Architettura Esagonale}\textsubscript{\textbf{\textit{G}}}. Vengono quindi recuperati i Commits e i Files da \emph{GitHub}\textsubscript{\textbf{\textit{G}}}, le Issues da \emph{Jira}\textsubscript{\textbf{\textit{G}}} e le pagine da \emph{Confluence}\textsubscript{\textbf{\textit{G}}}, estratti dagli account configurati, che vengono prima convertiti in \emph{Entity} nei repositories, e poi nel tipo di business Document mediante gli adapter. I documenti corrispondenti alle pagine di Confluence, una volta tornati a LoadFilesService, vengono appositamente trattati grazie all'attributo di tipo ConfluenceCleanerService di quest'ultima classe. La lista di oggetti Document viene dunque inviata a LoadFilesInVectorStorePort, implementata da ChromaVectorStoreAdapter, che si occupa di adattare i Document in DocumentEntity per poi inviarli a ChromaVectorStoreRepository, che si occupa di salvare i documenti nel database vettoriale \emph{Chroma}\textsubscript{\textbf{\textit{G}}}.\\
+Ogni classe di repository, oltre a svolgere il proprio di compito, si occupa anche di creare e restituire uno specifico oggetto di log, di tipo PlatformLog per GitHUb, Jira e Confluence e di tipo VectorStoreLog per il database vettoriale, che vengono uniti assieme in un oggetto LoadingAttempt e poi inviati all'interfaccia SaveLoadingAttemptInDbPort, implementata da PostgresAdapter, che si occupa di adattare l'oggetto in PostgresLoadingAttempt e di inviarlo a PostgresRepository che lo salva nel \emph{database relazionale}\textsubscript{\textbf{\textit{G}}} \emph{Postgres}\textsubscript{\textbf{\textit{G}}}, per tenere traccia dell'esito di ogni tentativo di caricamento di documenti nel database vettoriale. Successivamente, lo stesso log, opportunamente formattato, viene salvato in un file di testo, situato dentro la cartella \texttt{src/backend}.
 
 \newpage
 
@@ -207,6 +207,8 @@ Il pattern \emph{Dependency Injection}\textsubscript{\textbf{\textit{G}}} è sta
 
 Il pattern \emph{MVVM}\textsubscript{\textbf{\textit{G}}} è stato adottato per la progettazione dell'architettura del \emph{frontend}, in particolare per separare la logica di presentazione dalla logica di business, semplificando la gestione delle interazioni tra i componenti dell'applicazione. Nello specifico, il \emph{Model}\textsubscript{\textbf{\textit{G}}} rappresenta i dati e la logica di business dell'applicazione, il \emph{View}\textsubscript{\textbf{\textit{G}}} si occupa della presentazione dei dati all'utente, e il \emph{ViewModel}\textsubscript{\textbf{\textit{G}}} si occupa di gestire la logica di presentazione e di coordinare le interazioni tra il \emph{Model} e la \emph{View}. Questo permette di mantenere il codice più pulito e manutenibile, in quanto la logica di business è separata dalla logica di presentazione, e le interazioni tra i componenti sono semplificate. Inoltre, grazie all'utilizzo di un \emph{framework} come \emph{Angular}, è possibile automatizzare il processo di creazione e gestione dei componenti, semplificando ulteriormente lo sviluppo del \emph{frontend}. Il pattern è stato implementato in \emph{Angular} attraverso la creazione di componenti per la \emph{View} e il \emph{ViewModel}, e la creazione di servizi per la gestione della logica di business del \emph{Model}.
 
+\newpage
+
 
 
 \subsection{Descrizione delle classi}
@@ -222,6 +224,10 @@ Il pattern \emph{MVVM}\textsubscript{\textbf{\textit{G}}} è stato adottato per 
 \label{sec:chat_controller}
 La classe ChatController si occupa di mettere in contatto il frontend con il backend nell'architettura di generazione di una risposta. Attraverso il metodo \texttt{get\_answer(user\_input: Request): dict[string, string]}, riceve il messaggio dell'utente di tipo Request, dal quale ricava un dizionario, che poi converte in un oggetto di Business, Question, e lo invia all'interfaccia ChatUseCase. Riceve poi da essa in output un oggetto Answer, lo converte in stringa, lo inserisce in un dizionario e infine lo restituisce al frontend.
 
+\paragraph{LoadFilesController}
+\label{sec:load_files_controller}
+La classe LoadFilesController si occupa di mettere in contatto il cron con il backend nell'architettura dell'aggiornamento automatico del database vettoriale. Attraverso il metodo \texttt{load()}, invia una richiesta all'interfaccia LoadFilesUseCase per il caricamento dei file da \emph{GitHub}\textsubscript{\textbf{\textit{G}}}, \emph{Jira}\textsubscript{\textbf{\textit{G}}} e \emph{Confluence}\textsubscript{\textbf{\textit{G}}} verso \emph{Chroma}\textsubscript{\textbf{\textit{G}}}, e il salvataggio dei rispettivi log in \emph{Postgres}\textsubscript{\textbf{\textit{G}}} e in un file di testo.
+
 \paragraph{GetMessagesController}
 \label{sec:get_messages_controller}
 La classe GetMessagesController si occupa di mettere in contatto il frontend con il backend nell'architettura del recupero dei messaggi dallo storico. Attraverso il metodo \texttt{get\_messages(quantity: dict[string, int]): MessageDTO*}, riceve un dizionario che indica la quantità di messaggi da recuperare, lo converte in un oggetto Quantity, e lo invia all'interfaccia GetMessagesUseCase. Riceve poi da essa in output una lista di messaggi, la converte in una lista di MessageDTO e la restituisce al frontend.
@@ -229,6 +235,8 @@ La classe GetMessagesController si occupa di mettere in contatto il frontend con
 \paragraph{SaveMessageController}
 \label{sec:save_message_controller}
 La classe SaveMessageController si occupa di mettere in contatto il frontend con il backend nell'architettura del salvataggio dei messaggi nello storico. Attraverso il metodo \texttt{save(message: MessageDTO): dict[string, bool | string]}, riceve il messaggio dell'utente di tipo MessageDTO, lo converte in un oggetto di Business, Message, e lo invia all'interfaccia SaveMessageUseCase. Riceve poi da essa in output un DbSaveOperationResponse, lo converte in un dizionario e lo restituisce al frontend.
+
+\newpage
 
 
 \subsubsubsection{Use Case}
@@ -238,6 +246,10 @@ La classe SaveMessageController si occupa di mettere in contatto il frontend con
 \label{sec:chat_use_case}
 La classe ChatUseCase è un'interfaccia che definisce il caso d'uso della risposta ad una domanda dell'utente. Essa contiene un solo metodo, \texttt{get\_answer(question: Question): Answer}, che prende in input un oggetto di Business, Question, e restituisce un oggetto di Business, Answer. Questa interfaccia fa da attributo a ChatController e viene implementata da ChatService.
 
+\paragraph{LoadFilesUseCase}
+\label{sec:load_files_use_case}
+La classe LoadFilesUseCase è un'interfaccia che definisce il caso d'uso dell'aggiornamento automatico del database vettoriale. Essa contiene un solo metodo, \texttt{load()}, la cui implementazione avvia il caricamento dei dati. Questa interfaccia fa da attributo a LoadFilesController e viene implementata da LoadFilesService.
+
 \paragraph{GetMessagesUseCase}
 \label{sec:get_messages_use_case}
 La classe GetMessagesUseCase è un'interfaccia che definisce il caso d'uso del recupero dei messaggi dallo storico. Essa contiene un solo metodo, \texttt{get\_messages(quantity: Quantity): Message*}, che prende in input un oggetto di Business, Quantity, e restituisce una lista di oggetti di Business, Message. Questa interfaccia fa da attributo a GetMessagesController e viene implementata da GetMessagesService.
@@ -245,6 +257,8 @@ La classe GetMessagesUseCase è un'interfaccia che definisce il caso d'uso del r
 \paragraph{SaveMessageUseCase}
 \label{sec:save_message_use_case}
 La classe SaveMessageUseCase è un'interfaccia che definisce il caso d'uso del salvataggio dei messaggi nello storico. Essa contiene un solo metodo, \texttt{save(message: Message): DbSaveOperationResponse}, che prende in input un oggetto di Business, Message, e restituisce un oggetto di Business, DbSaveOperationResponse. Questa interfaccia fa da attributo a SaveMessageController e viene implementata da SaveMessageService.
+
+\newpage
 
 
 \subsubsubsection{Service}
@@ -255,8 +269,8 @@ La classe SaveMessageUseCase è un'interfaccia che definisce il caso d'uso del s
 La classe ChatService implementa l'interfaccia ChatUseCase e si occupa di eseguire la logica di business per la generazione di una risposta all'interrogazione di un utente.
 Essa espone i seguenti tre metodi:
 \begin{itemize}
-    \item \texttt{get\_answer(question: Question): Answer}: Riceve in input un oggetto di Business, Question, e lo invia a SimilaritySearchService per la ricerca di similarità nel database vettoriale. Riceve in output i documenti rilevanti di tipo Document, li invia a GenerateAnswerService insieme all'input dell'utente, e infine restituisce la risposta di tipo Answer alla classe ChatController, di cui è attributo.
-    \item \texttt{similarity\_search(user\_input: Question): Document*}: Riceve in input un oggetto di Business, Question, e lo invia a SimilaritySearchService per la ricerca di similarità nel database vettoriale. Restituisce i documenti rilevanti di tipo Document.
+    \item \texttt{get\_answer(question: Question): Answer}: Riceve in input un oggetto di Business, Question, e lo invia a SimilaritySearchService per la ricerca di similarità nel database vettoriale. Riceve in output i documenti rilevanti di tipo Document, li invia a GenerateAnswerService insieme all'input dell'utente, e infine restituisce la risposta di tipo Answer alla classe ChatController, di cui è attributo;
+    \item \texttt{similarity\_search(user\_input: Question): Document*}: Riceve in input un oggetto di Business, Question, e lo invia a SimilaritySearchService per la ricerca di similarità nel database vettoriale. Restituisce i documenti rilevanti di tipo Document;
     \item \texttt{generate\_answer(user\_input: Question, relevant\_docs: Document*): Answer}: Riceve in input un oggetto di Business, Question, e i documenti rilevanti di tipo Document, e li invia a GenerateAnswerService per la generazione di una risposta. Restituisce la risposta di tipo Answer.
 \end{itemize}
 
@@ -266,7 +280,30 @@ La classe SimilaritySearchService si occupa di eseguire la ricerca di \emph{simi
 
 \paragraph{GenerateAnswerService}
 \label{sec:generate_answer_service}
-La classe GenerateAnswerService si occupa di generare una risposta all'interrogazione di un utente. Essa espone un solo metodo, \texttt{generate\_answer(user\_input: Question, relevant\_docs: Document*): Answer}, che prende in input un oggetto di Business, Question, e i documenti rilevanti di tipo Document, e ci associa l'oggetto di tipo Header presente come attributo, per poter così chiamare l'interfaccia GenerateAnswerPort allo scopo di generare una risposta. La risposta, di tipo Answer, viene restituita al chiamante ChatService. 
+La classe GenerateAnswerService si occupa di generare una risposta all'interrogazione di un utente. Essa espone un solo metodo, \texttt{generate\_answer(user\_input: Question, relevant\_docs: Document*): Answer}, che prende in input un oggetto di Business, Question, e i documenti rilevanti di tipo Document, e ci associa l'oggetto di tipo Header presente come attributo, per poter così chiamare l'interfaccia GenerateAnswerPort allo scopo di generare una risposta. La risposta, di tipo Answer, viene restituita al chiamante ChatService.
+
+\paragraph{LoadFilesService}
+\label{sec:load_files_service}
+La classe LoadFilesService implementa l'interfaccia LoadFilesUseCase e si occupa di eseguire la logica di business per l'aggiornamento automatico del database vettoriale. Essa implementa il \emph{design pattern}\textsubscript{\textbf{\textit{G}}} \emph{Facade}\textsubscript{\textbf{\textit{G}}}, ed espone i seguenti metodi:
+\begin{itemize}
+    \item \texttt{load()}: Si occupa di chiamare i metodi di estrazione dei file da GitHub, Jira e Confluence, di pulizia delle pagine Confluence, di caricamento in Chroma e di salvataggio dei log in Postgres e in un file di testo;
+    \item \texttt{load\_github\_commits(): (PlatformLog, Document*)}: Si occupa di recuperare i Commits da GitHub e di salvare i rispettivi log. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti ai commits;
+    \item \texttt{load\_github\_files(): (PlatformLog, Document*)}: Si occupa di recuperare i Files da GitHub e di salvare i rispettivi log. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti ai files;
+    \item \texttt{load\_jira\_issues(): (PlatformLog, Document*)}: Si occupa di recuperare le Issues da Jira e di salvare i rispettivi log. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti alle issues;
+    \item \texttt{load\_confluence\_pages(): (PlatformLog, Document*)}: Si occupa di recuperare le Pagine da Confluence e di salvare i rispettivi log. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti alle pagine;
+    \item \texttt{clean\_confluence\_pages(pages: Document*): Document*}: Si occupa di pulire le pagine di Confluence, rimuovendo i tag HTML e i caratteri speciali. Restituisce la lista di pagine pulite, sempre di tipo Document;
+    \item \texttt{load\_in\_vector\_store(documents: Document*): VectorStoreLog}: Si occupa di caricare i documenti nel database vettoriale Chroma e di salvare i rispettivi log. Restituisce un oggetto di tipo VectorStoreLog, corrispondente al log del caricamento;
+    \item \texttt{save\_loading\_attempt\_in\_db(loading\_attempt: LoadingAttempt):\\ DbSaveOperationResponse}: Si occupa di salvare l'esito del caricamento dei documenti nel database relazionale Postgres. Restituisce un oggetto di tipo DbSaveOperationResponse, corrispondente alla risposta del database;
+    \item \texttt{save\_loading\_attempt\_in\_txt(loading\_attempt: LoadingAttempt)}: Si occupa di salvare l'esito del caricamento dei documenti in un file di testo, sfruttando la libreria \texttt{logging} di \emph{Python}\textsubscript{\textbf{\textit{G}}}.
+\end{itemize}
+
+\paragraph{ConfluenceCleanerService}
+\label{sec:confluence_cleaner_service}
+La classe ConfluenceCleanerService si occupa di pulire le pagine di Confluence, rimuovendo i tag HTML e i caratteri speciali. Essa espone il seguente metodo pubblico:
+clean\_confluence\_pages(pages: Document*): Document*
+Inoltre, contiene il seguente metodo privato:
+remove\_html\_tags(document: Document): Document
+replace\_html\_entities(document: Document): Document
 
 \paragraph{GetMessagesService}
 \label{sec:get_messages_service}
@@ -275,6 +312,8 @@ La classe GetMessagesService implementa l'interfaccia GetMessagesUseCase e si oc
 \paragraph{SaveMessageService}
 \label{sec:save_message_service}
 La classe SaveMessageService implementa l'interfaccia SaveMessageUseCase e si occupa di eseguire la logica di business per il salvataggio dei messaggi nello storico. Essa espone un solo metodo, \texttt{save(message: Message): DbSaveOperationResponse}, che prende in input un oggetto di Business, Message, e chiama l'interfaccia SaveMessagePort per salvare il messaggio sul database. La porta restituisce un oggetto di Business, DbSaveOperationResponse, che viene a sua volta restituito al chiamante SaveMessageController.
+
+\newpage
 
 
 \subsubsubsection{Port}
@@ -288,6 +327,27 @@ L'interfaccia SimilaritySearchPort definisce l'interfaccia attraverso la quale S
 \label{sec:generate_answer_port}
 L'interfaccia GenerateAnswerPort definisce l'interfaccia attraverso la quale GenerateAnswerService interagisce con il mondo esterno, permettendo la generazione di dati da parte di un \emph{LLM}\textsubscript{\textbf{\textit{G}}} senza modificare la logica di business. Essa espone un solo metodo,\\ \texttt{generate\_answer(user\_input: Question, relevant\_docs: Document*, header: Header):\\ Answer}, che prende in input la domanda dell'utente di tipo Question, i documenti rilevanti di tipo Document, e un oggetto Header che fornisce il contesto introduttivo al chatbot, e si occupa di generare una risposta di tipo Answer. La porta viene implementata da LangChainAdapter.
 
+\paragraph{GitHubPort}
+\label{sec:github_port}
+L'interfaccia GitHubPort definisce una delle interfacce attraverso le quali LoadFilesService interagisce con il mondo esterno, permettendo il recupero di dati persistenti senza modificare la logica di business. Essa espone due metodi:
+\begin{itemize}
+    \item \texttt{load\_github\_commits(): (PlatformLog, Document*)}: Si occupa di recuperare i Commits da GitHub e di salvare i rispettivi log. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti ai commits;
+    \item \texttt{load\_github\_files(): (PlatformLog, Document*)}: Si occupa di recuperare i Files da GitHub e di salvare i rispettivi log. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti ai files.
+\end{itemize}
+La porta viene implementata da GitHubAdapter.
+
+\paragraph{JiraPort}
+\label{sec:jira_port}
+L'interfaccia JiraPort definisce una delle interfacce attraverso le quali LoadFilesService interagisce con il mondo esterno, permettendo il recupero di dati persistenti senza modificare la logica di business. Essa espone un solo metodo, \texttt{load\_jira\_issues(): (PlatformLog, Document*)}, che si occupa di recuperare le Issues da Jira e di salvare i rispettivi log. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti alle issues. La porta viene implementata da JiraAdapter.
+
+\paragraph{ConfluencePort}
+\label{sec:confluence_port}
+L'interfaccia ConfluencePort definisce una delle interfacce attraverso le quali LoadFilesService interagisce con il mondo esterno, permettendo il recupero di dati persistenti senza modificare la logica di business. Essa espone un solo metodo, \texttt{load\_confluence\_pages(): (PlatformLog, Document*)}, che si occupa di recuperare le Pagine da Confluence e di salvare i rispettivi log. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti alle pagine. La porta viene implementata da ConfluenceAdapter.
+
+\paragraph{LoadFilesInVectorStorePort}
+\label{sec:load_files_in_vector_store_port}
+L'interfaccia LoadFilesInVectorStorePort definisce una\\ delle interfacce attraverso le quali LoadFilesService interagisce con il mondo esterno, permettendo il caricamento dei documenti nel database vettoriale senza modificare la logica di business. Essa espone un solo metodo, \texttt{load(documents: Document*): VectorStoreLog}, che prende in input una lista di documenti di tipo Document, e si occupa di caricare i documenti nel database vettoriale configurato e di salvare i rispettivi log. La porta viene implementata da ChromaVectorStoreAdapter.
+
 \paragraph{GetMessagesPort}
 \label{sec:get_messages_port}
 L'interfaccia GetMessagesPort definisce l'interfaccia attraverso la quale GetMessagesService interagisce con il mondo esterno, permettendo il recupero di dati persistenti senza modificare la logica di business. Essa espone un solo metodo, \texttt{get\_messages(quantity: Quantity):\\ Message*}, che prende in input la quantità di messaggi da recuperare di tipo Quantity, e si occupa di recuperare i messaggi dallo storico. La porta viene implementata da PostgresAdapter.
@@ -295,6 +355,8 @@ L'interfaccia GetMessagesPort definisce l'interfaccia attraverso la quale GetMes
 \paragraph{SaveMessagePort}
 \label{sec:save_message_port}
 L'interfaccia SaveMessagePort definisce l'interfaccia attraverso la quale SaveMessageService interagisce con il mondo esterno, permettendo il salvataggio di dati persistenti senza modificare la logica di business. Essa espone un solo metodo, \texttt{save(message: Message):\\ DbSaveOperationResponse}, che prende in input il messaggio da salvare di tipo Message, e si occupa di salvare il messaggio nello storico e riportare la risposta del database. La porta viene implementata da PostgresAdapter.
+
+\newpage
 
 
 \subsubsubsection{Adapter}
@@ -309,7 +371,7 @@ La classe PostgresAdapter implementa le interfacce GetMessagesPort, SaveMessageP
     \item \texttt{save\_loading\_attempt(loading\_attempt: LoadingAttempt): DbSaveOperationResponse}: Riceve in input il tentativo di caricamento da salvare di tipo LoadingAttempt, e si occupa di chiamare il metodo di conversione del tentativo in PostgresLoadingAttempt e di chiamare il metodo di salvataggio del tentativo di caricamento nello storico di PostgresRepository. Restituisce, una volta opportunamente convertito, un oggetto di tipo DbSaveOperationResponse;
     \item \texttt{get\_last\_load\_outcome(): LastLoadOutcome}: Si occupa di chiamare il metodo di recupero dell'ultimo tentativo di caricamento dallo storico di PostgresRepository. Restituisce, una volta opportunamente convertito, un oggetto di tipo LastLoadOutcome.
 \end{itemize}
-Inoltre contiene i seguenti metodi privati:
+Inoltre, contiene i seguenti metodi privati:
 \begin{itemize}
     \item \texttt{postgres\_message\_converter(message: Message): PostgresMessage}: Riceve in input un messaggio di tipo Message, e si occupa di convertirlo in un messaggio di tipo PostgresMessage;
     \item \texttt{message\_converter(postgres\_message: PostgresMessage): Message}: Riceve in input un messaggio di tipo PostgresMessage, e si occupa di convertirlo in un messaggio di tipo Message;
@@ -317,6 +379,8 @@ Inoltre contiene i seguenti metodi privati:
     \item \texttt{postgres\_loading\_attempt\_converter(loading\_attempt: LoadingAttempt):\\ PostgresLoadingAttempt}: Riceve in input un tentativo di caricamento di tipo LoadingAttempt, e si occupa di convertirlo in un tentativo di caricamento di tipo PostgresLoadingAttempt;
     \item \texttt{last\_load\_outcome\_converter(pllo: PostgresLastLoadOutcome): LastLoadOutcome}: Riceve in input un oggetto di tipo PostgresLastLoadOutcome, e si occupa di convertirlo in un oggetto di tipo LastLoadOutcome.
 \end{itemize}
+
+\newpage
 
 
 
@@ -332,15 +396,17 @@ Essa contiene un singolo attributo privato:
 \end{itemize}
 Essa espone i seguenti metodi pubblici:
 \begin{itemize}
-    \item \texttt{get\_messages(quantity: int): PostgresMessage*}: Riceve in input la quantità di messaggi da recuperare, e si occupa di recuperare i messaggi dallo storico. Restituisce una lista di messaggi di tipo PostgresMessage.
-    \item \texttt{save\_message(message: PostgresMessage): PostgresSaveOperationResponse}: Riceve in input il messaggio da salvare, e si occupa di salvare il messaggio nello storico. Restituisce un oggetto di tipo PostgresSaveOperationResponse, contenente l'esito dell'operazione e un relativo messaggio.
-    \item \texttt{save\_loading\_attempt(loading\_attempt: PostgresLoadingAttempt):\\ PostgresSaveOperationResponse}: Riceve in input il tentativo di caricamento da salvare, e si occupa di salvare il tentativo di caricamento nello storico. Restituisce un oggetto di tipo PostgresSaveOperationResponse, contenente l'esito dell'operazione e un relativo messaggio.
+    \item \texttt{get\_messages(quantity: int): PostgresMessage*}: Riceve in input la quantità di messaggi da recuperare, e si occupa di recuperare i messaggi dallo storico. Restituisce una lista di messaggi di tipo PostgresMessage;
+    \item \texttt{save\_message(message: PostgresMessage): PostgresSaveOperationResponse}: Riceve in input il messaggio da salvare, e si occupa di salvare il messaggio nello storico. Restituisce un oggetto di tipo PostgresSaveOperationResponse, contenente l'esito dell'operazione e un relativo messaggio;
+    \item \texttt{save\_loading\_attempt(loading\_attempt: PostgresLoadingAttempt):\\ PostgresSaveOperationResponse}: Riceve in input il tentativo di caricamento da salvare, e si occupa di salvare il tentativo di caricamento nello storico. Restituisce un oggetto di tipo PostgresSaveOperationResponse, contenente l'esito dell'operazione e un relativo messaggio;
     \item \texttt{get\_last\_load\_outcome(): PostgresLoadingAttempt}: Si occupa di recuperare l'ultimo tentativo di caricamento dallo storico. Restituisce un oggetto di tipo PostgresLoadingAttempt.
 \end{itemize}
-Inoltre contiene il seguente metodo privato:
+Inoltre, contiene il seguente metodo privato:
 \begin{itemize}
     \item \texttt{execute\_query(query: string, params: tuple, fetch\_one: bool, fetch\_all: bool):\\ tuple | list | None}: Riceve in input una stringa contenente una query \emph{SQL}\textsubscript{\textbf{\textit{G}}}, i parametri della query, e due booleani opzionali che indicano se la funzione deve restituire un solo risultato, tutti i risultati, oppure nessuno. Si occupa di eseguire la query sul database configurato e, eventualmente, restituire i risultati.
 \end{itemize}
+
+\newpage
 
 
 
@@ -352,8 +418,12 @@ Inoltre contiene il seguente metodo privato:
 
 \dots
 
+\newpage
+
 
 \subsubsubsection{Service}
 \label{sec:service_frontend}
 
 \dots
+
+\newpage
