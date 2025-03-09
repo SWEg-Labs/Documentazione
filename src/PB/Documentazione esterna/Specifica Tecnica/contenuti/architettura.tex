@@ -300,10 +300,14 @@ La classe LoadFilesService implementa l'interfaccia LoadFilesUseCase e si occupa
 \paragraph{ConfluenceCleanerService}
 \label{sec:confluence_cleaner_service}
 La classe ConfluenceCleanerService si occupa di pulire le pagine di Confluence, rimuovendo i tag HTML e i caratteri speciali. Essa espone il seguente metodo pubblico:
-clean\_confluence\_pages(pages: Document*): Document*
-Inoltre, contiene il seguente metodo privato:
-remove\_html\_tags(document: Document): Document
-replace\_html\_entities(document: Document): Document
+\begin{itemize}
+    \item \texttt{clean\_confluence\_pages(pages: Document*): Document*}: Si occupa di pulire le pagine di Confluence, rimuovendo i tag HTML e i caratteri speciali. Restituisce la lista di pagine pulite, sempre di tipo Document.
+\end{itemize}
+Inoltre, contiene i seguenti metodi privati:
+\begin{itemize}
+    \item \texttt{remove\_html\_tags(document: Document): Document}: Si occupa di rimuovere i tag HTML da una pagina di Confluence. Restituisce la pagina pulita, di tipo Document;
+    \item \texttt{replace\_html\_entities(document: Document): Document}: Si occupa di sostituire le entità HTML con i corrispondenti caratteri Unicode da una pagina di Confluence. Restituisce la pagina pulita, di tipo Document.
+\end{itemize}
 
 \paragraph{GetMessagesService}
 \label{sec:get_messages_service}
@@ -346,7 +350,11 @@ L'interfaccia ConfluencePort definisce una delle interfacce attraverso le quali 
 
 \paragraph{LoadFilesInVectorStorePort}
 \label{sec:load_files_in_vector_store_port}
-L'interfaccia LoadFilesInVectorStorePort definisce una\\ delle interfacce attraverso le quali LoadFilesService interagisce con il mondo esterno, permettendo il caricamento dei documenti nel database vettoriale senza modificare la logica di business. Essa espone un solo metodo, \texttt{load(documents: Document*): VectorStoreLog}, che prende in input una lista di documenti di tipo Document, e si occupa di caricare i documenti nel database vettoriale configurato e di salvare i rispettivi log. La porta viene implementata da ChromaVectorStoreAdapter.
+L'interfaccia LoadFilesInVectorStorePort definisce una\\ delle interfacce attraverso le quali LoadFilesService interagisce con il mondo esterno, permettendo il caricamento dei documenti nel database vettoriale senza modificare la logica di business. Essa espone un solo metodo, \texttt{load(documents: Document*): VectorStoreLog}, che prende in input una lista di documenti di tipo Document, e si occupa di caricare i documenti nel database vettoriale configurato e di restituito il corrispondente log. La porta viene implementata da ChromaVectorStoreAdapter.
+
+\paragraph{SaveLoadingAttemptInDbPort}
+\label{sec:save_loading_attempt_in_db_port}
+L'interfaccia SaveLoadingAttemptInDbPort definisce una delle interfacce attraverso le quali LoadFilesService interagisce con il mondo esterno, permettendo il salvataggio di dati persistenti senza modificare la logica di business. Essa espone un solo metodo, \texttt{save\_loading\_attempt(loading\_attempt: LoadingAttempt):\\ DbSaveOperationResponse}, che prende in input un oggetto di Business, LoadingAttempt, e si occupa di salvare l'esito del caricamento dei documenti nel database relazionale configurato e di restituire la corrispondente risposta. La porta viene implementata da PostgresAdapter.
 
 \paragraph{GetMessagesPort}
 \label{sec:get_messages_port}
@@ -361,6 +369,47 @@ L'interfaccia SaveMessagePort definisce l'interfaccia attraverso la quale SaveMe
 
 \subsubsubsection{Adapter}
 \label{sec:adapter}
+
+\paragraph{ChromaVectorStoreAdapter}
+\label{sec:chroma_vector_store_adapter}
+La classe ChromaVectorStoreAdapter implementa le interfacce LoadFilesInVectorStorePort e SimilaritySearchPort, e si occupa di adattare i dati ricevuti dalla logica di business in un tipo Entity adatto per la comunicazione con il mondo esterno, e viceversa. 
+Essa possiede, oltre a chroma\_vector\_store\_repository, un altro attributo privato, ricevuto tramite il costruttore, che viene chiamato da una funzione di \emph{Dependency Injection}:
+\begin{itemize}
+    \item \texttt{max\_chunk\_size: int}: Indica la dimensione massima di un \emph{chunk}\textsubscript{\textbf{\textit{G}}} di documenti che è possibile caricare nel database vettoriale. Per Chroma, questo valore equivale a 41.666 caratteri.
+\end{itemize}
+Essa espone i seguenti due metodi pubblici:
+\begin{itemize}
+    \item \texttt{load(documents: Document*): VectorStoreLog}: Riceve in input una lista di documenti di tipo Document, chiama il proprio metodo split per dividerli in chunk e convertirli in oggetti ChromaDocumentEntity, e si occupa di chiamare il metodo di ChromaVectorStoreRepository per caricare i documenti nel database vettoriale. Restituisce un oggetto di tipo VectorStoreLog, corrispondente al log del caricamento;
+    \item \texttt{similarity\_search(user\_input: Question): Document*}: Riceve in input la domanda dell'utente di tipo Question, la converte in una stringa, e si occupa di chiamare il metodo di ChromaVectorStoreRepository per cercare i documenti similari alla domanda nel database vettoriale. Da tal metodo riceve un oggetto QueryResultEntity, che converte in una lista di documenti di tipo Document, corrispondenti ai documenti rilevanti. Questi ultimi vengono restituiti al chiamante SimilaritySearchService.
+\end{itemize}
+Essa contiene inoltre il seguente metodo privato:
+\begin{itemize}
+    \item \texttt{split(documents: Document*): ChromaDocumentEntity*}: Riceve in input una lista di documenti di tipo Document, li converte in oggetti DocumentEntity, e si occupa di dividere i documenti in chunk di dimensione massima max\_chunk\_size. Restituisce una lista di oggetti di tipo ChromaDocumentEntity, corrispondenti ai chunk di documenti.
+\end{itemize}
+
+\dots
+
+\paragraph{GitHubAdapter}
+\label{sec:github_adapter}
+La classe GitHubAdapter implementa l'interfaccia GitHubPort e si occupa di adattare i dati ricevuti dalla logica di business in un tipo Entity adatto per la comunicazione con il mondo esterno, e viceversa. Essa espone i seguenti due metodi:
+\begin{itemize}
+    \item \texttt{load\_github\_commits(): (PlatformLog, Document*)}: Si occupa di chiamare il metodo di GitHubRepository per recuperare i Commits da GitHub e restituire il rispettivo log. Dal repository riceve un PlatformLog e una lista di CommitEntity, e converte quest'ultima in una lista di Document. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti ai commits;
+    \item \texttt{load\_github\_files(): (PlatformLog, Document*)}: Si occupa di chiamare il metodo di GitHubRepository per recuperare i Files da GitHub e restituire il rispettivo log. Dal repository riceve un PlatformLog e una lista di FileEntity, e converte quest'ultima in una lista di Document. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti ai files.
+\end{itemize}
+
+\paragraph{JiraAdapter}
+\label{sec:jira_adapter}
+La classe JiraAdapter implementa l'interfaccia JiraPort e si occupa di adattare i dati ricevuti dalla logica di business in un tipo Entity adatto per la comunicazione con il mondo esterno, e viceversa. Essa espone il seguente metodo:
+\begin{itemize}
+    \item \texttt{load\_jira\_issues(): (PlatformLog, Document*)}: Si occupa di chiamare il metodo di JiraRepository per recuperare le Issues da Jira e restituire il rispettivo log. Dal repository riceve un PlatformLog e una lista di IssueEntity, e converte quest'ultima in una lista di Document. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti alle issues.
+\end{itemize}
+
+\paragraph{ConfluenceAdapter}
+\label{sec:confluence_adapter}
+La classe ConfluenceAdapter implementa l'interfaccia ConfluencePort e si occupa di adattare i dati ricevuti dalla logica di business in un tipo Entity adatto per la comunicazione con il mondo esterno, e viceversa. Essa espone il seguente metodo:
+\begin{itemize}
+    \item \texttt{load\_confluence\_pages(): (PlatformLog, Document*)}: Si occupa di chiamare il metodo di ConfluenceRepository per recuperare le Pagine da Confluence e restituire il rispettivo log. Dal repository riceve un PlatformLog e una lista di PageEntity, e converte quest'ultima in una lista di Document. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti alle pagine.
+\end{itemize}
 
 \paragraph{PostgresAdapter}
 \label{sec:postgres_adapter}
@@ -387,12 +436,66 @@ Inoltre, contiene i seguenti metodi privati:
 \subsubsubsection{Repository}
 \label{sec:repository}
 
+\paragraph{ChromaVectorStoreRepository}
+\label{sec:chroma_vector_store_repository}
+La classe ChromaVectorStoreRepository si occupa di gestire parte della \emph{persistent logic}\textsubscript{\textbf{\textit{G}}} del sistema, ovvero di caricare i documenti nel database vettoriale \emph{Chroma}\textsubscript{\textbf{\textit{G}}} e di recuperarli compiendo una ricerca di \emph{similarità}\textsubscript{\textbf{\textit{G}}}. Essa contiene un singolo attributo privato, ricevuto tramite il costruttore, che viene chiamato da una funzione di \emph{Dependency Injection}:
+\begin{itemize}
+    \item \texttt{collection: Collection}: Collezione di documenti del database vettoriale Chroma, chiamata "buddybot-vector-store".
+\end{itemize}
+Essa espone i seguenti metodi pubblici:
+\begin{itemize}
+    \item \texttt{load(documents: ChromaDocumentEntity*): VectorStoreLog}: Si occupa di caricare i documenti nel database vettoriale Chroma. Riceve in input una lista di documenti di tipo ChromaDocumentEntity e li carica nel database vettoriale. Restituisce un oggetto di tipo VectorStoreLog, corrispondente al log del caricamento;
+    \item \texttt{similarity\_search(user\_input: string): QueryResultEntity}: Si occupa di cercare i documenti similari alla domanda dell'utente nel database vettoriale Chroma. Riceve in input la domanda dell'utente di tipo string e la utilizza per cercare i documenti similari nel database vettoriale. Restituisce un oggetto di tipo QueryResultEntity, contenente i documenti rilevanti.
+\end{itemize}
+
+\dots
+
+\paragraph{GitHubRepository}
+\label{sec:github_repository}
+La classe GitHubRepository si occupa di gestire parte della \emph{persistent logic}\textsubscript{\textbf{\textit{G}}} del sistema, ovvero di recuperare i dati da \emph{GitHub}\textsubscript{\textbf{\textit{G}}}. Essa contiene un singolo attributo privato:
+\begin{itemize}
+    \item \texttt{github\_repo: Repository}: Repository GitHub da cui recuperare i dati, ricevuto tramite il costruttore, che viene chiamato da una funzione di \emph{Dependency Injection}.
+\end{itemize}
+Essa espone i seguenti metodi pubblici:
+\begin{itemize}
+    \item \texttt{load\_github\_commits(): (PlatformLog, CommitEntity*)}: Si occupa di recuperare i Commits da GitHub e di salvare i rispettivi log. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo CommitEntity, corrispondenti ai commits;
+    \item \texttt{load\_github\_files(): (PlatformLog, FileEntity*)}: Si occupa di recuperare i Files da GitHub e di salvare i rispettivi log. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo FileEntity, corrispondenti ai files.
+\end{itemize}
+
+\paragraph{JiraRepository}
+\label{sec:jira_repository}
+La classe JiraRepository si occupa di gestire parte della \emph{persistent logic}\textsubscript{\textbf{\textit{G}}} del sistema, ovvero di recuperare i dati da \emph{Jira}\textsubscript{\textbf{\textit{G}}}. Essa contiene quattro attributi privati, ricevuti tramite il costruttore, che viene chiamato da una funzione di \emph{Dependency Injection}:
+\begin{itemize}
+    \item \texttt{base\_url: string}: URL di base del profilo Jira del progetto;
+    \item \texttt{project\_key: string}: Chiave del progetto Jira;
+    \item \texttt{timeout: int}: Timeout delle richieste;
+    \item \texttt{headers: dict[string, string]}: Headers delle richieste, per gestire l'autenticazione.
+\end{itemize}
+Essa espone il seguente metodo:
+\begin{itemize}
+    \item \texttt{load\_jira\_issues(): (PlatformLog, IssueEntity*)}: Si occupa di recuperare le Issues da Jira e di salvare i rispettivi log. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo IssueEntity, corrispondenti alle issues.
+\end{itemize}
+
+\paragraph{ConfluenceRepository}
+\label{sec:confluence_repository}
+La classe ConfluenceRepository si occupa di gestire parte della \emph{persistent logic}\textsubscript{\textbf{\textit{G}}} del sistema, ovvero di recuperare i dati da \emph{Confluence}\textsubscript{\textbf{\textit{G}}}. Essa contiene quattro attributi privati, ricevuti tramite il costruttore, che viene chiamato da una funzione di \emph{Dependency Injection}:
+\begin{itemize}
+    \item \texttt{base\_url: string}: URL di base del profilo Confluence del progetto;
+    \item \texttt{space\_key: string}: Chiave dello spazio Confluence;
+    \item \texttt{timeout: int}: Timeout delle richieste;
+    \item \texttt{headers: dict[string, string]}: Headers delle richieste, per gestire l'autenticazione.
+\end{itemize}
+Essa espone il seguente metodo:
+\begin{itemize}
+    \item \texttt{load\_confluence\_pages(): (PlatformLog, PageEntity*)}: Si occupa di recuperare le Pagine da Confluence e di salvare i rispettivi log. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo PageEntity, corrispondenti alle pagine.
+\end{itemize}
+
 \paragraph{PostgresRepository}
 \label{sec:postgres_repository}
 La classe PostgresRepository si occupa di gestire parte della \emph{persistent logic}\textsubscript{\textbf{\textit{G}}} del sistema, ovvero di gestire la persistenza dei dati, interagendo con il \emph{database relazionale}\textsubscript{\textbf{\textit{G}}} \emph{Postgres}\textsubscript{\textbf{\textit{G}}} per salvare e/o recuperare le informazioni necessarie. 
 Essa contiene un singolo attributo privato:
 \begin{itemize}
-    \item \texttt{conn: Connection}: Connessione al database Postgres ricevuta tramite il costruttore, che viene chiamato da una funzione di \emph{Dependency Injection}\textsubscript{\textbf{\textit{G}}}.
+    \item \texttt{conn: Connection}: Connessione al database Postgres ricevuta tramite il costruttore, che viene chiamato da una funzione di \emph{Dependency Injection}.
 \end{itemize}
 Essa espone i seguenti metodi pubblici:
 \begin{itemize}
