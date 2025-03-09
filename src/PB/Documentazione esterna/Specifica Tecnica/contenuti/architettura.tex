@@ -122,7 +122,7 @@ Ogni classe di repository, oltre a svolgere il proprio di compito, si occupa anc
     \caption{Architettura backend dell’aggiornamento del badge di segnalazione dell’esito dell’ultimo aggiornamento automatico}
 \end{figure}
 
-\dots
+L'UML in figura rappresenta l'architettura dell'aggiornamento del badge di segnalazione dell'esito dell'ultimo aggiornamento automatico, dal punto di vista del backend. Il frontend invoca il metodo\\ \texttt{get\_last\_load\_outcome} esposto dal backend tramite FastAPI, il quale chiama GetLastLoadOutcomeController, che a sua volta chiama l'interfaccia GetLastLoadOutcomeUseCase implementata da GetLastLoadOutcomeService. GetLastLoadOutcomeService chiama l'interfaccia GetLastLoadOutcomePort, implementata da PostgresAdapter, che invoca il metodo \texttt{get\_last\_load\_outcome} esposto da PostgresRepository, che si occupa di recuperare da Postgres l'ultimo esito del caricamento di documenti nel database vettoriale Chroma. Più precisamente, viene recuperato l'attributo \texttt{outcome} della tupla con timestamp di fine aggiornamento più recente dalla tabella \texttt{loading\_attempts}. PostgresRepository restituisce un oggetto di tipo PostgresLastLoadOutcome, che può assumere valore True, se l'ultimo tentativo di aggiornamento ha avuto esito positivo, False, se l'ultimo tentativo di aggiornamento ha avuto esito negativo, o Error, se c'è stato un errore nell'interazione con Postgres per recuperare l'esito dell'ultimo aggiornamento. L'oggetto PostgresLastLoadOutcome viene convertito in un oggetto di tipo LastLoadOutcome da PostgresAdapter e restituito a GetLastLoadOutcomeService. Infine, GetLastLoadOutcomeController converte l'oggetto verso il tipo LastLoadOutcomeDTO e lo restituisce al frontend.
 
 \newpage
 
@@ -136,8 +136,8 @@ Ogni classe di repository, oltre a svolgere il proprio di compito, si occupa anc
     \caption{Architettura del salvataggio dei messaggi nello storico}
 \end{figure}
 
-L'\emph{UML}\textsubscript{\textbf{\textit{G}}} in figura rappresenta l'\emph{architettura}\textsubscript{\textbf{\textit{G}}} del salvataggio dei messaggi nello storico.
-Il \emph{frontend}\textsubscript{\textbf{\textit{G}}} invoca il metodo \texttt{save\_message} esposto dal \emph{backend}\textsubscript{\textbf{\textit{G}}} tramite \emph{FastAPI}\textsubscript{\textbf{\textit{G}}}, passando il messaggio in forma di MessageDTO.
+L'\emph{UML} in figura rappresenta l'\emph{architettura} del salvataggio dei messaggi nello storico.
+Il \emph{frontend} invoca il metodo \texttt{save\_message} esposto dal \emph{backend} tramite \emph{FastAPI}, passando il messaggio in forma di MessageDTO.
 Il messaggio viene recuperato dal SaveMessageController, che converte il messaggio in un oggetto di Business, Message, e lo invia all'\emph{interfaccia}\textsubscript{\textbf{\textit{G}}} SaveMessageUseCase, implementata da SaveMessageService.
 SaveMessageService, quindi, chiama l'interfaccia SaveMessagePort, che è implementata da PostgresAdapter.
 PostgresAdapter si occupa di convertire il tipo di dato Message nel tipo PostgresMessage, e invoca il metodo \texttt{save\_message} esposto dalla classe PostgresRepository.
@@ -246,6 +246,10 @@ La classe SaveMessageController si occupa di mettere in contatto il frontend con
 \label{sec:get_next_possible_questions_controller}
 La classe GetNextPossibleQuestionsController si occupa di mettere in contatto il frontend con il backend nell'architettura della generazione di domande per proseguire la conversazione. Attraverso il metodo \texttt{get\_next\_possible\_questions\\(question\_answer\_couple: dict[string, string], num\_questions: int): dict[string,\\ string]}, riceve un dizionario che contiene l'ultima domanda dell'utente e l'ultima risposta del chatbot, e un intero che indica il numero di domande da generare, li converte in un oggetto QuestionAnswerCouple (contenente un oggetto Question e un oggetto Answer) e un oggetto Quantity, e li invia all'interfaccia GetNextPossibleQuestionsUseCase. Riceve poi da essa in output un oggetto NextPossibleQuestions, converte le domande contenute in un dizionario di stringhe, e lo restituisce al frontend.
 
+\paragraph{GetLastLoadOutcomeController}
+\label{sec:get_last_load_outcome_controller}
+La classe GetLastLoadOutcomeController si occupa di mettere in contatto il frontend con il backend nell'architettura dell'aggiornamento del badge di segnalazione dell'esito dell'ultimo aggiornamento automatico. Attraverso il metodo \texttt{get\_last\_load\_outcome(): LastLoadOutcomeDTO}, invia una richiesta all'interfaccia GetLastLoadOutcomeUseCase per ottenere l'esito dell'ultimo aggiornamento del database vettoriale, converte l'oggetto LastLoadOutcome ottenuto in un oggetto LastLoadOutcomeDTO e lo restituisce al frontend.
+
 \newpage
 
 
@@ -271,6 +275,10 @@ SaveMessageUseCase è un'interfaccia che definisce il caso d'uso del salvataggio
 \paragraph{GetNextPossibleQuestionsUseCase}
 \label{sec:get_next_possible_questions_use_case}
 GetNextPossibleQuestionsUseCase è un'interfaccia che definisce il caso d'uso della generazione di domande per proseguire la conversazione. Essa contiene un solo metodo, \texttt{get\_next\_possible\_questions(question\_answer\_couple: QuestionAnswerCouple, header: Header): NextPossibleQuestions}, che prende in input una coppia domanda-risposta, QuestionAnswerCouple, e un'introduzione per dare contesto al chatbot, Header, e restituisce le possibili domande successive, NextPossibleQuestions. Questa interfaccia fa da attributo a GetNextPossibleQuestionsController e viene implementata da GetNextPossibleQuestionsService.
+
+\paragraph{GetLastLoadOutcomeUseCase}
+\label{sec:get_last_load_outcome_use_case}
+GetLastLoadOutcomeUseCase è un'interfaccia che definisce il caso d'uso dell'aggiornamento del badge di segnalazione dell'esito dell'ultimo aggiornamento automatico. Essa contiene un solo metodo, \texttt{get\_last\_load\_outcome(): LastLoadOutcome}, che restituisce l'esito dell'ultimo aggiornamento del database vettoriale, di tipo LastLoadOutcome. Questa interfaccia fa da attributo a GetLastLoadOutcomeController e viene implementata da GetLastLoadOutcomeService.
 
 \newpage
 
@@ -335,6 +343,10 @@ La classe SaveMessageService implementa l'interfaccia SaveMessageUseCase e si oc
 \label{sec:get_next_possible_questions_service}
 La classe GetNextPossibleQuestionsService implementa l'interfaccia GetNextPossibleQuestionsUseCase e si occupa di eseguire la logica di business per la generazione di domande per proseguire la conversazione. Essa espone un solo metodo,\\ \texttt{get\_next\_possible\_questions(question\_answer\_couple: QuestionAnswerCouple, header:\\ Header): NextPossibleQuestions}, che prende in input una coppia domanda-risposta, QuestionAnswerCouple, e un'introduzione per dare contesto al chatbot, Header, e chiama l'interfaccia GetNextPossibleQuestionsPort per generare le possibili domande successive. La porta restituisce le possibili domande racchiuse in un oggetto di Business, NextPossibleQuestions, che viene a sua volta restituito a GetNextPossibleQuestionsController.
 
+\paragraph{GetLastLoadOutcomeService}
+\label{sec:get_last_load_outcome_service}
+La classe GetLastLoadOutcomeService implementa l'interfaccia GetLastLoadOutcomeUseCase e si occupa di eseguire la logica di business per l'aggiornamento del badge di segnalazione dell'esito dell'ultimo aggiornamento automatico. Essa espone un solo metodo, \texttt{get\_last\_load\_outcome(): LastLoadOutcome}, che chiama l'interfaccia GetLastLoadOutcomePort per ottenere l'esito dell'ultimo aggiornamento del database vettoriale. La porta restituisce un oggetto di Business, LastLoadOutcome, che viene a sua volta restituito a GetLastLoadOutcomeController.
+
 \newpage
 
 
@@ -368,23 +380,27 @@ ConfluencePort definisce una delle interfacce attraverso le quali LoadFilesServi
 
 \paragraph{LoadFilesInVectorStorePort}
 \label{sec:load_files_in_vector_store_port}
-LoadFilesInVectorStorePort definisce una\\ delle interfacce attraverso le quali LoadFilesService interagisce con il mondo esterno, permettendo il caricamento dei documenti nel database vettoriale senza modificare la logica di business. Essa espone un solo metodo, \texttt{load(documents: Document*): VectorStoreLog}, che prende in input una lista di documenti di tipo Document, e si occupa di caricare i documenti nel database vettoriale configurato e di restituito il corrispondente log. La porta viene implementata da ChromaVectorStoreAdapter.
+LoadFilesInVectorStorePort definisce una\\ delle interfacce attraverso le quali LoadFilesService interagisce con il mondo esterno, permettendo il caricamento dei documenti nel database vettoriale senza modificare la logica di business. Essa espone un solo metodo, \texttt{load(documents: Document*): VectorStoreLog}, che prende in input una lista di documenti di tipo Document, e si occupa di caricare i documenti nel database vettoriale configurato e di restituito il corrispondente log, di tipo VectorStoreLog. La porta viene implementata da ChromaVectorStoreAdapter.
 
 \paragraph{SaveLoadingAttemptInDbPort}
 \label{sec:save_loading_attempt_in_db_port}
-SaveLoadingAttemptInDbPort definisce una delle interfacce attraverso le quali LoadFilesService interagisce con il mondo esterno, permettendo il salvataggio di dati persistenti senza modificare la logica di business. Essa espone un solo metodo,\\ \texttt{save\_loading\_attempt(loading\_attempt: LoadingAttempt): DbSaveOperationResponse}, che prende in input un oggetto di Business, LoadingAttempt, e si occupa di salvare l'esito del caricamento dei documenti nel database relazionale configurato e di restituire la corrispondente risposta. La porta viene implementata da PostgresAdapter.
+SaveLoadingAttemptInDbPort definisce una delle interfacce attraverso le quali LoadFilesService interagisce con il mondo esterno, permettendo il salvataggio di dati persistenti senza modificare la logica di business. Essa espone un solo metodo,\\ \texttt{save\_loading\_attempt(loading\_attempt: LoadingAttempt): DbSaveOperationResponse}, che prende in input l'esito del caricamento, LoadingAttempt, e si occupa di salvarlo nel database relazionale configurato e di restituire la corrispondente risposta, di tipo DbSaveOperationResponse. La porta viene implementata da PostgresAdapter.
 
 \paragraph{GetMessagesPort}
 \label{sec:get_messages_port}
-GetMessagesPort definisce l'interfaccia attraverso la quale GetMessagesService interagisce con il mondo esterno, permettendo il recupero di dati persistenti senza modificare la logica di business. Essa espone un solo metodo, \texttt{get\_messages(quantity: Quantity):\\ Message*}, che prende in input la quantità di messaggi da recuperare di tipo Quantity, e si occupa di recuperare i messaggi dallo storico. La porta viene implementata da PostgresAdapter.
+GetMessagesPort definisce l'interfaccia attraverso la quale GetMessagesService interagisce con il mondo esterno, permettendo il recupero di dati persistenti senza modificare la logica di business. Essa espone un solo metodo, \texttt{get\_messages(quantity: Quantity):\\ Message*}, che prende in input la quantità di messaggi da recuperare di tipo Quantity, e si occupa di recuperare i messaggi da un database, di tipo Message. La porta viene implementata da PostgresAdapter.
 
 \paragraph{SaveMessagePort}
 \label{sec:save_message_port}
-SaveMessagePort definisce l'interfaccia attraverso la quale SaveMessageService interagisce con il mondo esterno, permettendo il salvataggio di dati persistenti senza modificare la logica di business. Essa espone un solo metodo, \texttt{save(message: Message):\\ DbSaveOperationResponse}, che prende in input il messaggio da salvare di tipo Message, e si occupa di salvare il messaggio nello storico e riportare la risposta del database. La porta viene implementata da PostgresAdapter.
+SaveMessagePort definisce l'interfaccia attraverso la quale SaveMessageService interagisce con il mondo esterno, permettendo il salvataggio di dati persistenti senza modificare la logica di business. Essa espone un solo metodo, \texttt{save(message: Message):\\ DbSaveOperationResponse}, che prende in input il messaggio da salvare di tipo Message, e si occupa di salvare il messaggio in un database e riportare la sua risposta, di tipo DbSaveOperationResponse. La porta viene implementata da PostgresAdapter.
 
 \paragraph{GetNextPossibleQuestionsPort}
 \label{sec:get_next_possible_questions_port}
-GetNextPossibleQuestionsPort definisce l'interfaccia attraverso la quale GetNextPossibleQuestionsService interagisce con il mondo esterno, permettendo la generazione di possibili domande successive senza modificare la logica di business. Essa espone un solo metodo, \texttt{get\_next\_possible\_questions(question\_answer\_couple: QuestionAnswerCouple, header:\\ Header): NextPossibleQuestions}, che prende in input una coppia domanda-risposta, QuestionAnswerCouple, e un'introduzione per dare contesto al chatbot, Header, e si occupa di generare le possibili domande successive. La porta viene implementata da LangChainAdapter.
+GetNextPossibleQuestionsPort definisce l'interfaccia attraverso la quale GetNextPossibleQuestionsService interagisce con il mondo esterno, permettendo la generazione di possibili domande successive senza modificare la logica di business. Essa espone un solo metodo, \texttt{get\_next\_possible\_questions(question\_answer\_couple: QuestionAnswerCouple, header:\\ Header): NextPossibleQuestions}, che prende in input una coppia domanda-risposta, QuestionAnswerCouple, e un'introduzione per dare contesto al chatbot, Header, e si occupa di generare le possibili domande successive, di tipo NextPossibleQuestions. La porta viene implementata da LangChainAdapter.
+
+\paragraph{GetLastLoadOutcomePort}
+\label{sec:get_last_load_outcome_port}
+GetLastLoadOutcomePort definisce l'interfaccia attraverso la quale GetLastLoadOutcomeService interagisce con il mondo esterno, permettendo il recupero di dati persistenti senza modificare la logica di business. Essa espone un solo metodo, \texttt{get\_last\_load\_outcome(): LastLoadOutcome}, che si occupa di ottenere l'esito dell'ultimo aggiornamento del database vettoriale, di tipo LastLoadOutcome. La porta viene implementata da PostgresAdapter.
 
 \newpage
 
@@ -395,7 +411,7 @@ GetNextPossibleQuestionsPort definisce l'interfaccia attraverso la quale GetNext
 \paragraph{ChromaVectorStoreAdapter}
 \label{sec:chroma_vector_store_adapter}
 La classe ChromaVectorStoreAdapter implementa le interfacce LoadFilesInVectorStorePort e SimilaritySearchPort, e si occupa di adattare i dati ricevuti dalla logica di business in un tipo Entity adatto per la comunicazione con il mondo esterno, e viceversa. 
-Essa possiede, oltre a chroma\_vector\_store\_repository, un altro attributo privato, ricevuto tramite il costruttore, che viene chiamato da una funzione di \emph{Dependency Injection}:
+Essa possiede, oltre a chroma\_vector\_store\_repository, un altro attributo privato, ricevuto tramite il costruttore, che viene chiamato da una funzione di \emph{Dependency Injection}\textsubscript{\textbf{\textit{G}}}:
 \begin{itemize}
     \item \texttt{max\_chunk\_size: int}: Indica la dimensione massima di un \emph{chunk}\textsubscript{\textbf{\textit{G}}} di documenti che è possibile caricare nel database vettoriale. Per Chroma, questo valore equivale a 41.666 caratteri.
 \end{itemize}
@@ -448,10 +464,10 @@ La classe ConfluenceAdapter implementa l'interfaccia ConfluencePort e si occupa 
 \label{sec:postgres_adapter}
 La classe PostgresAdapter implementa le interfacce GetMessagesPort, SaveMessagePort, SaveLoadingAttemptInDbPort e GetLastLoadOutcomePort, e si occupa di adattare i dati ricevuti dalla logica di business in un tipo Entity adatto per la persistenza, e viceversa. Essa espone i seguenti metodi pubblici:
 \begin{itemize}
-    \item \texttt{get\_messages(quantity: Quantity): Message*}: Riceve in input la quantità di messaggi da recuperare di tipo Quantity, e si occupa di convertire la quantità in un intero e di chiamare il metodo di recupero dei messaggi di PostgresRepository. Restituisce, una volta opportunamente convertita, una lista di messaggi di tipo Message;
-    \item \texttt{save\_message(message: Message): DbSaveOperationResponse}: Riceve in input il messaggio da salvare di tipo Message, e si occupa di chiamare il metodo di conversione del messaggio in PostgresMessage e di chiamare il metodo di salvataggio del messaggio nello storico di PostgresRepository. Restituisce, una volta opportunamente convertito, un oggetto di tipo DbSaveOperationResponse;
-    \item \texttt{save\_loading\_attempt(loading\_attempt: LoadingAttempt): DbSaveOperationResponse}: Riceve in input il tentativo di caricamento da salvare di tipo LoadingAttempt, e si occupa di chiamare il metodo di conversione del tentativo in PostgresLoadingAttempt e di chiamare il metodo di salvataggio del tentativo di caricamento nello storico di PostgresRepository. Restituisce, una volta opportunamente convertito, un oggetto di tipo DbSaveOperationResponse;
-    \item \texttt{get\_last\_load\_outcome(): LastLoadOutcome}: Si occupa di chiamare il metodo di recupero dell'ultimo tentativo di caricamento dallo storico di PostgresRepository. Restituisce, una volta opportunamente convertito, un oggetto di tipo LastLoadOutcome.
+    \item \texttt{get\_messages(quantity: Quantity): Message*}: Riceve in input la quantità di messaggi da recuperare di tipo Quantity, e si occupa di convertire la quantità in un intero e di chiamare il metodo di recupero dei messaggi dal database di PostgresRepository. Riceve una lista di messaggi di tipo PostgresMessage, e restituisce, una volta opportunamente convertita, una lista di messaggi di tipo Message;
+    \item \texttt{save\_message(message: Message): DbSaveOperationResponse}: Riceve in input il messaggio da salvare di tipo Message, e si occupa di chiamare il metodo di conversione del messaggio in PostgresMessage e di chiamare il metodo di salvataggio di un messaggio nel database di PostgresRepository. Riceve un oggetto di tipo PostgresSaveOperationResponse e restituisce, una volta opportunamente convertito, un oggetto di tipo DbSaveOperationResponse;
+    \item \texttt{save\_loading\_attempt(loading\_attempt: LoadingAttempt): DbSaveOperationResponse}: Riceve in input il tentativo di caricamento da salvare di tipo LoadingAttempt, e si occupa di chiamare il metodo di conversione del tentativo in PostgresLoadingAttempt e di chiamare il metodo di salvataggio del tentativo di caricamento nel database di PostgresRepository. Riceve un oggetto di tipo PostgresSaveOperationResponse e restituisce, una volta opportunamente convertito, un oggetto di tipo DbSaveOperationResponse;
+    \item \texttt{get\_last\_load\_outcome(): LastLoadOutcome}: Si occupa di chiamare il metodo di recupero dell'esito dell'ultimo tentativo di caricamento di documenti nel database vettoriale da PostgresRepository. Riceve un oggetto di tipo PostgresLastLoadOutcome e restituisce, una volta opportunamente convertito, un oggetto di tipo LastLoadOutcome.
 \end{itemize}
 Inoltre, contiene i seguenti metodi privati:
 \begin{itemize}
@@ -536,20 +552,20 @@ Essa espone il seguente metodo:
 \paragraph{PostgresRepository}
 \label{sec:postgres_repository}
 La classe PostgresRepository si occupa di gestire parte della \emph{persistent logic}\textsubscript{\textbf{\textit{G}}} del sistema, ovvero di gestire la persistenza dei dati, interagendo con il \emph{database relazionale}\textsubscript{\textbf{\textit{G}}} \emph{Postgres}\textsubscript{\textbf{\textit{G}}} per salvare e/o recuperare le informazioni necessarie. 
-Essa contiene un singolo attributo privato:
+Essa contiene un singolo attributo privato, ricevuto tramite il costruttore, che viene chiamato da una funzione di \emph{Dependency Injection}:
 \begin{itemize}
-    \item \texttt{conn: Connection}: Connessione al database Postgres ricevuta tramite il costruttore, che viene chiamato da una funzione di \emph{Dependency Injection}.
+    \item \texttt{conn: Connection}: Connessione al database Postgres.
 \end{itemize}
 Essa espone i seguenti metodi pubblici:
 \begin{itemize}
-    \item \texttt{get\_messages(quantity: int): PostgresMessage*}: Riceve in input la quantità di messaggi da recuperare, e si occupa di recuperare i messaggi dallo storico. Restituisce una lista di messaggi di tipo PostgresMessage;
-    \item \texttt{save\_message(message: PostgresMessage): PostgresSaveOperationResponse}: Riceve in input il messaggio da salvare, e si occupa di salvare il messaggio nello storico. Restituisce un oggetto di tipo PostgresSaveOperationResponse, contenente l'esito dell'operazione e un relativo messaggio;
-    \item \texttt{save\_loading\_attempt(loading\_attempt: PostgresLoadingAttempt):\\ PostgresSaveOperationResponse}: Riceve in input il tentativo di caricamento da salvare, e si occupa di salvare il tentativo di caricamento nello storico. Restituisce un oggetto di tipo PostgresSaveOperationResponse, contenente l'esito dell'operazione e un relativo messaggio;
-    \item \texttt{get\_last\_load\_outcome(): PostgresLoadingAttempt}: Si occupa di recuperare l'ultimo tentativo di caricamento dallo storico. Restituisce un oggetto di tipo PostgresLoadingAttempt.
+    \item \texttt{get\_messages(quantity: int): PostgresMessage*}: Riceve in input la quantità di messaggi di tipo intero, e si occupa di recuperare tale numero messaggi dal database. Restituisce una lista di messaggi di tipo PostgresMessage;
+    \item \texttt{save\_message(message: PostgresMessage): PostgresSaveOperationResponse}: Riceve in input un messaggio di tipo PostgresMessage, e si occupa di salvarlo nel database. Restituisce un oggetto di tipo PostgresSaveOperationResponse, contenente l'esito dell'operazione e un relativo messaggio;
+    \item \texttt{save\_loading\_attempt(loading\_attempt: PostgresLoadingAttempt):\\ PostgresSaveOperationResponse}: Riceve in input un tentativo di caricamento di tipo PostgresLoadingAttempt, e si occupa di salvarlo nel database. Restituisce un oggetto di tipo PostgresSaveOperationResponse, contenente l'esito dell'operazione e un relativo messaggio;
+    \item \texttt{get\_last\_load\_outcome(): PostgresLoadingAttempt}: Si occupa di recuperare l'esito dell'ultimo tentativo di caricamento di documenti nel database vettoriale. Più precisamente, viene recuperato l'attributo \texttt{outcome} della tupla con timestamp di fine aggiornamento più recente dalla tabella \texttt{loading\_attempts}. Restituisce dunque un oggetto di tipo PostgresLastLoadOutcome, che può assumere valore True, se l'ultimo tentativo di aggiornamento ha avuto esito positivo, False, se l'ultimo tentativo di aggiornamento ha avuto esito negativo, o Error, se c'è stato un errore nell'interazione con Postgres per recuperare l'esito dell'ultimo aggiornamento.
 \end{itemize}
 Inoltre, contiene il seguente metodo privato:
 \begin{itemize}
-    \item \texttt{execute\_query(query: string, params: tuple, fetch\_one: bool, fetch\_all: bool):\\ tuple | list | None}: Riceve in input una stringa contenente una query \emph{SQL}\textsubscript{\textbf{\textit{G}}}, i parametri della query, e due booleani opzionali che indicano se la funzione deve restituire un solo risultato, tutti i risultati, oppure nessuno. Si occupa di eseguire la query sul database configurato e, eventualmente, restituire i risultati.
+    \item \texttt{execute\_query(query: string, params: tuple, fetch\_one: bool, fetch\_all: bool):\\ tuple | list | None}: Riceve in input una stringa contenente una query \emph{SQL}\textsubscript{\textbf{\textit{G}}}, i parametri della query, e due booleani opzionali che indicano se la funzione deve restituire un solo risultato, tutti i risultati, oppure nessuno. Si occupa di eseguire la query sul database configurato e, eventualmente, di restituirne i risultati.
 \end{itemize}
 
 \newpage
