@@ -10,11 +10,11 @@
 \label{subsec:cosa_come_chiedere}
 
 BuddyBot è pensato per essere l'assistente digitale di un'azienda informatica che desidera aiutare i propri dipendenti a ricercare in
-modo veloce delle informazioni di interesse nel codice e nella documentazione dei vari progetti aziendali. Più precisamente, ad
+modo veloce le informazioni di interesse nel codice e nella documentazione dei vari progetti aziendali. Più precisamente, ad
 ogni interrogazione posta dall'utente vengono associati
 dei documenti di contesto, che provengono esclusivamente dai profili \emph{GitHub}\textsubscript{\textbf{\textit{G}}},
-\emph{Jira}\textsubscript{\textbf{\textit{G}}} e \emph{Confluence}\textsubscript{\textbf{\textit{G}}} dell'azienda, e in base alle
-informazioni presenti su tali documenti di contesto il chatbot fornirà la risposta alla domanda fornita.
+\emph{Jira}\textsubscript{\textbf{\textit{G}}} e \emph{Confluence}\textsubscript{\textbf{\textit{G}}} dell'azienda, e, in base alle
+informazioni presenti su tali documenti di contesto, il chatbot fornirà la risposta alla domanda ricevuta.
 Se la domanda viene malposta, il chatbot potrebbe non essere in grado di fornire una risposta, e in tal caso potrebbe restituire
 uno dei seguenti messaggi:
 \begin{itemize}
@@ -28,35 +28,36 @@ Per evitare di ottenere risposte negative, forniamo qui di seguito delle istruzi
 ottenere una risposta soddisfacente:
 \begin{itemize}
     \item La domanda deve essere concisa e diretta, senza giri di parole. Ad esempio "Qual è lo stato del progetto X su Jira?" invece
-    che "Potresti gentilmente dirmi qual è lo stato attuale del progetto X su Jira, per favore?".
+    che "Potresti gentilmente dirmi qual è lo stato attuale del progetto X su Jira, per favore?";
     \item Si devono mettere bene in risalto le parole chiave. Ad esempio "Qual è l'errore di build nel progetto Y?" invece che "Qual
-    è il problema con il progetto Y?".
+    è il problema con il progetto Y?";
     \item La domanda deve essere il più breve possibile. Ad esempio "Chi è l'assegnatario del ticket Z?" invece che "Vorrei sapere
-    chi è la persona a cui è stato assegnato il ticket Z".
+    chi è la persona a cui è stato assegnato il ticket Z";
     \item La domanda deve essere pensata per ottenere una risposta unitaria, e non per aprire una discussione. Ad esempio, occorre
     unificare "Quali commit sono stati fatti oggi? Mostrameli in forma di tabella con assegnatario e data" invece che porre due domande
     separate "Quali commit sono stati fatti oggi?" e "Mostrameli in forma di tabella con assegnatario e data", perchè in quest'ultimo
     caso la seconda domanda riceverà come risposta "Domanda fuori contesto": infatti, ogni coppia domanda-risposta è a sè stante, cioè
     il chatbot non considera il completo flusso del discorso per generare la risposta all'interrogazione corrente, bensì considera solo
-    quest'ultima.
+    quest'ultima. Le domande suggerite per proseguire sono infatti pensate per guidare l'utente verso una nuova interrogazione, e non per far
+    completare la risposta alla domanda corrente;
     \item La domanda deve riguardare un contesto chiaro e definito, quindi non può toccare tematiche troppo generali. Ad esempio
-    "Quali sono i task aperti per il progetto A?" invece che "Qual è la situazione dei nostri progetti?".
+    "Quali sono i task aperti per il progetto A?" invece che "Qual è la situazione dei nostri progetti?";
     \item Il suddetto contesto deve essere uno, infatti non si possono porre due o più domande a tema differente in una stessa
     interrogazione. Ad esempio, invece che "Chi è l'assegnatario del ticket Z su Jira
     e quali sono i suoi relativi commit su GitHub?", è meglio separare in "Chi è l'assegnatario del ticket Z su Jira?" e poi, una 
-    volta ricevuta la risposta, "Quali sono i commit di persona Y su GitHub?".
+    volta ricevuta la risposta, "Quali sono i commit di persona Y su GitHub?" (specificando chiaramente la persona, poichè, come suddetto, il chatbot non può visualizzare il messaggio precedente);
     \item Non si devono chiedere informazioni generiche a riguardo di una risorsa fornendo solo il nome della stessa, ma bisogna
     bensì specificare più di preciso cosa si vuole sapere a riguardo di tale risorsa. Ad esempio "Qual è la descrizione del ticket
-    Z su Jira?" invece che "Dimmi qualcosa sul ticket Z".
+    Z su Jira?" invece che "Dimmi qualcosa sul ticket Z";
     \item La domanda deve essere posta in un linguaggio quanto più possibile formale e tecnico, cercando di rimanere aderenti
     allo stile di scrittura dei documenti aziendali. Un linguaggio troppo colloquiale quasi sicuramente condurrà a risposte negative.
-    Ad esempio "Qual è la copertura dei test per il modulo B?" invece che "Come stanno andando i test per il modulo B?".
+    Ad esempio "Qual è la copertura dei test per il modulo B?" invece che "Come stanno andando i test per il modulo B?";
     \item Non si devono porre domande che richiedono una risposta soggettiva. In caso ne venga posta una per sbaglio, non ci si deve
     fidare della risposta fornita, è bensì consigliabile chiedere ad un collega. Ad esempio "A quanto ammonta la copertura del codice
-    nel progetto C?" invece che "Pensi che il codice del progetto C sia buono?".
+    nel progetto C?" invece che "Pensi che il codice del progetto C sia buono?";
     \item Si devono evitare domande che richiedano ragionamento e/o collegamenti logici, in quanto il chatbot non è in grado di
-    processare informazioni in tal senso. Ad esempio "Quali sono i commit recenti nel progetto D?" invece che "Quali sono i
-    commit nel progetto D dall'inizio della sprint ad ora?".
+    processare informazioni in tal senso. Ad esempio "Quali sono i commit svolti tra il 6 ed il 10 febbraio nel progetto D?" invece che "Quali sono i
+    commit nel progetto D dall'inizio della sprint ad ora?";
     \item Non si devono porre domande per la cui risposta è necessaria una ricerca su internet, in quanto il chatbot fa
     riferimento esclusivamente ai documenti di contesto, e non è in grado di navigare in rete. Ad esempio, invece che "Nel
     progetto Y viene utilizzata l'ultima versione rilasciata del framework X?", bisogna chiedere "Qual è la versione del framework X
@@ -67,25 +68,32 @@ ottenere una risposta soddisfacente:
 \subsection{Interrogazione del chatbot}
 
 \subsubsection{Come inserire una domanda}
-% Parlare dei due metodi di inserimento, o domanda libera o selezione di domande iniziali proposte.
+% Parlare dei due metodi di inserimento, o domanda libera o (dalla seconda domanda in poi) selezione di una delle domande per
+% proseguire la conversazione.
 
 \subsubsection{La risposta del chatbot}
 % Parlare:
-% - della risposta testuale (che può contenere uno snippet di codice);
+% - della risposta testuale (che può contenere uno snippet di codice in un apposito riquadro);
 % - della possibilità di copiare il testo, e soprattutto di copiare lo snippet di codice, entrambi mediante pulsante apposito;
-% - della visualizzazione del nome dei file da cui è stata presa la risposta (se implementeremo il requisito);
-% - delle domande proposte per proseguire, e che rimane sempre disponibile la domanda libera.
+% - della visualizzazione dei link correlati nell'apposito riquadro.
 
 
-\subsection{Visualizzazione dello storico delle sessioni}
-% Parlare della linea orizzontale di suddivisione delle sessioni, e dello scorrimento verso l'alto per visualizzare le
-% sessioni precedenti fino all'inizio della conversazione.
+\subsection{Visualizzazione dello storico dei messaggi}
+% Parlare:
+% - della vista iniziale (senza messaggi);
+% - della visualizzazione della data e ora di invio del messaggio;
+% - dello scorrimento verso l'alto per visualizzare i messaggi precedenti fino all'inizio della conversazione;
+% - della vista del segnalino "Inizio della conversazione" quando si è raggiunto l'inizio della conversazione.
 
 
 \subsection{L'aggiornamento automatico dei documenti}
-% Parlare del fatto che i documenti vengono aggiornati automaticamente ogni tot ore
-% Descrivere il badge di segnalazione dell'esito dell'ultimo aggiornamento: verde se avvenuto con successo, rosso se
-% fallito.
+% Parlare del fatto che i documenti vengono aggiornati automaticamente ogni 24 ore
+% ----> Segnalare che potrebbe avvenire un errore nella generazione della risposta anche nel caso in cui sia stata posta una domanda
+% ----> in contemporanea con l'aggiornamento automatico dei documenti.
+% Descrivere il badge di segnalazione dell'esito dell'ultimo aggiornamento:
+% - spunta se avvenuto con successo; 
+% - X se fallito;
+% - segnale di pericolo se non è stato possibile recuperare l'esito.
 
 
 \subsection{Possibili errori}
@@ -95,7 +103,7 @@ ottenere una risposta soddisfacente:
 % - Errore nella generazione della risposta (UC3). 
 % ----> Segnalare che potrebbe avvenire un errore nella generazione della risposta anche nel caso in cui sia stata posta una domanda
 % ----> in contemporanea con l'aggiornamento automatico dei documenti.
-% - Errore nel recupero del nome dei file utili per la risposta (UC14)
+% - Errore nel recupero del link dei file utili per la risposta (UC14)
 % - Errore nella generazione delle domande per proseguire la conversazione (UC13)
 % - Visualizzazione di un badge che segnala un errore nel recupero dell'esito dell'ultimo aggiornamento del database vettoriale (UC20)
 % - Visualizzazione di un messaggio che spiega il badge che segnala un errore nel recupero dell'esito dell'ultimo aggiornamento del database vettoriale (UC24)
