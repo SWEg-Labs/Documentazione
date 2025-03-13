@@ -86,12 +86,43 @@ ottenere una risposta soddisfacente:
 % - della vista del segnalino "Inizio della conversazione" quando si è raggiunto l'inizio della conversazione.
 
 
-\subsection{L'aggiornamento automatico dei documenti}
-% Parlare del fatto che i documenti vengono aggiornati automaticamente ogni 24 ore
-% Descrivere il badge di segnalazione dell'esito dell'ultimo aggiornamento:
-% - spunta se avvenuto con successo; 
-% - X se fallito;
-% - segnale di pericolo se non è stato possibile recuperare l'esito.
+\subsection{Aggiornamento automatico dei documenti}
+Al fine di garantire che le informazioni fornite dal chatbot siano aggiornate il più possibile, i documenti di contesto utilizzati per generare le risposte vengono aggiornati ogni 24 ore.
+Tali aggiornamenti sono svolti in modo automatico, e non è dunque necessario alcun intervento di configurazione dal parte dell'utente.
+È possibile che, nel momento in cui si pone una domanda, l'aggiornamento automatico dei documenti sia in corso, generando un errore nella generazione della risposta. In tal caso, è consigliabile attendere qualche minuto e riprovare.
+In alto a destra è presente un badge di segnalazione che indica l'esito dell'ultimo aggiornamento:
+\begin{itemize}
+    \item Se il badge presenta una spunta verde con la parola \emph{Aggiornato}, significa che l'ultimo aggiornamento è avvenuto con successo, e le risposte fornite
+    dal chatbot sono aggiornate ai documenti non più vecchi di 24 ore;
+    \item Se il badge presenta una X rossa, significa che l'ultimo aggiornamento è fallito, e le risposte fornite dal chatbot potrebbero
+    non essere aggiornate ai documenti più recenti;
+    \item Se il badge presenta un segnale di pericolo, significa che non è stato possibile recuperare l'esito dell'ultimo aggiornamento, e
+    dunque non è possibile sapere se le risposte fornite dal chatbot sono aggiornate ai documenti più recenti o meno.
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=.8\linewidth]{Badge - Aggiornamento avvenuto con successo.png}
+        \caption{Badge di aggiornamento avvenuto con successo}
+        \label{fig:Aggiornamento avvenuto con successo}        
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=.8\linewidth]{Badge - Aggiornamento fallito.png}
+        \caption{Badge di aggiornamento fallito}
+        \label{fig:Aggiornamento fallito}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=.8\linewidth]{Badge - Errore recupero esito aggiornamento.png}
+        \caption{Badge di errore nel recupero dell'esito dell'ultimo aggiornamento}
+        \label{fig:Errore nel recupero dell'esito dell'ultimo aggiornamento}
+\end{figure}
+
+
+
 
 
 \subsection{Possibili errori}
