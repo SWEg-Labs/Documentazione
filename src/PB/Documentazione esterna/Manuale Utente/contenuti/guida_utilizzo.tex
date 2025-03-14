@@ -143,10 +143,27 @@ Durante l'utilizzo del chatbot è possibile che si verifichino alcuni errori. Lo
         \label{fig:Errore nel recupero dello storico dei messaggi}
 \end{figure}
 
-Nel caso non sia possibile recuperare i messaggi delle precedenti conversazioni, verrà mostrato in alto un apposito riquadro che comunica il problema, come mostrato in figura \bulref{fig:Errore nel recupero dello storico dei messaggi}. E' probabile che ciò sia dovuto ad un problema con il \emph{database relazionale}\textsubscript{\textbf{\textit{G}}} \emph{Postgres}\textsubscript{\textbf{\textit{G}}}, il consiglio dunque è di recarsi su \emph{Docker}\textsubscript{\textbf{\textit{G}}} e di controllare se il \emph{container}\textsubscript{\textbf{\textit{G}}} dedicato a Postgres è acceso, ed eventualmente riavviarlo. Nel caso ciò non sia sufficiente, controllare allora lo stato del container di backend, poichè anch'esso ha un ruolo fondamentale nella funzionalità di recupero dei vecchi messaggi, e provare dunque a riavviare anch'esso.
+Nel caso non sia possibile recuperare i messaggi delle precedenti conversazioni, verrà mostrato in alto un apposito riquadro che comunica il problema, come visibile in figura \bulref{fig:Errore nel recupero dello storico dei messaggi}. E' probabile che ciò sia dovuto ad un problema con il \emph{database relazionale}\textsubscript{\textbf{\textit{G}}} \emph{Postgres}\textsubscript{\textbf{\textit{G}}}, il consiglio dunque è di recarsi su \emph{Docker}\textsubscript{\textbf{\textit{G}}} e di controllare se il \emph{container}\textsubscript{\textbf{\textit{G}}} dedicato a Postgres è acceso, ed eventualmente riavviarlo. Nel caso ciò non sia sufficiente, controllare allora lo stato del container di backend, poichè anch'esso ha un ruolo fondamentale nella funzionalità di recupero dei vecchi messaggi, e provare dunque a riavviare anch'esso.
 
 
-\dots
+\subsubsection{Errore nella generazione della risposta}
+
+\begin{comment}
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=.8\linewidth]{Errore - Generazione della risposta.png}
+        \caption{Errore nella generazione della risposta}
+        \label{fig:Errore nella generazione della risposta}
+\end{figure}
+\end{comment}
+
+Nel caso avvenga un errore nella generazione della risposta, \dots. Ciò può essere dovuto principalmente a tre motivi:
+\begin{itemize}
+    \item Scarsa connessione a internet, tale per cui non è stato possibile contattare l'\emph{LLM}\textsubscript{\textbf{\textit{G}}}: in tal caso, il consiglio è di provare a riconnettersi e poi riprovare;
+    \item Problemi con il container di backend: in tal caso, il consiglio è provare a spegnere e riaccendere l'apposito container in Docker;
+    \item Contemporaneità tra l'aggiornamento automatico dei documenti e la richiesta di una nuova domanda: in tal caso, il consiglio è di attendere qualche minuto e poi riprovare.
+\end{itemize}
+
 
 
 \subsubsection{Errore nel recupero del link dei file correlati alla risposta}
@@ -161,6 +178,20 @@ Nel caso non sia possibile recuperare i messaggi delle precedenti conversazioni,
 Nel caso avvenga un errore nel recupero dei link correlati alla risposta appena generata, verrà mostrato il consueto riquadro alla fine del messaggio, ma contenente, invece che i link, una frase descrittiva del problema, come visibile in figura \bulref{fig:Errore nel recupero del link dei file correlati alla risposta}. Siccome la risposta è stata generata normalmente, il motivo per la mancata visualizzazione dei link è da ricercare nella correttezza della domanda, che verosimilmente non rispetta le istruzioni fornite nella sezione \bulref{subsec:cosa_come_chiedere} di questo documento. Ad esempio, in figura è stata posta una domanda che chiede quali sono le fasi del ciclo di vita di un ticket su \emph{Jira}\textsubscript{\textbf{\textit{G}}}, la quale viola il punto 11 della suddetta sezione: come si può notare, la risposta viene comunque generata, ma non è attendibile, poichè infatti non è stata citata nessuna fonte a suo sostegno. Fortunatamente, rispettando assiduamente la guida su cosa chiedere e come chiederlo, l'errore nel recupero dei link correlati alla risposta non dovrebbe mai avvenire.
 
 
+\subsubsection{Visualizzazione errore nel recupero della data e ora di invio del messaggio}
+
+\begin{comment}
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=.8\linewidth]{Errore - Recupero data e ora di invio del messaggio.png}
+        \caption{Errore nel recupero della data e ora di invio del messaggio}
+        \label{fig:Errore nel recupero della data e ora di invio del messaggio}
+\end{figure}
+\end{comment}
+
+Nel caso non sia possibile recuperare la data e l'ora di invio del messaggio, \dots. E' probabile che ciò sia dovuto ad un problema con il \emph{database relazionale}\textsubscript{\textbf{\textit{G}}} \emph{Postgres}\textsubscript{\textbf{\textit{G}}}, il consiglio dunque è di recarsi su \emph{Docker}\textsubscript{\textbf{\textit{G}}} e di controllare se il \emph{container}\textsubscript{\textbf{\textit{G}}} dedicato a Postgres è acceso, ed eventualmente riavviarlo. Nel caso ciò non sia sufficiente, controllare allora lo stato del container di backend, poichè anch'esso ha un ruolo fondamentale nella funzionalità di recupero della data e ora di invio del messaggio, e provare dunque a riavviare anch'esso.
+
+
 \subsubsection{Errore nella generazione delle domande per proseguire la conversazione}
 
 \begin{figure}[h]
@@ -170,22 +201,61 @@ Nel caso avvenga un errore nel recupero dei link correlati alla risposta appena 
         \label{fig:Errore nella generazione delle domande per proseguire la conversazione}
 \end{figure}
 
-Nel caso avvenga un errore nella generazione delle domande suggerite per proseguire la conversazione, verrà mostrata una scritta rossa comunicante il problema sopra alla barra di input, come mostrato in figura \bulref{fig:Errore nella generazione delle domande per proseguire la conversazione}. Ciò può essere dovuto principalmente a due motivi:
+Nel caso avvenga un errore nella generazione delle domande suggerite per proseguire la conversazione, verrà mostrata una scritta rossa comunicante il problema sopra alla barra di input, come visibile in figura \bulref{fig:Errore nella generazione delle domande per proseguire la conversazione}. Ciò può essere dovuto principalmente a due motivi:
 \begin{itemize}
     \item Scarsa connessione a internet, tale per cui non è stato possibile contattare l'\emph{LLM}\textsubscript{\textbf{\textit{G}}}: in tal caso, il consiglio è di provare a riconnettersi e poi riprovare;
     \item Problemi con il container di backend: in tal caso, il consiglio è provare a spegnere e riaccendere l'apposito container in Docker.
 \end{itemize}
 
 
+\subsubsection{Visualizzazione di un badge che segnala un errore nell'ultimo aggiornamento del database vettoriale}
+
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=.8\linewidth]{Badge - Aggiornamento fallito.png}
+        \caption{Badge di aggiornamento fallito}
+        \label{fig:Badge di aggiornamento fallito}
+\end{figure}
+
+Come descritto nella sezione \bulref{subsec:aggiornamento_automatico_documenti}, nel caso l'ultimo aggiornamento del database vettoriale sia fallito, verrà mostrato in alto a destra un badge di segnalazione che indica il fallimento, come visibile in figura \bulref{fig:Aggiornamento fallito}. E' probabile che ciò sia dovuto ad un problema con il \emph{database vettoriale} \emph{Chroma}, il consiglio dunque è di recarsi su \emph{Docker}\textsubscript{\textbf{\textit{G}}} e di controllare se il \emph{container}\textsubscript{\textbf{\textit{G}}} dedicato a Chroma è acceso, ed eventualmente riavviarlo. Nel caso ciò non sia sufficiente, controllare allora lo stato del container di backend, poichè anch'esso ha un ruolo fondamentale nella funzionalità di aggiornamento automatico dei documenti, e provare dunque a riavviare anch'esso.
+
+
+\subsubsection{Visualizzazione errore nel recupero dell'esito dell'ultimo aggiornamento del database vettoriale}
+
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=.8\linewidth]{Badge - Errore recupero esito aggiornamento.png}
+        \caption{Badge di errore nel recupero dell'esito dell'ultimo aggiornamento}
+        \label{fig:Badge di errore nel recupero dell'esito dell'ultimo aggiornamento}
+\end{figure}
+
+Come descritto nella sezione \bulref{subsec:aggiornamento_automatico_documenti}, nel caso non sia possibile recuperare l'esito dell'ultimo aggiornamento del database vettoriale, verrà mostrato in alto a destra un badge di segnalazione che indica l'errore, come visibile in figura \bulref{fig:Badge di errore nel recupero dell'esito dell'ultimo aggiornamento}. E' probabile che ciò sia dovuto ad un problema con il \emph{database relazionale} \emph{Postgres}, il consiglio dunque è di recarsi su \emph{Docker}\textsubscript{\textbf{\textit{G}}} e di controllare se il \emph{container}\textsubscript{\textbf{\textit{G}}} dedicato a Postgres è acceso, ed eventualmente riavviarlo. Nel caso ciò non sia sufficiente, controllare allora lo stato del container di backend, poichè anch'esso ha un ruolo fondamentale nella funzionalità di recupero dell'esito dell'ultimo aggiornamento del database vettoriale, e provare dunque a riavviare anch'esso.
+
+
+\subsubsection{Visualizzazione errore nel recupero dei messaggi precedenti allo scroll}
+
+\begin{comment}
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=.8\linewidth]{Errore - Recupero messaggi dal database.png}
+        \caption{Errore nel recupero dei messaggi precedenti allo scroll}
+        \label{fig:Errore nel recupero dei messaggi precedenti allo scroll}
+\end{figure}
+\end{comment}
+
+Nel caso non sia possibile recuperare i messaggi delle precedenti conversazioni allo scroll dello schermo, \dots. E' probabile che ciò sia dovuto ad un problema con il \emph{database relazionale}\textsubscript{\textbf{\textit{G}}} \emph{Postgres}\textsubscript{\textbf{\textit{G}}}, il consiglio dunque è di recarsi su \emph{Docker}\textsubscript{\textbf{\textit{G}}} e di controllare se il \emph{container}\textsubscript{\textbf{\textit{G}}} dedicato a Postgres è acceso, ed eventualmente riavviarlo. Nel caso ciò non sia sufficiente, controllare allora lo stato del container di backend, poichè anch'esso ha un ruolo fondamentale nella funzionalità di recupero dei vecchi messaggi, e provare dunque a riavviare anch'esso.
+
+
 % Fare un elenco di possibili errori che possono verificarsi durante l'utilizzo del chatbot. Ovviamente per ciascuno va
 % riportato uno screenshot.
 % - Errore nel recupero dello storico (UC9) ✅
-% - Errore nella generazione della risposta (UC3). 
+% - Errore nella generazione della risposta (UC3). 🔃 Manca immagine
 % ----> Segnalare che potrebbe avvenire un errore nella generazione della risposta anche nel caso in cui sia stata posta una domanda
-% ----> in contemporanea con l'aggiornamento automatico dei documenti.
+% ----> in contemporanea con l'aggiornamento automatico dei documenti. ✅
 % - Errore nel recupero del link dei file correlati alla risposta (UC14) ✅
+% - Visualizzazione errore nel recupero della data e ora di invio del messaggio (UC28) 🔃 Manca immagine
 % - Errore nella generazione delle domande per proseguire la conversazione (UC13) ✅
-% - Visualizzazione di un badge che segnala un errore nel recupero dell'esito dell'ultimo aggiornamento del database vettoriale (UC20)
-% - Visualizzazione di un messaggio che spiega il badge che segnala un errore nel recupero dell'esito dell'ultimo aggiornamento del database vettoriale (UC24)
-% - Visualizzazione errore nel recupero dei messaggi precedenti (UC26)
-% - Visualizzazione errore nel recupero della data e ora di invio del messaggio (UC28)
+% - Visualizzazione di un badge che segnala un errore nell'ultimo aggiornamento del database vettoriale (UC20) ✅
+% - Visualizzazione di un badge che segnala un errore nel recupero dell'esito dell'ultimo aggiornamento del database vettoriale (UC20) ✅
+% - Visualizzazione di un messaggio che spiega il badge che segnala un errore nel recupero dell'esito dell'ultimo aggiornamento del database vettoriale (UC24) ❌ Praticamente coincide con la visualizzazione del badge, ho demandato a sopra per la descrizione dell'emoji e del messaggio.
+% - Visualizzazione errore nel recupero dei messaggi precedenti allo scroll (UC26) 🔃 Manca immagine
