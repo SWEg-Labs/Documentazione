@@ -26,7 +26,7 @@ uno dei seguenti messaggi:
 E' tuttavia possibile che il chatbot restituisca tali risposte anche in casi in cui non ce lo si aspetta.
 Per evitare di ottenere risposte negative, forniamo qui di seguito delle istruzioni per capire come porre la domanda per
 ottenere una risposta soddisfacente:
-\begin{itemize}
+\begin{enumerate}
     \item La domanda deve essere concisa e diretta, senza giri di parole. Ad esempio "Qual è lo stato del progetto X su Jira?" invece
     che "Potresti gentilmente dirmi qual è lo stato attuale del progetto X su Jira, per favore?";
     \item Si devono mettere bene in risalto le parole chiave. Ad esempio "Qual è l'errore di build nel progetto Y?" invece che "Qual
@@ -59,10 +59,10 @@ ottenere una risposta soddisfacente:
     processare informazioni in tal senso. Ad esempio "Quali sono i commit svolti tra il 6 ed il 10 febbraio nel progetto D?" invece che "Quali sono i
     commit nel progetto D dall'inizio della sprint ad ora?";
     \item Non si devono porre domande per la cui risposta è necessaria una ricerca su internet, in quanto il chatbot fa
-    riferimento esclusivamente ai documenti di contesto, e non è in grado di navigare in rete. Ad esempio, invece che "Nel
+    riferimento esclusivamente ai documenti di contesto, e non è abile a ricavare informazioni attendibili in rete. Ad esempio, invece che "Nel
     progetto Y viene utilizzata l'ultima versione rilasciata del framework X?", bisogna chiedere "Qual è la versione del framework X
     che viene utilizzata nel progetto Y?" e poi cercare manualmente su internet se tale versione è l'ultima rilasciata o meno.
-\end{itemize}
+\end{enumerate}
 
 
 \subsection{Interrogazione del chatbot}
@@ -87,16 +87,17 @@ ottenere una risposta soddisfacente:
 
 
 \subsection{Aggiornamento automatico dei documenti}
+\label{subsec:aggiornamento_automatico_documenti}
 Al fine di garantire che le informazioni fornite dal chatbot siano il più possibile attendibili, i documenti di contesto utilizzati per generare le risposte vengono aggiornati ogni 24 ore.
 Tali aggiornamenti sono svolti in modo automatico, e non è dunque necessario alcun intervento di configurazione.
 È possibile che, nel momento in cui si pone una domanda, l'aggiornamento automatico dei documenti sia in corso, e quindi potrebbe avvenire un errore nella generazione della risposta. In tal caso, è consigliabile attendere qualche minuto e riprovare.
 In alto a destra è presente un badge di segnalazione che indica l'esito dell'ultimo aggiornamento:
 \begin{itemize}
-    \item Se il badge presenta una spunta verde con accanto la scritta \emph{Aggiornato}, significa che l'ultimo aggiornamento è avvenuto con successo, e le risposte fornite
+    \item Se il badge presenta una spunta verde con accanto la scritta \emph{Aggiornato}, come visibile in figura \bulref{fig:Aggiornamento avvenuto con successo}, significa che l'ultimo aggiornamento è avvenuto con successo, e le risposte fornite
     dal chatbot sono aggiornate ai documenti non più vecchi di 24 ore;
-    \item Se il badge presenta una X rossa con accanto la scritta \emph{Non aggiornato}, significa che l'ultimo aggiornamento è fallito, e le risposte fornite dal chatbot potrebbero
+    \item Se il badge presenta una X rossa con accanto la scritta \emph{Non aggiornato}, come visibile in figura \bulref{fig:Aggiornamento fallito}, significa che l'ultimo aggiornamento è fallito, e le risposte fornite dal chatbot potrebbero
     non essere aggiornate ai documenti più recenti;
-    \item Se il badge presenta un segnale di pericolo con accanto la scritta \emph{Errore}, significa che non è stato possibile recuperare l'esito dell'ultimo aggiornamento, e
+    \item Se il badge presenta un segnale di pericolo con accanto la scritta \emph{Errore}, come visibile in figura \bulref{fig:Errore nel recupero dell'esito dell'ultimo aggiornamento}, significa che non è stato possibile recuperare l'esito dell'ultimo aggiornamento, e
     dunque, non è possibile sapere se le risposte fornite dal chatbot sono aggiornate ai documenti più recenti o meno.
 \end{itemize}
 
@@ -128,14 +129,62 @@ In alto a destra è presente un badge di segnalazione che indica l'esito dell'ul
 \newpage
 
 \subsection{Possibili errori}
+\label{subsec:possibili_errori}
+
+Durante l'utilizzo del chatbot è possibile che si verifichino alcuni errori. Lo scopo di questa sezione è presentare alcune casistiche non desiderate e fornire una guida per ripristinare il corretto funzionamento.
+
+
+\subsubsection{Errore nel recupero dello storico dei messaggi}
+
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=.8\linewidth]{Errore - Recupero messaggi dal database.png}
+        \caption{Errore nel recupero dello storico dei messaggi}
+        \label{fig:Errore nel recupero dello storico dei messaggi}
+\end{figure}
+
+Nel caso non sia possibile recuperare i messaggi delle precedenti conversazioni, verrà mostrato in alto un apposito riquadro che comunica il problema, come mostrato in figura \bulref{fig:Errore nel recupero dello storico dei messaggi}. E' probabile che ciò sia dovuto ad un problema con il \emph{database relazionale}\textsubscript{\textbf{\textit{G}}} \emph{Postgres}\textsubscript{\textbf{\textit{G}}}, il consiglio dunque è di recarsi su \emph{Docker}\textsubscript{\textbf{\textit{G}}} e di controllare se il \emph{container}\textsubscript{\textbf{\textit{G}}} dedicato a Postgres è acceso, ed eventualmente riavviarlo. Nel caso ciò non sia sufficiente, controllare allora lo stato del container di backend, poichè anch'esso ha un ruolo fondamentale nella funzionalità di recupero dei vecchi messaggi, e provare dunque a riavviare anch'esso.
+
+
+\dots
+
+
+\subsubsection{Errore nel recupero del link dei file correlati alla risposta}
+
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=.8\linewidth]{Errore - Non sono stati trovati link correlati.png}
+        \caption{Errore nel recupero del link dei file correlati alla risposta}
+        \label{fig:Errore nel recupero del link dei file correlati alla risposta}
+\end{figure}
+
+Nel caso avvenga un errore nel recupero dei link correlati alla risposta appena generata, verrà mostrato il consueto riquadro alla fine del messaggio, ma contenente, invece che i link, una frase descrittiva del problema, come visibile in figura \bulref{fig:Errore nel recupero del link dei file correlati alla risposta}. Siccome la risposta è stata generata normalmente, il motivo per la mancata visualizzazione dei link è da ricercare nella correttezza della domanda, che verosimilmente non rispetta le istruzioni fornite nella sezione \bulref{subsec:cosa_come_chiedere} di questo documento. Ad esempio, in figura è stata posta una domanda che chiede quali sono le fasi del ciclo di vita di un ticket su \emph{Jira}\textsubscript{\textbf{\textit{G}}}, la quale viola il punto 11 della suddetta sezione: come si può notare, la risposta viene comunque generata, ma non è attendibile, poichè infatti non è stata citata nessuna fonte a suo sostegno. Fortunatamente, rispettando assiduamente la guida su cosa chiedere e come chiederlo, l'errore nel recupero dei link correlati alla risposta non dovrebbe mai avvenire.
+
+
+\subsubsection{Errore nella generazione delle domande per proseguire la conversazione}
+
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=.8\linewidth]{Errore - Generazione di domande per proseguire la conversazione.png}
+        \caption{Errore nella generazione delle domande per proseguire la conversazione}
+        \label{fig:Errore nella generazione delle domande per proseguire la conversazione}
+\end{figure}
+
+Nel caso avvenga un errore nella generazione delle domande suggerite per proseguire la conversazione, verrà mostrata una scritta rossa comunicante il problema sopra alla barra di input, come mostrato in figura \bulref{fig:Errore nella generazione delle domande per proseguire la conversazione}. Ciò può essere dovuto principalmente a due motivi:
+\begin{itemize}
+    \item Scarsa connessione a internet, tale per cui non è stato possibile contattare l'\emph{LLM}\textsubscript{\textbf{\textit{G}}}: in tal caso, il consiglio è di provare a riconnettersi e poi riprovare;
+    \item Problemi con il container di backend: in tal caso, il consiglio è provare a spegnere e riaccendere l'apposito container in Docker.
+\end{itemize}
+
+
 % Fare un elenco di possibili errori che possono verificarsi durante l'utilizzo del chatbot. Ovviamente per ciascuno va
 % riportato uno screenshot.
-% - Errore nel recupero dello storico (UC9)
+% - Errore nel recupero dello storico (UC9) ✅
 % - Errore nella generazione della risposta (UC3). 
 % ----> Segnalare che potrebbe avvenire un errore nella generazione della risposta anche nel caso in cui sia stata posta una domanda
 % ----> in contemporanea con l'aggiornamento automatico dei documenti.
-% - Errore nel recupero del link dei file utili per la risposta (UC14)
-% - Errore nella generazione delle domande per proseguire la conversazione (UC13)
+% - Errore nel recupero del link dei file correlati alla risposta (UC14) ✅
+% - Errore nella generazione delle domande per proseguire la conversazione (UC13) ✅
 % - Visualizzazione di un badge che segnala un errore nel recupero dell'esito dell'ultimo aggiornamento del database vettoriale (UC20)
 % - Visualizzazione di un messaggio che spiega il badge che segnala un errore nel recupero dell'esito dell'ultimo aggiornamento del database vettoriale (UC24)
 % - Visualizzazione errore nel recupero dei messaggi precedenti (UC26)
