@@ -11,37 +11,35 @@ Questa sezione fornisce una descrizione dettagliata dell'\emph{architettura logi
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=\textwidth]{diagramma_specifica_tecnica.png}
+    \includegraphics[width=\textwidth]{diagramma_logica_prodotto.png}
     \caption{Logica del Prodotto}
 \end{figure}
 
 \section{Logica del Prodotto}
 
 L’applicazione web permette di porre domande inerenti all’ecosistema aziendale sfruttando un \emph{Large Language Model}\textsubscript{\textbf{\textit{G}}} (LLM), 
-nella fattispecie GPT-4o, integrato con un \emph{database vettoriale}\textsubscript{\textbf{\textit{G}}}, che è un sistema 
+nella fattispecie GPT-4o, integrato con un \emph{database vettoriale}\textsubscript{\textbf{\textit{G}}}, cioè un sistema 
 di archiviazione basato su tecniche di embedding.
 La qualità delle risposte è garantita dall'integrazione diretta con documenti e dati provenienti dalle principali piattaforme interne 
 (\emph{GithHub}\textsubscript{\textbf{\textit{G}}}, \emph{Jira}\textsubscript{\textbf{\textit{G}}} e \emph{Confluence}\textsubscript{\textbf{\textit{G}}}), sincronizzati 
 automaticamente ogni 24 ore. Tutti i documenti recuperati vengono suddivisi in parti più piccole e trasformati in vettori numerici. Questi vettori, insieme ai relativi metadati, 
-vengono archiviati stabilmente nel \emph{database vettoriale}\textsubscript{\textbf{\textit{G}}} \emph{chromaDB}\textsubscript{\textbf{\textit{G}}}, consentendo di effettuare 
+vengono archiviati stabilmente nel \emph{database vettoriale}\textsubscript{\textbf{\textit{G}}} \emph{Chroma}\textsubscript{\textbf{\textit{G}}}, consentendo di effettuare 
 rapidamente ricerche semantiche mirate.
 Quando l’utente invia una domanda attraverso l’interfaccia web, il \emph{frontend}\textsubscript{\textbf{\textit{G}}} inoltra la richiesta al 
-\emph{backend}\textsubscript{\textbf{\textit{G}}}. Quest’ultimo esegue una ricerca semantica all'interno del \emph{database vettoriale}\textsubscript{\textbf{\textit{G}}} 
-per identificare i documenti più rilevanti in relazione alla domanda posta. Il \emph{backend}\textsubscript{\textbf{\textit{G}}} unisce quindi la domanda originale dell’utente, 
-i risultati della ricerca semantica e un \emph{header}\textsubscript{\textbf{\textit{G}}}, contenente istruzioni precise per il modello sul contesto aziendale di riferimento e 
-sul formato desiderato della risposta, generando un unico prompt che viene inviato al modello.
+\emph{backend}\textsubscript{\textbf{\textit{G}}}. Quest’ultimo esegue una ricerca di \emph{similarità}\textsubscript{\textbf{\textit{G}}} all'interno del \emph{database vettoriale}\textsubscript{\textbf{\textit{G}}} 
+per identificare i documenti più rilevanti in relazione alla domanda posta. Il \emph{backend} unisce quindi la domanda originale dell’utente, 
+i risultati della ricerca di similarità e un header, contenente istruzioni precise per il modello sul contesto aziendale di riferimento e sul formato desiderato della risposta, generando un unico prompt che viene inviato al modello.
 Il modello genera dunque una risposta contestualizzata, integrando automaticamente una sezione denominata \emph{“Link correlati”}, contenente tutti i riferimenti ai documenti 
 aziendali utilizzati nella formulazione della risposta stessa. Qualora la domanda dell'utente risulti chiaramente fuori contesto aziendale, il chatbot risponderà con 
-\emph{“domanda fuori contesto”}. Nel caso in cui non siano presenti documenti o informazioni pertinenti nel \emph{database vettoriale}\textsubscript{\textbf{\textit{G}}}, la 
-risposta fornita sarà \emph{“nessuna informazione trovata”}.
-Tutte le conversazioni tra utente e chatbot vengono salvate in modo persistente nel \emph{database PostgreSQL}\textsubscript{\textbf{\textit{G}}}. Al primo caricamento 
-dell’applicazione, l'interfaccia mostra automaticamente gli ultimi cinquanta messaggi scambiati. Se l'utente desidera consultare i messaggi precedenti, può scorrere verso 
+\emph{“La domanda è fuori contesto”}. Nel caso in cui non siano presenti documenti o informazioni pertinenti nel \emph{database vettoriale}\textsubscript{\textbf{\textit{G}}}, la 
+risposta fornita sarà \emph{“Informazione non trovata”}.
+Tutte i messaggi tra utente e chatbot vengono salvati in modo persistente nel \emph{database relazionale}\textsubscript{\textbf{\textit{G}}} \emph{PostgreSQL}\textsubscript{\textbf{\textit{G}}}. Al primo caricamento 
+dell’applicazione, l'interfaccia mostra automaticamente gli ultimi 50 messaggi scambiati. Se l'utente desidera consultare i messaggi precedenti, può scorrere verso 
 l'alto, e ulteriori messaggi vengono caricati progressivamente suddivisi in pagine da 50 messaggi ciascuna. Inoltre, dopo ciascuna risposta, il 
-\emph{frontend}\textsubscript{\textbf{\textit{G}}} chiede al \emph{backend}\textsubscript{\textbf{\textit{G}}}, che a sua volta chiede al modello GPT-4o, di generare e 
-suggerire domande di approfondimento, stimolando ulteriori interazioni coerenti con la conversazione in corso. L'interfaccia permette infine di copiare rapidamente le 
-risposte del chatbot, comprese eventuali porzioni di codice presenti al loro interno.
-Per quanto riguarda la gestione degli errori, l’applicazione notifica l’utente tramite messaggi dedicati qualora si riscontrassero problemi nel recupero dei messaggi dal 
-\emph{database PostgreSQL}\textsubscript{\textbf{\textit{G}}} o durante la sincronizzazione con le piattaforme aziendali. Anche eventuali difficoltà nella generazione di 
+\emph{frontend} chiede al \emph{backend}, che a sua volta chiede al modello GPT-4o, di generare 3 domande correlate all'ultima domanda e all'ultima risposta, che vengono offerte all'utente, stimolando ulteriori interazioni coerenti con la conversazione in corso. L'interfaccia permette infine di copiare rapidamente le 
+risposte del chatbot, e anche di copiare singolarmente eventuali porzioni di codice presenti al loro interno.
+Per quanto riguarda la gestione degli errori, l’applicazione avvisa l’utente tramite messaggi dedicati qualora si riscontrassero problemi nel recupero dei messaggi dal database
+\emph{PostgreSQL} o durante la sincronizzazione con le piattaforme aziendali. Anche eventuali difficoltà nella generazione di 
 risposte o nel caricamento delle domande suggerite vengono gestite informando tempestivamente l’utente e consentendo, ove possibile, di continuare ad utilizzare il servizio 
 in modalità limitata o di riprovare successivamente.
 
