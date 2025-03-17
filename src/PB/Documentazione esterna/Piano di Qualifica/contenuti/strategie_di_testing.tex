@@ -235,8 +235,8 @@ I test di unità vengono utilizzati per controllare il funzionamento corretto di
     TU135 & Verifica che il metodo formatResponse di ChatContainerComponent trasformi correttamente la stringa ricevuta in input. &  N-I \\ \hline
     TU136 & Verifica che il metodo onSendMessage di ChatContainerComponent non faccia nulla se il testo ricevuto in input è vuoto oppure contiene solo spazi. &  N-I \\ \hline
     TU137 & Verifica che l'evento ngOnInit di ChatContainerComponent richiami il metodo loadOldMessages con l'intero 50 come parametro. &  N-I \\ \hline
-    TU138 & Verifica che il metodo onScrollChange di ChatContainerComponent, chiamato con valore true,aggiorni l'attributo showScrollToBottom a true. &  N-I \\ \hline
-    TU139 & Verifica che il metodo onScrollChange di ChatContainerComponent, chiamato con valore false,aggiorni l'attributo showScrollToBottom a false. &  N-I \\ \hline
+    TU138 & Verifica che il metodo onScrollChange di ChatContainerComponent, chiamato con valore true, aggiorni l'attributo showScrollToBottom a true. &  N-I \\ \hline
+    TU139 & Verifica che il metodo onScrollChange di ChatContainerComponent, chiamato con valore false, aggiorni l'attributo showScrollToBottom a false. &  N-I \\ \hline
     TU140 & Verifica che il valore iniziale dell'attributo lastLoadOutcome di ChatBadgeComponent sia TRUE. &  N-I \\ \hline
     TU141 & Verifica che il getter isUpdated di ChatBadgeComponent restituisca il valore corretto, corrispondente all'attributo lastLoadOutcome. &  N-I \\ \hline
     TU142 & Verifica che, quando si clicca il bottone 'Invia' di ChatInputComponent, venga inviata la stringa corretta. &  N-I \\ \hline
@@ -244,12 +244,12 @@ I test di unità vengono utilizzati per controllare il funzionamento corretto di
     TU144 & Verifica che la barra di input di ChatInputContainer abbia il placeholder 'Scrivi un messaggio...'. &  N-I \\ \hline
     TU145 & Verifica che la barra di input di ChatInputComponent sia disabilitata se l'attributo isLoading è true. &  N-I \\ \hline
     TU146 & Verifica che il componente ChatInputComponent venga creato. &  N-I \\ \hline
-    TU147 & Verifica che il bottone 'Invia' di ChatInputComponent sia abilitato se l'attributo isLoading è false e userInput contieneun messaggio valido. &  N-I \\ \hline
+    TU147 & Verifica che il bottone 'Invia' di ChatInputComponent sia abilitato se l'attributo isLoading è false e userInput contiene un messaggio valido. &  N-I \\ \hline
     TU148 & Verifica che il bottone 'Invia' di ChatInputComponent sia disabilitato se l'attributo userInput è vuoto. &  N-I \\ \hline
     TU149 & Verifica che il metodo onSend di ChatInputComponent emetta il valore corretto e resetti l'input dell'utente se le condizioni di invio della domanda sono soddisfatte, cioè userInput contenga dei caratteri e isLoading sia false. &  N-I \\ \hline
     TU150 & Verifica che il bottone 'Invia' di ChatInputComponent sia disabilitato se l'attributo userInput contiene solo spazi. &  N-I \\ \hline
     TU151 & Verifica che il metodo onSend di ChatInputComponent non emetta alcun segnale se isLoading è true. &  N-I \\ \hline
-    TU152 & Verifica che il metodo onSend di ChatInputComponent non emetta alcun segnale se l'input dell'utente è vuotooppure contiene solo spazi. &  N-I \\ \hline
+    TU152 & Verifica che il metodo onSend di ChatInputComponent non emetta alcun segnale se l'input dell'utente è vuoto oppure contiene solo spazi. &  N-I \\ \hline
 
     \end{tabularx}
 \end{table}
@@ -372,7 +372,7 @@ I test di integrazione servono a verificare che i vari moduli o unità di codice
     TI34 & Verifica che il contenuto del template HTML di ChatContainerComponent venga renderizzato in AppComponent. &  N-I \\ \hline
     TI35 & Verifica che il template HTML di AppComponent contenga il tag app-chat-container di ChatContainerComponent. &  N-I \\ \hline
     TI36 & Verifica che l'evento ngOnInit di ChatContainerComponent richiami il metodo loadLastLoadOutcome di DatabaseService. &  N-I \\ \hline
-    TI37 & Verifica che il metodo loadOldMessages di ChatContainerComponent ordini e formatti correttamente i messaggiricevuti da DatabaseService. &  N-I \\ \hline
+    TI37 & Verifica che il metodo loadOldMessages di ChatContainerComponent ordini e formatti correttamente i messaggi ricevuti da DatabaseService. &  N-I \\ \hline
     \end{tabularx}
 \end{table}
 
@@ -384,8 +384,8 @@ I test di integrazione servono a verificare che i vari moduli o unità di codice
     \begin{tabularx}{\textwidth}{|p{0.15\textwidth}|X|p{0.15\textwidth}|p{0.15\textwidth}|}\hline
     \rowcolor[HTML]{FFD700}
     \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
-    TI38 & Verifica che il metodo loadOldMessages di ChatContainerComponent imposti errorMessage in caso di errorenel recupero dei messaggi restituito da DatabaseService. &  N-I \\ \hline
-    TI39 & Verifica che il metodo loadOldMessages di ChatContainerComponent resetti errorMessage se il recuperodei messaggi da DatabaseService ha successo. &  N-I \\ \hline
+    TI38 & Verifica che il metodo loadOldMessages di ChatContainerComponent imposti errorMessage in caso di errore nel recupero dei messaggi restituito da DatabaseService. &  N-I \\ \hline
+    TI39 & Verifica che il metodo loadOldMessages di ChatContainerComponent resetti errorMessage se il recupero dei messaggi da DatabaseService ha successo. &  N-I \\ \hline
     TI40 & Verifica che il metodo scrollToBottom di ChatContainerComponent invochi il metodo scrollToBottom di ChatMessagesComponent. &  N-I \\ \hline
     TI41 & Verifica che il metodo onSendMessage di ChatContainerComponent gestisca correttamente il caso di invio di una domanda a ChatService a seguito della quale viene restituita una risposta positiva. &  N-I \\ \hline
     TI42 & Verifica che il metodo onSendMessage di ChatContainerComponent gestisca correttamente il caso di invio di una domanda a ChatService a seguito della quale viene restituito un errore. &  N-I \\ \hline
