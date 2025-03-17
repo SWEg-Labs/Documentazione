@@ -138,7 +138,7 @@ Durante l'utilizzo del chatbot è possibile che si verifichino alcuni errori. Lo
 
 \begin{figure}[h]
     \centering
-        \includegraphics[width=.8\linewidth]{Errore - Recupero messaggi dal database.png}
+        \includegraphics[width=.8\linewidth]{Errore - Recupero storico messaggi dal database.png}
         \caption{Errore nel recupero dello storico dei messaggi}
         \label{fig:Errore nel recupero dello storico dei messaggi}
 \end{figure}
@@ -148,16 +148,14 @@ Nel caso non sia possibile recuperare i messaggi delle precedenti conversazioni,
 
 \subsubsection{Errore nella generazione della risposta}
 
-\begin{comment}
 \begin{figure}[h]
     \centering
         \includegraphics[width=.8\linewidth]{Errore - Generazione della risposta.png}
         \caption{Errore nella generazione della risposta}
         \label{fig:Errore nella generazione della risposta}
 \end{figure}
-\end{comment}
 
-Nel caso avvenga un errore nella generazione della risposta, \dots. Ciò può essere dovuto principalmente a tre motivi:
+Nel caso avvenga un errore nella generazione della risposta, verrà ricevuto un messaggio di errore e, in alto, apparirà per pochi secondi un avviso che invita a riprovare più tardi, come visibile in figura \bulref{fig:Errore nella generazione della risposta}. Ciò può essere dovuto principalmente a tre motivi:
 \begin{itemize}
     \item Scarsa connessione a internet, tale per cui non è stato possibile contattare l'\emph{LLM}\textsubscript{\textbf{\textit{G}}}: in tal caso, il consiglio è di provare a riconnettersi e poi riprovare;
     \item Problemi con il container di backend: in tal caso, il consiglio è provare a spegnere e riaccendere l'apposito container in Docker;
@@ -180,16 +178,14 @@ Nel caso avvenga un errore nel recupero dei link correlati alla risposta appena 
 
 \subsubsection{Visualizzazione errore nel recupero della data e ora di invio del messaggio}
 
-\begin{comment}
 \begin{figure}[h]
     \centering
         \includegraphics[width=.8\linewidth]{Errore - Recupero data e ora di invio del messaggio.png}
         \caption{Errore nel recupero della data e ora di invio del messaggio}
         \label{fig:Errore nel recupero della data e ora di invio del messaggio}
 \end{figure}
-\end{comment}
 
-Nel caso non sia possibile recuperare la data e l'ora di invio del messaggio, \dots. E' probabile che ciò sia dovuto ad un problema con il \emph{database relazionale}\textsubscript{\textbf{\textit{G}}} \emph{Postgres}\textsubscript{\textbf{\textit{G}}}, il consiglio dunque è di recarsi su \emph{Docker}\textsubscript{\textbf{\textit{G}}} e di controllare se il \emph{container}\textsubscript{\textbf{\textit{G}}} dedicato a Postgres è acceso, ed eventualmente riavviarlo. Nel caso ciò non sia sufficiente, controllare allora lo stato del container di backend, poichè anch'esso ha un ruolo fondamentale nella funzionalità di recupero della data e ora di invio del messaggio, e provare dunque a riavviare anch'esso.
+Nel caso non sia possibile recuperare la data e l'ora di invio del messaggio, verrà mostrata al loro posto una scritta segnalante l'errore, come visibile in figura \bulref{fig:Errore nel recupero della data e ora di invio del messaggio}. E' probabile che ciò sia dovuto ad un problema con il \emph{database relazionale}\textsubscript{\textbf{\textit{G}}} \emph{Postgres}\textsubscript{\textbf{\textit{G}}}, il consiglio dunque è di recarsi su \emph{Docker}\textsubscript{\textbf{\textit{G}}} e di controllare se il \emph{container}\textsubscript{\textbf{\textit{G}}} dedicato a Postgres è acceso, ed eventualmente riavviarlo. Nel caso ciò non sia sufficiente, controllare allora lo stato del container di backend, poichè anch'esso ha un ruolo fondamentale nella funzionalità di recupero della data e ora di invio del messaggio, e provare dunque a riavviare anch'esso.
 
 
 \subsubsection{Errore nella generazione delle domande per proseguire la conversazione}
@@ -234,28 +230,26 @@ Come descritto nella sezione \bulref{subsec:aggiornamento_automatico_documenti},
 
 \subsubsection{Visualizzazione errore nel recupero dei messaggi precedenti allo scroll}
 
-\begin{comment}
 \begin{figure}[h]
     \centering
-        \includegraphics[width=.8\linewidth]{Errore - Recupero messaggi dal database.png}
+        \includegraphics[width=.8\linewidth]{Errore - Recupero messaggi precedenti dal database.png}
         \caption{Errore nel recupero dei messaggi precedenti allo scroll}
         \label{fig:Errore nel recupero dei messaggi precedenti allo scroll}
 \end{figure}
-\end{comment}
 
-Nel caso non sia possibile recuperare i messaggi delle precedenti conversazioni allo scroll dello schermo, \dots. E' probabile che ciò sia dovuto ad un problema con il \emph{database relazionale}\textsubscript{\textbf{\textit{G}}} \emph{Postgres}\textsubscript{\textbf{\textit{G}}}, il consiglio dunque è di recarsi su \emph{Docker}\textsubscript{\textbf{\textit{G}}} e di controllare se il \emph{container}\textsubscript{\textbf{\textit{G}}} dedicato a Postgres è acceso, ed eventualmente riavviarlo. Nel caso ciò non sia sufficiente, controllare allora lo stato del container di backend, poichè anch'esso ha un ruolo fondamentale nella funzionalità di recupero dei vecchi messaggi, e provare dunque a riavviare anch'esso.
+Nel caso non sia possibile recuperare i messaggi delle precedenti conversazioni allo scroll dello schermo, verrà mostrato in corrispondenza del confine superiore della chat, per pochi secondi, un avviso che invita a riprovare più tardi, come visibile in figura \bulref{fig:Errore nel recupero dei messaggi precedenti allo scroll}. E' probabile che ciò sia dovuto ad un problema con il \emph{database relazionale}\textsubscript{\textbf{\textit{G}}} \emph{Postgres}\textsubscript{\textbf{\textit{G}}}, il consiglio dunque è di recarsi su \emph{Docker}\textsubscript{\textbf{\textit{G}}} e di controllare se il \emph{container}\textsubscript{\textbf{\textit{G}}} dedicato a Postgres è acceso, ed eventualmente riavviarlo. Nel caso ciò non sia sufficiente, controllare allora lo stato del container di backend, poichè anch'esso ha un ruolo fondamentale nella funzionalità di recupero dei vecchi messaggi, e provare dunque a riavviare anch'esso.
 
 
 % Fare un elenco di possibili errori che possono verificarsi durante l'utilizzo del chatbot. Ovviamente per ciascuno va
 % riportato uno screenshot.
 % - Errore nel recupero dello storico (UC9) ✅
-% - Errore nella generazione della risposta (UC3). 🔃 Manca immagine
+% - Errore nella generazione della risposta (UC3). ✅
 % ----> Segnalare che potrebbe avvenire un errore nella generazione della risposta anche nel caso in cui sia stata posta una domanda
 % ----> in contemporanea con l'aggiornamento automatico dei documenti. ✅
 % - Errore nel recupero del link dei file correlati alla risposta (UC14) ✅
-% - Visualizzazione errore nel recupero della data e ora di invio del messaggio (UC28) 🔃 Manca immagine
+% - Visualizzazione errore nel recupero della data e ora di invio del messaggio (UC28) ✅
 % - Errore nella generazione delle domande per proseguire la conversazione (UC13) ✅
 % - Visualizzazione di un badge che segnala un errore nell'ultimo aggiornamento del database vettoriale (UC20) ✅
 % - Visualizzazione di un badge che segnala un errore nel recupero dell'esito dell'ultimo aggiornamento del database vettoriale (UC20) ✅
-% - Visualizzazione di un messaggio che spiega il badge che segnala un errore nel recupero dell'esito dell'ultimo aggiornamento del database vettoriale (UC24) ❌ Praticamente coincide con la visualizzazione del badge, ho demandato a sopra per la descrizione dell'emoji e del messaggio.
-% - Visualizzazione errore nel recupero dei messaggi precedenti allo scroll (UC26) 🔃 Manca immagine
+% - Visualizzazione di un messaggio che spiega il badge che segnala un errore nel recupero dell'esito dell'ultimo aggiornamento del database vettoriale (UC24) ❌ Praticamente coincide con la visualizzazione del badge, ho demandato alla sezione sopra per la descrizione dell'emoji e del messaggio.
+% - Visualizzazione errore nel recupero dei messaggi precedenti allo scroll (UC26) ✅
