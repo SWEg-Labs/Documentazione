@@ -151,7 +151,8 @@ ChatInput, il componente che contiene la barra di input e il pulsante di invio, 
     \caption{Architettura frontend dell’aggiornamento del badge di segnalazione dell’esito dell’ultimo aggiornamento automatico}
 \end{figure}
 
-\dots
+L'UML in questione rappresenta l'architettura del rendering grafico del badge di segnalazione dell'esito dell'ultimo aggiornamento automatico, cioè descrive tutte quelle operazioni compiute dai componenti e servizi di Angular per renderizzare visivamente il badge.\\
+Il componente ChatBadge, alla sua istanziazione, sottoscrive il proprio attributo lastLoadOutcome in \emph{data binding} all'attributo lastLoadOutcome\$ di DatabaseService. Il componente ChatContainer, alla sua istanziazione, esegue il metodo \texttt{loadLastLoadOutcome} di DatabaseService, il quale va a sottoscrivere il proprio attributo lastLoadOutcome\$ al risultato del metodo \texttt{get\_last\_load\_outcome} esposto dal backend tramite FastAPI, che segue la catena di classi descritta in \bulref{sec:architettura_backend_badge_aggiornamento} per ottenere l'esito dell'ultimo aggiornamento automatico. DatabaseService dunque assegna lastLoadOutcome\$ al valore dell'esito, opportunamente convertito in un oggetto LastLoadOutcome, e dunque tale valore viene osservato da ChatBadge, che aggiorna il proprio attributo lastLoadOutcome. ChatBadge, infine, si occupa di formattare appositamente il badge in base al proprio attributo, in modo che sia visivamente chiaro se l'ultimo aggiornamento automatico è andato a buon fine o meno, oppure se non è stato possibile recuperare il suo esito.
 
 \newpage
 
