@@ -97,6 +97,7 @@ La classe LoadFilesService implementa l'interfaccia LoadFilesUseCase e si occupa
     \item \texttt{load\_github\_files(): (PlatformLog, Document*)}: Si occupa di recuperare i Files da GitHub e di salvare i rispettivi log. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti ai files;
     \item \texttt{load\_jira\_issues(): (PlatformLog, Document*)}: Si occupa di recuperare le Issues da Jira e di salvare i rispettivi log. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti alle issues;
     \item \texttt{load\_confluence\_pages(): (PlatformLog, Document*)}: Si occupa di recuperare le Pagine da Confluence e di salvare i rispettivi log. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti alle pagine;
+    \item \texttt{get\_github\_files\_new\_metadata(github\_file: Document*, github\_commit: Document*): Document*}: Si occupa di riempire i campi 'last\_update' e 'creation\_date' dei metadati dei file di GitHub, basandosi sul confronto con i GitHub commit in cui il singolo file è stato coinvolto e lo status con cui è stato coinvolto ('added', 'modified' o 'renamed'). Restituisce la lista di GitHub file con i metadati aggiornati, sempre di tipo Document;
     \item \texttt{clean\_confluence\_pages(pages: Document*): Document*}: Si occupa di pulire le pagine di Confluence, rimuovendo i tag HTML e i caratteri speciali. Restituisce la lista di pagine pulite, sempre di tipo Document;
     \item \texttt{load\_in\_vector\_store(documents: Document*): VectorStoreLog}: Si occupa di caricare i documenti nel database vettoriale Chroma e di salvare i rispettivi log. Restituisce un oggetto di tipo VectorStoreLog, corrispondente al log del caricamento;
     \item \texttt{save\_loading\_attempt\_in\_db(loading\_attempt: LoadingAttempt):\\ DbSaveOperationResponse}: Si occupa di salvare l'esito del caricamento dei documenti nel database relazionale Postgres. Restituisce un oggetto di tipo DbSaveOperationResponse, corrispondente alla risposta del database;
@@ -229,10 +230,14 @@ Inoltre, contiene il seguente metodo privato:
 
 \subsubsubsection{GitHubAdapter}
 \label{sec:github_adapter}
-La classe GitHubAdapter implementa l'interfaccia GitHubPort e si occupa di adattare i dati ricevuti dalla logica di business in un tipo Entity adatto per la comunicazione con il mondo esterno, e viceversa. Essa espone i seguenti due metodi:
+La classe GitHubAdapter implementa l'interfaccia GitHubPort e si occupa di adattare i dati ricevuti dalla logica di business in un tipo Entity adatto per la comunicazione con il mondo esterno, e viceversa. Essa espone i seguenti due metodi pubblici:
 \begin{itemize}
     \item \texttt{load\_github\_commits(): (PlatformLog, Document*)}: Si occupa di chiamare il metodo di GitHubRepository per recuperare i Commits da GitHub e restituire il rispettivo log. Dal repository riceve un PlatformLog e una lista di CommitEntity, e converte quest'ultima in una lista di Document. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti ai commits;
     \item \texttt{load\_github\_files(): (PlatformLog, Document*)}: Si occupa di chiamare il metodo di GitHubRepository per recuperare i Files da GitHub e restituire il rispettivo log. Dal repository riceve un PlatformLog e una lista di FileEntity, e converte quest'ultima in una lista di Document. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti ai files.
+\end{itemize}
+Inoltre, contiene il seguente metodo privato:
+\begin{itemize}
+    \item \texttt{UTC\_to\_CET(timestamp: datetime): string}: Riceve in input un timestamp di tipo datetime contenente una data e ora secondo il fuso orario \emph{UTC}, e si occupa di convertirlo in una stringa che rappresenta il timestamp convertito nel fuso orario \emph{CET}. Restituisce una stringa contenente il timestamp convertito.
 \end{itemize}
 
 \subsubsubsection{JiraAdapter}
@@ -244,9 +249,13 @@ La classe JiraAdapter implementa l'interfaccia JiraPort e si occupa di adattare 
 
 \subsubsubsection{ConfluenceAdapter}
 \label{sec:confluence_adapter}
-La classe ConfluenceAdapter implementa l'interfaccia ConfluencePort e si occupa di adattare i dati ricevuti dalla logica di business in un tipo Entity adatto per la comunicazione con il mondo esterno, e viceversa. Essa espone il seguente metodo:
+La classe ConfluenceAdapter implementa l'interfaccia ConfluencePort e si occupa di adattare i dati ricevuti dalla logica di business in un tipo Entity adatto per la comunicazione con il mondo esterno, e viceversa. Essa espone il seguente metodo pubblico:
 \begin{itemize}
     \item \texttt{load\_confluence\_pages(): (PlatformLog, Document*)}: Si occupa di chiamare il metodo di ConfluenceRepository per recuperare le Pagine da Confluence e restituire il rispettivo log. Dal repository riceve un PlatformLog e una lista di PageEntity, e converte quest'ultima in una lista di Document. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti alle pagine.
+\end{itemize}
+Inoltre, contiene il seguente metodo privato:
+\begin{itemize}
+    \item \texttt{UTC\_to\_CET(timestamp: string): string}: Riceve in input un timestamp di tipo stringa contenente una data e ora secondo il fuso orario \emph{UTC}, e si occupa di convertirlo in una stringa che rappresenta il timestamp convertito nel fuso orario \emph{CET}. Restituisce una stringa contenente il timestamp convertito.
 \end{itemize}
 
 \subsubsubsection{PostgresAdapter}
@@ -282,7 +291,7 @@ La classe ChromaVectorStoreRepository si occupa di gestire parte della \emph{per
 \end{itemize}
 Essa espone i seguenti metodi pubblici:
 \begin{itemize}
-    \item \texttt{load(documents: ChromaDocumentEntity*): VectorStoreLog}: Si occupa di caricare i documenti nel database vettoriale Chroma. Riceve in input una lista di documenti di tipo ChromaDocumentEntity e li carica nel database vettoriale. Restituisce un oggetto di tipo VectorStoreLog, corrispondente al log del caricamento;
+    \item \texttt{load(documents: ChromaDocumentEntity*): VectorStoreLog}: Si occupa di caricare i documenti nel database vettoriale Chroma. Riceve in input una lista di documenti di tipo ChromaDocumentEntity e li carica nel database vettoriale. Si occupa anche di distinguere chiaramente quali documenti sono stati aggiunti, quali sono stati modificati (cioè eliminati e riaggiunti aggiornati) e quali sono stati eliminati: viene considerata la data di ultimo aggiornamento per le Jira Issues, le Confluence Pages e i GitHub Commits, mentre avviene il confronto tra la data di creazione e la data di ultimo inserimento in Chroma per i GitHub Files, che hanno bisogno di questo passaggio dedicato poichè la piattaforma GitHub non fornisce un id univoco per distinguere un file da un altro senza dipendere dal contenuto. Restituisce un oggetto di tipo VectorStoreLog, corrispondente al log del caricamento riportante le suddette statistiche sui documenti caricati;
     \item \texttt{similarity\_search(user\_input: string): QueryResultEntity}: Si occupa di cercare i documenti similari alla domanda dell'utente nel database vettoriale Chroma. Riceve in input la domanda dell'utente di tipo string e la utilizza per cercare i documenti similari nel database vettoriale. Restituisce un oggetto di tipo QueryResultEntity, contenente i documenti rilevanti.
 \end{itemize}
 
