@@ -835,3 +835,94 @@ L’applicazione prevede la presenza di due \emph{Attori}\textsubscript{\textbf{
         \item L'utente visualizza un messaggio di errore che comunica dell'impossibilità di recuperare i messaggi precedenti.
     \end{enumerate}
 \end{itemize}
+
+
+\hypertarget{UC29}{}
+\subsubsection{UC29: Visualizzazione riquadro di caricamento di una risposta}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{UC29.png}
+    \caption{Visualizzazione riquadro di caricamento di una risposta}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: L'utente ha inserito una domanda;
+    \item \textbf{Trigger}: L'utente desidera visualizzare la risposta alla domanda che ha inserito;
+    \item \textbf{Postcondizioni}: L'utente visualizza un riquadro di caricamento che indica che il sistema sta elaborando la risposta alla domanda inserita;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item \bulhyperlink{UC1}{UC1}: L'utente inserisce una domanda;
+        \item L'utente visualizza un riquadro di caricamento che indica che il sistema sta elaborando la risposta alla domanda inserita.
+    \end{enumerate}
+\end{itemize}
+
+\newpage
+
+\hypertarget{UC30}{}
+\subsubsection{UC30: Visualizzazione riquadro di caricamento dello storico dei messaggi}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{UC30.png}
+    \caption{Visualizzazione riquadro di caricamento dello storico dei messaggi}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: L'utente avvia l'applicazione;
+    \item \textbf{Trigger}: L'utente desidera visualizzare lo storico dei messaggi;
+    \item \textbf{Postcondizioni}: L'utente visualizza un riquadro di caricamento che indica che il sistema sta caricando lo storico dei messaggi;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item L'utente avvia l'applicazione;
+        \item L'utente visualizza un riquadro di caricamento che indica che il sistema sta caricando lo storico dei messaggi.
+    \end{enumerate}
+\end{itemize}
+
+\newpage
+
+\hypertarget{UC31}{}
+\subsubsection{UC31: Visualizzazione riquadro di caricamento dei messaggi precedenti}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{UC31.png}
+    \caption{Visualizzazione riquadro di caricamento dei messaggi precedenti}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: L'utente ha scrollato fino all'inizio della lista dei messaggi presenti nella vista;
+    \item \textbf{Trigger}: L'utente desidera visualizzare una lista dei messaggi immediatamente precedenti a quanto già presente nella vista;
+    \item \textbf{Postcondizioni}: L'utente visualizza un riquadro di caricamento che indica che il sistema sta caricando i messaggi precedenti;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item L'utente ha scrollato fino all'inizio della lista dei messaggi presenti nella vista;
+        \item L'utente visualizza un riquadro di caricamento che indica che il sistema sta caricando i messaggi precedenti.
+    \end{enumerate}
+\end{itemize}
+
+\newpage
+
+\hypertarget{UC32}{}
+\subsubsection{UC32: Torna ai messaggi recenti}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{UC32.png}
+    \caption{Torna ai messaggi recenti}
+\end{figure}
+
+\begin{itemize}
+    \item \textbf{Attori principali}: Utente;
+    \item \textbf{Precondizioni}: L'utente si trova in alto rispetto alla lista dei messaggi presenti nella vista;
+    \item \textbf{Trigger}: L'utente desidera tornare ai messaggi più recenti;
+    \item \textbf{Postcondizioni}: L'utente visualizza i messaggi più recenti;
+    \item \textbf{Scenario principale}:
+    \begin{enumerate}
+        \item L'utente clicca un pulsante che permette di tornare ai messaggi più recenti;
+        \item L'utente visualizza i messaggi più recenti.
+    \end{enumerate}
+\end{itemize}

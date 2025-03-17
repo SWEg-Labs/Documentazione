@@ -122,10 +122,16 @@ solida per la \emph{progettazione}\textsubscript{\textit{\textbf{G}}} del sistem
     \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Fonti} \\ \hline
     RDF43 & Desiderabile & Il sistema deve mostrare a schermo la data e l'ora di ogni messaggio presente nello storico. & \bulhyperlink{UC8.1.1}{UC8.1.1} \\ \hline
     RDF44 & Desiderabile & Nel caso non sia possibile recuperare la data e l'ora di un messaggio presente nello storico, deve essere visualizzato al suo posto un avviso di errore. & \bulhyperlink{UC28}{UC28} \\ \hline
+    RZF45 & Opzionale & Il sistema deve mostrare un riquadro di caricamento durante la generazione di una risposta. & \bulhyperlink{UC29}{UC29} \\ \hline
+    RZF46 & Opzionale & Il sistema deve mostrare un riquadro di caricamento durante il caricamento dello storico dei messaggi. & \bulhyperlink{UC30}{UC30} \\ \hline
+    RZF47 & Opzionale & Il sistema deve mostrare un riquadro di caricamento durante il caricamento dei messaggi precedenti. & \bulhyperlink{UC31}{UC31} \\ \hline
+    RZF48 & Opzionale & Deve essere presente un pulsante che, al click, permetta all'utente di tornare ai messaggi più recenti della chat. & \bulhyperlink{UC32}{UC32} \\ \hline
     \end{tabularx}
     \caption{Requisiti funzionali}
     \label{tab:Requisiti_funzionali}
 \end{table}
+
+\newpage
 
 \subsection{Requisiti qualitativi}
 \label{sec:Requisiti_qualitativi}
@@ -173,6 +179,8 @@ coerenza e l'\emph{efficienza}\textsubscript{\textit{\textbf{G}}} del prodotto.
 Trattandosi di una \emph{applicazione web}\textsubscript{\textit{\textbf{G}}}, i requisiti prestazionali saranno influenzati principalmente dalla connessione Internet, 
 dalle prestazioni del dispositivo e dall'ottimizzazione specifica per il browser \emph{Google Chrome}, l'unico supportato ufficialmente.
 
+\newpage
+
 \subsection{Tracciamento}
 \subsubsection{Fonte - Requisiti}
 \label{sec:fonte_requisito}
@@ -213,6 +221,8 @@ dalle prestazioni del dispositivo e dall'ottimizzazione specifica per il browser
     \end{tabularx}
 \end{table}
 
+\newpage
+
 \begin{table}[h!]
     \centering
     \renewcommand{\arraystretch}{1.6} % Per aumentare l'altezza delle righe
@@ -228,6 +238,10 @@ dalle prestazioni del dispositivo e dall'ottimizzazione specifica per il browser
     \bulhyperlink{UC26}{UC26} & RDF32 \\ \hline
     \bulhyperlink{UC27}{UC27} & RDF33 \\ \hline
     \bulhyperlink{UC28}{UC28} & RDF44 \\ \hline
+    \bulhyperlink{UC29}{UC29} & RZF45 \\ \hline
+    \bulhyperlink{UC30}{UC30} & RZF46 \\ \hline
+    \bulhyperlink{UC31}{UC31} & RZF47 \\ \hline
+    \bulhyperlink{UC32}{UC32} & RZF48 \\ \hline
     \end{tabularx}
     \caption{Tracciamento Fonte - Requisiti}
     \label{tab:Tracciamento_fonte_requisiti}
@@ -256,22 +270,23 @@ dalle prestazioni del dispositivo e dall'ottimizzazione specifica per il browser
     ROF13 & \bulhyperlink{UC10}{UC10}\\ \hline
     ROF14 & \bulhyperlink{UC10}{UC10}, Capitolato\\ \hline
     ROF15 & Verbale interno\\ \hline
-    ROF16 & Verbale interno\\ \hline
-    RZF17 & \bulhyperlink{UC11}{UC11}, \bulhyperlink{UC11.1}{UC11.1}\\ \hline
-    RZF18 & \bulhyperlink{UC12}{UC12}, \bulhyperlink{UC12.1}{UC12.1}\\ \hline
-    RZF19 & \bulhyperlink{UC13}{UC13}\\ \hline
-    RZF20 & \bulhyperlink{UC15}{UC15}\\ \hline
-    RZF21 & \bulhyperlink{UC15}{UC15}\\ \hline
+    ROF16 & Verbale interno\\ \hline    
     \end{tabularx}
 \end{table}
 
 \newpage
+
 \begin{table}[h!]
     \centering
     \renewcommand{\arraystretch}{1.6} % Per aumentare l'altezza delle righe
     \begin{tabularx}{0.8\textwidth}{|>{\centering\arraybackslash}p{2.8cm}|>{\centering\arraybackslash}X|} \hline
     \rowcolor[HTML]{FFD700} 
     \textbf{Requisito} & \textbf{Fonti} \\ \hline
+    RZF17 & \bulhyperlink{UC11}{UC11}, \bulhyperlink{UC11.1}{UC11.1}\\ \hline
+    RZF18 & \bulhyperlink{UC12}{UC12}, \bulhyperlink{UC12.1}{UC12.1}\\ \hline
+    RZF19 & \bulhyperlink{UC13}{UC13}\\ \hline
+    RZF20 & \bulhyperlink{UC15}{UC15}\\ \hline
+    RZF21 & \bulhyperlink{UC15}{UC15}\\ \hline
     ROF22 & Verbale interno\\ \hline
     ROF23 & Verbale interno\\ \hline
     ROF24 & Verbale interno\\ \hline
@@ -295,6 +310,21 @@ dalle prestazioni del dispositivo e dall'ottimizzazione specifica per il browser
     RZF42 & Verbale esterno\\ \hline
     RDF43 & \bulhyperlink{UC8.1.1}{UC8.1.1} \\ \hline
     RDF44 & \bulhyperlink{UC28}{UC28} \\ \hline
+    RZF45 & \bulhyperlink{UC29}{UC29} \\ \hline
+    RZF46 & \bulhyperlink{UC30}{UC30} \\ \hline
+    RZF47 & \bulhyperlink{UC31}{UC31} \\ \hline
+    RZF48 & \bulhyperlink{UC32}{UC32} \\ \hline
+    \end{tabularx}
+\end{table}
+
+\newpage
+
+\begin{table}[h!]
+    \centering
+    \renewcommand{\arraystretch}{1.6} % Per aumentare l'altezza delle righe
+    \begin{tabularx}{0.8\textwidth}{|>{\centering\arraybackslash}p{2.8cm}|>{\centering\arraybackslash}X|} \hline
+    \rowcolor[HTML]{FFD700} 
+    \textbf{Requisito} & \textbf{Fonti} \\ \hline
     ROQ1 & Verbale Interno\\ \hline
     ROQ2 & Verbale Interno\\ \hline
     ROQ3 & Capitolato \\ \hline
