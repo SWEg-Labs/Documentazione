@@ -15,53 +15,37 @@ Questa sezione fornisce una descrizione dettagliata dell'\emph{architettura logi
     \caption{Logica del Prodotto}
 \end{figure}
 
-L’applicazione web permette di porre domande inerenti all’ecosistema aziendale
-sfruttando un Large Language Model (LLM), nella fattispecie \emph{GPT-4o}\textsubscript{\textbf{\textit{G}}}, integrato con
-un sistema di archiviazione e ricerca di documenti basato su tecniche di embedding
-e su un database vettoriale.
+\section{Logica del Prodotto}
 
-L’applicazione permette agli utenti di ottenere risposte precise a domande relative all’ecosistema 
-aziendale, utilizzando il Large Language Model \emph{GPT-4o}. La 
-qualità delle risposte è garantita dall'integrazione diretta con documenti e dati provenienti dalle 
-principali piattaforme interne (\emph{GithHub}\textsubscript{\textbf{\textit{G}}}, 
-\emph{Jira}\textsubscript{\textbf{\textit{G}}} e \emph{Confluence}\textsubscript{\textbf{\textit{G}}}), 
-sincronizzati automaticamente ogni 24 ore.
-Tutti i documenti recuperati vengono suddivisi in parti più piccole e trasformati in vettori 
-numerici attraverso un modello dedicato. Questi vettori, insieme ai relativi metadati, vengono 
-archiviati stabilmente nel \emph{database vettoriale}\textsubscript{\textbf{\textit{G}}} 
-\emph{chromaDB}\textsubscript{\textbf{\textit{G}}}, consentendo di effettuare rapidamente ricerche 
-semantiche mirate.
-Quando l’utente invia una domanda attraverso l’interfaccia web, il \emph{frontend}\textsubscript{\textbf{\textit{G}}} 
-inoltra la richiesta al \emph{backend}\textsubscript{\textbf{\textit{G}}}. Quest’ultimo esegue una 
-ricerca semantica all'interno del \emph{database vettoriale}\textsubscript{\textbf{\textit{G}}} per 
-identificare le informazioni più rilevanti in relazione alla domanda posta. Il 
-\emph{backend}\textsubscript{\textbf{\textit{G}}} invia quindi la domanda originale dell’utente, i 
-risultati della ricerca semantica e un apposito \emph{prompt}\textsubscript{\textbf{\textit{G}}} al 
-modello \emph{GPT-4o}. Tale \emph{prompt} 
-fornisce istruzioni precise al modello, indicando il contesto aziendale di riferimento e definendo il 
-formato desiderato della risposta.
-\emph{GPT-4o} genera dunque una risposta contestualizzata, 
-integrando automaticamente una sezione denominata \emph{“Link utili”} contenente tutti i riferimenti 
-ai documenti aziendali utilizzati nella formulazione della risposta stessa. Qualora la domanda 
-dell'utente risulti chiaramente fuori contesto aziendale, il chatbot risponderà con 
-\emph{“domanda fuori contesto”}. Nel caso in cui non siano presenti documenti o informazioni pertinenti 
-nel \emph{database vettoriale}, la risposta fornita sarà 
-\emph{“nessuna informazione trovata”}.
-Tutte le conversazioni tra utente e chatbot vengono salvate in modo persistente nel 
-\emph{database PostgreSQL}\textsubscript{\textbf{\textit{G}}}. Al primo caricamento dell’applicazione, 
-l'interfaccia mostra automaticamente gli ultimi cinquanta messaggi scambiati. Se l'utente desidera 
-consultare messaggi precedenti, può scorrere verso l'alto e ulteriori messaggi vengono caricati 
-progressivamente. Inoltre, dopo ciascuna risposta, il \emph{frontend} 
-richiede al \emph{backend} di generare e suggerire domande di 
-approfondimento, stimolando ulteriori interazioni coerenti con la conversazione in corso. L'interfaccia 
-permette infine di copiare rapidamente le risposte del chatbot, comprese eventuali porzioni di codice 
-presenti al loro interno.
-Per quanto riguarda la gestione degli errori, l’applicazione notifica l’utente tramite messaggi 
-dedicati qualora si riscontrassero problemi nel recupero di documenti o messaggi dal database
-\emph{PostgreSQL} o durante la sincronizzazione con le 
-piattaforme aziendali. Anche eventuali difficoltà nella generazione di risposte o nel caricamento delle 
-domande suggerite vengono gestite informando tempestivamente l’utente e consentendo, ove possibile, di 
-continuare ad utilizzare il servizio in modalità limitata o di riprovare successivamente.
+L’applicazione web permette di porre domande inerenti all’ecosistema aziendale sfruttando un \emph{Large Language Model}\textsubscript{\textbf{\textit{G}}} (LLM), 
+nella fattispecie GPT-4o, integrato con un \emph{database vettoriale}\textsubscript{\textbf{\textit{G}}}, che è un sistema 
+di archiviazione basato su tecniche di embedding.
+La qualità delle risposte è garantita dall'integrazione diretta con documenti e dati provenienti dalle principali piattaforme interne 
+(\emph{GithHub}\textsubscript{\textbf{\textit{G}}}, \emph{Jira}\textsubscript{\textbf{\textit{G}}} e \emph{Confluence}\textsubscript{\textbf{\textit{G}}}), sincronizzati 
+automaticamente ogni 24 ore. Tutti i documenti recuperati vengono suddivisi in parti più piccole e trasformati in vettori numerici. Questi vettori, insieme ai relativi metadati, 
+vengono archiviati stabilmente nel \emph{database vettoriale}\textsubscript{\textbf{\textit{G}}} \emph{chromaDB}\textsubscript{\textbf{\textit{G}}}, consentendo di effettuare 
+rapidamente ricerche semantiche mirate.
+Quando l’utente invia una domanda attraverso l’interfaccia web, il \emph{frontend}\textsubscript{\textbf{\textit{G}}} inoltra la richiesta al 
+\emph{backend}\textsubscript{\textbf{\textit{G}}}. Quest’ultimo esegue una ricerca semantica all'interno del \emph{database vettoriale}\textsubscript{\textbf{\textit{G}}} 
+per identificare i documenti più rilevanti in relazione alla domanda posta. Il \emph{backend}\textsubscript{\textbf{\textit{G}}} unisce quindi la domanda originale dell’utente, 
+i risultati della ricerca semantica e un \emph{header}\textsubscript{\textbf{\textit{G}}}, contenente istruzioni precise per il modello sul contesto aziendale di riferimento e 
+sul formato desiderato della risposta, generando un unico prompt che viene inviato al modello.
+Il modello genera dunque una risposta contestualizzata, integrando automaticamente una sezione denominata \emph{“Link correlati”}, contenente tutti i riferimenti ai documenti 
+aziendali utilizzati nella formulazione della risposta stessa. Qualora la domanda dell'utente risulti chiaramente fuori contesto aziendale, il chatbot risponderà con 
+\emph{“domanda fuori contesto”}. Nel caso in cui non siano presenti documenti o informazioni pertinenti nel \emph{database vettoriale}\textsubscript{\textbf{\textit{G}}}, la 
+risposta fornita sarà \emph{“nessuna informazione trovata”}.
+Tutte le conversazioni tra utente e chatbot vengono salvate in modo persistente nel \emph{database PostgreSQL}\textsubscript{\textbf{\textit{G}}}. Al primo caricamento 
+dell’applicazione, l'interfaccia mostra automaticamente gli ultimi cinquanta messaggi scambiati. Se l'utente desidera consultare i messaggi precedenti, può scorrere verso 
+l'alto, e ulteriori messaggi vengono caricati progressivamente suddivisi in pagine da 50 messaggi ciascuna. Inoltre, dopo ciascuna risposta, il 
+\emph{frontend}\textsubscript{\textbf{\textit{G}}} chiede al \emph{backend}\textsubscript{\textbf{\textit{G}}}, che a sua volta chiede al modello GPT-4o, di generare e 
+suggerire domande di approfondimento, stimolando ulteriori interazioni coerenti con la conversazione in corso. L'interfaccia permette infine di copiare rapidamente le 
+risposte del chatbot, comprese eventuali porzioni di codice presenti al loro interno.
+Per quanto riguarda la gestione degli errori, l’applicazione notifica l’utente tramite messaggi dedicati qualora si riscontrassero problemi nel recupero dei messaggi dal 
+\emph{database PostgreSQL}\textsubscript{\textbf{\textit{G}}} o durante la sincronizzazione con le piattaforme aziendali. Anche eventuali difficoltà nella generazione di 
+risposte o nel caricamento delle domande suggerite vengono gestite informando tempestivamente l’utente e consentendo, ove possibile, di continuare ad utilizzare il servizio 
+in modalità limitata o di riprovare successivamente.
+
+
 
 
 \subsection{Architettura logica}
