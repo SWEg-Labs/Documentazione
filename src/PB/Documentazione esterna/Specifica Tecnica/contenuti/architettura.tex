@@ -71,27 +71,29 @@ Ogni classe di repository, oltre a svolgere il proprio di compito, si occupa anc
 \newpage
 
 
-\subsubsection{Architettura dell’inizializzazione, refresh e scroll di Angular}
-\label{sec:architettura_inizializzazione_angular}
+\subsubsection{Architettura del rendering dello storico, al caricamento iniziale e allo scroll}
+\label{sec:architettura_rendering_storico}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{placeholder.png}
-    \caption{Architettura dell’inizializzazione, refresh e scroll di Angular}
+    \caption{Architettura del rendering dello storico, al caricamento iniziale e allo scroll}
 \end{figure}
 
-\dots
+L'UML in questione rappresenta l'architettura del rendering dello storico, al caricamento iniziale e allo scroll, cioè descrive tutte quelle operazioni compiute dai componenti e servizi di Angular per garantire che, all'avvio ed allo scroll verso il basso, sia visualizzabile una lista di messaggi, recuperati dal backend, nella schermata principale della pagina web.\\
+Il componente ChatContainer, alla sua istanziazione, chiama il proprio metodo \texttt{loadOldMessages}, che chiama \texttt{getMessages} di DatabaseService passando come parametri la quantità di messaggi da ottenere e il numero della pagina da cui prelevarli. Una pagina raggruppa un certo numero di messaggi caricati in unico passaggio: nel caso del caricamento iniziale, la pagina da caricare è la pagina 1, cioè la pagina dei messaggi più recenti, mentre, nel caso dello scroll, viene chiamata la pagina successiva rispetto a quella che si sta visualizzando in quel momento. Il metodo \texttt{getMessages} di DatabaseService invoca dunque il metodo \texttt{get\_messages} esposto dal backend tramite FastAPI, passando come parametro un dizionario che indica la quantità di messaggi da ottenere e il numero di pagina, e, ottenuta la lista di oggetti serializzati dal backend, si occupa di creare una lista di oggetti di tipo Message, che restituisce a ChatContainer. ChatContainer, poi, si occupa di formattare appositamente, tra la lista dei messaggi, i messaggi scritti dal chatbot, per evidenziare parole e zone di interesse delle risposte.\\
+Poi, nel caso in cui si sia in fase di caricamento iniziale, ChatContainer chiama il proprio metodo scrollToBottom, che chiama il metodo scrollToBottom di ChatMessages, che fa in modo che l'utente visualizzi nella schermata iniziale i messaggi più recenti. Altrimenti, nel caso di scroll verso il basso, e quindi di caricamento di messaggi sovrastanti quelli già presenti, è necessario ricalibrare la barra di scorrimento laterale senza che cambi la schermata visualizzata dall'utente, e dunque ChatContainer chiama l'apposita funzione maintainScrollPosition di ChatMessages.
 
 \newpage
 
 
-\subsubsection{Architettura dell’aggiornamento del rendering grafico durante la chat}
-\label{sec:architettura_aggiornamento_rendering_chat}
+\subsubsection{Architettura del rendering grafico di domanda e risposta}
+\label{sec:architettura_rendering_domanda_risposta}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{placeholder.png}
-    \caption{Architettura dell’aggiornamento del rendering grafico durante la chat}
+    \caption{Architettura del rendering grafico di domanda e risposta}
 \end{figure}
 
 \dots
