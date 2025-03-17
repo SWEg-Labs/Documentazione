@@ -181,6 +181,33 @@ I test di unità vengono utilizzati per controllare il funzionamento corretto di
     TU107 & Verifica che il metodo similarity\_search di SimilaritySearchService salti i documenti che superano la soglia di similarità. &  N-I \\ \hline
     TU108 & Verifica che il metodo similarity\_search di SimilaritySearchService termini e restituisca i documenti trovati finora se il distacco massimo è superato. &  N-I \\ \hline
     TU109 & Verifica che il metodo similarity\_search di SimilaritySearchService gestisca correttamente le eccezioni. &  N-I \\ \hline
+    TU110 & Verifica che il metodo split di ChromaVectorStoreAdapter divida correttamente in più chunk i documenti che contengono più caratteri dell'attributo max\_chunk\_size. &  N-I \\ \hline
+    TU111 & Verifica che il metodo UTC\_to\_CET di ConfluenceAdapter gestisca correttamente le eccezioni. &  N-I \\ \hline
+    TU112 & Verifica che il metodo get\_github\_files\_new\_metadata di LoadFilesService aggiorni correttamente i metadati "last\_update" e "creation\_date" dei file di GitHub. &  N-I \\ \hline
+    TU113 & Verifica che il metodo get\_github\_files\_new\_metadata di LoadFilesService gestisca correttamente l'eccezione di path mancante nei metadati dei file di GitHub. &  N-I \\ \hline
+    TU114 & Verifica che il metodo get\_github\_files\_new\_metadata di LoadFilesService gestisca correttamente le eccezioni di formato della data errato o di data assente nei metadati dei commit di GitHub. &  N-I \\ \hline
+    TU115 & Verifica che il metodo load di ChromaVectorStoreRepository gestisca correttamente le eccezioni durante la preparazione dei dati per l'aggiunta nel database vettoriale. &  N-I \\ \hline
+    TU116 & Verifica che il metodo load di ChromaVectorStoreRepository gestisca correttamente le eccezioni durante il recupero dei vecchi dati dal database vettoriale. &  N-I \\ \hline
+
+
+    \end{tabularx}
+\end{table}
+
+\newpage
+
+\begin{table}[h!]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{|p{0.15\textwidth}|X|p{0.15\textwidth}|p{0.15\textwidth}|}\hline
+    \rowcolor[HTML]{FFD700}
+    \textbf{Codice} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
+    TU117 & Verifica che il metodo load di ChromaVectorStoreRepository gestisca correttamente le eccezioni durante il parsing delle date per documenti non di tipo GitHub File. &  N-I \\ \hline
+    TU118 & Verifica che il metodo load di ChromaVectorStoreRepository gestisca correttamente le eccezioni durante il parsing delle date per documenti di tipo GitHub File. &  N-I \\ \hline
+    TU119 & Verifica che il metodo load di ChromaVectorStoreRepository gestisca correttamente l'eccezione riguardante un documento di tipo GitHub File senza il campo 'path'. &  N-I \\ \hline
+    TU120 & Verifica che il metodo load di ChromaVectorStoreRepository segnali correttamente la modifica di un documento di tipo GitHub File, e non la sua creazione, se la data di creazione è più vecchia di quella dell'ultimo inserimento nel database vettoriale. &  N-I \\ \hline
+    TU121 & Verifica che il metodo load di ChromaVectorStoreRepository ignori i documenti di tipo GitHub File durante il controllo di modifica basato sul metadato 'last\_update'. &  N-I \\ \hline
+    TU122 & Verifica che il metodo load di ChromaVectorStoreRepository segnali correttamente la modifica di un documento con il metadato 'last\_update' più recente rispetto al corrispondente presente nel database vettoriale. &  N-I \\ \hline
+    TU123 & Verifica che il metodo load di ChromaVectorStoreRepository gestisca correttamente le eccezioni durante la cancellazione dei documenti dal database vettoriale. &  N-I \\ \hline
 
     \end{tabularx}
     \caption{Insieme dei test di unità}
