@@ -79,11 +79,30 @@ ottenere una risposta soddisfacente:
 
 
 \subsection{Visualizzazione dello storico dei messaggi}
-% Parlare:
-% - della vista iniziale (senza messaggi);
-% - della visualizzazione della data e ora di invio del messaggio;
-% - dello scorrimento verso l'alto per visualizzare i messaggi precedenti fino all'inizio della conversazione;
-% - della vista del segnalino "Inizio della conversazione" quando si è raggiunto l'inizio della conversazione.
+\label{subsec:visualizzazione_storico_messaggi}
+Al primo accesso del chatbot, è possibile visualizzare la discussione vuota, senza alcun messaggio.
+Una volta digitata la prima interrogazione, essa verrà visualizzata in alto a destra.
+Una volta terminata l'elaborazione, la risposta del chatbot verrà visualizzata a sinistra, sotto il relativo messaggio.
+Da qui in poi, ogni nuova interrogazione verrà visualizzata a destra, sotto la risposta precedente, mentre ogni risposta apparirà a sinistra, sotto la domanda corrispondente.
+Sia le domande che le risposte sono corredate dalla data e dall'ora di invio, come visibile nelle figure \bulref{fig:Data e ora di invio domanda} e \bulref{fig:Data e ora di invio risposta}.
+È possibile visualizzare i messaggi precedenti allo scroll, fino all'inizio della conversazione. Quando si raggiunge l'inizio della conversazione, apparirà un segnalino che indica tale stato.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{minipage}{.45\textwidth}
+        \centering
+        \includegraphics[height=1.7cm]{Data e ora di invio domanda.png}
+        \caption{\centering Interrogazione con Data e Ora}
+        \label{fig:Data e ora di invio domanda}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}{.45\textwidth}
+        \centering
+        \includegraphics[height=1.7cm]{Data e ora di invio risposta.png}
+        \caption{\centering Messaggio di risposta con Data e Ora}
+        \label{fig:Data e ora di invio risposta}
+    \end{minipage}
+\end{figure}
 
 
 \subsection{Aggiornamento automatico dei documenti}
