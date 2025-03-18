@@ -542,10 +542,11 @@ I test di accettazione descritti di seguito rappresentano la base per la validaz
     TA7 & Verificare che lo scheduler effettui l'aggiornamento automatico del database vettoriale. & UC10 & N-I \\ \hline
     TA8 & Verificare che l'utente possa visualizzare una lista di domande ideali per poter iniziare una conversazione. & UC11, UC11.1 & N-I \\ \hline
     TA9 & Verificare che l'utente possa visualizzare una lista di domande ideali per poter proseguire una conversazione con relativo errore nel caso non fosse possibile. & UC12, UC12.1, UC13 & N-I \\ \hline
-    TA10 & Verificare che l'utente possa visualizzare un badge che segnala lo stato di aggiornamento del database vettoriale e nel caso non sia possibile l'esito dell'ultimo aggiornamento del database vettoriale si visualizza un badge a forma di segnale di pericolo.
+    TA10 & Verificare che l'utente possa visualizzare un badge che segnala l'esito dell'ultimo aggiornamento del database vettoriale, in una delle seguenti forme:
     \begin{itemize}
-        \item Badge a forma di "X" se c'è stato un fallimento nell'ultimo tentativo do aggiornamento del database vettoriale;
-        \item Badge a forma di spunta se il database vettoriale è stato aggiornato con successo.
+        \item Badge a forma di spunta se l'ultimo aggiornamento del database vettoriale è avvenuto con successo;
+        \item Badge a forma di "X" se c'è stato un fallimento nell'ultimo aggiornamento del database vettoriale;
+        \item Badge a forma di segnale di pericolo se non è stato possibile recuperare l'esito dell'ultimo aggiornamento del database vettoriale.
     \end{itemize} 
         & UC15, UC16, UC17, UC20 & N-I \\ \hline
 
@@ -560,10 +561,11 @@ I test di accettazione descritti di seguito rappresentano la base per la validaz
     \begin{tabularx}{\textwidth}{|p{0.1\textwidth}|X|p{0.2\textwidth}|p{0.1\textwidth}|}\hline
     \rowcolor[HTML]{FFD700}
     \textbf{Codice} & \textbf{Descrizione} & \textbf{Fonte} & \textbf{Stato} \\ \hline
-    TA11 & Verificare che l'utente possa visualizzare un messaggio che spiega il badge che segnala l'esito dell'ultimo aggiornamento del database vettoriale e nel caso di fallimento visualizza un messaggio che spiega il badge che segnala un errore nel recupero dell'esito dell'ultimo aggiornamento del database vettoriale.
+    TA11 & Verificare che l'utente possa visualizzare un messaggio che spiega il badge che segnala l'esito dell'ultimo aggiornamento del database vettoriale, in una delle seguenti possibilità:
     \begin{itemize}
-        \item Visualizza un messaggio che spiega il badge che segnala il successo dell'ultimo aggiornamento del database vettoriale;
-        \item Visualizza un messaggio che spiega il badge che segnala il fallimento dell'ultimo aggiornamento del database vettoriale.
+        \item Messaggio che spiega il badge che segnala il successo dell'ultimo aggiornamento del database vettoriale;
+        \item Messaggio che spiega il badge che segnala il fallimento dell'ultimo aggiornamento del database vettoriale;
+        \item Messaggio che spiega il badge che segnala l'impossibilità di recuperare l'esito dell'ultimo aggiornamento del database vettoriale.
     \end{itemize} 
     & UC21, UC22, UC23, UC24 & N-I \\ \hline
     TA12 & Verificare che l'utente possa visualizzare una lista di 50 messaggi immediatamente precedenti a quanto già presente nella vista, con relativo errore nel caso non sia possibile recuperare i messaggi. & UC25, UC26, UC27, UC8.1 & N-I \\ \hline
