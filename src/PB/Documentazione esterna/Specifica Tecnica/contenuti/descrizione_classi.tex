@@ -71,7 +71,7 @@ GetLastLoadOutcomeUseCase è un'interfaccia che definisce il caso d'uso dell'agg
 \label{sec:service_backend}
 
 \subsubsubsection{ChatService}
-\label{sec:chat_service}
+\label{sec:chat_service_backend}
 La classe ChatService implementa l'interfaccia ChatUseCase e si occupa di eseguire la logica di business per la generazione di una risposta all'interrogazione di un utente.
 Essa espone i seguenti tre metodi:
 \begin{itemize}
@@ -376,7 +376,89 @@ Inoltre, contiene il seguente metodo privato:
 \subsubsection{Component}
 \label{sec:component}
 
-\dots
+\subsubsubsection{AppComponent}
+\label{sec:app_component}
+AppComponent rappresenta il componente contenitore di tutta l'applicazione Angular. Tuttavia, nel nostro caso, il suo ruolo si limita a quello di contenitore per il componente ChatContainerComponent, che poi sarà l'effettivo contenitore e manager dei vari componenti dell'applicazione.
+
+\subsubsubsection{ChatContainerComponent}
+\label{sec:chat_container_component}
+ChatContainerComponent rappresenta il componente contenitore di tutti i componenti che compongono la chat dell'applicazione. Esso contiene i seguenti componenti:
+\begin{itemize}
+    \item ChatHeaderComponent;
+    \item ChatMessagesComponent;
+    \item ChatSuggestionsComponent;
+    \item ChatInputComponent.
+\end{itemize}
+Esso si occupa di gestire la logica di business della chat, ovvero di recuperare i messaggi, di inviarli, di visualizzarli e di gestire le possibili domande successive.
+Il componente espone i seguenti metodi:
+\begin{itemize}
+    \item \texttt{ngOnInit()}: Si occupa di inizializzare il componente, recuperando i messaggi dal database e l'esito dell'ultimo caricamento nel database vettoriale;
+    \item \texttt{loadOldMessages(quantity: number, page: number = 1)}: Si occupa di recuperare i messaggi  dello storico della chat, di formattarli e di gestire opportunamente lo scroll della chat: se la pagina è la prima, viene effettuato uno scroll fino al messaggio più recente, altrimenti viene mantenuta la posizione corrente;
+    \item \texttt{showErrorMessage(message: string)}: Si occupa di assegnare l'attributo errorMessage per poter far visualizzare un messaggio di errore all'utente;
+    \item \texttt{showTemporaryErrorMessage(message: string, duration: number = 5000)}: Si occupa di assegnare l'attributo errorMessage per poter far visualizzare un messaggio di errore all'utente per un tempo limitato;
+    \item \texttt{clearErrorMessage()}: Si occupa di assegnare l'attributo errorMessage ad una stringa vuota per poter nascondere il messaggio di errore all'utente;
+    \item \texttt{onLoadMoreMessages()}: Si occupa di gestire il caricamento di ulteriori messaggi dello storico della chat, cioè, se le condizioni sono soddisfatte, aggiorna l'attributo della pagina corrente e chiama il metodo loadOldMessages;
+    \item \texttt{onScrollChange(isScrolledUp: boolean)}: Viene assegnato l'attributo showScrollToBottom al valore del parametro isScrolledUp, che indica se l'utente ha scrollato verso l'alto o verso il basso;
+    \item \texttt{onSendMessage(text: string)}: Si occupa di aggiungere il messaggio dell'utente alla chat, di chiamare il backend per salvarlo nel database, di chiamare il backend per ottenere la risposta, di aggiungere la risposta alla chat, di chiamare il backend per salvare la risposta nel database e di piazzare a false l'attributo hideSuggestions per ottenere le possibili domande successive;
+    \item \texttt{onSuggestionClicked(suggestion: string)}: Si occupa di chiamare il metodo onSendMessage con il parametro suggestion;
+    \item \texttt{formatResponse(response: string): string}: Si occupa di formattare la risposta ricevuta dal backend, sostituendo i caratteri markdown con i corrispondenti tag HTML, e aggiungendo la formattazione per i riquadri dello snippet di codice e dei link correlati;
+    \item \texttt{scrollToBottom()}: Si occupa di chiamare il metodo scrollToBottom() del componente ChatMessages per effettuare uno scroll fino al messaggio più recente.
+\end{itemize}
+
+\subsubsubsection{ChatMessagesComponent}
+\label{sec:chat_messages_component}
+ChatMessagesComponent rappresenta il componente che si occupa di visualizzare i messaggi della chat.
+Esso espone i seguenti metodi:
+\begin{itemize}
+    \item \texttt{ngAfterViewInit()}: Si occupa di associare un addEventListener ai pulsanti di copia di messaggio e snippet di codice, per poter copiare il testo al click;
+    \item \texttt{onScroll()}: Si occupa di gestire la barra laterale di scroll associandola alla posizione corrente della chat. Gestisce inoltre i casi di scroll al top e al bottom della chat: quando avviene uno scorrimento al top, viene emesso un segnale per caricare ulteriori messaggi;
+    \item \texttt{maintainScrollPosition()}: Si occupa di mantenere la posizione corrente della chat quando vengono caricati nuovi messaggi dallo storico;
+    \item \texttt{scrollToBottom()}: Si occupa di effettuare uno scroll in basso fino al messaggio più recente;
+    \item \texttt{copyToClipboard(msg: Message)}: Si occupa di copiare il testo del messaggio al click sul pulsante di copia, formattando opportunamente il testo;
+    \item \texttt{copySnippet(code: string, iconElement: HTMLElement)}: Si occupa di copiare lo snippet di codice al click sul pulsante di copia dedicato, formattando opportunamente il codice;
+    \item \texttt{stripHtml(html: string): string}: Si occupa di rimuovere i tag HTML dal testo, restituendo una stringa pulita.
+\end{itemize}
+
+\subsubsubsection{ChatInputComponent}
+\label{sec:chat_input_component}
+ChatInputComponent rappresenta il componente che contiene la barra di input e il pulsante di invio.
+Esso espone il seguente metodo:
+\begin{itemize}
+    \item \texttt{onSend()}: Viene chiamato quando l'utente clicca sul pulsante invia oppure preme il tasto invio. Si occupa, se le condizioni lo consentono, di emettere l'evento di invio del messaggio, passando il testo inserito dall'utente.
+\end{itemize}
+
+\subsubsubsection{ChatSuggestionsComponent}
+\label{sec:chat_suggestions_component}
+ChatSuggestionsComponent rappresenta il componente che contiene le possibili domande successive.
+Esso espone i seguenti metodi pubblici:
+\begin{itemize}
+    \item \texttt{ngOnChanges(changes: SimpleChanges)}: Si occupa di ascoltare i cambiamenti all'interno della schermata dei messaggi e di rilevare dunque quando ci sono le condizioni per chiamare il metodo getContinuationSuggestions per il caricamento delle possibili domande successive;
+    \item \texttt{onSuggestionClick(text: string)}: Si occupa di emettere l'evento di click su una possibile domanda successiva, passando il testo della domanda.
+\end{itemize}
+Inoltre, contiene i seguenti metodi privati:
+\begin{itemize}
+    \item \texttt{canLoadSuggestions(): boolean}: Si occupa di verificare se ci sono le condizioni per chiamare il metodo getContinuationSuggestions per il caricamento delle possibili domande successive. In particolare, verifica che siano presenti e disponibili i testi dell'ultima domanda e dell'ultima risposta, sulle quali le possibili domande successive si basano;
+    \item \texttt{getContinuationSuggestions()}: Si occupa di chiamare il metodoo getContinuationSuggestions di ChatService con un payload contenente l'ultima domanda, l'ultima risposta e la quantità di domande successive da generare, per ottenere le possibili domande successive, e di assegnarle all'attributo continuationSuggestions, che permette di visualizzarle tramite HTML.
+\end{itemize}
+
+\subsubsubsection{ChatLoadingIndicatorComponent}
+\label{sec:chat_loading_indicator_component}
+ChatLoadingIndicatorComponent rappresenta il componente che visualizza l'indicatore di caricamento durante il caricamento della risposta e dei messaggi dal database. Esso prevede una banana morsicata, il logo del gruppo \emph{SWEg Labs}, che gira su se stessa, per indicare all'utente che l'applicazione sta processando. Il componente non espone metodi, in quanto si limita a visualizzare l'indicatore di caricamento.
+
+\subsubsubsection{ChatHeaderComponent}
+\label{sec:chat_header_component}
+ChatHeaderComponent rappresenta il componente che visualizza l'intestazione della chat, contenente il logo di \emph{SWEg Labs} e il titolo dell'applicazione, "BuddyBot". Esso non espone metodi, in quanto si limita a visualizzare l'intestazione della chat.
+Questo componente contiene il componente ChatBadge, in quanto visualizza il badge di esito dell'ultimo caricamento dei documenti alla sua destra.
+
+\subsubsubsection{ChatBadgeComponent}
+\label{sec:chat_badge_component}
+ChatBadgeComponent rappresenta il componente che visualizza il badge di esito dell'ultimo caricamento dei documenti.
+Esso possiede un attributo lastLoadOutcome di tipo LastLoadOutcome, che rappresenta l'esito dell'ultimo caricamento dei documenti nel database vettoriale allo stato corrente, che può assumere i valori True, False o Error, i quali sono renderizzati visivamente rispettivamente con una spunta, con una X o con un segnale di pericolo. Viene inoltre presentata una scritta descrittiva accanto all'emoji, che assume rispettivamente i seguenti valori: "Aggiornato", "Da aggiornare" ed "Errore".
+Esso espone i seguenti metodi:
+\begin{itemize}
+    \item \texttt{ngOnInit()}: Si occupa di inizializzare il componente e di sottoscrivere il proprio attributo lastLoadOutcome al valore dell'attributo lastLoadOutcome\$ di DatabaseService;
+    \item \texttt{isUpdated(): boolean}: Si occupa di verificare se l'ultimo caricamento dei documenti è stato completato con successo, ritornando true se lastLoadOutcome è True, altrimenti false;
+\end{itemize}
 
 \newpage
 
@@ -384,4 +466,23 @@ Inoltre, contiene il seguente metodo privato:
 \subsubsection{Service}
 \label{sec:service_frontend}
 
-\dots
+\subsubsubsection{ChatService}
+\label{sec:chat_service_frontend}
+ChatService rappresenta il servizio che si occupa di gestire la comunicazione tra il frontend e il backend, ovvero di inviare le richieste al backend e di ricevere le risposte. Esso presenta un attributo apiBaseUrl che indica l'indirizzo del backend al quale collegarsi, e un attributo lastMessageTimestamp, che serve per poter associare una data di invio al messaggio inviato al backend.
+Contiene inoltre i seguenti metodi pubblici:
+\begin{itemize}
+    \item \texttt{getLastMessageTimestamp(): number}: Si occupa di restituire l'attributo lastMessageTimestamp;
+    \item \texttt{setLastMessageTimestamp(time: number)}: Si occupa di assegnare l'attributo lastMessageTimestamp al valore del parametro time;
+    \item \texttt{sendMessage(message: string): Observable<\{ response: string \}>}: Si occupa di inviare il messaggio di tipo stringa al backend, ricevere la risposta di tipo stringa e restituirla;
+    \item \texttt{getContinuationSuggestions(payload: {question: string; answer: string; quantity: number;}): Observable<Record<string, string>>}: Si occupa di inviare il payload contenente l'ultima domanda, l'ultima risposta e la quantità di domande successive da generare al backend, ricevere le possibili domande successive e restituirle.
+\end{itemize}
+
+\subsubsubsection{DatabaseService}
+\label{sec:database_service}
+DatabaseService rappresenta il servizio che si occupa di gestire la comunicazione tra il frontend e il backend per quanto riguarda il recupero e salvataggio dei messaggi da e nel database e il recupero dell'esito dell'ultimo caricamento dei documenti nel database vettoriale. Esso presenta un attributo apiBaseUrl che indica l'indirizzo del backend al quale collegarsi, un attributo lastLoadOutcome\$ di tipo Observable<LastLoadOutcome>, che rappresenta l'esito dell'ultimo caricamento dei documenti nel database vettoriale, e un attributo lastLoadOutcomeSubject di tipo BehaviorSubject<LastLoadOutcome>, che serve per poter aggiornare l'attributo lastLoadOutcome\$.
+Contiene inoltre i seguenti metodi pubblici:
+\begin{itemize}
+    \item \texttt{getMessages(quantity: number, page: number = 1): Observable<Message[]>}: Si occupa di inviare la quantità di messaggi da recuperare e la pagina corrente al backend, ricevere i messaggi come lista di oggetti Message e restituirli;
+    \item \texttt{saveMessage(msg: Message): Observable<\{ success: boolean; message: string \}>}:\\ Si occupa di inviare il messaggio da salvare al backend, ricevere l'esito dell'operazione come dizionario contenente esito del salvataggio e relativo messaggio, e restituirlo;
+    \item \texttt{loadLastLoadOutcome()}: Si occupa di inviare una richiesta al backend per recuperare l'esito dell'ultimo caricamento dei documenti nel database vettoriale, ricevere l'esito e aggiornare l'attributo lastLoadOutcomeSubject, che a sua volta viene osservato dall'attributo lastLoadOutcome\$.
+\end{itemize}
