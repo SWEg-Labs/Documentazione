@@ -67,16 +67,88 @@ ottenere una risposta soddisfacente:
 
 \subsection{Interrogazione del chatbot}
 
-\subsubsection{Come inserire una domanda}
-% Parlare dei due metodi di inserimento, o domanda libera o (dalla seconda domanda in poi) selezione di una delle domande per
-% proseguire la conversazione.
+\subsubsection{Come inserire una domanda}  
+\label{subsec:come_inserire_domanda}  
 
-\subsubsection{La risposta del chatbot}
-% Parlare:
-% - della risposta testuale (che può contenere uno snippet di codice in un apposito riquadro);
-% - della possibilità di copiare il testo, e soprattutto di copiare lo snippet di codice, entrambi mediante pulsante apposito;
-% - della visualizzazione dei link correlati nell'apposito riquadro.
+Una domanda o un messaggio può essere inserito in qualsiasi momento della conversazione, scrivendo liberamente nella barra di input.  
+A partire dalla seconda interazione, oltre alla possibilità di scrivere liberamente, vengono proposti tre suggerimenti per facilitare la continuazione del dialogo.  
+Questi suggerimenti sono opzionali e possono essere utilizzati per proseguire più rapidamente la conversazione, o ignorati in favore di un messaggio personalizzato.  
+La domanda va scritta nella barra di input dove appare il testo \textit{Scrivi un messaggio}. Quando si posiziona il cursore e si clicca nel campo per iniziare a scrivere, il bordo del campo diventa blu, indicando che è pronto per ricevere il testo.  
+Il pulsante "Invia", situato a destra della barra di input, è inizialmente disattivato e di colore grigio quando la barra è vuota. Non appena si inizia a scrivere, il pulsante diventa attivo e blu.  
+Il messaggio può essere inviato sia cliccando sul pulsante "Invia" che premendo il tasto \textit{Enter} sulla tastiera.  
 
+\begin{itemize}  
+\item \textbf{Scrittura libera - campo pieno}: Quando il campo contiene testo, il pulsante "Invia" diventa attivo e blu, come mostrato in figura \bulref{fig:Barra per l'invio di una domanda libera piena};
+\item \textbf{Scrittura libera - campo vuoto}: Quando il campo è vuoto, il pulsante "Invia" è disattivato e grigio, impedendo l'invio del messaggio fino a quando non viene scritto del testo, come mostrato in figura \bulref{fig:Barra per l'invio di una domanda libera vuota};
+\item \textbf{Suggerimenti - campo pieno}: Dalla seconda interazione in poi, tre suggerimenti vengono proposti sopra la barra di input per facilitare la continuazione della conversazione. Se la barra contiene testo, il pulsante "Invia" è attivo e blu, come mostrato in figura \bulref{fig:Domande per proseguire la conversazione con barra piena};
+\item \textbf{Suggerimenti - campo vuoto}: Anche se la barra di input è vuota e il pulsante "Invia" è disattivato, i suggerimenti vengono comunque visualizzati sopra la barra, come mostrato in figura \bulref{fig:Domande per proseguire la conversazione con barra vuota}.
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=.8\linewidth]{Barra per l'invio di una domanda libera piena.png}
+        \caption{Barra per l'invio di una domanda libera piena}
+        \label{fig:Barra per l'invio di una domanda libera piena}        
+\end{figure}
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=.8\linewidth]{Barra per l'invio di una domanda libera vuota.png}
+        \caption{Barra per l'invio di una domanda libera vuota}
+        \label{fig:Barra per l'invio di una domanda libera vuota}        
+\end{figure}
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=.8\linewidth]{Domande per proseguire la conversazione con barra piena.png}
+        \caption{Domande per proseguire la conversazione con barra piena}
+        \label{fig:Domande per proseguire la conversazione con barra piena}        
+\end{figure}
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=.8\linewidth]{Domande per proseguire la conversazione con barra vuota.png}
+        \caption{Domande per proseguire la conversazione con barra vuota}
+        \label{fig:Domande per proseguire la conversazione con barra vuota}        
+\end{figure}
+ 
+\subsubsection{La risposta del chatbot}  
+\label{subsec:la_risposta_del_chatbot}  
+
+Quando il chatbot fornisce una risposta, essa include un testo esplicativo, che talvolta può contenere uno snippet di codice. Il testo viene visualizzato in un riquadro per una facile lettura e comprensione. 
+Inoltre, è possibile copiare sia il testo che gli snippet di codice contenuti nella risposta. Per fare ciò, dentro al riquadro, è presente un pulsante dedicato che permette di copiare il contenuto negli appunti. Questo è particolarmente utile quando si desidera utilizzare o condividere un codice direttamente.
+Se la risposta include dei link correlati, questi vengono visualizzati in un riquadro separato in arancione, permettendo di accedere facilmente a risorse o approfondimenti aggiuntivi. Cliccando su uno di questi link, l'utente verrà indirizzato alla risorsa corrispondente.
+
+\begin{itemize}
+  \item \textbf{Risposta testuale}: Il chatbot fornisce una risposta testuale che può includere informazioni esplicative, come mostrato in figura \bulref{fig:Risposta senza snippet di codice};
+  \item \textbf{Snippet di codice}: Quando la risposta include uno snippet di codice, questo viene visualizzato all'interno di un riquadro per evidenziarlo chiaramente, come mostrato in figura \bulref{fig:Risposta con snippet di codice};
+  \item \textbf{Copia del testo e del codice}: È possibile copiare sia il testo che lo snippet di codice cliccando sul pulsante di copia situato in alto a destra, come mostrato in figura \bulref{fig:Pulsante di copia messaggio e pulsante di copia snippet di codice};
+  \item \textbf{Link correlati}: Se la risposta contiene dei link utili, questi vengono mostrati in un riquadro separato in arancione, da cui è possibile cliccare per aprirli e visualizzare ulteriori risorse, come mostrato in figura \bulref{fig:Riquadro dei link correlati}.
+\end{itemize}
+
+\newpage
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=.8\linewidth]{Risposta senza snippet di codice.png}
+        \caption{Risposta senza snippet di codice}
+        \label{fig:Risposta senza snippet di codice}        
+\end{figure}
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=.8\linewidth]{Risposta con snippet di codice.png}
+        \caption{Risposta con snippet di codice}
+        \label{fig:Risposta con snippet di codice}        
+\end{figure}
+\newpage
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=.8\linewidth]{Pulsante di copia messaggio e pulsante di copia snippet di codice.png}
+        \caption{Pulsante di copia messaggio e pulsante di copia snippet di codice}
+        \label{fig:Pulsante di copia messaggio e pulsante di copia snippet di codice}        
+\end{figure}
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=.8\linewidth]{Riquadro dei link correlati.png}
+        \caption{Riquadro dei link correlati}
+        \label{fig:Riquadro dei link correlati}        
+\end{figure}
 
 \subsection{Visualizzazione dello storico dei messaggi}
 \label{subsec:visualizzazione_storico_messaggi}
