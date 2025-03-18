@@ -1,5 +1,5 @@
 % Intestazione
-\fancyhead[L]{3 \hspace{0.2cm} Architettura} % Testo a sinistra
+\fancyhead[L]{5 \hspace{0.2cm} Stato dei requisiti funzionali} % Testo a sinistra
 
 \section{Stato dei Requisiti Funzionali}
 \label{sec:stato_requisiti_funzionali}
@@ -11,19 +11,24 @@
 \begin{table}[h!]
     \centering
     \renewcommand{\arraystretch}{1.6} % Per aumentare l'altezza delle righe
-    \begin{tabularx}{\textwidth}{|p{2cm}|p{3cm}|X|p{4cm}|} \hline
+    \begin{tabularx}{\textwidth}{|p{2cm}|p{3cm}|X|c|} \hline
     \rowcolor[HTML]{FFD700} 
     \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
-    ROF1 & Obbligatorio & L’utente deve poter inserire un’interrogazione in linguaggio naturale nel sistema. & N-I \\ \hline
-    ROF2 & Obbligatorio & Quando l'interrogazione viene invata al sistema, deve essere generata una risposta. & N-I \\ \hline
-    ROF3 & Obbligatorio & Nel caso il sistema fallisca nel generare una risposta per via di un problema interno, deve far visualizzare all'utente un messaggio di errore, chiedendo di riprovare più tardi. & N-I \\ \hline
-    ROF4 & Obbligatorio & Nel caso in cui l'utente inserisca un'interrogazione che non riguarda i contenuti del database associato, il sistema deve rispondere all'utente che la domanda inserita è fuori contesto. & N-I \\ \hline
-    ROF5 & Obbligatorio & Nel caso il sistema non riesca a trovare le informazioni richieste dall'utente nonostante siano correlate al contesto, deve rispondere all'utente spiegando la mancanza dell'informazione richiesta. & N-I \\ \hline
-    RDF6 & Desiderabile & L'utente deve poter visualizzare i link dei file da cui il sistema ha preso i dati per la risposta. & N-I \\ \hline
-    RDF7 & Desiderabile & Nel caso non sia possibile recuperare i link dei file utilizzati per generare la risposta, deve essere visualizzato un messaggio di errore. & N-I \\ \hline
-    RZF8 & Opzionale & Deve essere presente un pulsante al cui click la risposta del chatbot viene copiata nel dispositivo dell'utente. & N-I \\ \hline
-    RDF9 & Desiderabile & Nel caso la risposta contenga uno snippet di codice, deve essere presente un pulsante che permetta di copiare il singolo snippet nel dispositivo dell'utente. & N-I \\ \hline
-    RDF10 & Desiderabile & Deve essere presente un sistema di archiviazione delle domande e delle risposte in un database relazionale. & N-I \\ \hline
+    ROF1 & Obbligatorio & L’utente deve poter inserire un’interrogazione in linguaggio naturale nel sistema. & \textcolor{green}{\ding{51}} \\ \hline
+    ROF2 & Obbligatorio & Quando l'interrogazione viene invata al sistema, deve essere generata una risposta. & \textcolor{green}{\ding{51}} \\ \hline
+    ROF3 & Obbligatorio & Nel caso il sistema fallisca nel generare una risposta per via di un problema interno, deve far visualizzare all'utente un messaggio di errore, chiedendo di riprovare più tardi. & \textcolor{green}{\ding{51}} \\ \hline
+    ROF4 & Obbligatorio & Nel caso in cui l'utente inserisca un'interrogazione che non riguarda i contenuti del database associato, il sistema deve rispondere all'utente che la domanda inserita è fuori contesto. & \textcolor{green}{\ding{51}} \\ \hline
+    ROF5 & Obbligatorio & Nel caso il sistema non riesca a trovare le informazioni richieste dall'utente nonostante siano correlate al contesto, deve rispondere all'utente spiegando la mancanza dell'informazione richiesta. & \textcolor{green}{\ding{51}} \\ \hline
+    RDF6 & Desiderabile & L'utente deve poter visualizzare i link dei file da cui il sistema ha preso i dati per la risposta. & \textcolor{green}{\ding{51}} \\ \hline
+    RDF7 & Desiderabile & Nel caso non sia possibile recuperare i link dei file utilizzati per generare la risposta, deve essere visualizzato un messaggio di errore. & \textcolor{green}{\ding{51}} \\ \hline
+    RZF8 & Opzionale & Deve essere presente un pulsante al cui click la risposta del chatbot viene copiata nel dispositivo dell'utente. & \textcolor{green}{\ding{51}} \\ \hline
+    RDF9 & Desiderabile & Nel caso la risposta contenga uno snippet di codice, deve essere presente un pulsante che permetta di copiare il singolo snippet nel dispositivo dell'utente. & \textcolor{green}{\ding{51}} \\ \hline
+    RDF10 & Desiderabile & Deve essere presente un sistema di archiviazione delle domande e delle risposte in un database relazionale. & \textcolor{green}{\ding{51}} \\ \hline
+    RDF11 & Desiderabile & L'utente deve poter visualizzare lo storico dei messaggi, recuperato dal database relazionale. & \textcolor{green}{\ding{51}} \\ \hline
+    RDF12 & Desiderabile & Nel caso il sistema fallisca nel recuperare lo storico della chat, deve essere fatto visualizzare un messaggio di errore all'utente spiegando che non è stato possibile recuperare lo storico. & \textcolor{green}{\ding{51}} \\ \hline
+    ROF13 & Obbligatorio & Uno scheduler deve collegarsi al sistema e periodicamente aggiornare il database vettoriale con i dati più recenti. & \textcolor{green}{\ding{51}} \\ \hline
+    ROF14 & Obbligatorio & La risposta deve essere generata prendendo in considerazione i dati di contesto provenienti da GitHub, Jira e Confluence & \textcolor{green}{\ding{51}} \\ \hline
+    ROF15 & Obbligatorio & Il sistema deve poter convertire i documenti ottenuti in formato vettoriale. & \textcolor{green}{\ding{51}} \\ \hline
 
     \end{tabularx}
 \end{table}
@@ -33,20 +38,26 @@
 % Seconda parte della tabella
 \begin{table}[h!]
     \renewcommand{\arraystretch}{1.6} % Per aumentare l'altezza delle righe
-    \begin{tabularx}{\textwidth}{|p{2cm}|p{3cm}|X|p{4cm}|} \hline
+    \begin{tabularx}{\textwidth}{|p{2cm}|p{3cm}|X|c|} \hline
     \rowcolor[HTML]{FFD700} 
     \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
-    RDF11 & Desiderabile & L'utente deve poter visualizzare lo storico dei messaggi, recuperato dal database relazionale. & N-I \\ \hline
-    RDF12 & Desiderabile & Nel caso il sistema fallisca nel recuperare lo storico della chat, deve essere fatto visualizzare un messaggio di errore all'utente spiegando che non è stato possibile recuperare lo storico. & N-I \\ \hline
-    ROF13 & Obbligatorio & Uno scheduler deve collegarsi al sistema e periodicamente aggiornare il database vettoriale con i dati più recenti. & N-I \\ \hline
-    ROF14 & Obbligatorio & La risposta deve essere generata prendendo in considerazione i dati di contesto provenienti da GitHub, Jira e Confluence & N-I \\ \hline
-    ROF15 & Obbligatorio & Il sistema deve poter convertire i documenti ottenuti in formato vettoriale. & N-I \\ \hline
-    ROF16 & Obbligatorio & Il sistema deve poter aggiornare il database vettoriale con i nuovi documenti ottenuti. & N-I \\ \hline
-    RZF17 & Opzionale & Se la conversazione non è ancora avviata l'utente deve poter visualizzare e selezionare alcune domande di partenza proposte. & N-I \\ \hline
-    RZF18 & Opzionale & Dopo la visualizzazione di una risposta, all'utente devono venire suggerite alcune interrogazioni che è possibile porre al sistema per proseguire la conversazione. & N-I \\ \hline
-    RZF19 & Opzionale & Nel caso il sistema vada in errore nel tentativo di proporre alcune interrogazioni per proseguire la conversazione, deve venire mostrato un messaggio che comunica l'errore all'utente e invita a fare altre domande. & N-I \\ \hline
-    RZF20 & Opzionale & Il sistema deve mostrare a schermo un badge sopra alla schermata della chat. & N-I \\ \hline
-    RZF21 & Opzionale & Il sistema deve comunicare all'utente l'esito dell'ultimo tentativo di aggiornamento del database vettoriale utilizzando un badge. & N-I \\ \hline
+    ROF16 & Obbligatorio & Il sistema deve poter aggiornare il database vettoriale con i nuovi documenti ottenuti. & \textcolor{green}{\ding{51}} \\ \hline
+    RZF17 & Opzionale & Se la conversazione non è ancora avviata l'utente deve poter visualizzare e selezionare alcune domande di partenza proposte. & \textcolor{red}{\ding{55}} \\ \hline
+    RZF18 & Opzionale & Dopo la visualizzazione di una risposta, all'utente devono venire suggerite alcune interrogazioni che è possibile porre al sistema per proseguire la conversazione. & \textcolor{green}{\ding{51}} \\ \hline
+    RZF19 & Opzionale & Nel caso il sistema vada in errore nel tentativo di proporre alcune interrogazioni per proseguire la conversazione, deve venire mostrato un messaggio che comunica l'errore all'utente e invita a fare altre domande. & \textcolor{green}{\ding{51}} \\ \hline
+    RZF20 & Opzionale & Il sistema deve mostrare a schermo un badge sopra alla schermata della chat. & \textcolor{green}{\ding{51}} \\ \hline
+    RZF21 & Opzionale & Il sistema deve comunicare all'utente l'esito dell'ultimo tentativo di aggiornamento del database vettoriale utilizzando un badge. & \textcolor{green}{\ding{51}} \\ \hline
+    ROF22 & Obbligatorio & Il sistema deve processare i documenti che vengono caricati, creandone i loro embedding. & \textcolor{green}{\ding{51}} \\ \hline
+    ROF23 & Obbligatorio & Il sistema deve salvare, in modo persistente, il contenuto dei documenti caricati. & \textcolor{green}{\ding{51}} \\ \hline
+    ROF24 & Obbligatorio & Il sistema deve salvare, in modo persistente, i metadati dei documenti caricati. & \textcolor{green}{\ding{51}} \\ \hline
+    ROF25 & Obbligatorio & Il sistema deve salvare, i commit e i file scritti in caratteri testuali di GitHub, escludendo PDF o immagini. & \textcolor{green}{\ding{51}} \\ \hline
+    ROF26 & Obbligatorio & Il sistema deve permettere all'utente di digitare una domanda libera in linguaggio naturale tramite una barra di input. & \textcolor{green}{\ding{51}} \\ \hline
+    RZF27 & Opzionale & L'utente deve poter selezionare una delle domande proposte dal sistema, e inviarla come interrogazione al chatbot. & \textcolor{green}{\ding{51}} \\ \hline
+    RDF28 & Desiderabile & Il sistema deve mostrare a schermo i messaggi dell'utente presenti nello storico. & \textcolor{green}{\ding{51}} \\ \hline
+    RDF29 & Desiderabile & Il sistema deve mostrare a schermo i messaggi del chatbot presenti nello storico. & \textcolor{green}{\ding{51}} \\ \hline
+    RDF30 & Desiderabile & I messaggi del chatbot e dell'utente mostrati a schermo devono essere distinguibili tra loro tramite una colorazione differente. & \textcolor{green}{\ding{51}} \\ \hline
+    RDF31 & Desiderabile & Il sistema deve caricare e mostrare a schermo i messaggi cronologicamente precedenti quando l'utente,
+    tramite scroll verso il basso raggiunge l'inizio della lista dei messaggi mostrati. & \textcolor{green}{\ding{51}} \\ \hline
 
     \end{tabularx}
 \end{table}
@@ -56,48 +67,28 @@
 % Terza parte della tabella
 \begin{table}[h!]
     \renewcommand{\arraystretch}{1.6} % Per aumentare l'altezza delle righe
-    \begin{tabularx}{\textwidth}{|p{2cm}|p{3cm}|X|p{4cm}|} \hline
+    \begin{tabularx}{\textwidth}{|p{2cm}|p{3cm}|X|c|} \hline
     \rowcolor[HTML]{FFD700} 
     \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
-    ROF22 & Obbligatorio & Il sistema deve processare i documenti che vengono caricati, creandone i loro embedding. & N-I\\ \hline
-    ROF23 & Obbligatorio & Il sistema deve salvare, in modo persistente, il contenuto dei documenti caricati. & N-I\\ \hline
-    ROF24 & Obbligatorio & Il sistema deve salvare, in modo persistente, i metadati dei documenti caricati. & N-I\\ \hline
-    ROF25 & Obbligatorio & Il sistema deve salvare, i commit e i file scritti in caratteri testuali di GitHub, escludendo PDF o immagini. & N-I\\ \hline
-    ROF26 & Obbligatorio & Il sistema deve permettere all'utente di digitare una domanda libera in linguaggio naturale tramite una barra di input. & N-I \\ \hline
-    RZF27 & Opzionale & L'utente deve poter selezionare una delle domande proposte dal sistema, e inviarla come interrogazione al chatbot. & N-I \\ \hline
-    RDF28 & Desiderabile & Il sistema deve mostrare a schermo i messaggi dell'utente presenti nello storico. & N-I \\ \hline
-    RDF29 & Desiderabile & Il sistema deve mostrare a schermo i messaggi del chatbot presenti nello storico. & N-I \\ \hline
-    RDF30 & Desiderabile & I messaggi del chatbot e dell'utente mostrati a schermo devono essere distinguibili tra loro tramite una colorazione differente. & N-I \\ \hline
-    RDF31 & Desiderabile & Il sistema deve caricare e mostrare a schermo i messaggi cronologicamente precedenti quando l'utente,
-    tramite scroll verso il basso raggiunge l'inizio della lista dei messaggi mostrati. & N-I \\ \hline
-    RDF32 & Desiderabile & Nel caso il sistema fallisca nel recupeare i messaggi precedenti dal database, l'utente deve visualizzare un messaggio che comunica che non è stato possibile recuperare altri messaggi dal database. & N-I \\ \hline
-    RDF33 & Desiderabile & Nel caso non ci siano altri messaggi nel database, l'utente deve visualizzare un messaggio che comunica che non ci sono altri messaggi da visualizzare. & N-I \\ \hline
-
-    \end{tabularx}
-\end{table}
-
-\vspace{0.5cm}
-\newpage
-% Quarta parte della tabella
-\begin{table}[h!]
-    \renewcommand{\arraystretch}{1.6} % Per aumentare l'altezza delle righe
-    \begin{tabularx}{\textwidth}{|p{2cm}|p{3cm}|X|p{4cm}|} \hline
-    \rowcolor[HTML]{FFD700} 
-    \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
-    RZF34 & Opzionale & Il sistema deve comunicare all'utente se l'ultimo tentativo di aggiornamento del database vettoriale ha avuto successo. & N-I \\ \hline
-    RZF35 & Opzionale & Il sistema deve comunicare all'utente se l'ultimo tentativo di aggiornamento del database vettoriale è fallito. & N-I \\ \hline
-    RZF36 & Opzionale & Il sistema deve comunicare all'utente se non è stato possibile recuperare l'esito dell'ultimo aggiornamento del database vettoriale. & N-I \\ \hline
+    RDF32 & Desiderabile & Nel caso il sistema fallisca nel recupeare i messaggi precedenti dal database, l'utente deve visualizzare un messaggio che comunica che non è stato possibile recuperare altri messaggi dal database. & \textcolor{green}{\ding{51}} \\ \hline
+    RDF33 & Desiderabile & Nel caso non ci siano altri messaggi nel database, l'utente deve visualizzare un messaggio che comunica che non ci sono altri messaggi da visualizzare. & \textcolor{red}{\ding{55}} \\ \hline
+    RZF34 & Opzionale & Il sistema deve comunicare all'utente se l'ultimo tentativo di aggiornamento del database vettoriale ha avuto successo. & \textcolor{green}{\ding{51}} \\ \hline
+    RZF35 & Opzionale & Il sistema deve comunicare all'utente se l'ultimo tentativo di aggiornamento del database vettoriale è fallito. & \textcolor{green}{\ding{51}} \\ \hline
+    RZF36 & Opzionale & Il sistema deve comunicare all'utente se non è stato possibile recuperare l'esito dell'ultimo aggiornamento del database vettoriale. & \textcolor{green}{\ding{51}} \\ \hline
     RZF37 & Opzionale & L'utente, accanto al badge che segnala l'esito dell'aggiornamento automatico del
-    database vettoriale, deve visualizzare un messaggio che spiega il significato di quest'ultimo nella sua forma corrente. & N-I \\ \hline
+    database vettoriale, deve visualizzare un messaggio che spiega il significato di quest'ultimo nella sua forma corrente. & \textcolor{green}{\ding{51}} \\ \hline
     RZF38 & Opzionale & Se l'ultimo tentativo di aggiornamento del database vettoriale ha avuto successo, l'utente accanto al badge
-    deve visualizzare un messaggio che spiega il significato della forma a spunta di quest'ultimo. & N-I \\ \hline
+    deve visualizzare un messaggio che spiega il significato della forma a spunta di quest'ultimo. & \textcolor{green}{\ding{51}} \\ \hline
     RZF39 & Opzionale & Se l'ultimo tentativo di aggiornamento del database vettoriale è fallito, l'utente accanto al
-    badge deve visualizzare un messaggio che spiega il significato della forma a X di quest'ultimo. & N-I \\ \hline
+    badge deve visualizzare un messaggio che spiega il significato della forma a X di quest'ultimo. & \textcolor{green}{\ding{51}} \\ \hline
     RZF40 & Opzionale & Se non è stato possibile recuperare l'esito dell'ultimo tentativo di aggiornamento del database vettoriale,
-    l'utente accanto al badge deve visualizzare un messaggio che spiega il significato della forma a segnale di pericolo di quest'ultimo. & N-I \\ \hline
+    l'utente accanto al badge deve visualizzare un messaggio che spiega il significato della forma a segnale di pericolo di quest'ultimo. & \textcolor{green}{\ding{51}} \\ \hline
     RZF41 & Opzionale & Ad ogni tentativo di aggiornamento del database vettoriale il sistema deve salvare in un file di testo un log che contenga le seguenti informazioni: 
-    fonte dei dati (GitHub, Jira o Confluence), esito, orario. & N-I \\ \hline
-    
+    fonte dei dati (GitHub, Jira o Confluence), esito, orario. & \textcolor{green}{\ding{51}} \\ \hline
+    RZF42 & Opzionale & Ad ogni tentativo di aggiornamento del database vettoriale il sistema deve salvare in un file di testo un log che contenga le seguenti informazioni: 
+    fonte dei dati (GitHub, Jira o Confluence), esito, orario, numero di file aggiunti, numero di file modificati, numero di file eliminati. & \textcolor{green}{\ding{51}} \\ \hline
+    RDF43 & Desiderabile & Il sistema deve mostrare a schermo la data e l'ora di ogni messaggio presente nello storico. & \textcolor{green}{\ding{51}} \\ \hline
+
     \end{tabularx}
 \end{table}
 
@@ -106,21 +97,21 @@
 % Quinta parte della tabella
 \begin{table}[h!]
     \renewcommand{\arraystretch}{1.6} % Per aumentare l'altezza delle righe
-    \begin{tabularx}{\textwidth}{|p{2cm}|p{3cm}|X|p{4cm}|} \hline
+    \begin{tabularx}{\textwidth}{|p{2cm}|p{3cm}|X|c|} \hline
     \rowcolor[HTML]{FFD700} 
     \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Stato} \\ \hline
-
-    RZF42 & Opzionale & Ad ogni tentativo di aggiornamento del database vettoriale il sistema deve salvare in un file di testo un log che contenga le seguenti informazioni: 
-    fonte dei dati (GitHub, Jira o Confluence), esito, orario, numero di file aggiunti, numero di file modificati, numero di file eliminati. & N-I \\ \hline
-    RDF43 & Desiderabile & Il sistema deve mostrare a schermo la data e l'ora di ogni messaggio presente nello storico. & N-I \\ \hline
-    RDF44 & Desiderabile & Nel caso non sia possibile recuperare la data e l'ora di un messaggio presente nello storico, deve essere visualizzato al suo posto un avviso di errore. & N-I \\ \hline
-    RZF45 & Opzionale & Il sistema deve mostrare un riquadro di caricamento durante la generazione di una risposta. & N-I \\ \hline
-    RZF46 & Opzionale & Il sistema deve mostrare un riquadro di caricamento durante il caricamento dello storico dei messaggi. & N-I \\ \hline
-    RZF47 & Opzionale & Il sistema deve mostrare un riquadro di caricamento durante il caricamento dei messaggi precedenti. & N-I \\ \hline
-    RZF48 & Opzionale & Deve essere presente un pulsante che, al click, permetta all'utente di tornare ai messaggi più recenti della chat. & N-I \\ \hline
+    RDF44 & Desiderabile & Nel caso non sia possibile recuperare la data e l'ora di un messaggio presente nello storico, deve essere visualizzato al suo posto un avviso di errore. & \textcolor{green}{\ding{51}} \\ \hline
+    RZF45 & Opzionale & Il sistema deve mostrare un riquadro di caricamento durante la generazione di una risposta. & \textcolor{green}{\ding{51}} \\ \hline
+    RZF46 & Opzionale & Il sistema deve mostrare un riquadro di caricamento durante il caricamento dello storico dei messaggi. & \textcolor{green}{\ding{51}} \\ \hline
+    RZF47 & Opzionale & Il sistema deve mostrare un riquadro di caricamento durante il caricamento dei messaggi precedenti. & \textcolor{green}{\ding{51}} \\ \hline
+    RZF48 & Opzionale & Deve essere presente un pulsante che, al click, permetta all'utente di tornare ai messaggi più recenti della chat. & \textcolor{green}{\ding{51}} \\ \hline
     \end{tabularx}
 \end{table}
 
 
 \subsection{Requisiti soddisfatti}
 \label{sec:requisiti_soddisfatti}
+
+Tutti i 14 requisiti funzionali obbligatori sono stati soddisfatti.\\
+Dei requisiti funzionali desiderabili ne sono stati soddisfatti 13 su 14: in particolare, l'RDF32 non è stato implementato perchè, in accordo con il \emph{proponente}\textsubscript{\textbf{\textit{G}}}, è stato valutato che un messaggio che comunica che non ci sono altri messaggi da visualizzare nello storico è ridondante, e potrebbe essere scambiato per un messaggio di errore.\\
+Infine, dei requisiti funzionali opzionali ne sono stati soddisfatti 19 su 20: in particolare, l'RZF17 non è stato implementato perchè è stata notata un'incongruenza logica con RDF28 ed RDF29, confermata anche dal \emph{proponente}: infatti, il caricamento dei messaggi presenti nello storico comporta che, dal secondo accesso all'applicazione in poi, l'utente possa visualizzare tutti i messaggi precedenti, ed allora non esiste più un "inizio della conversazione" per il quale sia possibile proporre delle domande iniziali.
