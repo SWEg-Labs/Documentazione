@@ -67,15 +67,48 @@ ottenere una risposta soddisfacente:
 
 \subsection{Interrogazione del chatbot}
 
-\subsubsection{Come inserire una domanda}
-\label{subsec:come_inserire_domanda}
+\subsubsection{Come inserire una domanda}  
+\label{subsec:come_inserire_domanda}  
 
-Le domande poste al \emph{chatbot} possono essere inserite in due modi: tramite una domanda libera all’inizio della conversazione oppure, dalla seconda interazione in poi, selezionando una delle opzioni suggerite per proseguire il dialogo.
+Una domanda o un messaggio può essere inserito in qualsiasi momento della conversazione, scrivendo liberamente nella barra di input.  
+A partire dalla seconda interazione, oltre alla possibilità di scrivere liberamente, vengono proposti tre suggerimenti per facilitare la continuazione del dialogo.  
+Questi suggerimenti sono opzionali e possono essere utilizzati per proseguire più rapidamente la conversazione, o ignorati in favore di un messaggio personalizzato.  
+La domanda va scritta nella barra di input dove appare il testo \textit{Scrivi un messaggio}. Quando si posiziona il cursore e si clicca nel campo per iniziare a scrivere, il bordo del campo diventa blu, indicando che è pronto per ricevere il testo.  
+Il pulsante "Invia", situato a destra della barra di input, è inizialmente disattivato e di colore grigio quando la barra è vuota. Non appena si inizia a scrivere, il pulsante diventa attivo e blu.  
+Il messaggio può essere inviato sia cliccando sul pulsante "Invia" che premendo il tasto \textit{Enter} sulla tastiera.  
 
-\begin{itemize}
-    \item All'inizio della conversazione, puoi inserire una domanda o un messaggio liberamente. Questo consente una maggiore flessibilità e personalizzazione dell'interazione.
-    \item Dalla seconda domanda in poi, sopra il campo di input vengono proposte tre domande predefinite per facilitare la continuazione della conversazione.
+\begin{itemize}  
+\item \textbf{Scrittura libera - campo pieno}: Quando il campo contiene testo, il pulsante "Invia" diventa attivo e blu, come mostrato in figura \bulref{fig:Barra per l'invio di una domanda libera piena};
+\item \textbf{Scrittura libera - campo vuoto}: Quando il campo è vuoto, il pulsante "Invia" è disattivato e grigio, impedendo l'invio del messaggio fino a quando non viene scritto del testo, come mostrato in figura \bulref{fig:Barra per l'invio di una domanda libera vuota};
+\item \textbf{Suggerimenti - campo pieno}: Dalla seconda interazione in poi, tre suggerimenti vengono proposti sopra la barra di input per facilitare la continuazione della conversazione. Se la barra contiene testo, il pulsante "Invia" è attivo e blu, come mostrato in figura \bulref{fig:Domande per proseguire la conversazione con barra piena};
+\item \textbf{Suggerimenti - campo vuoto}: Anche se la barra di input è vuota e il pulsante "Invia" è disattivato, i suggerimenti vengono comunque visualizzati sopra la barra, come mostrato in figura \bulref{fig:Domande per proseguire la conversazione con barra vuota}.
 \end{itemize}
+
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=.8\linewidth]{Barra per l'invio di una domanda libera piena.png}
+        \caption{Barra per l'invio di una domanda libera piena}
+        \label{fig:Barra per l'invio di una domanda libera piena}        
+\end{figure}
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=.8\linewidth]{Barra per l'invio di una domanda libera vuota.png}
+        \caption{Barra per l'invio di una domanda libera vuota}
+        \label{fig:Barra per l'invio di una domanda libera vuota}        
+\end{figure}
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=.8\linewidth]{Domande per proseguire la conversazione con barra piena.png}
+        \caption{Domande per proseguire la conversazione con barra piena}
+        \label{fig:Domande per proseguire la conversazione con barra piena}        
+\end{figure}
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=.8\linewidth]{Domande per proseguire la conversazione con barra vuota.png}
+        \caption{Domande per proseguire la conversazione con barra vuota}
+        \label{fig:Domande per proseguire la conversazione con barra vuota}        
+\end{figure}
+
 
 \subsubsection{La risposta del chatbot}
 % Parlare:
