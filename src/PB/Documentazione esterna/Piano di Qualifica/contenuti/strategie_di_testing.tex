@@ -488,15 +488,15 @@ I test di accettazione descritti di seguito rappresentano la base per la validaz
 
     TS30 & Verificare che i messaggi del \emph{chatbot} e dell’utente mostrati a schermo devono essere distinguibili tra loro tramite una colorazione differente. & RDF30 & N-I \\ \hline
     TS31 & Verificare che il sistema carichi e mostri a schermo i messaggi cronologicamente precedenti, quando l’utente, tramite scroll verso il basso raggiunge l’inizio della lista dei messaggi mostrati. & RDF31 & N-I \\ \hline
-    TS32 & Verificare che nel caso il sistema fallisca nel recupeare i messaggi precedenti dal database, l’utente deve visualizzare un messaggio che comunica che non è stato possibile recuperare altri messaggi dal database. & RDF32 & N-I \\ \hline
-    TS33 & Verificare che nel caso non ci siano altri messaggi nel database, l’utente deve visualizzare un messaggio che comunica che non ci sono altri messaggi da visualizzare. & RDF33 & N-I \\ \hline
+    TS32 & Verificare che nel caso il sistema fallisca nel recupeare i messaggi precedenti dal database, l’utente visualizzi un messaggio che comunica che non è stato possibile recuperare altri messaggi dal database. & RDF32 & N-I \\ \hline
+    TS33 & Verificare che nel caso non ci siano altri messaggi nel database, l’utente visualizzi un messaggio che comunica che non ci sono altri messaggi da visualizzare. & RDF33 & N-I \\ \hline
     TS34 & Verificare che il sistema comunichi all’utente se l’ultimo tentativo di aggiornamento del database vettoriale ha avuto successo. & RZF34 & N-I \\ \hline
     TS35 & Verificare che il sistema comunichi all’utente se l’ultimo tentativo di aggiornamento del database vettoriale è fallito. & RZF35 & N-I \\ \hline
     TS36 & Verificare che il sistema comunichi all’utente se non è stato possibile recuperare l’esito dell’ultimo aggiornamento del \emph{database vettoriale}. & RZF36 & N-I \\ \hline
     TS37 & Verificare che l’utente, accanto al badge che segnala l’esito dell’aggiornamento automatico del \emph{database vettoriale}, visualizzi un messaggio che spiega il significato di quest’ultimo nella sua forma corrente. & RZF37 & N-I \\ \hline
-    TS38 & Verificare che se l’ultimo tentativo di aggiornamento del \emph{database vettoriale} ha avuto successo, l’utente accanto al badge deve visualizzare un messaggio che spiega il significato della forma a spunta di quest’ultimo. & RZF38 & N-I \\ \hline
-    TS39 & Verificare che se l’ultimo tentativo di aggiornamento del \emph{database vettoriale} è fallito, l’utente accanto al badge deve visualizzare un messaggio che spiega il significato della forma a X di quest’ultimo. & RZF39 & N-I \\ \hline
-    TS40 & Verificare che se non è stato possibile recuperare l’esito dell’ultimo tentativo di aggiornamento del \emph{database vettoriale}, l’utente accanto al badge deve visualizzare un messaggio che piega il significato della forma a segnale di pericolo di quest’ultimo. & RZF40 & N-I \\ \hline
+    TS38 & Verificare che se l’ultimo tentativo di aggiornamento del \emph{database vettoriale} ha avuto successo, l’utente accanto al badge visualizzi un messaggio che spiega il significato della forma a spunta di quest’ultimo. & RZF38 & N-I \\ \hline
+    TS39 & Verificare che se l’ultimo tentativo di aggiornamento del \emph{database vettoriale} è fallito, l’utente accanto al badge visualizzi un messaggio che spiega il significato della forma a X di quest’ultimo. & RZF39 & N-I \\ \hline
+    TS40 & Verificare che se non è stato possibile recuperare l’esito dell’ultimo tentativo di aggiornamento del \emph{database vettoriale}, l’utente accanto al badge visualizzi un messaggio che piega il significato della forma a segnale di pericolo di quest’ultimo. & RZF40 & N-I \\ \hline
         
     \end{tabularx}
 \end{table}
@@ -510,12 +510,12 @@ I test di accettazione descritti di seguito rappresentano la base per la validaz
     \rowcolor[HTML]{FFD700}
     \textbf{Codice} & \textbf{Descrizione} & \textbf{Fonte} & \textbf{Stato} \\ \hline
  
-    TS41 & Verificare che ad ogni tentativo di aggiornamento del \emph{database vettoriale} il sistema deve salvare in un file di testo un log che contenga le seguenti informazioni: fonte dei dati (\emph{GitHub}, \emph{Jira} o \emph{Confluence}), esito, orario. & RZF41 & N-I \\ \hline
-    TS42 & Verificare che ad ogni tentativo di aggiornamento del \emph{database vettoriale} il sistema deve salvare in un file di testo un log che contenga le seguenti informazioni: fonte dei dati (\emph{GitHub}, \emph{Jira} o \emph{Confluence}), esito, orario, numero di file aggiunti, numero di file modificati, numero di file eliminati. & RZF42 & N-I \\ \hline
-    TS22 & Verificare che l'applicazione sia compatibile con la versione  131.0.6778.204/.205 di \emph{Google Chrome}\textsubscript{\textit{\textbf{G}}}, ovvero l’ultima disponibile al 19 dicembre, data in cui è stato richiesto questo vincolo. & ROV1 & N-I \\ \hline
-    TS23 & Verificare che il sistema garantisca la piena integrazione con le \emph{API}\textsubscript{\textit{\textbf{G}}} di \emph{Confluence}. & ROV2 & N-I \\ \hline
-    TS24 & Verificare che il sistema garantisca la piena integrazione con le \emph{API} di \emph{Jira}. & ROV3 & N-I \\ \hline
-    TS25 & Verificare che il sistema garantisca la piena integrazione con le \emph{API} di \emph{GitHub}. & ROV4 & N-I \\ \hline
+    TS41 & Verificare che ad ogni tentativo di aggiornamento del \emph{database vettoriale} il sistema salvi in un file di testo un log che contenga le seguenti informazioni: fonte dei dati (\emph{GitHub}, \emph{Jira} o \emph{Confluence}), esito, orario. & RZF41 & N-I \\ \hline
+    TS42 & Verificare che ad ogni tentativo di aggiornamento del \emph{database vettoriale} il sistema salvi in un file di testo un log che contenga le seguenti informazioni: fonte dei dati (\emph{GitHub}, \emph{Jira} o \emph{Confluence}), esito, orario, numero di file aggiunti, numero di file modificati, numero di file eliminati. & RZF42 & N-I \\ \hline
+    TS43 & Verificare che l'applicazione sia compatibile con la versione  131.0.6778.204/.205 di \emph{Google Chrome}\textsubscript{\textit{\textbf{G}}}, ovvero l’ultima disponibile al 19 dicembre, data in cui è stato richiesto questo vincolo. & ROV1 & N-I \\ \hline
+    TS44 & Verificare che il sistema garantisca l'integrazione con le \emph{API}\textsubscript{\textit{\textbf{G}}} di \emph{Confluence}. & ROV2 & N-I \\ \hline
+    TS45 & Verificare che il sistema garantisca l'integrazione con le \emph{API} di \emph{Jira}. & ROV3 & N-I \\ \hline
+    TS46 & Verificare che il sistema garantisca l'integrazione con le \emph{API} di \emph{GitHub}. & ROV4 & N-I \\ \hline
 
     \end{tabularx}
     \caption{Insieme dei test di sistema}
