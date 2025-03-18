@@ -533,27 +533,47 @@ I test di accettazione descritti di seguito rappresentano la base per la validaz
     \begin{tabularx}{\textwidth}{|p{0.1\textwidth}|X|p{0.2\textwidth}|p{0.1\textwidth}|}\hline
     \rowcolor[HTML]{FFD700}
     \textbf{Codice} & \textbf{Descrizione} & \textbf{Fonte} & \textbf{Stato} \\ \hline
-    TA1 & Verificare che l'utente possa inserire un interrogazione in linguaggio naturale e visualizzare la risposta generata. & UC1, UC2, UC3, UC4, UC5 & N-I \\ \hline
-    TA2 & Verificare che l'utente possa visualizzare i file da cui il sistema ha preso i dati per la risposta alla domanda con relativi errori nel caso in cui non siano stati rilevati file.  & UC2.1, UC14 & N-I \\ \hline
-    TA3 & Verificare che l'utente possa copiare il testo della risposta generata oppure lo snippet di codice presente nella risposta. & UC6, UC7 & N-I \\ \hline
-    TA4 & Verificare che l'utente possa visualizzare lo storico della chat con relativo errore nel caso non fosse possibile.  & UC8, UC8.1, UC9 & N-I \\ \hline
-    TA5 & Verificare che l'utente possa visualizzare una lista di domande ideali per poter iniziare una conversazione. & UC11, UC11.1 & N-I \\ \hline
-    TA6 & Verificare che l'utente possa visualizzare una lista di domande ideali per poter proseguire una conversazione con relativo errore nel caso non fosse possibile. & UC12, UC12.1, UC13 & N-I \\ \hline
-    TA7 & Verificare che l'utente possa visualizzare un badge che segnala lo stato di aggiornamento del database vettoriale.
+    TA1 & Verificare che l'utente possa inserire un interrogazione in linguaggio naturale. & UC1, UC18, UC19 & N-I \\ \hline
+    TA2 & Verificare che l'utente possa visualizzare la risposta generata dal sistema con relativo errore nel caso non sia possibile visualizzarla. & UC2, UC3, UC4, UC5 & N-I \\ \hline
+    TA3 & Verificare che l'utente possa visualizzare il link dei file da cui il sistema ha preso i dati per la risposta alla domanda con relativi errori nel caso in cui non siano stati rilevati i link dei file.  & UC2.1, UC14 & N-I \\ \hline
+    TA4 & Verificare che l'utente possa copiare il testo della risposta generata. & UC6 & N-I \\ \hline
+    TA5 & Verificare che l'utente possa copiare lo snippet di codice presente nel testo della risposta generata. & UC7 & N-I \\ \hline
+    TA6 & Verificare che l'utente possa visualizzare gli ultimi 50 messaggi della chat con relativo errore nel caso non fosse possibile.  & UC8, UC8.1, UC8.2, UC8.3, UC9, UC27 & N-I \\ \hline
+    TA7 & Verificare che lo scheduler effettui l'aggiornamento automatico del database vettoriale. & UC10 & N-I \\ \hline
+    TA8 & Verificare che l'utente possa visualizzare una lista di domande ideali per poter iniziare una conversazione. & UC11, UC11.1 & N-I \\ \hline
+    TA9 & Verificare che l'utente possa visualizzare una lista di domande ideali per poter proseguire una conversazione con relativo errore nel caso non fosse possibile. & UC12, UC12.1, UC13 & N-I \\ \hline
+    TA10 & Verificare che l'utente possa visualizzare un badge che segnala lo stato di aggiornamento del database vettoriale e nel caso non sia possibile l'esito dell'ultimo aggiornamento del database vettoriale si visualizza un badge a forma di segnale di pericolo.
     \begin{itemize}
-        \item Badge colore verde se il database è aggiornato;
-        \item Badge di colore rosso se il database non è aggiornato.
+        \item Badge a forma di "X" se c'è stato un fallimento nell'ultimo tentativo do aggiornamento del database vettoriale;
+        \item Badge a forma di spunta se il database vettoriale è stato aggiornato con successo.
     \end{itemize} 
-        & UC15, UC16, UC17 & N-I \\ \hline
-    TA8 & Verificare che lo scheduler effettui l'aggiornamento automatico del database vettoriale. & UC10 & N-I \\ \hline
+        & UC15, UC16, UC17, UC20 & N-I \\ \hline
+
+    \end{tabularx}
+\end{table}
+
+\newpage
+
+\begin{table}[h!]
+    \centering
+    \renewcommand{\arraystretch}{1.5} % Per aumentare l'altezza delle righe
+    \begin{tabularx}{\textwidth}{|p{0.1\textwidth}|X|p{0.2\textwidth}|p{0.1\textwidth}|}\hline
+    \rowcolor[HTML]{FFD700}
+    \textbf{Codice} & \textbf{Descrizione} & \textbf{Fonte} & \textbf{Stato} \\ \hline
+    TA11 & Verificare che l'utente possa visualizzare un messaggio che spiega il badge che segnala l'esito dell'ultimo aggiornamento del database vettoriale e nel caso di fallimento visualizza un messaggio che spiega il badge che segnala un errore nel recupero dell'esito dell'ultimo aggiornamento del database vettoriale.
+    \begin{itemize}
+        \item Visualizza un messaggio che spiega il badge che segnala il successo dell'ultimo aggiornamento del database vettoriale;
+        \item Visualizza un messaggio che spiega il badge che segnala il fallimento dell'ultimo aggiornamento del database vettoriale.
+    \end{itemize} 
+    & UC21, UC22, UC23, UC24 & N-I \\ \hline
+    TA12 & Verificare che l'utente possa visualizzare una lista di 50 messaggi immediatamente precedenti a quanto già presente nella vista, con relativo errore nel caso non sia possibile recuperare i messaggi. & UC25, UC26, UC27, UC8.1 & N-I \\ \hline
 
     \end{tabularx}
     \caption{Insieme dei test di accettazione}
 \end{table}
 
-
-
 \newpage
+
 \subsection{Checklist}
 \label{sec:checklist}
 Le checklist vengono costantemente aggiornate dai Verificatori durante lo sviluppo del progetto. Gli errori rilevati vengono analizzati e inclusi nella lista, contribuendo a una maggiore efficacia nella correzione e garantendo un livello di qualità sempre più elevato.
