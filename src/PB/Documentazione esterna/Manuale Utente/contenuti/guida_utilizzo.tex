@@ -152,29 +152,46 @@ Se la risposta include dei link correlati, questi vengono visualizzati in un riq
 
 \subsection{Visualizzazione dello storico dei messaggi}
 \label{subsec:visualizzazione_storico_messaggi}
-Al primo accesso del chatbot, è possibile visualizzare la discussione vuota, senza alcun messaggio.
+Al primo accesso del chatbot, è possibile visualizzare la discussione vuota, senza alcun messaggio, come mostrato in figura \bulref{fig:Discussione vuota}.
 Una volta digitata la prima interrogazione, essa verrà visualizzata in alto a destra.
 Una volta terminata l'elaborazione, la risposta del chatbot verrà visualizzata a sinistra, sotto il relativo messaggio.
 Da qui in poi, ogni nuova interrogazione verrà visualizzata a destra, sotto la risposta precedente, mentre ogni risposta apparirà a sinistra, sotto la domanda corrispondente.
 Sia le domande che le risposte sono corredate dalla data e dall'ora di invio, come visibile nelle figure \bulref{fig:Data e ora di invio domanda} e \bulref{fig:Data e ora di invio risposta}.
-È possibile visualizzare i messaggi precedenti allo scroll, fino all'inizio della conversazione. Quando si raggiunge l'inizio della conversazione, apparirà un segnalino che indica tale stato.
+È possibile visualizzare i messaggi precedenti tramite scroll. Se si tenta di risalire ai messaggi precedenti non ancora caricati dal sistema, verrà visualizzato un badge che ne segnala il caricamento in corso, come si può vedere in figura \bulref{fig:Badge di caricamento messaggi precedenti}.
+Terminata tale attesa verranno visualizzati i messaggi precedenti.
 
-\begin{figure}[!ht]
+\newpage
+
+\begin{figure}[h]
     \centering
-    \begin{minipage}{.45\textwidth}
+        \includegraphics[width=.8\linewidth]{Schermata iniziale senza messaggi.png}
+        \caption{schermata iniziale vuota}
+        \label{fig:Discussione vuota}        
+\end{figure}
+\begin{figure}[h]
+    \centering
+    \begin{minipage}[t]{.45\textwidth}
         \centering
-        \includegraphics[height=1.7cm]{Data e ora di invio domanda.png}
+        \includegraphics[height=2cm]{Data e ora invio messaggio - Utente.png}
         \caption{\centering Interrogazione con Data e Ora}
         \label{fig:Data e ora di invio domanda}
     \end{minipage}%
     \hfill
-    \begin{minipage}{.45\textwidth}
+    \begin{minipage}[t]{.45\textwidth}
         \centering
-        \includegraphics[height=1.7cm]{Data e ora di invio risposta.png}
+        \includegraphics[height=2cm]{Data e ora di invio messaggio - Chatbot.png}
         \caption{\centering Messaggio di risposta con Data e Ora}
         \label{fig:Data e ora di invio risposta}
     \end{minipage}
 \end{figure}
+\begin{figure}[h]
+    \centering
+        \includegraphics[height=6.5cm]{Caricamento dei messaggi precedenti.png}
+        \caption{Badge di caricamento messaggi precedenti}
+        \label{fig:Badge di caricamento messaggi precedenti}
+\end{figure}
+
+\newpage
 
 
 \subsection{Aggiornamento automatico dei documenti}
