@@ -512,10 +512,16 @@ I test di accettazione descritti di seguito rappresentano la base per la validaz
  
     TS41 & Verificare che ad ogni tentativo di aggiornamento del \emph{database vettoriale} il sistema salvi in un file di testo un log che contenga le seguenti informazioni: fonte dei dati (\emph{GitHub}, \emph{Jira} o \emph{Confluence}), esito, orario. & RZF41 & N-I \\ \hline
     TS42 & Verificare che ad ogni tentativo di aggiornamento del \emph{database vettoriale} il sistema salvi in un file di testo un log che contenga le seguenti informazioni: fonte dei dati (\emph{GitHub}, \emph{Jira} o \emph{Confluence}), esito, orario, numero di file aggiunti, numero di file modificati, numero di file eliminati. & RZF42 & N-I \\ \hline
-    TS43 & Verificare che l'applicazione sia compatibile con la versione  131.0.6778.204/.205 di \emph{Google Chrome}\textsubscript{\textit{\textbf{G}}}, ovvero l’ultima disponibile al 19 dicembre, data in cui è stato richiesto questo vincolo. & ROV1 & N-I \\ \hline
-    TS44 & Verificare che il sistema garantisca l'integrazione con le \emph{API}\textsubscript{\textit{\textbf{G}}} di \emph{Confluence}. & ROV2 & N-I \\ \hline
-    TS45 & Verificare che il sistema garantisca l'integrazione con le \emph{API} di \emph{Jira}. & ROV3 & N-I \\ \hline
-    TS46 & Verificare che il sistema garantisca l'integrazione con le \emph{API} di \emph{GitHub}. & ROV4 & N-I \\ \hline
+    TS43 & Verificare che il sistema mostri a schermo la data e l’ora di ogni messaggio presente nello storico. & RDF43 & N-I \\ \hline
+    TS44 & Verificare che, nel caso non sia possibile recuperare la data e l’ora di un messaggio presente nello storico, deve essere visualizzato al suo posto un avviso di errore. & RDF44 & N-I \\ \hline
+    TS45 & Verificare che il sistema mostri un riquadro di caricamento durante la generazione di una risposta. & RZF45 & N-I \\ \hline
+    TS46 & Verificare che il sistema mostri un riquadro di caricamento durante il caricamento dello storico dei messaggi. & RZF46 & N-I \\ \hline
+    TS47 & Verificare che il sistema mostri un riquadro di caricamento durante il caricamento dei messaggi precedenti.& RZF47 & N-I \\ \hline
+    TS48 & Verificare che deve essere presente un pulsante che, al click, permetta all’utente di tornare ai messaggi più recenti della chat. & RZF48 & N-I \\ \hline
+    TS49 & Verificare che l'applicazione sia compatibile con la versione  131.0.6778.204/.205 di \emph{Google Chrome}\textsubscript{\textit{\textbf{G}}}, ovvero l’ultima disponibile al 19 dicembre, data in cui è stato richiesto questo vincolo. & ROV1 & N-I \\ \hline
+    TS50 & Verificare che il sistema garantisca l'integrazione con le \emph{API}\textsubscript{\textit{\textbf{G}}} di \emph{Confluence}. & ROV2 & N-I \\ \hline
+    TS51 & Verificare che il sistema garantisca l'integrazione con le \emph{API} di \emph{Jira}. & ROV3 & N-I \\ \hline
+    TS52 & Verificare che il sistema garantisca l'integrazione con le \emph{API} di \emph{GitHub}. & ROV4 & N-I \\ \hline
 
     \end{tabularx}
     \caption{Insieme dei test di sistema}
@@ -542,8 +548,7 @@ I test di accettazione descritti di seguito rappresentano la base per la validaz
     TA7 & Verificare che l'utente possa visualizzare la data e l'ora dell'invio del messaggio con relativo errore nel caso non sia possibile recuperarle. & UC8.1.1, UC28 & N-I \\ \hline
     TA8 & Verificare che lo scheduler effettui l'aggiornamento automatico del database vettoriale. & UC10 & N-I \\ \hline
     TA9 & Verificare che l'utente possa visualizzare una lista di domande ideali per poter iniziare una conversazione. & UC11, UC11.1 & N-I \\ \hline
-
-    TA10 & Verificare che l'utente possa visualizzare una lista di domande ideali per poter proseguire una conversazione con relativo errore nel caso non fosse possibile. & UC12, UC12.1, UC13 & N-I \\ \hline
+    TA10 & Verificare che l'utente possa visualizzare una lista di domande ideali per poter proseguire una conversazione con relativo errore nel caso non sia possibile. & UC12, UC12.1, UC13 & N-I \\ \hline
     TA11 & Verificare che l'utente possa visualizzare un badge che segnala l'esito dell'ultimo aggiornamento del database vettoriale, in una delle seguenti forme:
     \begin{itemize}
         \item Badge a forma di spunta se l'ultimo aggiornamento del database vettoriale è avvenuto con successo;
