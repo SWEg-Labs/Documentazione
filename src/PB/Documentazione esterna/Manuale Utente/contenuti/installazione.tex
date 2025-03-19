@@ -1,5 +1,5 @@
 % Intestazione
-\fancyhead[L]{1 \hspace{0.2cm} Introduzione} % Testo a sinistra
+\fancyhead[L]{3 \hspace{0.2cm} Installazione} % Testo a sinistra
 
 
 \section{Installazione}
@@ -21,17 +21,17 @@ Il gruppo \emph{SWEg labs} ha testato l'applicazione utilizzando Docker in versi
 versione uguale o superiore per garantire il corretto funzionamento dell'applicazione.
 
 \subsection{Download dell'Applicazione}
-E' possibile clonare la repository GitHub di \textit{BuddyBot} eseguendo sul proprio terminale:
+E' possibile clonare la repository \emph{GitHub}\textsubscript{\textbf{\textit{G}}} di BuddyBot eseguendo sul proprio terminale:
 \begin{verbatim}
     git clone https://github.com/SWEg-Labs/BuddyBot.git
 \end{verbatim}
-Una volta scaricata la repository, posizionarsi nella cartella del progetto con il comando:
+Una volta scaricato il repository, posizionarsi nella cartella del progetto con il comando:
 \begin{verbatim}
     cd BuddyBot
 \end{verbatim}
 
 \subsection{Creazione e configurazione del file \texttt{.env}}
-Tutte le variabili di sistema di configurazione sono già incluse nel \texttt{Dockerfile}.  
+Tutte le variabili di sistema di configurazione sono già incluse nel \emph{Dockerfile}\textsubscript{\textbf{\textit{G}}}.  
 Tuttavia, per le impostazioni sensibili e personalizzabili, occorre creare nella directory \texttt{src/backend} un file
 \texttt{.env} contenente le seguenti voci (adattandole alle proprie esigenze):
 \begin{verbatim}
@@ -52,15 +52,15 @@ Tuttavia, per le impostazioni sensibili e personalizzabili, occorre creare nella
     CONFLUENCE_SPACE_KEY = confluence_space_key
 \end{verbatim}
 
-\subsection{Creazione dell'immagine e avvio del Container}
-Una volta pronti, è possibile creare l'immagine Docker posizionandosi nella cartella del progetto ed eseguendo:
+\subsection{Creazione dell'immagine e avvio del container}
+Una volta pronti, è possibile creare l'\emph{immagine Docker}\textsubscript{\textbf{\textit{G}}} posizionandosi nella cartella del progetto ed eseguendo:
 \begin{verbatim}
     docker compose up --build
 \end{verbatim}
 La creazione dell'immagine impiegherà poco più di 5 minuti.
-Al termine della creazione di quest'ultima, verrà creato e avviato il container \texttt{buddybot}. Al termine dell'utilizzo, per
+Al termine della creazione di quest'ultima, verrà creato ed avviato il \emph{container}\textsubscript{\textbf{\textit{G}}} \texttt{buddybot}. Al termine dell'utilizzo, per
 spegnere l'applicazione è possibile fermare il container con la combinazione di tasti Ctrl+C.\\
-Per i successivi accessi, aprire Docker Desktop e premere il tasto Play sul container \texttt{buddybot} per avviare di nuovo il
+Per i successivi accessi, aprire \emph{Docker Desktop}\textsubscript{\textbf{\textit{G}}} e premere il tasto Play sul container \texttt{buddybot} per avviare di nuovo il
 container dell'applicazione. Per stopparlo, premere il tasto Stop dalla stessa interfaccia.\\
 Se si vuole continuare ad interagire da terminale con il container, è possibile eseguire il comando:
 \begin{verbatim}
@@ -69,7 +69,7 @@ Se si vuole continuare ad interagire da terminale con il container, è possibile
 per avviarlo, e poi, come sopra, Ctrl+C per stopparlo.
 
 \subsection{Esecuzione dell'Applicazione}
-Per avviare \emph{BuddyBot}, è sufficiente aprire un \emph{browser}\textsubscript{\textbf{\textit{G}}} e digitare nella barra
+Per avviare BuddyBot, è sufficiente aprire un \emph{browser}\textsubscript{\textbf{\textit{G}}} e digitare nella barra
 degli indirizzi:
 \begin{verbatim}
     localhost:4200

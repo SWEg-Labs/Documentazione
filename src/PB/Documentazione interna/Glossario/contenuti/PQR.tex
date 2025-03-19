@@ -46,6 +46,13 @@ ricerca vettoriale altamente scalabili, spesso utilizzati in applicazioni di int
 e assistenti virtuali. Pinecone offre un'infrastruttura ottimizzata per il retrieval basato su similarità, supportando scenari di alto volume e 
 garantendo basse latenze, con un'interfaccia API intuitiva per integrarsi facilmente con applicazioni esistenti.
 
+\hypertarget{sec:polling_rest}{}
+\subsection*{Polling REST}
+Il polling è una tecnica utilizzata nei servizi web RESTful per ottenere aggiornamenti da un server. In pratica, un client effettua periodicamente
+richieste HTTP al server per verificare se sono disponibili nuovi dati o eventi. Il polling può essere implementato in vari modi, come polling
+periodico, polling a intervalli regolari o polling basato su eventi. Sebbene il polling sia semplice da implementare, può comportare un consumo
+elevato di risorse e una latenza aggiuntiva, poiché richiede al client di inviare continuamente richieste al server per ottenere aggiornamenti.
+
 \hypertarget{sec:port}{}
 \subsection*{Port}
 Interfaccia che definisce i punti di comunicazione tra la logica di business e il mondo esterno. Permette ai Service di interagire con sistemi di persistenza e altre componenti senza dipendere direttamente dalla loro implementazione.

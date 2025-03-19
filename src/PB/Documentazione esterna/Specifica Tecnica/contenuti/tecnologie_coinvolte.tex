@@ -1,14 +1,13 @@
 % Intestazione
-\fancyhead[L]{1 \hspace{0.2cm} Tecnologie coinvolte} % Testo a sinistra
-
-\pagenumbering{arabic} % Numerazione araba per il contenuto 
+\fancyhead[L]{2 \hspace{0.2cm} Tecnologie coinvolte} % Testo a sinistra
 
 \section{Tecnologie coinvolte}
 \label{sec:tecnologie_coinvolte}
 
 Questa sezione fornisce un’analisi esaustiva delle tecnologie impiegate nel progetto in questione, comprendendo le procedure, gli
 strumenti e le librerie necessarie per lo sviluppo, il testing e la distribuzione del prodotto. Saranno discusse le tecnologie
-utilizzate per implementare sia il backend che il frontend, la gestione dei dati e l’integrazione con i servizi previsti.
+utilizzate per implementare il \emph{backend}\textsubscript{\textbf{\textit{G}}}, il \emph{frontend}\textsubscript{\textbf{\textit{G}}},
+la gestione dei dati e l’integrazione con i servizi esterni previsti.
 
 
 \subsection{Tecnologie utilizzate per la codifica}
@@ -28,7 +27,7 @@ utilizzate per implementare sia il backend che il frontend, la gestione dei dati
     LangChain & 0.3.18 & LangChain è un \emph{framework}\textsubscript{\textbf{\textit{G}}} open-source progettato per sviluppare
     applicazioni che sfruttano i \emph{Large Language Models}\textsubscript{\textbf{\textit{G}}}. \\ 
     \hline
-    FastAPI & 0.115.6 & FastAPI è un \emph{framework}\textsubscript{\textbf{\textit{G}}} web moderno e performante per lo sviluppo di \emph{API}\textsubscript{\textbf{\textit{G}}} in \emph{Python}\textsubscript{\textbf{\textit{G}}}. 
+    FastAPI & 0.115.6 & FastAPI è un \emph{framework} web moderno e performante per lo sviluppo di \emph{API}\textsubscript{\textbf{\textit{G}}} in \emph{Python}\textsubscript{\textbf{\textit{G}}}. 
     Sfrutta le funzionalità avanzate di \emph{Python} per la dichiarazione dei tipi, la validazione automatica dei dati e la generazione di documentazione interattiva, semplificando lo sviluppo e il mantenimento di applicazioni scalabili. \\ 
     \hline
     \end{tabularx}
@@ -96,10 +95,12 @@ utilizzate per implementare sia il backend che il frontend, la gestione dei dati
     di contenuti. \\ \hline
     Docker & 27.3.1 & Sistema di containerizzazione che permette la distribuzione
     di software in ambienti isolabili, dove ogni contenitore
-    viene gestito in modo isolato rispetto agli altri. \\ \hline
+    viene gestito in modo indipendente rispetto agli altri. \\ \hline
     \end{tabularx}
     \caption{Strumenti di integrazione e di supporto}
 \end{table}
+
+\newpage
 
 \subsection{Strumenti per l’analisi del codice}
 
@@ -134,8 +135,6 @@ utilizzate per implementare sia il backend che il frontend, la gestione dei dati
 
 \subsubsection{Strumenti per l’analisi dinamica}
 \label{subsec:strumenti_analisi_dinamica}
-
-\newpage
 
 \begin{table}[h!]
     \centering
