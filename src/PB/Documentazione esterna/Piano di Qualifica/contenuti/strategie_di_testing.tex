@@ -539,10 +539,12 @@ I test di accettazione descritti di seguito rappresentano la base per la validaz
     TA4 & Verificare che l'utente possa copiare il testo della risposta generata. & UC6 & N-I \\ \hline
     TA5 & Verificare che l'utente possa copiare lo snippet di codice presente nel testo della risposta generata. & UC7 & N-I \\ \hline
     TA6 & Verificare che l'utente possa visualizzare gli ultimi 50 messaggi della chat con relativo errore nel caso non fosse possibile.  & UC8, UC8.1, UC8.2, UC8.3, UC9, UC27 & N-I \\ \hline
-    TA7 & Verificare che lo scheduler effettui l'aggiornamento automatico del database vettoriale. & UC10 & N-I \\ \hline
-    TA8 & Verificare che l'utente possa visualizzare una lista di domande ideali per poter iniziare una conversazione. & UC11, UC11.1 & N-I \\ \hline
-    TA9 & Verificare che l'utente possa visualizzare una lista di domande ideali per poter proseguire una conversazione con relativo errore nel caso non fosse possibile. & UC12, UC12.1, UC13 & N-I \\ \hline
-    TA10 & Verificare che l'utente possa visualizzare un badge che segnala l'esito dell'ultimo aggiornamento del database vettoriale, in una delle seguenti forme:
+    TA7 & Verificare che l'utente possa visualizzare la data e l'ora dell'invio del messaggio con relativo errore nel caso non sia possibile recuperarle. & UC8.1.1, UC28 & N-I \\ \hline
+    TA8 & Verificare che lo scheduler effettui l'aggiornamento automatico del database vettoriale. & UC10 & N-I \\ \hline
+    TA9 & Verificare che l'utente possa visualizzare una lista di domande ideali per poter iniziare una conversazione. & UC11, UC11.1 & N-I \\ \hline
+
+    TA10 & Verificare che l'utente possa visualizzare una lista di domande ideali per poter proseguire una conversazione con relativo errore nel caso non fosse possibile. & UC12, UC12.1, UC13 & N-I \\ \hline
+    TA11 & Verificare che l'utente possa visualizzare un badge che segnala l'esito dell'ultimo aggiornamento del database vettoriale, in una delle seguenti forme:
     \begin{itemize}
         \item Badge a forma di spunta se l'ultimo aggiornamento del database vettoriale è avvenuto con successo;
         \item Badge a forma di "X" se c'è stato un fallimento nell'ultimo aggiornamento del database vettoriale;
@@ -561,14 +563,18 @@ I test di accettazione descritti di seguito rappresentano la base per la validaz
     \begin{tabularx}{\textwidth}{|p{0.1\textwidth}|X|p{0.2\textwidth}|p{0.1\textwidth}|}\hline
     \rowcolor[HTML]{FFD700}
     \textbf{Codice} & \textbf{Descrizione} & \textbf{Fonte} & \textbf{Stato} \\ \hline
-    TA11 & Verificare che l'utente possa visualizzare un messaggio che spiega il badge che segnala l'esito dell'ultimo aggiornamento del database vettoriale, in una delle seguenti possibilità:
+    TA12 & Verificare che l'utente possa visualizzare un messaggio che spiega il badge che segnala l'esito dell'ultimo aggiornamento del database vettoriale, in una delle seguenti possibilità:
     \begin{itemize}
         \item Messaggio che spiega il badge che segnala il successo dell'ultimo aggiornamento del database vettoriale;
         \item Messaggio che spiega il badge che segnala il fallimento dell'ultimo aggiornamento del database vettoriale;
         \item Messaggio che spiega il badge che segnala l'impossibilità di recuperare l'esito dell'ultimo aggiornamento del database vettoriale.
     \end{itemize} 
     & UC21, UC22, UC23, UC24 & N-I \\ \hline
-    TA12 & Verificare che l'utente possa visualizzare una lista di 50 messaggi immediatamente precedenti a quanto già presente nella vista, con relativo errore nel caso non sia possibile recuperare i messaggi. & UC25, UC26, UC27, UC8.1 & N-I \\ \hline
+    TA13 & Verificare che l'utente possa visualizzare una lista di 50 messaggi immediatamente precedenti a quanto già presente nella vista, con relativo errore nel caso non sia possibile recuperare i messaggi. & UC25, UC26, UC27, UC8.1 & N-I \\ \hline
+    TA14 & Verificare che l'utente possa visualizzare un riquadro di caricamento di una risposta.& UC29 & N-I \\ \hline
+    TA15 & Verificare che l'utente possa visualizzzare un riquadro di caricamento dello storico dei messaggi. & UC30 & N-I \\ \hline
+    TA16 & Verificare che l'utente possa visualizzare un riquadro di caricamento dei messaggi precedenti. & UC31 & N-I \\ \hline
+    TA17 & Verificare che l'utente possa, premendo un pulsante, tornare ai messaggi recenti. & UC32 & N-I \\ \hline
 
     \end{tabularx}
     \caption{Insieme dei test di accettazione}
