@@ -77,14 +77,14 @@ Questi suggerimenti sono opzionali e possono essere utilizzati per proseguire pi
 La domanda va scritta nella barra di input dove appare il testo \textit{Scrivi un messaggio...}. Quando si posiziona il cursore e si clicca nel campo per iniziare a scrivere, il bordo del campo diventa blu, indicando che è pronto per ricevere il testo.\\
 Il pulsante "Invia", situato a destra della barra di input, è disattivato e di colore grigio quando la barra è vuota. Non appena si inizia a scrivere, il pulsante si attiva e diventa blu.
 Il messaggio può essere inviato sia cliccando sul pulsante "Invia" che premendo il tasto \textit{Enter} sulla tastiera.\\
-Alcune configurazioni dei componenti di input sono le seguenti:
+Di seguito sono elencate le configurazioni dei componenti di input in alcune situazioni:
 
 \begin{itemize}  
-    \item \textbf{Scrittura libera - campo vuoto}: Quando il campo è vuoto, il pulsante "Invia" è disattivato e grigio, impedendo l'invio del messaggio fino a quando non viene scritto del testo, come mostrato in figura \bulref{fig:Barra per l'invio di una domanda libera vuota};
+    \item \textbf{Scrittura libera - campo vuoto}: Quando il campo è vuoto, il pulsante "Invia" è disattivato e grigio, poichè non è possibile inviare un messaggio fino a quando non viene scritto del testo, come mostrato in figura \bulref{fig:Barra per l'invio di una domanda libera vuota};
     \item \textbf{Scrittura libera - campo pieno}: Quando il campo contiene del testo, il pulsante "Invia" diventa attivo e blu, come mostrato in figura \bulref{fig:Barra per l'invio di una domanda libera piena};
-    \item \textbf{Caricamento dopo l'invio di una domanda}: Quando viene cliccato "Invia" oppure "Enter", il messaggio viene visualizzato sul lato destro della schermata, mentre, sul lato sinistro, compare un'icona di una banana morsicata che rotea su se stessa, indicando che il messaggio è in fase di elaborazione, come mostrato in figura \bulref{fig:Icona di caricamento dopo l'invio di una domanda}. La barra di input viene disabilitata durante questo processo, impedendo l'invio di ulteriori messaggi fino a quando non viene visualizzata la risposta;
-    \item \textbf{Suggerimenti - campo vuoto}: Dalla seconda interazione in poi, tre suggerimenti vengono proposti sopra la barra di input per facilitare la continuazione della conversazione. Subito dopo l'invio del messaggio, la barra di input si svuota e il pulsante "Invia" è disattivato, come mostrato in figura \bulref{fig:Domande per proseguire la conversazione con barra vuota};
-    \item \textbf{Suggerimenti - campo pieno}: Dalla seconda interazione in poi, pur avendo disponibili i tre suggerimenti, è ancora possibile inserire una domanda libera nella barra di input. Se la barra contiene testo, il pulsante "Invia" è attivo e blu, come mostrato in figura \bulref{fig:Domande per proseguire la conversazione con barra piena}.
+    \item \textbf{Caricamento dopo l'invio di una domanda}: Quando viene cliccato il pulsante "Invia" oppure il tasto "Enter", il messaggio viene visualizzato sul lato destro della schermata, mentre, sul lato sinistro, compare un'icona di una banana morsicata che rotea su se stessa, indicando che il messaggio è in fase di elaborazione, come mostrato in figura \bulref{fig:Icona di caricamento dopo l'invio di una domanda}. La barra di input e il pulsante "Invia" vengono disabilitati durante questo processo, per impedire la scrittura e l'invio di ulteriori messaggi fino a quando non viene visualizzata la risposta;
+    \item \textbf{Suggerimenti - campo vuoto}: Dalla seconda interrogazione in poi, tre suggerimenti vengono proposti sopra la barra di input per facilitare la continuazione della conversazione. Subito dopo l'invio del messaggio, la barra di input si svuota e il pulsante "Invia" viene disattivato, come mostrato in figura \bulref{fig:Domande per proseguire la conversazione con barra vuota};
+    \item \textbf{Suggerimenti - campo pieno}: Dalla seconda interrogazione in poi, pur avendo disponibili i tre suggerimenti, è ancora possibile inserire una domanda libera nella barra di input. Se la barra contiene testo, il pulsante "Invia" è attivo e blu, come mostrato in figura \bulref{fig:Domande per proseguire la conversazione con barra piena}.
 \end{itemize}
 
 \begin{figure}[h]
@@ -127,14 +127,15 @@ Alcune configurazioni dei componenti di input sono le seguenti:
 \label{subsec:la_risposta_del_chatbot}  
 
 Quando il chatbot fornisce una risposta, essa include un testo esplicativo, che talvolta può contenere uno \emph{snippet}\textsubscript{\textbf{\textit{G}}} di codice. Lo snippet viene visualizzato in un riquadro dedicato per facilitare la sua lettura e comprensione.\\
-Inoltre, è possibile copiare tramite pulsante sia il messaggio completo che singolarmente gli snippet di codice contenuti nella risposta. Per fare ciò, in alto a destra del messaggio e in alto a destra del riquadro del codice, sono presenti due pulsanti dedicati che permettono di copiare il contenuto a cui fanno riferimento negli appunti. Il pulsante di copia del solo codice è particolarmente utile quando si desidera utilizzare o condividere direttamente il codice invece che tutta la risposta.\\
-I link correlati da cui il chatbot ha ricavato la risposta vengono visualizzati in arancione in un riquadro evidenziato di scuro, permettendo di accedere facilmente alle fonti informative della risposta o ad approfondimenti aggiuntivi. Cliccando su uno di questi link, l'utente verrà indirizzato alla risorsa corrispondente.\\
+Inoltre, è possibile copiare tramite pulsante sia il messaggio completo che singolarmente gli snippet di codice contenuti nella risposta. Per fare ciò, in alto a destra di ogni messaggio del chatbot e in alto a destra di ogni riquadro di codice, è presente un pulsante dedicato che permette di copiare il contenuto a cui fa riferimento negli appunti. Il pulsante di copia del solo snippet è particolarmente utile quando si desidera utilizzare o condividere direttamente il codice invece che tutta la risposta.\\
+I link correlati da cui il chatbot ha ricavato la risposta vengono visualizzati in arancione in un riquadro evidenziato di scuro in fondo alla risposta, permettendo di accedere facilmente alle fonti informative della risposta o ad approfondimenti aggiuntivi. Cliccando su uno di questi link, l'utente verrà indirizzato alla risorsa corrispondente.\\
+Gli elementi del messaggio di risposta sono dunque i seguenti:
 
 \begin{itemize}
   \item \textbf{Risposta testuale}: Il chatbot fornisce una risposta testuale che include informazioni esplicative, come mostrato in figura \bulref{fig:Risposta senza snippet di codice};
   \item \textbf{Snippet di codice}: Quando la risposta include uno snippet di codice, questo viene visualizzato all'interno di un riquadro per evidenziarlo chiaramente, come mostrato in figura \bulref{fig:Risposta con snippet di codice};
-  \item \textbf{Copia del testo e del codice}: È possibile copiare sia tutto il testo del messaggio che solamente il suo eventuale snippet di codice cliccando sui rispettivi pulsanti di copia situati in alto a destra, come mostrato in figura \bulref{fig:Pulsante di copia messaggio e pulsante di copia snippet di codice};
-  \item \textbf{Link correlati}: I link correlati da cui il chatbot ha ricavato la risposta vengono visualizzati in arancione in un riquadro evidenziato di scuro, da cui è possibile cliccare per aprirli ed accedere ad ulteriori risorse, come mostrato in figura \bulref{fig:Riquadro dei link correlati}.
+  \item \textbf{Copia del testo e del codice}: È possibile copiare sia tutto il testo del messaggio che solamente un suo eventuale snippet di codice cliccando sui rispettivi pulsanti di copia situati in alto a destra dell'elemento da copiare, come mostrato in figura \bulref{fig:Pulsante di copia messaggio e pulsante di copia snippet di codice};
+  \item \textbf{Link correlati}: I link correlati da cui il chatbot ha ricavato la risposta vengono visualizzati in arancione in un riquadro evidenziato di scuro in fondo alla risposta, e su di essi è possibile cliccare per aprirli ed accedere ad ulteriori risorse, come mostrato in figura \bulref{fig:Riquadro dei link correlati}.
 \end{itemize}
 
 \newpage
@@ -153,7 +154,7 @@ I link correlati da cui il chatbot ha ricavato la risposta vengono visualizzati 
 \begin{figure}[h]
     \centering
         \includegraphics[width=.8\linewidth]{Pulsante di copia messaggio e pulsante di copia snippet di codice.png}
-        \caption{Pulsante di copia messaggio e pulsante di copia snippet di codice}
+        \caption{Pulsante di copia messaggio (in alto) e pulsante di copia snippet di codice (in basso)}
         \label{fig:Pulsante di copia messaggio e pulsante di copia snippet di codice}        
 \end{figure}
 \begin{figure}[h]
@@ -173,9 +174,10 @@ Una volta inviata la prima interrogazione, essa verrà visualizzata in alto a de
 Una volta terminata l'elaborazione, la risposta del chatbot verrà visualizzata a sinistra, sotto il relativo messaggio.\\
 Da qui in poi, ogni nuova interrogazione verrà visualizzata a destra, sotto la risposta precedente, mentre ogni risposta apparirà a sinistra, sotto la domanda corrispondente.\\
 Sia le domande che le risposte sono corredate dalla data e dall'ora di invio, come visibile nelle figure \bulref{fig:Data e ora di invio domanda} e \bulref{fig:Data e ora di invio risposta}.\\
-Quando si refresha la pagina, la discussione viene ripristinata, mostrando i 50 messaggi più recenti. È possibile visualizzare i messaggi precedenti tramite scroll: se si tenta di risalire ai messaggi dello storico non ancora caricati dal sistema, verrà visualizzata un'icona di una banana morsicata che rotea su se stessa che ne segnala il caricamento in corso, come si può vedere in figura \bulref{fig:Icona di caricamento dei messaggi precedenti}. Terminata tale attesa verranno visualizzati i messaggi precedenti.\\
+Quando si refresha la pagina, la discussione viene ripristinata, mostrando i 50 messaggi più recenti. È possibile visualizzare i messaggi precedenti tramite scroll: se si tenta di risalire ai messaggi dello storico non ancora caricati dal sistema, verrà visualizzata un'icona di una banana morsicata che rotea su se stessa che ne segnala il caricamento in corso, come si può vedere in figura \bulref{fig:Icona di caricamento dei messaggi precedenti}.\\
+Terminata tale attesa, verranno visualizzati i 50 messaggi precedenti, e scrollando ancora si possono visualizzare i precedenti 50, e così via.
 Se allo scroll l'icona di caricamento non appare, significa che si è giunti alla fine dello storico e non ci sono altri messaggi da visualizzare.\\
-Una volta che ci si trova in alto nella conversazione, è possibile tornare velocemente ai messaggi più recenti cliccando sull'apposito pulsante che appare in basso a destra, visibile in \bulref{fig:Pulsante per tornare ai messaggi recenti}.
+Una volta che ci si trova in alto nella conversazione, è possibile tornare velocemente in basso ai messaggi più recenti cliccando sull'apposito pulsante che appare in basso a destra, visibile in \bulref{fig:Pulsante per tornare ai messaggi recenti}.
 
 \begin{figure}[h]
     \centering
@@ -226,8 +228,7 @@ In alto a destra è presente un badge di segnalazione che indica l'esito dell'ul
     dal chatbot sono aggiornate ai documenti non più vecchi di 24 ore;
     \item Se il badge presenta una X rossa con accanto la scritta \emph{Non aggiornato}, come visibile in figura \bulref{fig:Aggiornamento fallito}, significa che l'ultimo aggiornamento è fallito, e le risposte fornite dal chatbot potrebbero
     non essere aggiornate ai documenti più recenti;
-    \item Se il badge presenta un segnale di pericolo con accanto la scritta \emph{Errore}, come visibile in figura \bulref{fig:Errore nel recupero dell'esito dell'ultimo aggiornamento}, significa che non è stato possibile recuperare l'esito dell'ultimo aggiornamento, e
-    dunque, non è possibile sapere se le risposte fornite dal chatbot sono aggiornate ai documenti più recenti o meno.
+    \item Se il badge presenta un segnale di pericolo con accanto la scritta \emph{Errore}, come visibile in figura \bulref{fig:Errore nel recupero dell'esito dell'ultimo aggiornamento}, significa che non è stato possibile recuperare l'esito dell'ultimo aggiornamento, e, dunque, non è possibile sapere se le risposte fornite dal chatbot sono aggiornate ai documenti più recenti o meno.
 \end{itemize}
 
 \begin{figure}[h]
@@ -272,7 +273,7 @@ Durante l'utilizzo del chatbot è possibile che si verifichino alcuni errori. Lo
         \label{fig:Errore nel recupero dello storico dei messaggi}
 \end{figure}
 
-Nel caso non sia possibile recuperare i messaggi delle precedenti conversazioni, verrà mostrato in alto un apposito riquadro che comunica il problema, come visibile in figura \bulref{fig:Errore nel recupero dello storico dei messaggi}. E' probabile che ciò sia dovuto ad un problema con il \emph{database relazionale}\textsubscript{\textbf{\textit{G}}} \emph{Postgres}\textsubscript{\textbf{\textit{G}}}, il consiglio dunque è di recarsi su \emph{Docker}\textsubscript{\textbf{\textit{G}}} e di controllare se il \emph{container}\textsubscript{\textbf{\textit{G}}} dedicato a Postgres è acceso, ed eventualmente riavviarlo. Nel caso ciò non sia sufficiente, controllare allora lo stato del container di backend, poichè anch'esso ha un ruolo fondamentale nella funzionalità di recupero dei vecchi messaggi, e provare dunque a riavviare anch'esso.
+Nel caso non sia possibile recuperare i messaggi delle precedenti conversazioni, verrà mostrato in alto un apposito riquadro che comunica il problema, come visibile in figura \bulref{fig:Errore nel recupero dello storico dei messaggi}. E' probabile che ciò sia dovuto ad un problema con il \emph{database relazionale}\textsubscript{\textbf{\textit{G}}} \emph{Postgres}\textsubscript{\textbf{\textit{G}}}; il consiglio dunque è di recarsi su \emph{Docker Desktop}\textsubscript{\textbf{\textit{G}}} e di controllare se il \emph{container}\textsubscript{\textbf{\textit{G}}} dedicato a \emph{Postgres} è acceso, ed eventualmente riavviarlo. Nel caso ciò non sia sufficiente, controllare allora lo stato del container di \emph{backend}\textsubscript{\textbf{\textit{G}}}, poichè anch'esso ha un ruolo fondamentale nella funzionalità di recupero dei vecchi messaggi, e provare dunque a riavviare anch'esso.
 
 
 \subsubsection{Errore nella generazione della risposta}
@@ -286,9 +287,9 @@ Nel caso non sia possibile recuperare i messaggi delle precedenti conversazioni,
 
 Nel caso avvenga un errore nella generazione della risposta, verrà ricevuto un messaggio di errore e, in alto, apparirà per pochi secondi un avviso che invita a riprovare più tardi, come visibile in figura \bulref{fig:Errore nella generazione della risposta}. L'errore può essere dovuto principalmente a tre motivi:
 \begin{itemize}
-    \item Scarsa connessione a internet, tale per cui non è stato possibile contattare l'\emph{LLM}\textsubscript{\textbf{\textit{G}}}: in tal caso, il consiglio è di provare a riconnettersi e poi riprovare;
-    \item Problemi con il container di backend: in tal caso, il consiglio è provare a spegnere e riaccendere l'apposito container in Docker;
-    \item Contemporaneità tra l'aggiornamento automatico dei documenti e la richiesta di una nuova domanda: in tal caso, il consiglio è di attendere qualche minuto e poi riprovare.
+    \item \textbf{Scarsa connessione a internet, tale per cui non è stato possibile contattare l'\emph{LLM}\textsubscript{\textbf{\textit{G}}}}: in tal caso, il consiglio è di provare a disconnettersi e riconnettersi e poi riprovare;
+    \item \textbf{Problemi con il container di backend}: in tal caso, il consiglio è provare a spegnerlo e riaccenderlo in Docker Desktop;
+    \item \textbf{Contemporaneità tra l'aggiornamento automatico dei documenti e l'invio di una domanda}: in tal caso, il consiglio è di attendere qualche minuto e poi riprovare.
 \end{itemize}
 
 
@@ -302,7 +303,7 @@ Nel caso avvenga un errore nella generazione della risposta, verrà ricevuto un 
         \label{fig:Errore nel recupero del link dei file correlati alla risposta}
 \end{figure}
 
-Nel caso avvenga un errore nel recupero dei link correlati alla risposta appena generata, verrà mostrato il consueto riquadro alla fine del messaggio, ma contenente, invece che i link, una frase descrittiva del problema, come visibile in figura \bulref{fig:Errore nel recupero del link dei file correlati alla risposta}. Siccome la risposta è stata generata normalmente, il motivo per la mancata visualizzazione dei link è da ricercare nella correttezza della domanda, che verosimilmente non rispetta le istruzioni fornite nella sezione \S\bulref{subsec:cosa_come_chiedere} di questo documento. Ad esempio, in figura è stata posta una domanda che chiede quali sono le fasi del ciclo di vita di un ticket su \emph{Jira}\textsubscript{\textbf{\textit{G}}}, la quale viola il punto 11 della suddetta sezione: come si può notare, la risposta viene comunque generata, ma non è attendibile, poichè infatti non è stata citata nessuna fonte a suo sostegno. Fortunatamente, rispettando assiduamente la guida su cosa chiedere e come chiederlo, l'errore nel recupero dei link correlati alla risposta non dovrebbe mai avvenire.
+Nel caso avvenga un errore nel recupero dei link correlati alla risposta appena generata, verrà mostrato il consueto riquadro alla fine del messaggio, ma contenente, invece che i link, una frase descrittiva del problema, come visibile in figura \bulref{fig:Errore nel recupero del link dei file correlati alla risposta}. Siccome la risposta è stata generata normalmente, il motivo per la mancata visualizzazione dei link è da ricercare nella correttezza della domanda, che probabilmente non rispetta le istruzioni fornite nella sezione \S\bulref{subsec:cosa_come_chiedere} di questo documento. Ad esempio, in figura è stata posta una domanda che chiede quali sono le fasi del ciclo di vita di un ticket su \emph{Jira}\textsubscript{\textbf{\textit{G}}}, la quale viola il punto 11 della suddetta sezione: come si può notare, la risposta viene comunque generata, ma non è attendibile, poichè infatti non è stata citata nessuna fonte a suo sostegno. Fortunatamente, rispettando assiduamente la guida su cosa chiedere e come chiederlo, l'errore nel recupero dei link correlati alla risposta non dovrebbe mai avvenire.
 
 
 \subsubsection{Visualizzazione errore nel recupero della data e ora di invio del messaggio}
@@ -314,7 +315,7 @@ Nel caso avvenga un errore nel recupero dei link correlati alla risposta appena 
         \label{fig:Errore nel recupero della data e ora di invio del messaggio}
 \end{figure}
 
-Nel caso non sia possibile recuperare la data e l'ora di invio del messaggio, verrà mostrata al loro posto una scritta segnalante l'errore, come visibile in figura \bulref{fig:Errore nel recupero della data e ora di invio del messaggio}. E' probabile che ciò sia dovuto ad un problema con il \emph{database relazionale}\textsubscript{\textbf{\textit{G}}} \emph{Postgres}\textsubscript{\textbf{\textit{G}}}, il consiglio dunque è di recarsi su \emph{Docker}\textsubscript{\textbf{\textit{G}}} e di controllare se il \emph{container}\textsubscript{\textbf{\textit{G}}} dedicato a Postgres è acceso, ed eventualmente riavviarlo. Nel caso ciò non sia sufficiente, controllare allora lo stato del container di backend, poichè anch'esso ha un ruolo fondamentale nella funzionalità di recupero della data e ora di invio del messaggio, e provare dunque a riavviare anch'esso.
+Nel caso non sia possibile recuperare la data e l'ora di invio del messaggio, verrà mostrata al loro posto una scritta segnalante l'errore, come visibile in figura \bulref{fig:Errore nel recupero della data e ora di invio del messaggio}. E' probabile che ciò sia dovuto ad un problema con il \emph{database relazionale}\textsubscript{\textbf{\textit{G}}} \emph{Postgres}\textsubscript{\textbf{\textit{G}}}; il consiglio dunque è di recarsi su \emph{Docker Desktop} e di controllare se il \emph{container} dedicato a \emph{Postgres} è acceso, ed eventualmente riavviarlo. Nel caso ciò non sia sufficiente, controllare allora lo stato del container di backend, poichè anch'esso ha un ruolo fondamentale nella funzionalità di recupero della data e ora di invio del messaggio, e provare dunque a riavviare anch'esso.
 
 
 \subsubsection{Errore nella generazione delle domande per proseguire la conversazione}
@@ -328,8 +329,8 @@ Nel caso non sia possibile recuperare la data e l'ora di invio del messaggio, ve
 
 Nel caso avvenga un errore nella generazione delle domande suggerite per proseguire la conversazione, verrà mostrata una scritta rossa comunicante il problema sopra alla barra di input, come visibile in figura \bulref{fig:Errore nella generazione delle domande per proseguire la conversazione}. L'errore può essere dovuto principalmente a due motivi:
 \begin{itemize}
-    \item Scarsa connessione a internet, tale per cui non è stato possibile contattare l'\emph{LLM}\textsubscript{\textbf{\textit{G}}}: in tal caso, il consiglio è di provare a riconnettersi e poi riprovare;
-    \item Problemi con il container di backend: in tal caso, il consiglio è provare a spegnere e riaccendere l'apposito container in Docker.
+    \item \textbf{Scarsa connessione a internet, tale per cui non è stato possibile contattare l'\emph{LLM}}: in tal caso, il consiglio è di provare a disconnettersi e riconnettersi e poi riprovare;
+    \item \textbf{Problemi con il container di backend}: in tal caso, il consiglio è provare a spegnerlo e riaccenderlo in Docker Desktop.
 \end{itemize}
 
 
@@ -342,7 +343,7 @@ Nel caso avvenga un errore nella generazione delle domande suggerite per prosegu
         \label{fig:Badge di aggiornamento fallito}
 \end{figure}
 
-Come descritto nella sezione \S\bulref{subsec:aggiornamento_automatico_documenti}, nel caso l'ultimo aggiornamento del database vettoriale sia fallito, verrà mostrato in alto a destra un badge di segnalazione che indica il fallimento, come visibile in figura \bulref{fig:Aggiornamento fallito}. E' probabile che ciò sia dovuto ad un problema con il \emph{database vettoriale} \emph{Chroma}, il consiglio dunque è di recarsi su \emph{Docker}\textsubscript{\textbf{\textit{G}}} e di controllare se il \emph{container}\textsubscript{\textbf{\textit{G}}} dedicato a Chroma è acceso, ed eventualmente riavviarlo. Nel caso ciò non sia sufficiente, controllare allora lo stato del container di backend, poichè anch'esso ha un ruolo fondamentale nella funzionalità di aggiornamento automatico dei documenti, e provare dunque a riavviare anch'esso.
+Come descritto nella sezione \S\bulref{subsec:aggiornamento_automatico_documenti}, nel caso l'ultimo aggiornamento del database vettoriale sia fallito, verrà mostrato in alto a destra un badge di segnalazione che indica il fallimento, come visibile in figura \bulref{fig:Aggiornamento fallito}. E' probabile che ciò sia dovuto ad un problema con il \emph{database vettoriale} \emph{Chroma}\textsubscript{\textbf{\textit{G}}}; il consiglio dunque è di recarsi su \emph{Docker Desktop} e di controllare se il \emph{container} dedicato a \emph{Chroma} è acceso, ed eventualmente riavviarlo. Nel caso ciò non sia sufficiente, controllare allora lo stato del container di backend, poichè anch'esso ha un ruolo fondamentale nella funzionalità di aggiornamento automatico dei documenti, e provare dunque a riavviare anch'esso.
 
 
 \subsubsection{Visualizzazione errore nel recupero dell'esito dell'ultimo aggiornamento del database vettoriale}
@@ -354,7 +355,7 @@ Come descritto nella sezione \S\bulref{subsec:aggiornamento_automatico_documenti
         \label{fig:Badge di errore nel recupero dell'esito dell'ultimo aggiornamento}
 \end{figure}
 
-Come descritto nella sezione \S\bulref{subsec:aggiornamento_automatico_documenti}, nel caso non sia possibile recuperare l'esito dell'ultimo aggiornamento del database vettoriale, verrà mostrato in alto a destra un badge di segnalazione che indica l'errore, come visibile in figura \bulref{fig:Badge di errore nel recupero dell'esito dell'ultimo aggiornamento}. E' probabile che ciò sia dovuto ad un problema con il \emph{database relazionale} \emph{Postgres}, il consiglio dunque è di recarsi su \emph{Docker}\textsubscript{\textbf{\textit{G}}} e di controllare se il \emph{container}\textsubscript{\textbf{\textit{G}}} dedicato a Postgres è acceso, ed eventualmente riavviarlo. Nel caso ciò non sia sufficiente, controllare allora lo stato del container di backend, poichè anch'esso ha un ruolo fondamentale nella funzionalità di recupero dell'esito dell'ultimo aggiornamento del database vettoriale, e provare dunque a riavviare anch'esso.
+Come descritto nella sezione \S\bulref{subsec:aggiornamento_automatico_documenti}, nel caso non sia possibile recuperare l'esito dell'ultimo aggiornamento del database vettoriale, verrà mostrato in alto a destra un badge di segnalazione che indica l'errore, come visibile in figura \bulref{fig:Badge di errore nel recupero dell'esito dell'ultimo aggiornamento}. E' probabile che ciò sia dovuto ad un problema con il \emph{database relazionale} \emph{Postgres}; il consiglio dunque è di recarsi su \emph{Docker Desktop} e di controllare se il \emph{container} dedicato a \emph{Postgres} è acceso, ed eventualmente riavviarlo. Nel caso ciò non sia sufficiente, controllare allora lo stato del container di backend, poichè anch'esso ha un ruolo fondamentale nella funzionalità di recupero dell'esito dell'ultimo aggiornamento del database vettoriale, e provare dunque a riavviare anch'esso.
 
 
 \subsubsection{Visualizzazione errore nel recupero dei messaggi precedenti allo scroll}
@@ -366,4 +367,4 @@ Come descritto nella sezione \S\bulref{subsec:aggiornamento_automatico_documenti
         \label{fig:Errore nel recupero dei messaggi precedenti allo scroll}
 \end{figure}
 
-Nel caso non sia possibile recuperare i messaggi delle precedenti conversazioni allo scroll dello schermo, verrà mostrato in corrispondenza del confine superiore della chat, per pochi secondi, un avviso che invita a riprovare più tardi, come visibile in figura \bulref{fig:Errore nel recupero dei messaggi precedenti allo scroll}. E' probabile che ciò sia dovuto ad un problema con il \emph{database relazionale}\textsubscript{\textbf{\textit{G}}} \emph{Postgres}\textsubscript{\textbf{\textit{G}}}, il consiglio dunque è di recarsi su \emph{Docker}\textsubscript{\textbf{\textit{G}}} e di controllare se il \emph{container}\textsubscript{\textbf{\textit{G}}} dedicato a Postgres è acceso, ed eventualmente riavviarlo. Nel caso ciò non sia sufficiente, controllare allora lo stato del container di backend, poichè anch'esso ha un ruolo fondamentale nella funzionalità di recupero dei vecchi messaggi, e provare dunque a riavviare anch'esso.
+Nel caso non sia possibile recuperare i messaggi delle precedenti conversazioni allo scroll dello schermo, verrà mostrato in corrispondenza del confine superiore della chat, per pochi secondi, un avviso che invita a riprovare più tardi, come visibile in figura \bulref{fig:Errore nel recupero dei messaggi precedenti allo scroll}. E' probabile che ciò sia dovuto ad un problema con il \emph{database relazionale} \emph{Postgres}; il consiglio dunque è di recarsi su \emph{Docker Desktop} e di controllare se il \emph{container} dedicato a \emph{Postgres} è acceso, ed eventualmente riavviarlo. Nel caso ciò non sia sufficiente, controllare allora lo stato del container di backend, poichè anch'esso ha un ruolo fondamentale nella funzionalità di recupero dei vecchi messaggi, e provare dunque a riavviare anch'esso.
