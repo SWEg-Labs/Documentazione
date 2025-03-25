@@ -33,7 +33,7 @@ Una volta scaricato il repository, posizionarsi nella cartella del progetto con 
 \subsection{Creazione e configurazione del file \texttt{.env}}
 Tutte le variabili di sistema di configurazione sono già incluse nel \emph{Dockerfile}\textsubscript{\textbf{\textit{G}}}.  
 Tuttavia, per le impostazioni sensibili e personalizzabili, occorre creare nella directory \texttt{src/backend} un file
-\texttt{.env} contenente le seguenti voci (adattandole alle proprie esigenze):
+\texttt{.env} contenente le seguenti voci (alle quali associare i propri dati):
 \begin{verbatim}
     OPENAI_API_KEY = la_tua_chiave_openai
     OPENAI_MODEL_NAME = modello_llm_scelto
@@ -62,7 +62,7 @@ Al termine della creazione di quest'ultima, verrà creato ed avviato il \emph{co
 spegnere l'applicazione è possibile fermare il container impartendo la combinazione di tasti Ctrl+C nel terminale, oppure premendo il tasto Stop nell'applicazione \emph{Docker Desktop}\textsubscript{\textbf{\textit{G}}}.\\
 Per i successivi accessi, aprire \emph{Docker Desktop} e premere il tasto Play sul container \texttt{buddybot} per avviare di nuovo il
 container dell'applicazione. Per stopparlo, premere il tasto Stop dalla stessa interfaccia.\\
-Se si vuole continuare ad interagire da terminale con il container, è possibile eseguire il comando:
+Se si vuole continuare ad interagire con il container da terminale, è possibile eseguire il comando:
 \begin{verbatim}
     docker compose up
 \end{verbatim}

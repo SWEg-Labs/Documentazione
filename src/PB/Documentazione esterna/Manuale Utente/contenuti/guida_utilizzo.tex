@@ -3,14 +3,13 @@
 
 \section{Guida all’utilizzo}
 \label{sec:guida_utilizzo}
-% Screenshot di cosa appare all'avvio del chatbot. Descrivere gli elementi presenti nella schermata iniziale.
 
 
 \subsection{Cosa chiedere, e come chiederlo}
 \label{subsec:cosa_come_chiedere}
 
 BuddyBot è pensato per essere l'assistente digitale di un'azienda informatica che desidera aiutare i propri dipendenti a ricercare in
-modo veloce le informazioni di interesse nel codice e nella documentazione dei vari progetti aziendali. Più precisamente, ad
+modo efficiente ed efficace le informazioni di interesse nel codice e nella documentazione dei vari progetti aziendali. Più precisamente, ad
 ogni interrogazione posta dall'utente vengono associati
 dei documenti di contesto, che provengono esclusivamente dai profili \emph{GitHub}\textsubscript{\textbf{\textit{G}}},
 \emph{Jira}\textsubscript{\textbf{\textit{G}}} e \emph{Confluence}\textsubscript{\textbf{\textit{G}}} dell'azienda, e, in base alle
@@ -38,7 +37,7 @@ ottenere una risposta soddisfacente:
     separate "Quali commit sono stati fatti oggi?" e "Mostrameli in forma di tabella con assegnatario e data", perchè in quest'ultimo
     caso la seconda domanda riceverà come risposta "Domanda fuori contesto": infatti, ogni coppia domanda-risposta è a sè stante, cioè
     il chatbot non considera il completo flusso del discorso per generare la risposta all'interrogazione corrente, bensì considera solo
-    quest'ultima. Le domande suggerite per proseguire sono infatti pensate per guidare l'utente verso una nuova interrogazione, e non per far
+    quest'ultima. Le domande suggerite per proseguire sono infatti pensate per guidare l'utente verso una nuova interrogazione correlata alla precedente, e non per far
     completare la risposta alla domanda corrente;
     \item La domanda deve riguardare un contesto chiaro e definito, quindi non può toccare tematiche troppo generali. Ad esempio
     "Quali sono i task aperti per il progetto A?" invece che "Qual è la situazione dei nostri progetti?";
@@ -57,7 +56,7 @@ ottenere una risposta soddisfacente:
     nel progetto C?" invece che "Pensi che il codice del progetto C sia buono?";
     \item Si devono evitare domande che richiedano ragionamento e/o collegamenti logici, in quanto il chatbot non è in grado di
     processare informazioni in tal senso. Ad esempio "Quali sono i commit svolti tra il 6 ed il 10 febbraio nel progetto D?" invece che "Quali sono i
-    commit nel progetto D dall'inizio della sprint ad ora?";
+    commit svolti nel progetto D dall'inizio della sprint ad ora?";
     \item Non si devono porre domande per la cui risposta è necessaria una ricerca su internet, in quanto il chatbot fa
     riferimento esclusivamente ai documenti di contesto, e non è abile a ricavare informazioni attendibili in rete. Ad esempio, invece che "Nel
     progetto Y viene utilizzata l'ultima versione rilasciata del framework X?", bisogna chiedere "Qual è la versione del framework X
@@ -73,11 +72,12 @@ ottenere una risposta soddisfacente:
 \label{subsec:come_inserire_domanda}  
 
 Una volta aperta l'applicazione, è possibile inserire una domanda scrivendo liberamente nella barra di input, in qualsiasi momento della conversazione.\\
-A partire dalla seconda interazione, oltre alla possibilità di scrivere liberamente, vengono proposti tre suggerimenti selezionabili per facilitare la continuazione del dialogo.\\
+A partire dalla seconda interrogazione, oltre alla possibilità di scrivere liberamente, vengono proposti tre suggerimenti selezionabili per facilitare la continuazione del dialogo.\\
 Questi suggerimenti sono opzionali e possono essere utilizzati per proseguire più rapidamente la conversazione, o ignorati in favore di un messaggio personalizzato.\\
 La domanda va scritta nella barra di input dove appare il testo \textit{Scrivi un messaggio...}. Quando si posiziona il cursore e si clicca nel campo per iniziare a scrivere, il bordo del campo diventa blu, indicando che è pronto per ricevere il testo.\\
-Il pulsante "Invia", situato a destra della barra di input, è inizialmente disattivato e di colore grigio quando la barra è vuota. Non appena si inizia a scrivere, il pulsante si attiva e diventa blu.
-Il messaggio può essere inviato sia cliccando sul pulsante "Invia" che premendo il tasto \textit{Enter} sulla tastiera.  
+Il pulsante "Invia", situato a destra della barra di input, è disattivato e di colore grigio quando la barra è vuota. Non appena si inizia a scrivere, il pulsante si attiva e diventa blu.
+Il messaggio può essere inviato sia cliccando sul pulsante "Invia" che premendo il tasto \textit{Enter} sulla tastiera.\\
+Alcune configurazioni dei componenti di input sono le seguenti:
 
 \begin{itemize}  
     \item \textbf{Scrittura libera - campo vuoto}: Quando il campo è vuoto, il pulsante "Invia" è disattivato e grigio, impedendo l'invio del messaggio fino a quando non viene scritto del testo, come mostrato in figura \bulref{fig:Barra per l'invio di una domanda libera vuota};
