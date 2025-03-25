@@ -20,7 +20,7 @@ La classe LoadFilesController si occupa di mettere in contatto il cron con il ba
 
 \subsubsubsection{GetMessagesController}
 \label{sec:get_messages_controller}
-La classe GetMessagesController si occupa di mettere in contatto il frontend con il backend nell'architettura del recupero dei messaggi dallo storico. Attraverso il metodo \texttt{get\_messages(quantity: dict[string, int]): MessageDTO*}, riceve un dizionario che indica la quantità di messaggi da recuperare, lo converte in un oggetto Quantity, e lo invia all'interfaccia GetMessagesUseCase. Riceve poi da essa in output una lista di messaggi, la converte in una lista di MessageDTO e la restituisce al frontend.
+La classe GetMessagesController si occupa di mettere in contatto il frontend con il backend nell'architettura del recupero dei messaggi dallo storico. Attraverso il metodo \texttt{get\_messages(request\_data: dict[string, int]): MessageDTO*}, riceve un dizionario che indica la quantità di messaggi ed il numero di pagina da recuperare, lo converte in un oggetto Quantity, e lo invia all'interfaccia GetMessagesUseCase. Riceve poi da essa in output una lista di messaggi, la converte in una lista di MessageDTO e la restituisce al frontend.
 
 \subsubsubsection{SaveMessageController}
 \label{sec:save_message_controller}
@@ -28,7 +28,7 @@ La classe SaveMessageController si occupa di mettere in contatto il frontend con
 
 \subsubsubsection{GetNextPossibleQuestionsController}
 \label{sec:get_next_possible_questions_controller}
-La classe GetNextPossibleQuestionsController si occupa di mettere in contatto il frontend con il backend nell'architettura della generazione di domande per proseguire la conversazione. Attraverso il metodo \texttt{get\_next\_possible\_questions\\(question\_answer\_quantity: dict[string, string | int]): dict[string,\\ string]}, riceve un dizionario che contiene l'ultima domanda dell'utente, l'ultima risposta del chatbot e un intero che indica il numero di domande da generare, li converte in un oggetto QuestionAnswerCouple (contenente un oggetto Question e un oggetto Answer) e un oggetto Quantity, e li invia all'interfaccia GetNextPossibleQuestionsUseCase. Riceve poi da essa in output un oggetto NextPossibleQuestions, converte le domande contenute in un dizionario di stringhe, e lo restituisce al frontend.
+La classe GetNextPossibleQuestionsController si occupa di mettere in contatto il frontend con il backend nell'architettura della generazione di domande per proseguire la conversazione. Attraverso il metodo \texttt{get\_next\_possible\_questions(question\_answer\_quantity: dict[string, string | int]):\\ dict[string, string]}, riceve un dizionario che contiene l'ultima domanda dell'utente, l'ultima risposta del chatbot e un intero che indica il numero di domande da generare, li converte in un oggetto QuestionAnswerCouple (contenente un oggetto Question e un oggetto Answer) e un oggetto Quantity, e li invia all'interfaccia GetNextPossibleQuestionsUseCase. Riceve poi da essa in output un oggetto NextPossibleQuestions, converte le domande contenute in un dizionario di stringhe, e lo restituisce al frontend.
 
 \subsubsubsection{GetLastLoadOutcomeController}
 \label{sec:get_last_load_outcome_controller}
@@ -46,11 +46,11 @@ ChatUseCase è un'interfaccia che definisce il caso d'uso della risposta ad una 
 
 \subsubsubsection{LoadFilesUseCase}
 \label{sec:load_files_use_case}
-LoadFilesUseCase è un'interfaccia che definisce il caso d'uso dell'aggiornamento automatico del database vettoriale. Essa contiene un solo metodo, \texttt{load()}, la cui implementazione avvia il caricamento dei dati. Questa interfaccia fa da attributo a LoadFilesController e viene implementata da LoadFilesService.
+LoadFilesUseCase è un'interfaccia che definisce il caso d'uso dell'aggiornamento automatico del database vettoriale. Essa contiene un solo metodo, \texttt{load()}, la cui implementazione avvia il caricamento dei documenti nel \emph{database vettoriale}\textsubscript{\textbf{\textit{G}}}. Questa interfaccia fa da attributo a LoadFilesController e viene implementata da LoadFilesService.
 
 \subsubsubsection{GetMessagesUseCase}
 \label{sec:get_messages_use_case}
-GetMessagesUseCase è un'interfaccia che definisce il caso d'uso del recupero dei messaggi dallo storico. Essa contiene un solo metodo, \texttt{get\_messages(quantity: Quantity): Message*}, che prende in input la quantità dei messaggi da recuperare, Quantity, e restituisce una lista di messaggi di tipo Message. Questa interfaccia fa da attributo a GetMessagesController e viene implementata da GetMessagesService.
+GetMessagesUseCase è un'interfaccia che definisce il caso d'uso del recupero dei messaggi dallo storico. Essa contiene un solo metodo, \texttt{get\_messages(quantity: Quantity, page: Page): Message*}, che prende in input la quantità dei messaggi da recuperare, di tipo Quantity, e il numero di pagina da recuperare, di tipo Page, e restituisce una lista di messaggi di tipo Message. Questa interfaccia fa da attributo a GetMessagesController e viene implementata da GetMessagesService.
 
 \subsubsubsection{SaveMessageUseCase}
 \label{sec:save_message_use_case}
@@ -86,7 +86,7 @@ La classe SimilaritySearchService si occupa di eseguire la ricerca di \emph{simi
 
 \subsubsubsection{GenerateAnswerService}
 \label{sec:generate_answer_service}
-La classe GenerateAnswerService si occupa di generare una risposta all'interrogazione di un utente. Essa espone un solo metodo, \texttt{generate\_answer(user\_input: Question, relevant\_docs: Document*): Answer}, che prende in input un oggetto di Business, Question, e i documenti rilevanti di tipo Document, e ci associa l'oggetto di tipo Header presente come attributo, per poter così chiamare l'interfaccia GenerateAnswerPort allo scopo di generare una risposta. La risposta, di tipo Answer, viene restituita a ChatService.
+La classe GenerateAnswerService si occupa di generare una risposta all'interrogazione di un utente. Essa espone un solo metodo, \texttt{generate\_answer(user\_input: Question, relevant\_docs: Document*): Answer}, che prende in input un oggetto di Business, Question, e i documenti rilevanti di tipo Document, e ci associa l'oggetto di tipo Header che possiede come attributo, per poter così chiamare l'interfaccia GenerateAnswerPort allo scopo di generare una risposta. La risposta, di tipo Answer, viene restituita a ChatService.
 
 \subsubsubsection{LoadFilesService}
 \label{sec:load_files_service}
@@ -97,7 +97,7 @@ La classe LoadFilesService implementa l'interfaccia LoadFilesUseCase e si occupa
     \item \texttt{load\_github\_files(): (PlatformLog, Document*)}: Si occupa di recuperare i Files da GitHub e di salvare i rispettivi log. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti ai files;
     \item \texttt{load\_jira\_issues(): (PlatformLog, Document*)}: Si occupa di recuperare le Issues da Jira e di salvare i rispettivi log. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti alle issues;
     \item \texttt{load\_confluence\_pages(): (PlatformLog, Document*)}: Si occupa di recuperare le Pagine da Confluence e di salvare i rispettivi log. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti alle pagine;
-    \item \texttt{get\_github\_files\_new\_metadata(github\_file: Document*, github\_commit: Document*): Document*}: Si occupa di riempire i campi 'last\_update' e 'creation\_date' dei metadati dei file di GitHub, basandosi sul confronto con i GitHub commit in cui il singolo file è stato coinvolto e lo status con cui è stato coinvolto ('added', 'modified' o 'renamed'). Restituisce la lista di GitHub file con i metadati aggiornati, sempre di tipo Document;
+    \item \texttt{get\_github\_files\_new\_metadata(github\_file: Document*, github\_commit: Document*):\\ Document*}: Si occupa di riempire i campi 'last\_update' e 'creation\_date' dei metadati dei file di GitHub, basandosi sul confronto con i GitHub commit in cui il singolo file è stato coinvolto e lo status con cui è stato coinvolto ('added', 'modified' o 'renamed'). Restituisce la lista di GitHub file con i metadati aggiornati, sempre di tipo Document;
     \item \texttt{clean\_confluence\_pages(pages: Document*): Document*}: Si occupa di pulire le pagine di Confluence, rimuovendo i tag HTML e i caratteri speciali. Restituisce la lista di pagine pulite, sempre di tipo Document;
     \item \texttt{load\_in\_vector\_store(documents: Document*): VectorStoreLog}: Si occupa di caricare i documenti nel database vettoriale Chroma e di salvare i rispettivi log. Restituisce un oggetto di tipo VectorStoreLog, corrispondente al log del caricamento;
     \item \texttt{save\_loading\_attempt\_in\_db(loading\_attempt: LoadingAttempt):\\ DbSaveOperationResponse}: Si occupa di salvare l'esito del caricamento dei documenti nel database relazionale Postgres. Restituisce un oggetto di tipo DbSaveOperationResponse, corrispondente alla risposta del database;
@@ -118,7 +118,7 @@ Inoltre, contiene i seguenti metodi privati:
 
 \subsubsubsection{GetMessagesService}
 \label{sec:get_messages_service}
-La classe GetMessagesService implementa l'interfaccia GetMessagesUseCase e si occupa di eseguire la logica di business per il recupero dei messaggi dallo storico. Essa espone un solo metodo, \texttt{get\_messages\\(quantity: Quantity): Message*}, che prende in input un oggetto di Business, Quantity, e chiama l'interfaccia GetMessagesPort per recuperare la quantità di messaggi richiesta. La porta restituisce una lista di messaggi, che vengono a loro volta restituiti a GetMessagesController.
+La classe GetMessagesService implementa l'interfaccia GetMessagesUseCase e si occupa di eseguire la logica di business per il recupero dei messaggi dallo storico. Essa espone un solo metodo, \texttt{get\_messages\\(quantity: Quantity, page: Page): Message*}, che prende in input la quantità dei messaggi da recuperare, di tipo Quantity, e il numero di pagina da recuperare, di tipo Page, e chiama l'interfaccia GetMessagesPort per recuperare la quantità di messaggi richiesta nella pagina richiesta. La porta restituisce una lista di messaggi, che vengono a loro volta restituiti a GetMessagesController.
 
 \subsubsubsection{SaveMessageService}
 \label{sec:save_message_service}
@@ -126,8 +126,7 @@ La classe SaveMessageService implementa l'interfaccia SaveMessageUseCase e si oc
 
 \subsubsubsection{GetNextPossibleQuestionsService}
 \label{sec:get_next_possible_questions_service}
-La classe GetNextPossibleQuestionsService implementa l'interfaccia GetNextPossibleQuestionsUseCase e si occupa di eseguire la logica di business per la generazione di domande per proseguire la conversazione. Essa espone un solo metodo,\\ \texttt{get\_next\_possible\_questions(question\_answer\_couple: QuestionAnswerCouple, quantity:\\ Quantity): NextPossibleQuestions}, che prende in input una coppia domanda-risposta, QuestionAnswerCouple, e un oggetto di tipo Quantity contenente un intero che indica il numero di domande da generare, e chiama l'interfaccia GetNextPossibleQuestionsPort per generare le possibili domande successive. La porta restituisce le possibili domande racchiuse in un oggetto di Business, NextPossibleQuestions, che viene a sua volta restituito a GetNextPossibleQuestionsController.
-Inoltre questa classe possiede un attributo privato di tipo Header, che contiene un'introduzione per dare contesto al chatbot, e viene passato a GetNextPossibleQuestionsPort quando viene chiamato.
+La classe GetNextPossibleQuestionsService implementa l'interfaccia GetNextPossibleQuestionsUseCase e si occupa di eseguire la logica di business per la generazione di domande per proseguire la conversazione. Essa espone un solo metodo,\\ \texttt{get\_next\_possible\_questions(question\_answer\_couple: QuestionAnswerCouple, quantity:\\ Quantity): NextPossibleQuestions}, che prende in input una coppia domanda-risposta, QuestionAnswerCouple, un oggetto di tipo Quantity contenente un intero che indica il numero di domande da generare, e ci associa l'oggetto di tipo Header che possiede come attributo, per poter così chiamare l'interfaccia GetNextPossibleQuestionsPort per generare le possibili domande successive. La porta restituisce le possibili domande racchiuse in un oggetto di Business, NextPossibleQuestions, che viene a sua volta restituito a GetNextPossibleQuestionsController.
 
 \subsubsubsection{GetLastLoadOutcomeService}
 \label{sec:get_last_load_outcome_service}
@@ -170,15 +169,15 @@ LoadFilesInVectorStorePort definisce una\\ delle interfacce attraverso le quali 
 
 \subsubsubsection{SaveLoadingAttemptInDbPort}
 \label{sec:save_loading_attempt_in_db_port}
-SaveLoadingAttemptInDbPort definisce una delle interfacce attraverso le quali LoadFilesService interagisce con il mondo esterno, permettendo il salvataggio di dati persistenti senza modificare la logica di business. Essa espone un solo metodo,\\ \texttt{save\_loading\_attempt(loading\_attempt: LoadingAttempt): DbSaveOperationResponse}, che prende in input l'esito del caricamento, LoadingAttempt, e si occupa di salvarlo nel database relazionale configurato e di restituire la corrispondente risposta, di tipo DbSaveOperationResponse. La porta viene implementata da PostgresAdapter.
+SaveLoadingAttemptInDbPort definisce una delle interfacce attraverso le quali LoadFilesService interagisce con il mondo esterno, permettendo il salvataggio di dati persistenti senza modificare la logica di business. Essa espone un solo metodo, \texttt{save\_loading\_attempt(loading\_attempt: LoadingAttempt): DbSaveOperationResponse}, che prende in input l'esito del caricamento, LoadingAttempt, e si occupa di salvarlo nel database relazionale configurato e di restituire la corrispondente risposta, di tipo DbSaveOperationResponse. La porta viene implementata da PostgresAdapter.
 
 \subsubsubsection{GetMessagesPort}
 \label{sec:get_messages_port}
-GetMessagesPort definisce l'interfaccia attraverso la quale GetMessagesService interagisce con il mondo esterno, permettendo il recupero di dati persistenti senza modificare la logica di business. Essa espone un solo metodo, \texttt{get\_messages(quantity: Quantity):\\ Message*}, che prende in input la quantità di messaggi da recuperare di tipo Quantity, e si occupa di recuperare i messaggi da un database, di tipo Message. La porta viene implementata da PostgresAdapter.
+GetMessagesPort definisce l'interfaccia attraverso la quale GetMessagesService interagisce con il mondo esterno, permettendo il recupero di dati persistenti senza modificare la logica di business. Essa espone un solo metodo, \texttt{get\_messages(quantity: Quantity, page: Page): Message*}, che prende in input la quantità dei messaggi da recuperare, di tipo Quantity, e il numero di pagina da recuperare, di tipo Page, e si occupa di recuperare una lista di messaggi, di tipo Message, da un database. La porta viene implementata da PostgresAdapter.
 
 \subsubsubsection{SaveMessagePort}
 \label{sec:save_message_port}
-SaveMessagePort definisce l'interfaccia attraverso la quale SaveMessageService interagisce con il mondo esterno, permettendo il salvataggio di dati persistenti senza modificare la logica di business. Essa espone un solo metodo, \texttt{save(message: Message):\\ DbSaveOperationResponse}, che prende in input il messaggio da salvare di tipo Message, e si occupa di salvare il messaggio in un database e riportare la sua risposta, di tipo DbSaveOperationResponse. La porta viene implementata da PostgresAdapter.
+SaveMessagePort definisce l'interfaccia attraverso la quale SaveMessageService interagisce con il mondo esterno, permettendo il salvataggio di dati persistenti senza modificare la logica di business. Essa espone un solo metodo, \texttt{save(message: Message): DbSaveOperationResponse}, che prende in input il messaggio da salvare di tipo Message, e si occupa di salvare il messaggio in un database e riportare la sua risposta, di tipo DbSaveOperationResponse. La porta viene implementata da PostgresAdapter.
 
 \subsubsubsection{GetNextPossibleQuestionsPort}
 \label{sec:get_next_possible_questions_port}
@@ -214,26 +213,26 @@ Essa contiene inoltre il seguente metodo privato:
 \subsubsubsection{LangChainAdapter}
 \label{sec:langchain_adapter}
 La classe LangChainAdapter implementa le interfacce GenerateAnswerPort e GetNextPossibleQuestionsPort, e si occupa di adattare i dati ricevuti dalla logica di business in un tipo Entity adatto per la comunicazione con il mondo esterno, e viceversa. 
-Essa possiede, oltre a lang\_chain\_repository, un altro attributo privato, ricevuto tramite il costruttore, che viene chiamato da una funzione di Dependency Injection:
+Essa possiede, oltre a langchain\_repository, un altro attributo privato, ricevuto tramite il costruttore, che viene chiamato da una funzione di Dependency Injection:
 \begin{itemize}
-    \item \texttt{max\_num\_tokens: int}: Indica il numero massimo di \emph{token}\textsubscript{\textbf{\textit{G}}} che è possibile utilizzare per generare una risposta. Per l'LLM \emph{OpenAI}\textsubscript{\textbf{\textit{G}}} GPT-4o, questo valore equivale a 128.000.
+    \item \texttt{max\_num\_tokens: int}: Indica il numero massimo di \emph{token}\textsubscript{\textbf{\textit{G}}} che è possibile utilizzare per generare una risposta. Per l'LLM \emph{OpenAI}\textsubscript{\textbf{\textit{G}}} GPT-4o, questo valore equivale a 128.000 token.
 \end{itemize}
 Essa espone i seguenti due metodi pubblici:
 \begin{itemize}
     \item \texttt{generate\_answer(user\_input: Question, relevant\_docs: Document*, header: Header): Answer}: Riceve in input la domanda dell'utente di tipo Question, che converte in una stringa, una lista di documenti rilevanti di tipo Document, che converte in una lista di LangChainDocumentEntity (occupandosi anche di calcolare il numero di token del contenuto dei documenti tramite il metodo \texttt{count\_tokens} e di escludere alcuni documenti per non oltrepassare il \texttt{max\_num\_tokens}), e un oggetto Header che fornisce il contesto introduttivo al chatbot, che converte in una stringa, e si occupa di chiamare il metodo di LangChainRepository per generare una risposta. Riceve da quest'ultimo una risposta di tipo stringa, la converte in un tipo Answer e la restituisce a GenerateAnswerService;
-    \item \texttt{get\_next\_possible\_questions(question\_answer\_couple: QuestionAnswerCouple, header:\\ Header): NextPossibleQuestions}: Riceve in input una coppia domanda-risposta di tipo QuestionAnswerCouple (contenente una Question e una Answer), che converte in una lista di documenti LangChainDocumentEntity, e un'introduzione per dare contesto al chatbot di tipo Header, che converte in una stringa, e si occupa di chiamare il metodo di LangChainRepository per generare le possibili domande successive. Riceve da quest'ultimo una stringa, che, grazie alle istruzioni fornite dall'header, possiederà unicamente le domande e le possiederà suddivise da \_\_. Quindi, effettua il parsing della stringa ed estrapola le domande per crearci una lista di oggetti PossibleQuestion, che poi, assieme all'intero num\_questions, il cui valore eguaglia la lunghezza della lista, vengono incapsulate in un oggetto NextPossibleQuestions, che viene restituito a GetNextPossibleQuestionsService.
+    \item \texttt{get\_next\_possible\_questions(question\_answer\_couple: QuestionAnswerCouple, header:\\ Header): NextPossibleQuestions}: Riceve in input una coppia domanda-risposta di tipo QuestionAnswerCouple (contenente una Question e una Answer), che converte in una lista di documenti LangChainDocumentEntity, e un'introduzione per dare contesto al chatbot di tipo Header, che converte in una stringa, e si occupa di chiamare il metodo di LangChainRepository per generare le possibili domande successive. Riceve da quest'ultimo una stringa, che, grazie alle istruzioni fornite dall'header, possiederà unicamente le domande e le possiederà suddivise da "\_\_". Quindi, effettua il parsing della stringa ed estrapola le domande per crearci una lista di oggetti PossibleQuestion, che poi, assieme all'intero num\_questions, il cui valore coincide con la lunghezza della lista, vengono incapsulate in un oggetto NextPossibleQuestions, che viene restituito a GetNextPossibleQuestionsService.
 \end{itemize}
 Inoltre, contiene il seguente metodo privato:
 \begin{itemize}
-    \item \texttt{count\_tokens(text: str): int}: Riceve in input un testo di tipo stringa, e si occupa di contare il numero di token presenti nel testo. Si basa sull'assunzione che 1 token equivalga ad 3 caratteri. Restituisce un intero, corrispondente al numero di token calcolato.
+    \item \texttt{count\_tokens(text: str): int}: Riceve in input un testo di tipo stringa, e si occupa di contare il numero di token presenti in esso. Si basa sull'assunzione che 1 token equivalga a 2 caratteri. Restituisce un intero, corrispondente al numero di token calcolato.
 \end{itemize}
 
 \subsubsubsection{GitHubAdapter}
 \label{sec:github_adapter}
 La classe GitHubAdapter implementa l'interfaccia GitHubPort e si occupa di adattare i dati ricevuti dalla logica di business in un tipo Entity adatto per la comunicazione con il mondo esterno, e viceversa. Essa espone i seguenti due metodi pubblici:
 \begin{itemize}
-    \item \texttt{load\_github\_commits(): (PlatformLog, Document*)}: Si occupa di chiamare il metodo di GitHubRepository per recuperare i Commits da GitHub e restituire il rispettivo log. Dal repository riceve un PlatformLog e una lista di CommitEntity, e converte quest'ultima in una lista di Document. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti ai commits;
-    \item \texttt{load\_github\_files(): (PlatformLog, Document*)}: Si occupa di chiamare il metodo di GitHubRepository per recuperare i Files da GitHub e restituire il rispettivo log. Dal repository riceve un PlatformLog e una lista di FileEntity, e converte quest'ultima in una lista di Document. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti ai files.
+    \item \texttt{load\_github\_commits(): (PlatformLog, Document*)}: Si occupa di chiamare il metodo di GitHubRepository per recuperare i Commits da GitHub e restituire il rispettivo log. Dal repository riceve un PlatformLog e una lista di CommitEntity, e converte quest'ultima in una lista di Document. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti ai Commits;
+    \item \texttt{load\_github\_files(): (PlatformLog, Document*)}: Si occupa di chiamare il metodo di GitHubRepository per recuperare i Files da GitHub e restituire il rispettivo log. Dal repository riceve un PlatformLog e una lista di FileEntity, e converte quest'ultima in una lista di Document. Restituisce una tupla contenente un oggetto di tipo PlatformLog, corrispondente al log, e una lista di oggetti di tipo Document, corrispondenti ai Files.
 \end{itemize}
 Inoltre, contiene il seguente metodo privato:
 \begin{itemize}
@@ -262,7 +261,7 @@ Inoltre, contiene il seguente metodo privato:
 \label{sec:postgres_adapter}
 La classe PostgresAdapter implementa le interfacce GetMessagesPort, SaveMessagePort, SaveLoadingAttemptInDbPort e GetLastLoadOutcomePort, e si occupa di adattare i dati ricevuti dalla logica di business in un tipo Entity adatto per la persistenza, e viceversa. Essa espone i seguenti metodi pubblici:
 \begin{itemize}
-    \item \texttt{get\_messages(quantity: Quantity): Message*}: Riceve in input la quantità di messaggi da recuperare di tipo Quantity, e si occupa di convertire la quantità in un intero e di chiamare il metodo di recupero dei messaggi dal database di PostgresRepository. Riceve una lista di messaggi di tipo PostgresMessage, e restituisce, una volta opportunamente convertita, una lista di messaggi di tipo Message;
+    \item \texttt{get\_messages(quantity: Quantity, page: Page): Message*}: Riceve in input la quantità dei messaggi da recuperare, di tipo Quantity, e il numero di pagina da recuperare, di tipo Page, e si occupa di convertirli in interi e di chiamare il metodo di recupero dei messaggi dal database di PostgresRepository. Riceve una lista di messaggi di tipo PostgresMessage, e restituisce, una volta opportunamente convertita, una lista di messaggi di tipo Message;
     \item \texttt{save\_message(message: Message): DbSaveOperationResponse}: Riceve in input il messaggio da salvare di tipo Message, e si occupa di chiamare il metodo di conversione del messaggio in PostgresMessage e di chiamare il metodo di salvataggio di un messaggio nel database di PostgresRepository. Riceve un oggetto di tipo PostgresSaveOperationResponse e restituisce, una volta opportunamente convertito, un oggetto di tipo DbSaveOperationResponse;
     \item \texttt{save\_loading\_attempt(loading\_attempt: LoadingAttempt): DbSaveOperationResponse}: Riceve in input il tentativo di caricamento da salvare di tipo LoadingAttempt, e si occupa di chiamare il metodo di conversione del tentativo in PostgresLoadingAttempt e di chiamare il metodo di salvataggio del tentativo di caricamento nel database di PostgresRepository. Riceve un oggetto di tipo PostgresSaveOperationResponse e restituisce, una volta opportunamente convertito, un oggetto di tipo DbSaveOperationResponse;
     \item \texttt{get\_last\_load\_outcome(): LastLoadOutcome}: Si occupa di chiamare il metodo di recupero dell'esito dell'ultimo tentativo di caricamento di documenti nel database vettoriale da PostgresRepository. Riceve un oggetto di tipo PostgresLastLoadOutcome e restituisce, una volta opportunamente convertito, un oggetto di tipo LastLoadOutcome.
@@ -304,7 +303,7 @@ La classe LangChainRepository si occupa di gestire parte della \emph{persistent 
 Essa espone i seguenti metodi pubblici:
 \begin{itemize}
     \item \texttt{generate\_answer(user\_input: string, relevant\_docs: LangChainDocumentEntity*,\\ header: string): string}: Si occupa di generare una risposta a partire dalla domanda dell'utente e dai documenti rilevanti. Riceve in input la domanda dell'utente di tipo string, i documenti rilevanti di tipo LangChainDocumentEntity e un'introduzione per dare contesto al chatbot di tipo string. Sfrutta le funzioni della libreria \emph{LangChain}\textsubscript{\textbf{\textit{G}}} per creare il prompt e contattare l'LLM. Restituisce una stringa, corrispondente alla risposta generata;
-    \item \texttt{get\_next\_possible\_questions(question\_answer\_couple: LangChainDocumentEntity*,\\ header: string): string}: Si occupa di generare possibili domande successive a partire da una domanda e una risposta. Riceve in input una lista di documenti LangChainDocumentEntity contenenti la domanda dell'utente e la risposta ricevuta, e un'introduzione per dare contesto al chatbot di tipo string. Sfrutta le funzioni della libreria \emph{LangChain} per creare il prompt e contattare l'LLM. Restituisce una stringa, contenente unicamente le possibili domande successive, separate da \_\_, come da istruzioni dell'header.
+    \item \texttt{get\_next\_possible\_questions(question\_answer\_couple: LangChainDocumentEntity*,\\ header: string): string}: Si occupa di generare possibili domande successive a partire da una domanda e una risposta. Riceve in input una lista di documenti LangChainDocumentEntity contenenti la domanda dell'utente e la risposta ricevuta, e un'introduzione per dare contesto al chatbot di tipo string. Sfrutta le funzioni della libreria \emph{LangChain} per creare il prompt e contattare l'LLM. Restituisce una stringa, contenente unicamente le possibili domande successive, separate da "\_\_", come da istruzioni dell'header.
 \end{itemize}
 
 \subsubsubsection{GitHubRepository}
@@ -356,7 +355,7 @@ Essa contiene un singolo attributo privato, ricevuto tramite il costruttore, che
 \end{itemize}
 Essa espone i seguenti metodi pubblici:
 \begin{itemize}
-    \item \texttt{get\_messages(quantity: int): PostgresMessage*}: Riceve in input la quantità di messaggi di tipo intero, e si occupa di recuperare tale numero messaggi dal database. Restituisce una lista di messaggi di tipo PostgresMessage;
+    \item \texttt{get\_messages(quantity: int, page: int): PostgresMessage*}: Riceve in input la quantità di messaggi e il numero di pagina, di tipo intero, e si occupa di recuperare tale quantità di messaggi di tale pagina dal database. Restituisce una lista di messaggi di tipo PostgresMessage;
     \item \texttt{save\_message(message: PostgresMessage): PostgresSaveOperationResponse}: Riceve in input un messaggio di tipo PostgresMessage, e si occupa di salvarlo nel database. Restituisce un oggetto di tipo PostgresSaveOperationResponse, contenente l'esito dell'operazione e un relativo messaggio;
     \item \texttt{save\_loading\_attempt(loading\_attempt: PostgresLoadingAttempt):\\ PostgresSaveOperationResponse}: Riceve in input un tentativo di caricamento di tipo PostgresLoadingAttempt, e si occupa di salvarlo nel database. Restituisce un oggetto di tipo PostgresSaveOperationResponse, contenente l'esito dell'operazione e un relativo messaggio;
     \item \texttt{get\_last\_load\_outcome(): PostgresLoadingAttempt}: Si occupa di recuperare l'esito dell'ultimo tentativo di caricamento di documenti nel database vettoriale. Più precisamente, viene recuperato l'attributo \texttt{outcome} della tupla con timestamp di fine aggiornamento più recente dalla tabella \texttt{loading\_attempts}. Restituisce dunque un oggetto di tipo PostgresLastLoadOutcome, che può assumere valore True, se l'ultimo tentativo di aggiornamento ha avuto esito positivo, False, se l'ultimo tentativo di aggiornamento ha avuto esito negativo, o Error, se c'è stato un errore nell'interazione con Postgres per recuperare l'esito dell'ultimo aggiornamento.
@@ -378,22 +377,22 @@ Inoltre, contiene il seguente metodo privato:
 
 \subsubsubsection{AppComponent}
 \label{sec:app_component}
-AppComponent rappresenta il componente contenitore di tutta l'applicazione Angular. Tuttavia, nel nostro caso, il suo ruolo si limita a quello di contenitore per il componente ChatContainerComponent, che poi sarà l'effettivo contenitore e manager dei vari componenti dell'applicazione.
+AppComponent rappresenta il componente contenitore di tutta l'applicazione Angular. Tuttavia, nel nostro caso, il suo ruolo si limita a quello di contenitore per il componente ChatContainerComponent, che poi sarà l'effettivo contenitore e "manager" dei vari componenti dell'applicazione.
 
 \subsubsubsection{ChatContainerComponent}
 \label{sec:chat_container_component}
-ChatContainerComponent rappresenta il componente contenitore di tutti i componenti che compongono la chat dell'applicazione. Esso contiene i seguenti componenti:
+ChatContainerComponent rappresenta il componente contenitore di tutti i componenti che compongono l'applicazione. Esso contiene i seguenti componenti:
 \begin{itemize}
     \item ChatHeaderComponent;
     \item ChatMessagesComponent;
     \item ChatSuggestionsComponent;
     \item ChatInputComponent.
 \end{itemize}
-Esso si occupa di gestire la logica di business della chat, ovvero di recuperare i messaggi, di inviarli, di visualizzarli e di gestire le possibili domande successive.
+ChatContainerComponent si occupa di gestire la logica di business della chat, ovvero di recuperare i messaggi, di inviarli, di visualizzarli e di gestire le possibili domande successive.
 Il componente espone i seguenti metodi:
 \begin{itemize}
-    \item \texttt{ngOnInit()}: Si occupa di inizializzare il componente, recuperando i messaggi dal database e l'esito dell'ultimo caricamento nel database vettoriale;
-    \item \texttt{loadOldMessages(quantity: number, page: number = 1)}: Si occupa di recuperare i messaggi  dello storico della chat, di formattarli e di gestire opportunamente lo scroll della chat: se la pagina è la prima, viene effettuato uno scroll fino al messaggio più recente, altrimenti viene mantenuta la posizione corrente;
+    \item \texttt{ngOnInit()}: Si occupa di inizializzare il componente, recuperando i messaggi e l'esito dell'ultimo caricamento nel database vettoriale dal database;
+    \item \texttt{loadOldMessages(quantity: number, page: number = 1)}: Si occupa di recuperare i messaggi dello storico della chat, di formattarli e di gestire opportunamente lo scroll della chat: se la pagina è la prima, viene effettuato uno scroll fino al messaggio più recente, altrimenti viene mantenuta la posizione corrente;
     \item \texttt{showErrorMessage(message: string)}: Si occupa di assegnare l'attributo errorMessage per poter far visualizzare un messaggio di errore all'utente;
     \item \texttt{showTemporaryErrorMessage(message: string, duration: number = 5000)}: Si occupa di assegnare l'attributo errorMessage per poter far visualizzare un messaggio di errore all'utente per un tempo limitato;
     \item \texttt{clearErrorMessage()}: Si occupa di assegnare l'attributo errorMessage ad una stringa vuota per poter nascondere il messaggio di errore all'utente;
@@ -401,7 +400,7 @@ Il componente espone i seguenti metodi:
     \item \texttt{onScrollChange(isScrolledUp: boolean)}: Viene assegnato l'attributo showScrollToBottom al valore del parametro isScrolledUp, che indica se l'utente ha scrollato verso l'alto o verso il basso;
     \item \texttt{onSendMessage(text: string)}: Si occupa di aggiungere il messaggio dell'utente alla chat, di chiamare il backend per salvarlo nel database, di chiamare il backend per ottenere la risposta, di aggiungere la risposta alla chat, di chiamare il backend per salvare la risposta nel database e di piazzare a false l'attributo hideSuggestions per ottenere le possibili domande successive;
     \item \texttt{onSuggestionClicked(suggestion: string)}: Si occupa di chiamare il metodo onSendMessage con il parametro suggestion;
-    \item \texttt{formatResponse(response: string): string}: Si occupa di formattare la risposta ricevuta dal backend, sostituendo i caratteri markdown con i corrispondenti tag HTML, e aggiungendo la formattazione per i riquadri dello snippet di codice e dei link correlati;
+    \item \texttt{formatResponse(response: string): string}: Si occupa di formattare la risposta ricevuta dal backend, sostituendo i caratteri Markdown con i corrispondenti tag HTML, e aggiungendo la formattazione per i riquadri dello snippet di codice e dei link correlati;
     \item \texttt{scrollToBottom()}: Si occupa di chiamare il metodo scrollToBottom() del componente ChatMessages per effettuare uno scroll fino al messaggio più recente.
 \end{itemize}
 
@@ -411,20 +410,20 @@ ChatMessagesComponent rappresenta il componente che si occupa di visualizzare i 
 Esso espone i seguenti metodi:
 \begin{itemize}
     \item \texttt{ngAfterViewInit()}: Si occupa di associare un addEventListener ai pulsanti di copia di messaggio e snippet di codice, per poter copiare il testo al click;
-    \item \texttt{onScroll()}: Si occupa di gestire la barra laterale di scroll associandola alla posizione corrente della chat. Gestisce inoltre i casi di scroll al top e al bottom della chat: quando avviene uno scorrimento al top, viene emesso un segnale per caricare ulteriori messaggi;
+    \item \texttt{onScroll()}: Si occupa di gestire la barra laterale di scroll associandola alla posizione corrente della chat. Gestisce inoltre i casi di scroll verso il top e verso il bottom della chat: quando avviene uno scorrimento verso il top, viene emesso un segnale per caricare ulteriori messaggi;
     \item \texttt{maintainScrollPosition()}: Si occupa di mantenere la posizione corrente della chat quando vengono caricati nuovi messaggi dallo storico;
     \item \texttt{scrollToBottom()}: Si occupa di effettuare uno scroll in basso fino al messaggio più recente;
-    \item \texttt{copyToClipboard(msg: Message)}: Si occupa di copiare il testo del messaggio al click sul pulsante di copia, formattando opportunamente il testo;
+    \item \texttt{copyToClipboard(msg: Message)}: Si occupa di copiare il testo del messaggio al click sul pulsante di copia dedicato, formattando opportunamente il testo;
     \item \texttt{copySnippet(code: string, iconElement: HTMLElement)}: Si occupa di copiare lo snippet di codice al click sul pulsante di copia dedicato, formattando opportunamente il codice;
     \item \texttt{stripHtml(html: string): string}: Si occupa di rimuovere i tag HTML dal testo, restituendo una stringa pulita.
 \end{itemize}
 
 \subsubsubsection{ChatInputComponent}
 \label{sec:chat_input_component}
-ChatInputComponent rappresenta il componente che contiene la barra di input e il pulsante di invio.
+ChatInputComponent rappresenta il componente che contiene la barra di input e il pulsante Invia.
 Esso espone il seguente metodo:
 \begin{itemize}
-    \item \texttt{onSend()}: Viene chiamato quando l'utente clicca sul pulsante invia oppure preme il tasto invio. Si occupa, se le condizioni lo consentono, di emettere l'evento di invio del messaggio, passando il testo inserito dall'utente.
+    \item \texttt{onSend()}: Viene chiamato quando l'utente clicca sul pulsante Invia oppure preme il tasto Enter. Si occupa, se le condizioni lo consentono, di emettere l'evento di invio del messaggio, passando il testo inserito dall'utente.
 \end{itemize}
 
 \subsubsubsection{ChatSuggestionsComponent}
@@ -438,26 +437,26 @@ Esso espone i seguenti metodi pubblici:
 Inoltre, contiene i seguenti metodi privati:
 \begin{itemize}
     \item \texttt{canLoadSuggestions(): boolean}: Si occupa di verificare se ci sono le condizioni per chiamare il metodo getContinuationSuggestions per il caricamento delle possibili domande successive. In particolare, verifica che siano presenti e disponibili i testi dell'ultima domanda e dell'ultima risposta, sulle quali le possibili domande successive si basano;
-    \item \texttt{getContinuationSuggestions()}: Si occupa di chiamare il metodoo getContinuationSuggestions di ChatService con un payload contenente l'ultima domanda, l'ultima risposta e la quantità di domande successive da generare, per ottenere le possibili domande successive, e di assegnarle all'attributo continuationSuggestions, che permette di visualizzarle tramite HTML.
+    \item \texttt{getContinuationSuggestions()}: Si occupa di chiamare il metodo getContinuationSuggestions di ChatService con un payload contenente l'ultima domanda, l'ultima risposta e la quantità di domande successive da generare, per ottenere le possibili domande successive, e le assegna all'attributo continuationSuggestions, che permette di visualizzarle tramite HTML.
 \end{itemize}
 
 \subsubsubsection{ChatLoadingIndicatorComponent}
 \label{sec:chat_loading_indicator_component}
-ChatLoadingIndicatorComponent rappresenta il componente che visualizza l'indicatore di caricamento durante il caricamento della risposta e dei messaggi dal database. Esso prevede una banana morsicata, il logo del gruppo \emph{SWEg Labs}, che gira su se stessa, per indicare all'utente che l'applicazione sta processando. Il componente non espone metodi, in quanto si limita a visualizzare l'indicatore di caricamento.
+ChatLoadingIndicatorComponent rappresenta il componente che visualizza l'indicatore di caricamento durante il caricamento della risposta e dei messaggi dal database. Esso prevede una banana morsicata, cioè il simbolo del gruppo \emph{SWEg Labs}, che gira su se stessa, per indicare all'utente che l'applicazione sta processando. Il componente non espone metodi, in quanto si limita a visualizzare l'indicatore di caricamento.
 
 \subsubsubsection{ChatHeaderComponent}
 \label{sec:chat_header_component}
 ChatHeaderComponent rappresenta il componente che visualizza l'intestazione della chat, contenente il logo di \emph{SWEg Labs} e il titolo dell'applicazione, "BuddyBot". Esso non espone metodi, in quanto si limita a visualizzare l'intestazione della chat.
-Questo componente contiene il componente ChatBadge, in quanto visualizza il badge di esito dell'ultimo caricamento dei documenti alla sua destra.
+Questo componente contiene il componente ChatBadge, che fa visualizzare il badge di esito dell'ultimo caricamento dei documenti alla destra dell'header.
 
 \subsubsubsection{ChatBadgeComponent}
 \label{sec:chat_badge_component}
-ChatBadgeComponent rappresenta il componente che visualizza il badge di esito dell'ultimo caricamento dei documenti.
-Esso possiede un attributo lastLoadOutcome di tipo LastLoadOutcome, che rappresenta l'esito dell'ultimo caricamento dei documenti nel database vettoriale allo stato corrente, che può assumere i valori True, False o Error, i quali sono renderizzati visivamente rispettivamente con una spunta, con una X o con un segnale di pericolo. Viene inoltre presentata una scritta descrittiva accanto all'emoji, che assume rispettivamente i seguenti valori: "Aggiornato", "Da aggiornare" ed "Errore".
+ChatBadgeComponent rappresenta il componente che fa visualizzare il badge di esito dell'ultimo caricamento dei documenti.
+Esso possiede un attributo lastLoadOutcome di tipo LastLoadOutcome, che rappresenta l'esito dell'ultimo caricamento dei documenti nel database vettoriale al momento corrente, che può assumere i valori True, False o Error, i quali sono renderizzati visivamente rispettivamente con una spunta, con una X o con un segnale di pericolo. Viene inoltre presentata una scritta descrittiva accanto al badge, che, in relazione ad esso, assume rispettivamente i seguenti valori: "Aggiornato", "Da aggiornare" ed "Errore".
 Esso espone i seguenti metodi:
 \begin{itemize}
     \item \texttt{ngOnInit()}: Si occupa di inizializzare il componente e di sottoscrivere il proprio attributo lastLoadOutcome al valore dell'attributo lastLoadOutcome\$ di DatabaseService;
-    \item \texttt{isUpdated(): boolean}: Si occupa di verificare se l'ultimo caricamento dei documenti è stato completato con successo, ritornando true se lastLoadOutcome è True, altrimenti false;
+    \item \texttt{isUpdated(): boolean}: Si occupa di verificare se l'ultimo caricamento dei documenti è stato completato con successo, ritornando true se lastLoadOutcome è True, altrimenti false.
 \end{itemize}
 
 \newpage
@@ -473,16 +472,16 @@ Contiene inoltre i seguenti metodi pubblici:
 \begin{itemize}
     \item \texttt{getLastMessageTimestamp(): number}: Si occupa di restituire l'attributo lastMessageTimestamp;
     \item \texttt{setLastMessageTimestamp(time: number)}: Si occupa di assegnare l'attributo lastMessageTimestamp al valore del parametro time;
-    \item \texttt{sendMessage(message: string): Observable<\{ response: string \}>}: Si occupa di inviare il messaggio di tipo stringa al backend, ricevere la risposta di tipo stringa e restituirla;
-    \item \texttt{getContinuationSuggestions(payload: {question: string; answer: string; quantity: number;}): Observable<Record<string, string>>}: Si occupa di inviare il payload contenente l'ultima domanda, l'ultima risposta e la quantità di domande successive da generare al backend, ricevere le possibili domande successive e restituirle.
+    \item \texttt{sendMessage(message: string): Observable<\{ response: string \}>}: Si occupa di inviare il messaggio di tipo stringa al backend, ricevere la risposta di tipo dizionario di stringhe e restituirla;
+    \item \texttt{getContinuationSuggestions(payload: \{question: string; answer: string;\\ quantity: number;\}): Observable<Record<string, string>>}: Si occupa di inviare il payload contenente l'ultima domanda, l'ultima risposta e la quantità di domande successive da generare al backend, ricevere le possibili domande successive e restituirle.
 \end{itemize}
 
 \subsubsubsection{DatabaseService}
 \label{sec:database_service}
-DatabaseService rappresenta il servizio che si occupa di gestire la comunicazione tra il frontend e il backend per quanto riguarda il recupero e salvataggio dei messaggi da e nel database e il recupero dell'esito dell'ultimo caricamento dei documenti nel database vettoriale. Esso presenta un attributo apiBaseUrl che indica l'indirizzo del backend al quale collegarsi, un attributo lastLoadOutcome\$ di tipo Observable<LastLoadOutcome>, che rappresenta l'esito dell'ultimo caricamento dei documenti nel database vettoriale, e un attributo lastLoadOutcomeSubject di tipo BehaviorSubject<LastLoadOutcome>, che serve per poter aggiornare l'attributo lastLoadOutcome\$.
+DatabaseService rappresenta il servizio che si occupa di gestire la comunicazione tra il frontend e il backend per quanto riguarda il recupero e salvataggio dei messaggi da e nel database e il recupero dell'esito dell'ultimo caricamento dei documenti nel database vettoriale dal database. Esso presenta un attributo apiBaseUrl che indica l'indirizzo del backend al quale collegarsi, un attributo lastLoadOutcome\$ di tipo Observable<LastLoadOutcome>, che rappresenta l'esito dell'ultimo caricamento dei documenti nel database vettoriale, e un attributo lastLoadOutcomeSubject di tipo BehaviorSubject<LastLoadOutcome>, che serve per poter aggiornare l'attributo lastLoadOutcome\$.
 Contiene inoltre i seguenti metodi pubblici:
 \begin{itemize}
-    \item \texttt{getMessages(quantity: number, page: number = 1): Observable<Message[]>}: Si occupa di inviare la quantità di messaggi da recuperare e la pagina corrente al backend, ricevere i messaggi come lista di oggetti Message e restituirli;
+    \item \texttt{getMessages(quantity: number, page: number = 1): Observable<Message[]>}: Si occupa di inviare la quantità di messaggi e la pagina da recuperare al backend, ricevere i messaggi come lista di oggetti Message e restituirli;
     \item \texttt{saveMessage(msg: Message): Observable<\{ success: boolean; message: string \}>}:\\ Si occupa di inviare il messaggio da salvare al backend, ricevere l'esito dell'operazione come dizionario contenente esito del salvataggio e relativo messaggio, e restituirlo;
     \item \texttt{loadLastLoadOutcome()}: Si occupa di inviare una richiesta al backend per recuperare l'esito dell'ultimo caricamento dei documenti nel database vettoriale, ricevere l'esito e aggiornare l'attributo lastLoadOutcomeSubject, che a sua volta viene osservato dall'attributo lastLoadOutcome\$.
 \end{itemize}

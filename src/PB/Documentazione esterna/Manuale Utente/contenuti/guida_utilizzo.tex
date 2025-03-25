@@ -64,32 +64,29 @@ ottenere una risposta soddisfacente:
     che viene utilizzata nel progetto Y?" e poi cercare manualmente su internet se tale versione è l'ultima rilasciata o meno.
 \end{enumerate}
 
+\newpage
+
 
 \subsection{Interrogazione del chatbot}
 
 \subsubsection{Come inserire una domanda}  
 \label{subsec:come_inserire_domanda}  
 
-Una domanda o un messaggio può essere inserito in qualsiasi momento della conversazione, scrivendo liberamente nella barra di input.  
-A partire dalla seconda interazione, oltre alla possibilità di scrivere liberamente, vengono proposti tre suggerimenti per facilitare la continuazione del dialogo.  
-Questi suggerimenti sono opzionali e possono essere utilizzati per proseguire più rapidamente la conversazione, o ignorati in favore di un messaggio personalizzato.  
-La domanda va scritta nella barra di input dove appare il testo \textit{Scrivi un messaggio}. Quando si posiziona il cursore e si clicca nel campo per iniziare a scrivere, il bordo del campo diventa blu, indicando che è pronto per ricevere il testo.  
-Il pulsante "Invia", situato a destra della barra di input, è inizialmente disattivato e di colore grigio quando la barra è vuota. Non appena si inizia a scrivere, il pulsante diventa attivo e blu.  
+Una volta aperta l'applicazione, è possibile inserire una domanda scrivendo liberamente nella barra di input, in qualsiasi momento della conversazione.\\
+A partire dalla seconda interazione, oltre alla possibilità di scrivere liberamente, vengono proposti tre suggerimenti selezionabili per facilitare la continuazione del dialogo.\\
+Questi suggerimenti sono opzionali e possono essere utilizzati per proseguire più rapidamente la conversazione, o ignorati in favore di un messaggio personalizzato.\\
+La domanda va scritta nella barra di input dove appare il testo \textit{Scrivi un messaggio...}. Quando si posiziona il cursore e si clicca nel campo per iniziare a scrivere, il bordo del campo diventa blu, indicando che è pronto per ricevere il testo.\\
+Il pulsante "Invia", situato a destra della barra di input, è inizialmente disattivato e di colore grigio quando la barra è vuota. Non appena si inizia a scrivere, il pulsante si attiva e diventa blu.
 Il messaggio può essere inviato sia cliccando sul pulsante "Invia" che premendo il tasto \textit{Enter} sulla tastiera.  
 
 \begin{itemize}  
-\item \textbf{Scrittura libera - campo pieno}: Quando il campo contiene testo, il pulsante "Invia" diventa attivo e blu, come mostrato in figura \bulref{fig:Barra per l'invio di una domanda libera piena};
-\item \textbf{Scrittura libera - campo vuoto}: Quando il campo è vuoto, il pulsante "Invia" è disattivato e grigio, impedendo l'invio del messaggio fino a quando non viene scritto del testo, come mostrato in figura \bulref{fig:Barra per l'invio di una domanda libera vuota};
-\item \textbf{Suggerimenti - campo pieno}: Dalla seconda interazione in poi, tre suggerimenti vengono proposti sopra la barra di input per facilitare la continuazione della conversazione. Se la barra contiene testo, il pulsante "Invia" è attivo e blu, come mostrato in figura \bulref{fig:Domande per proseguire la conversazione con barra piena};
-\item \textbf{Suggerimenti - campo vuoto}: Anche se la barra di input è vuota e il pulsante "Invia" è disattivato, i suggerimenti vengono comunque visualizzati sopra la barra, come mostrato in figura \bulref{fig:Domande per proseguire la conversazione con barra vuota}.
+    \item \textbf{Scrittura libera - campo vuoto}: Quando il campo è vuoto, il pulsante "Invia" è disattivato e grigio, impedendo l'invio del messaggio fino a quando non viene scritto del testo, come mostrato in figura \bulref{fig:Barra per l'invio di una domanda libera vuota};
+    \item \textbf{Scrittura libera - campo pieno}: Quando il campo contiene del testo, il pulsante "Invia" diventa attivo e blu, come mostrato in figura \bulref{fig:Barra per l'invio di una domanda libera piena};
+    \item \textbf{Caricamento dopo l'invio di una domanda}: Quando viene cliccato "Invia" oppure "Enter", il messaggio viene visualizzato sul lato destro della schermata, mentre, sul lato sinistro, compare un'icona di una banana morsicata che rotea su se stessa, indicando che il messaggio è in fase di elaborazione, come mostrato in figura \bulref{fig:Icona di caricamento dopo l'invio di una domanda}. La barra di input viene disabilitata durante questo processo, impedendo l'invio di ulteriori messaggi fino a quando non viene visualizzata la risposta;
+    \item \textbf{Suggerimenti - campo vuoto}: Dalla seconda interazione in poi, tre suggerimenti vengono proposti sopra la barra di input per facilitare la continuazione della conversazione. Subito dopo l'invio del messaggio, la barra di input si svuota e il pulsante "Invia" è disattivato, come mostrato in figura \bulref{fig:Domande per proseguire la conversazione con barra vuota};
+    \item \textbf{Suggerimenti - campo pieno}: Dalla seconda interazione in poi, pur avendo disponibili i tre suggerimenti, è ancora possibile inserire una domanda libera nella barra di input. Se la barra contiene testo, il pulsante "Invia" è attivo e blu, come mostrato in figura \bulref{fig:Domande per proseguire la conversazione con barra piena}.
 \end{itemize}
 
-\begin{figure}[h]
-    \centering
-        \includegraphics[width=.8\linewidth]{Barra per l'invio di una domanda libera piena.png}
-        \caption{Barra per l'invio di una domanda libera piena}
-        \label{fig:Barra per l'invio di una domanda libera piena}        
-\end{figure}
 \begin{figure}[h]
     \centering
         \includegraphics[width=.8\linewidth]{Barra per l'invio di una domanda libera vuota.png}
@@ -98,9 +95,18 @@ Il messaggio può essere inviato sia cliccando sul pulsante "Invia" che premendo
 \end{figure}
 \begin{figure}[h]
     \centering
-        \includegraphics[width=.8\linewidth]{Domande per proseguire la conversazione con barra piena.png}
-        \caption{Domande per proseguire la conversazione con barra piena}
-        \label{fig:Domande per proseguire la conversazione con barra piena}        
+        \includegraphics[width=.8\linewidth]{Barra per l'invio di una domanda libera piena.png}
+        \caption{Barra per l'invio di una domanda libera piena}
+        \label{fig:Barra per l'invio di una domanda libera piena}        
+\end{figure}
+
+\newpage
+
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=.8\linewidth]{Icona di caricamento dopo l'invio di una domanda.png}
+        \caption{Icona di caricamento dopo l'invio di una domanda}
+        \label{fig:Icona di caricamento dopo l'invio di una domanda}
 \end{figure}
 \begin{figure}[h]
     \centering
@@ -108,19 +114,27 @@ Il messaggio può essere inviato sia cliccando sul pulsante "Invia" che premendo
         \caption{Domande per proseguire la conversazione con barra vuota}
         \label{fig:Domande per proseguire la conversazione con barra vuota}        
 \end{figure}
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=.8\linewidth]{Domande per proseguire la conversazione con barra piena.png}
+        \caption{Domande per proseguire la conversazione con barra piena}
+        \label{fig:Domande per proseguire la conversazione con barra piena}        
+\end{figure}
+
+
  
 \subsubsection{La risposta del chatbot}  
 \label{subsec:la_risposta_del_chatbot}  
 
-Quando il chatbot fornisce una risposta, essa include un testo esplicativo, che talvolta può contenere uno snippet di codice. Il testo viene visualizzato in un riquadro per una facile lettura e comprensione. 
-Inoltre, è possibile copiare sia il testo che gli snippet di codice contenuti nella risposta. Per fare ciò, dentro al riquadro, è presente un pulsante dedicato che permette di copiare il contenuto negli appunti. Questo è particolarmente utile quando si desidera utilizzare o condividere un codice direttamente.
-Se la risposta include dei link correlati, questi vengono visualizzati in un riquadro separato in arancione, permettendo di accedere facilmente a risorse o approfondimenti aggiuntivi. Cliccando su uno di questi link, l'utente verrà indirizzato alla risorsa corrispondente.
+Quando il chatbot fornisce una risposta, essa include un testo esplicativo, che talvolta può contenere uno \emph{snippet}\textsubscript{\textbf{\textit{G}}} di codice. Lo snippet viene visualizzato in un riquadro dedicato per facilitare la sua lettura e comprensione.\\
+Inoltre, è possibile copiare tramite pulsante sia il messaggio completo che singolarmente gli snippet di codice contenuti nella risposta. Per fare ciò, in alto a destra del messaggio e in alto a destra del riquadro del codice, sono presenti due pulsanti dedicati che permettono di copiare il contenuto a cui fanno riferimento negli appunti. Il pulsante di copia del solo codice è particolarmente utile quando si desidera utilizzare o condividere direttamente il codice invece che tutta la risposta.\\
+I link correlati da cui il chatbot ha ricavato la risposta vengono visualizzati in arancione in un riquadro evidenziato di scuro, permettendo di accedere facilmente alle fonti informative della risposta o ad approfondimenti aggiuntivi. Cliccando su uno di questi link, l'utente verrà indirizzato alla risorsa corrispondente.\\
 
 \begin{itemize}
-  \item \textbf{Risposta testuale}: Il chatbot fornisce una risposta testuale che può includere informazioni esplicative, come mostrato in figura \bulref{fig:Risposta senza snippet di codice};
+  \item \textbf{Risposta testuale}: Il chatbot fornisce una risposta testuale che include informazioni esplicative, come mostrato in figura \bulref{fig:Risposta senza snippet di codice};
   \item \textbf{Snippet di codice}: Quando la risposta include uno snippet di codice, questo viene visualizzato all'interno di un riquadro per evidenziarlo chiaramente, come mostrato in figura \bulref{fig:Risposta con snippet di codice};
-  \item \textbf{Copia del testo e del codice}: È possibile copiare sia il testo che lo snippet di codice cliccando sul pulsante di copia situato in alto a destra, come mostrato in figura \bulref{fig:Pulsante di copia messaggio e pulsante di copia snippet di codice};
-  \item \textbf{Link correlati}: Se la risposta contiene dei link utili, questi vengono mostrati in un riquadro separato in arancione, da cui è possibile cliccare per aprirli e visualizzare ulteriori risorse, come mostrato in figura \bulref{fig:Riquadro dei link correlati}.
+  \item \textbf{Copia del testo e del codice}: È possibile copiare sia tutto il testo del messaggio che solamente il suo eventuale snippet di codice cliccando sui rispettivi pulsanti di copia situati in alto a destra, come mostrato in figura \bulref{fig:Pulsante di copia messaggio e pulsante di copia snippet di codice};
+  \item \textbf{Link correlati}: I link correlati da cui il chatbot ha ricavato la risposta vengono visualizzati in arancione in un riquadro evidenziato di scuro, da cui è possibile cliccare per aprirli ed accedere ad ulteriori risorse, come mostrato in figura \bulref{fig:Riquadro dei link correlati}.
 \end{itemize}
 
 \newpage
@@ -136,7 +150,6 @@ Se la risposta include dei link correlati, questi vengono visualizzati in un riq
         \caption{Risposta con snippet di codice}
         \label{fig:Risposta con snippet di codice}        
 \end{figure}
-\newpage
 \begin{figure}[h]
     \centering
         \includegraphics[width=.8\linewidth]{Pulsante di copia messaggio e pulsante di copia snippet di codice.png}
@@ -150,22 +163,24 @@ Se la risposta include dei link correlati, questi vengono visualizzati in un riq
         \label{fig:Riquadro dei link correlati}        
 \end{figure}
 
+\newpage
+
+
 \subsection{Visualizzazione dello storico dei messaggi}
 \label{subsec:visualizzazione_storico_messaggi}
-Al primo accesso del chatbot, è possibile visualizzare la discussione vuota, senza alcun messaggio, come mostrato in figura \bulref{fig:Discussione vuota}.
-Una volta digitata la prima interrogazione, essa verrà visualizzata in alto a destra.
-Una volta terminata l'elaborazione, la risposta del chatbot verrà visualizzata a sinistra, sotto il relativo messaggio.
-Da qui in poi, ogni nuova interrogazione verrà visualizzata a destra, sotto la risposta precedente, mentre ogni risposta apparirà a sinistra, sotto la domanda corrispondente.
-Sia le domande che le risposte sono corredate dalla data e dall'ora di invio, come visibile nelle figure \bulref{fig:Data e ora di invio domanda} e \bulref{fig:Data e ora di invio risposta}.
-È possibile visualizzare i messaggi precedenti tramite scroll. Se si tenta di risalire ai messaggi precedenti non ancora caricati dal sistema, verrà visualizzato un badge che ne segnala il caricamento in corso, come si può vedere in figura \bulref{fig:Badge di caricamento messaggi precedenti}.
-Terminata tale attesa verranno visualizzati i messaggi precedenti.
-
-\newpage
+Al primo accesso al chatbot, è possibile visualizzare la discussione vuota, senza alcun messaggio, come visibile in figura \bulref{fig:Discussione vuota}.\\
+Una volta inviata la prima interrogazione, essa verrà visualizzata in alto a destra.
+Una volta terminata l'elaborazione, la risposta del chatbot verrà visualizzata a sinistra, sotto il relativo messaggio.\\
+Da qui in poi, ogni nuova interrogazione verrà visualizzata a destra, sotto la risposta precedente, mentre ogni risposta apparirà a sinistra, sotto la domanda corrispondente.\\
+Sia le domande che le risposte sono corredate dalla data e dall'ora di invio, come visibile nelle figure \bulref{fig:Data e ora di invio domanda} e \bulref{fig:Data e ora di invio risposta}.\\
+Quando si refresha la pagina, la discussione viene ripristinata, mostrando i 50 messaggi più recenti. È possibile visualizzare i messaggi precedenti tramite scroll: se si tenta di risalire ai messaggi dello storico non ancora caricati dal sistema, verrà visualizzata un'icona di una banana morsicata che rotea su se stessa che ne segnala il caricamento in corso, come si può vedere in figura \bulref{fig:Icona di caricamento dei messaggi precedenti}. Terminata tale attesa verranno visualizzati i messaggi precedenti.\\
+Se allo scroll l'icona di caricamento non appare, significa che si è giunti alla fine dello storico e non ci sono altri messaggi da visualizzare.\\
+Una volta che ci si trova in alto nella conversazione, è possibile tornare velocemente ai messaggi più recenti cliccando sull'apposito pulsante che appare in basso a destra, visibile in \bulref{fig:Pulsante per tornare ai messaggi recenti}.
 
 \begin{figure}[h]
     \centering
         \includegraphics[width=.8\linewidth]{Schermata iniziale senza messaggi.png}
-        \caption{schermata iniziale vuota}
+        \caption{Schermata iniziale vuota}
         \label{fig:Discussione vuota}        
 \end{figure}
 \begin{figure}[h]
@@ -186,9 +201,15 @@ Terminata tale attesa verranno visualizzati i messaggi precedenti.
 \end{figure}
 \begin{figure}[h]
     \centering
-        \includegraphics[height=6.5cm]{Caricamento dei messaggi precedenti.png}
-        \caption{Badge di caricamento messaggi precedenti}
-        \label{fig:Badge di caricamento messaggi precedenti}
+        \includegraphics[height=6.5cm]{Icona di caricamento dei messaggi precedenti.png}
+        \caption{Icona di caricamento dei messaggi precedenti}
+        \label{fig:Icona di caricamento dei messaggi precedenti}
+\end{figure}
+\begin{figure}[h]
+    \centering
+        \includegraphics[width=.8\linewidth]{Pulsante per tornare ai messaggi recenti.png}
+        \caption{Pulsante per tornare ai messaggi recenti}
+        \label{fig:Pulsante per tornare ai messaggi recenti}
 \end{figure}
 
 \newpage
@@ -209,14 +230,14 @@ In alto a destra è presente un badge di segnalazione che indica l'esito dell'ul
     dunque, non è possibile sapere se le risposte fornite dal chatbot sono aggiornate ai documenti più recenti o meno.
 \end{itemize}
 
-\newpage
-
 \begin{figure}[h]
     \centering
         \includegraphics[width=.8\linewidth]{Badge - Aggiornamento avvenuto con successo.png}
         \caption{Badge di aggiornamento avvenuto con successo}
         \label{fig:Aggiornamento avvenuto con successo}        
 \end{figure}
+
+\newpage
 
 \begin{figure}[h]
     \centering
@@ -263,7 +284,7 @@ Nel caso non sia possibile recuperare i messaggi delle precedenti conversazioni,
         \label{fig:Errore nella generazione della risposta}
 \end{figure}
 
-Nel caso avvenga un errore nella generazione della risposta, verrà ricevuto un messaggio di errore e, in alto, apparirà per pochi secondi un avviso che invita a riprovare più tardi, come visibile in figura \bulref{fig:Errore nella generazione della risposta}. Ciò può essere dovuto principalmente a tre motivi:
+Nel caso avvenga un errore nella generazione della risposta, verrà ricevuto un messaggio di errore e, in alto, apparirà per pochi secondi un avviso che invita a riprovare più tardi, come visibile in figura \bulref{fig:Errore nella generazione della risposta}. L'errore può essere dovuto principalmente a tre motivi:
 \begin{itemize}
     \item Scarsa connessione a internet, tale per cui non è stato possibile contattare l'\emph{LLM}\textsubscript{\textbf{\textit{G}}}: in tal caso, il consiglio è di provare a riconnettersi e poi riprovare;
     \item Problemi con il container di backend: in tal caso, il consiglio è provare a spegnere e riaccendere l'apposito container in Docker;
@@ -305,7 +326,7 @@ Nel caso non sia possibile recuperare la data e l'ora di invio del messaggio, ve
         \label{fig:Errore nella generazione delle domande per proseguire la conversazione}
 \end{figure}
 
-Nel caso avvenga un errore nella generazione delle domande suggerite per proseguire la conversazione, verrà mostrata una scritta rossa comunicante il problema sopra alla barra di input, come visibile in figura \bulref{fig:Errore nella generazione delle domande per proseguire la conversazione}. Ciò può essere dovuto principalmente a due motivi:
+Nel caso avvenga un errore nella generazione delle domande suggerite per proseguire la conversazione, verrà mostrata una scritta rossa comunicante il problema sopra alla barra di input, come visibile in figura \bulref{fig:Errore nella generazione delle domande per proseguire la conversazione}. L'errore può essere dovuto principalmente a due motivi:
 \begin{itemize}
     \item Scarsa connessione a internet, tale per cui non è stato possibile contattare l'\emph{LLM}\textsubscript{\textbf{\textit{G}}}: in tal caso, il consiglio è di provare a riconnettersi e poi riprovare;
     \item Problemi con il container di backend: in tal caso, il consiglio è provare a spegnere e riaccendere l'apposito container in Docker.
@@ -346,18 +367,3 @@ Come descritto nella sezione \bulref{subsec:aggiornamento_automatico_documenti},
 \end{figure}
 
 Nel caso non sia possibile recuperare i messaggi delle precedenti conversazioni allo scroll dello schermo, verrà mostrato in corrispondenza del confine superiore della chat, per pochi secondi, un avviso che invita a riprovare più tardi, come visibile in figura \bulref{fig:Errore nel recupero dei messaggi precedenti allo scroll}. E' probabile che ciò sia dovuto ad un problema con il \emph{database relazionale}\textsubscript{\textbf{\textit{G}}} \emph{Postgres}\textsubscript{\textbf{\textit{G}}}, il consiglio dunque è di recarsi su \emph{Docker}\textsubscript{\textbf{\textit{G}}} e di controllare se il \emph{container}\textsubscript{\textbf{\textit{G}}} dedicato a Postgres è acceso, ed eventualmente riavviarlo. Nel caso ciò non sia sufficiente, controllare allora lo stato del container di backend, poichè anch'esso ha un ruolo fondamentale nella funzionalità di recupero dei vecchi messaggi, e provare dunque a riavviare anch'esso.
-
-
-% Fare un elenco di possibili errori che possono verificarsi durante l'utilizzo del chatbot. Ovviamente per ciascuno va
-% riportato uno screenshot.
-% - Errore nel recupero dello storico (UC9) ✅
-% - Errore nella generazione della risposta (UC3). ✅
-% ----> Segnalare che potrebbe avvenire un errore nella generazione della risposta anche nel caso in cui sia stata posta una domanda
-% ----> in contemporanea con l'aggiornamento automatico dei documenti. ✅
-% - Errore nel recupero del link dei file correlati alla risposta (UC14) ✅
-% - Visualizzazione errore nel recupero della data e ora di invio del messaggio (UC28) ✅
-% - Errore nella generazione delle domande per proseguire la conversazione (UC13) ✅
-% - Visualizzazione di un badge che segnala un errore nell'ultimo aggiornamento del database vettoriale (UC20) ✅
-% - Visualizzazione di un badge che segnala un errore nel recupero dell'esito dell'ultimo aggiornamento del database vettoriale (UC20) ✅
-% - Visualizzazione di un messaggio che spiega il badge che segnala un errore nel recupero dell'esito dell'ultimo aggiornamento del database vettoriale (UC24) ❌ Praticamente coincide con la visualizzazione del badge, ho demandato alla sezione sopra per la descrizione dell'emoji e del messaggio.
-% - Visualizzazione errore nel recupero dei messaggi precedenti allo scroll (UC26) ✅

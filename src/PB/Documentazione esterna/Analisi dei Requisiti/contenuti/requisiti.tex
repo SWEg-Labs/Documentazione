@@ -144,10 +144,12 @@ sistema.
     \begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}c|>{\centering\arraybackslash}c|>{\centering\arraybackslash}X|>{\centering\arraybackslash}p{3cm}|} \hline
     \rowcolor[HTML]{FFD700} 
     \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Fonti} \\ \hline
-    ROQ1 & Obbligatorio & Devono essere rispettate tutte le norme definite in \emph{Norme di Progetto}\textsubscript{\textbf{G}}. & Verbale Interno \\ \hline
-    ROQ2 & Obbligatorio & Devono essere rispettate le \emph{metriche}\textsubscript{\textbf{G}} e i vincoli definiti in \emph{Piano di Qualifica}\textsubscript{\textbf{G}}. & Verbale Interno \\ \hline
-    ROQ3 & Obbligatorio & Deve essere fornito al \emph{proponente} il codice sorgente in un \emph{repository}\textsubscript{\textbf{G}} \emph{GitHub}\textsubscript{\textbf{G}}. & Capitolato \\ \hline
-    ROQ4 & Obbligatorio & Deve essere fornito il \emph{Manuale Utente}\textsubscript{\textbf{G}}. & Capitolato \\ \hline
+    ROQ1 & Obbligatorio & Devono essere rispettate tutte le norme definite in \emph{Norme di Progetto}\textsubscript{\textbf{\textit{G}}}. & Verbale Interno \\ \hline
+    ROQ2 & Obbligatorio & Devono essere rispettate le \emph{metriche}\textsubscript{\textbf{\textit{G}}} e i vincoli definiti in \emph{Piano di Qualifica}\textsubscript{\textbf{\textit{G}}}. & Verbale Interno \\ \hline
+    ROQ3 & Obbligatorio & Deve essere fornito al \emph{proponente} il codice sorgente in un \emph{repository}\textsubscript{\textbf{\textit{G}}} \emph{GitHub}\textsubscript{\textbf{\textit{G}}}. & Capitolato \\ \hline
+    ROQ4 & Obbligatorio & Deve essere fornito il \emph{Manuale Utente}\textsubscript{\textbf{\textit{G}}}. & Capitolato \\ \hline
+    ROQ5 & Obbligatorio & Deve essere fornito il \emph{Manuale Sviluppatore}\textsubscript{\textbf{\textit{G}}}. & Verbale esterno \\ \hline
+    ROQ6 & Obbligatorio & Deve essere fornita la \emph{Specifica Tecnica}\textsubscript{\textbf{\textit{G}}}. & Verbale esterno \\ \hline
     \end{tabularx}
     \caption{Requisiti qualitativi}
     \label{tab:Requisiti_qualitativi}
@@ -165,10 +167,10 @@ coerenza e l'\emph{efficienza}\textsubscript{\textit{\textbf{G}}} del prodotto.
     \begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}c|>{\centering\arraybackslash}c|>{\centering\arraybackslash}X|>{\centering\arraybackslash}p{3cm}|} \hline
     \rowcolor[HTML]{FFD700} 
     \textbf{Codice} & \textbf{Rilevanza} & \textbf{Descrizione} & \textbf{Fonti} \\ \hline
-	ROV1 & Obbligatorio & L'applicazione deve garantire la compatibilità con la versione 131.0.6778.204/.205 di \emph{Google Chrome}\textsubscript{\textit{\textbf{G}}}, ovvero l'ultima disponibile al 19 dicembre, data in cui è stato richiesto questo vincolo. & Verbale esterno \\ \hline
-    ROV2 & Obbligatorio & Il sistema deve garantire integrazione con le \emph{API}\textsubscript{\textit{\textbf{G}}} di \emph{Confluence}\textsubscript{\textit{\textbf{G}}}. & Capitolato \\ \hline
-    ROV3 & Obbligatorio & Il sistema deve garantire integrazione con le \emph{API} di \emph{Jira}\textsubscript{\textit{\textbf{G}}}. & Capitolato \\ \hline
-    ROV4 & Obbligatorio & Il sistema deve garantire integrazione con le \emph{API} di \emph{GitHub}\textsubscript{\textit{\textbf{G}}}. & Capitolato \\ \hline
+	ROV1 & Obbligatorio & L'applicazione deve garantire la compatibilità con la versione 131.0.6778.204/.205 di \emph{Google Chrome}\textsubscript{\textit{\textbf{G}}}, ovvero l'ultima disponibile al 19 dicembre 2024, data in cui è stato richiesto questo vincolo. & Verbale esterno \\ \hline
+    ROV2 & Obbligatorio & Il sistema deve garantire l'integrazione con le \emph{API} di \emph{GitHub}\textsubscript{\textit{\textbf{G}}}. & Capitolato \\ \hline
+    ROV3 & Obbligatorio & Il sistema deve garantire l'integrazione con le \emph{API} di \emph{Jira}\textsubscript{\textit{\textbf{G}}}. & Capitolato \\ \hline
+    ROV4 & Obbligatorio & Il sistema deve garantire l'integrazione con le \emph{API}\textsubscript{\textit{\textbf{G}}} di \emph{Confluence}\textsubscript{\textit{\textbf{G}}}. & Capitolato \\ \hline
     \end{tabularx}
     \caption{Requisiti di vincolo}
     \label{tab:Requisiti_di_vincolo}
@@ -190,9 +192,9 @@ dalle prestazioni del dispositivo e dall'ottimizzazione specifica per il browser
     \begin{tabularx}{0.8\textwidth}{|>{\centering\arraybackslash}p{2.8cm}|>{\centering\arraybackslash}X|} \hline
     \rowcolor[HTML]{FFD700} 
     \textbf{Fonte} & \textbf{Requisiti} \\ \hline
-    Capitolato & ROQ3, ROQ4, ROQ5, ROF14 \\ \hline
-    Verbali interni & ROQ1, ROQ2, ROF15, ROF16, ROF22, ROF23, ROF24  \\ \hline
-    Verbali esterni & ROV1, ROV2, ROV3, ROV4, ROF25, RZF41, RZF42 \\ \hline
+    Capitolato & ROF14, ROQ3, ROQ4, ROV2, ROV3, ROV4 \\ \hline
+    Verbali interni & ROF15, ROF16, ROF22, ROF23, ROF24, ROQ1, ROQ2  \\ \hline
+    Verbali esterni & ROF25, RZF41, RZF42, ROQ5, ROQ6, ROV1 \\ \hline
     \bulhyperlink{UC1}{UC1} & ROF1 \\ \hline
     \bulhyperlink{UC2}{UC2} & ROF2, ROF3, ROF4, ROF5 \\ \hline
     \bulhyperlink{UC2.1}{UC2.1} & RDF6 \\ \hline
@@ -329,6 +331,8 @@ dalle prestazioni del dispositivo e dall'ottimizzazione specifica per il browser
     ROQ2 & Verbale Interno\\ \hline
     ROQ3 & Capitolato \\ \hline
     ROQ4 & Capitolato \\ \hline
+    ROQ5 & Verbale esterno\\ \hline
+    ROQ6 & Verbale esterno\\ \hline
     ROV1 & Verbale esterno\\ \hline
     ROV2 & Capitolato\\ \hline
     ROV3 & Capitolato\\ \hline

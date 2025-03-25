@@ -52,15 +52,15 @@ Tuttavia, per le impostazioni sensibili e personalizzabili, occorre creare nella
     CONFLUENCE_SPACE_KEY = confluence_space_key
 \end{verbatim}
 
-\subsection{Creazione dell'immagine e avvio del container}
+\subsection{Creazione dell'immagine e avvio del container Docker}
 Una volta pronti, è possibile creare l'\emph{immagine Docker}\textsubscript{\textbf{\textit{G}}} posizionandosi nella cartella del progetto ed eseguendo:
 \begin{verbatim}
     docker compose up --build
 \end{verbatim}
 La creazione dell'immagine impiegherà poco più di 5 minuti.
 Al termine della creazione di quest'ultima, verrà creato ed avviato il \emph{container}\textsubscript{\textbf{\textit{G}}} \texttt{buddybot}. Al termine dell'utilizzo, per
-spegnere l'applicazione è possibile fermare il container con la combinazione di tasti Ctrl+C.\\
-Per i successivi accessi, aprire \emph{Docker Desktop}\textsubscript{\textbf{\textit{G}}} e premere il tasto Play sul container \texttt{buddybot} per avviare di nuovo il
+spegnere l'applicazione è possibile fermare il container impartendo la combinazione di tasti Ctrl+C nel terminale, oppure premendo il tasto Stop nell'applicazione \emph{Docker Desktop}\textsubscript{\textbf{\textit{G}}}.\\
+Per i successivi accessi, aprire \emph{Docker Desktop} e premere il tasto Play sul container \texttt{buddybot} per avviare di nuovo il
 container dell'applicazione. Per stopparlo, premere il tasto Stop dalla stessa interfaccia.\\
 Se si vuole continuare ad interagire da terminale con il container, è possibile eseguire il comando:
 \begin{verbatim}

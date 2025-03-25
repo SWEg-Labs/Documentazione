@@ -302,6 +302,7 @@ Le fasi principali del \emph{Product Baseline} saranno suddivise come segue:
 \item \textbf{\emph{Glossario}}: attività di verifica, svolta in parallelo alla codifica.
 \end{itemize}
 
+
 \subsubsection{Periodi}
 \label{sec:periodi_PB}
 
@@ -320,14 +321,14 @@ Le fasi principali del \emph{Product Baseline} saranno suddivise come segue:
 Il quinto periodo che va dal 6 al 20 febbraio 2025, abbiamo compiuto le sistemazioni all'\emph{Analisi dei Requisiti}, seguendo i
 consigli del professor Cardin. Abbiamo inoltre incominciato la progettazione, in particolare concentrandoci sulle seguenti funzionalità:
 \begin{itemize}
-\item Generazione di una risposta;
-\item Aggiornamento automatico del {\emph{database vettoriale}}\textsubscript{\textit{\textbf{G}}};
-\item Inizializzazione, refresh e scroll dell'interfaccia grafica;
-\item Rendering grafico di domanda e risposta;
-\item Aggiornamento del badge di segnalazione dell'esito dell'aggiornamento del database vettoriale;
-\item Salvataggio dei messaggi nello storico;
-\item Recupero dei messaggi dallo storico;
-\item Generazione di domande per proseguire la conversazione.
+    \item Generazione di una risposta;
+    \item Aggiornamento automatico del {\emph{database vettoriale}}\textsubscript{\textit{\textbf{G}}};
+    \item Inizializzazione, refresh e scroll dell'interfaccia grafica;
+    \item Rendering grafico di domanda e risposta;
+    \item Aggiornamento del badge di segnalazione dell'esito dell'aggiornamento del database vettoriale;
+    \item Salvataggio dei messaggi nello storico;
+    \item Recupero dei messaggi dallo storico;
+    \item Generazione di domande per proseguire la conversazione.
 \end{itemize}
 Abbiamo avviato la scrittura della \emph{Specifica Tecnica} e del \emph{Manuale Utente}, focalizzandoci sulla sezione
 "\emph{Cosa chiedere e come chiederlo}".
@@ -349,8 +350,6 @@ per garantire maggiore modularità e manutenibilità del sistema.
     \label{fig: Diagramma di Gantt quinto periodo dal 06/02/2024 al 20/02/2025: prima parte}
 \end{figure}
 \newpage
-
-
 \begin{figure}[h] 
     \centering
     \includegraphics[width=\textwidth]{Quinto periodo/Diagramma di Gantt (seconda parte) - Quinto periodo.png}
@@ -359,6 +358,7 @@ per garantire maggiore modularità e manutenibilità del sistema.
 \end{figure}
 
 \newpage
+
 
 \subsubsubsection{Sesto periodo}
 \label{sec:sesto periodo}
@@ -372,9 +372,9 @@ per garantire maggiore modularità e manutenibilità del sistema.
     \end{tabularx}
     \caption{Sesto periodo dedicato alla PB}
 \end{table}
-Il sesto periodo, che va dal 21 febbraio al 6 marzo 2025, è stato dedicato a diverse attività fondamentali per il progresso del progetto. 
+Il sesto periodo, che va dal 21 febbraio al 6 marzo 2025, è stato dedicato a diverse attività fondamentali per il progresso del progetto.\\
 Abbiamo corretto i diagrammi di progettazione affinché rispettassero con precisione le esigenze del \emph{proponente} e trasposto i diagrammi del \emph{backend} dell'applicazione in codice \emph{Python}. Inoltre, ci siamo occupati dello sviluppo dei test di integrazione e abbiamo condotto alcuni esperimenti grafici per il frontend in \emph{Angular}. 
-Infine, abbiamo iniziato a lavorare all'ottimizzazione della gestione delle modifiche e delle eliminazioni dei documenti nel \emph{database vettoriale}, per migliorarne l'efficienza e l'affidabilità.
+Infine, abbiamo iniziato a lavorare all'ottimizzazione della gestione delle modifiche e delle eliminazioni dei documenti nell'aggiornamento automatico del \emph{database vettoriale}, per migliorarne l'efficienza e l'affidabilità.
 
 \newpage
 \begin{figure}[h] 
@@ -391,13 +391,58 @@ Infine, abbiamo iniziato a lavorare all'ottimizzazione della gestione delle modi
     \label{fig: Diagramma di Gantt sesto periodo dal 21/02/2025 - 06/03/2025: prima parte}
 \end{figure}
 \newpage
-
-
 \begin{figure}[h] 
     \centering
     \includegraphics[width=\textwidth]{Sesto periodo/Diagramma di Gantt (seconda parte) - Sesto periodo.png}
     \caption{Diagramma di Gantt sesto periodo dal 21/02/2025 - 06/03/2025: seconda parte} 
     \label{fig: Diagramma di Gantt sesto periodo dal 21/02/2025 - 06/03/2025: seconda parte}
+\end{figure}
+
+\newpage
+
+
+\subsubsubsection{Settimo periodo}
+\label{sec:settimo periodo}
+\begin{table}[h!]
+    \centering
+    \renewcommand{\arraystretch}{1.5} % Aumenta l'altezza delle righe
+    \begin{tabularx}{\textwidth}{|X|X|}\hline
+    \rowcolor[HTML]{FFD700} 
+    \textbf{Data di inizio} & \textbf{Data di fine} \\ \hline
+    06/03/2025 & 19/03/2025 \\ \hline
+    \end{tabularx}
+    \caption{Settimo periodo dedicato alla PB}
+\end{table}
+Il settimo periodo, che va dal 6 al 19 marzo 2025, è stato dedicato principalmente alla programmazione dell'\emph{MVP}.\\
+In particolare, sono state implementate le seguenti funzionalità:
+\begin{itemize}
+    \item L'ottimizzazione della gestione delle modifiche e delle eliminazioni dei documenti nell'aggiornamento automatico del \emph{database vettoriale}, che, in particolare, è stata implementata differenziando la gestione tra l'aggiornamento dei file di \emph{GitHub}\textsubscript{\textbf{\textit{G}}} e l'aggiornamento degli altri documenti;
+    \item L'implementazione di un sistema di \emph{logging}\textsubscript{\textbf{\textit{G}}} per l'aggiornamento automatico, in particolare prevedendo la scrittura in due file: un file txt dedicato ai log consuntivi di fine aggiornamento e un file cron.log dedicato ai log istantanei stampati durante l'esecuzione dello \emph{script}\textsubscript{\textbf{\textit{G}}} di aggiornamento da parte del \emph{cron}\textsubscript{\textbf{\textit{G}}};
+    \item Il completamento del frontend del prodotto, in particolare l'implementazione della visualizzazione dello storico dei messaggi e del corrispondente scroll infinito, della visualizzazione dei link correlati alle risposte e della gestione degli errori mediante segnali di avviso temporizzati.
+\end{itemize}
+A corredo di ciò, abbiamo proceduto a trascrivere tutti i diagrammi della progettazione nel documento di \emph{Specifica Tecnica} e a redigere la guida all'utilizzo del prodotto nel \emph{Manuale Utente}.\\
+Infine, il giorno mercoledì 19 marzo, al termine del periodo, abbiamo svolto la \emph{demo}\textsubscript{\textbf{\textit{G}}} dell'\emph{MVP} assieme al \emph{proponente}, che ha validato il lavoro svolto, consentendo quindi al team di considerare conclusa l'attività di programmazione.
+
+\newpage
+\begin{figure}[h] 
+    \centering
+    \includegraphics[width=\textwidth]{Settimo periodo/Diagramma di Burndown - Settimo periodo.png}
+    \caption{Diagramma di Burndown del settimo periodo} 
+    \label{fig: Diagramma di Burndown del settimo periodo}
+\end{figure}
+\newpage
+\begin{figure}[h] 
+    \centering
+    \includegraphics[width=\textwidth]{Settimo periodo/Diagramma di Gantt (prima parte) - Settimo periodo.png}
+    \caption{Diagramma di Gantt settimo periodo dal 21/02/2025 - 06/03/2025: prima parte} 
+    \label{fig: Diagramma di Gantt settimo periodo dal 21/02/2025 - 06/03/2025: prima parte}
+\end{figure}
+\newpage
+\begin{figure}[h] 
+    \centering
+    \includegraphics[width=\textwidth]{Settimo periodo/Diagramma di Gantt (seconda parte) - Settimo periodo.png}
+    \caption{Diagramma di Gantt settimo periodo dal 21/02/2025 - 06/03/2025: seconda parte} 
+    \label{fig: Diagramma di Gantt settimo periodo dal 21/02/2025 - 06/03/2025: seconda parte}
 \end{figure}
 
 \newpage
