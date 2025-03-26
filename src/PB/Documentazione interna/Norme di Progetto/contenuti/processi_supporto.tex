@@ -73,21 +73,21 @@ contribuisce a una struttura ordinata e comprensibile per il lettore.
 In ciascuna pagina del documento, escludendo il frontespizio, sono presenti sia un’intestazione
 che un piè di pagina. Nell’intestazione, sono inclusi i seguenti elementi:
 \begin{itemize}
-    \item Sul lato sinistro: il numero e il titolo del capitolo corrente;
-    \item Sul lato destro: il logo del gruppo.
+    \item \textbf{Sul lato sinistro}: il numero e il titolo del capitolo corrente;
+    \item \textbf{Sul lato destro}: il logo del gruppo.
 \end{itemize}
 Nel piè di pagina, invece, sono indicati i seguenti dettagli:
 \begin{itemize}
-    \item Sul lato sinistro: il nome del file;
-    \item Al centro: il numero della pagina attualmente in consultazione;
-    \item Sul lato destro: il numero di versione del file.
+    \item \textbf{Sul lato sinistro}: il nome del file;
+    \item \textbf{Al centro}: il numero della pagina attualmente in consultazione;
+    \item \textbf{Sul lato destro}: il numero di versione del file.
 \end{itemize}
 
 \subsubsubsection{Frontespizio}
 Il frontespizio, ovvero la prima pagina del documento,  strutturato nel seguente modo:
 \begin{itemize}
     \item \textbf{Logo UniPD}: il logo universitario è posizionato in alto a sinistra;
-    \item \textbf{Informazioni sul corso}: le informazioni relative al corso di Ingegneria del Software sono in alto a destra
+    \item \textbf{Informazioni sul corso}: le informazioni relative al corso di Ingegneria del Software sono in alto a destra;
     \item \textbf{Logo del gruppo}: il logo del gruppo è posizionato in alto a sinistra subito sotto al logo dell'Università;
     \item \textbf{Nome gruppo e recapito}: le informazioni sul gruppo \emph{SWEg Labs} sono posizionate in alto a destra, subito sotto alle info sul corso;
     \item \textbf{Titolo}: il titolo del documento è posizionato al centro della pagina, in grassetto;
@@ -424,9 +424,9 @@ Il processo di gestione della qualità stabilisce le norme e gli strumenti per m
 \end{itemize}
 
 \subsubsection{Piano di Qualifica}
-Per stabilire gli obbiettivi di questo processo utilizziamo il Piano di Qualifica. Ossia un documento contenente:
+Per stabilire gli obiettivi di questo processo utilizziamo il Piano di Qualifica. Ossia un documento contenente:
 \begin{itemize}
-    \item Gli obbiettivi qualitativi da raggiungere;
+    \item Gli obiettivi qualitativi da raggiungere;
     \item Le definizioni e descrizioni delle metriche utilizzate per la misurazione della qualità dei processi, del prodotto, della documentazione e dei software utilizzati;
     \item La descrizione dei test da svolgere e le relative norme da seguire;
     \item Lo stato attuale della qualità del progetto, misurato tramite le metriche descritte.
@@ -437,7 +437,7 @@ Gli strumenti utilizzati per la gestione della qualità sono le metriche.
 Queste sono le norme che regolano le metriche adottate, le quali rappresentano ognuna un conseguente obiettivo prefissato.
 Le metriche adottate sono presentate e descritte nel documento piano di qualifica, ognuna con i seguenti parametri:
 \begin{itemize}
-    \item \textbf{Nome}: il nome della metrica
+    \item \textbf{Nome}: il nome della metrica;
     \item \textbf{Codice}: ogni metrica ha un codice identificativo formato da:
     \begin{center}
         M[Tipologia][Id numerico]
@@ -485,16 +485,16 @@ Questa attività prevede l'esecuzione di \emph{test}\textsubscript{\textit{G}} p
 Per garantire l'efficacia dei test, ciascuno di essi deve essere deterministico, cioè, dati gli stessi input, deve produrre sempre lo stesso output. 
 Inoltre, ogni test deve avere parametri ben definiti, tra cui:
 \begin{itemize}
-    \item descrizione dei parametri di input;
-    \item descrizione dell'output;
-    \item comportamento atteso del software;
-    \item condizioni di esecuzione del test.
+    \item Descrizione dei parametri di input;
+    \item Descrizione dell'output;
+    \item Comportamento atteso del software;
+    \item Condizioni di esecuzione del test.
 \end{itemize}
 Al fine di agevolare l’automazione dei test, saranno utilizzati i seguenti strumenti:
 \begin{itemize}
-    \item \textbf{Driver:} una componente che fornisce l’ambiente di esecuzione necessario per testare un componente del prodotto software. Un driver è progettato per “attivare” il componente da testare e fornirgli i dati di input necessari;
-    \item \textbf{Stub:} una componente passiva che simula il comportamento di alcune parti mancanti o non ancora implementate nell’applicazione. Questo consente di testare in anticipo le parti del software che dipendono da altre parti non ancora disponibili;
-    \item \textbf{Logger:} uno strumento che registra i risultati ottenuti durante l’esecuzione del test, consentendo un’analisi accurata dei dati prodotti.
+    \item \textbf{Driver}: una componente che fornisce l’ambiente di esecuzione necessario per testare un componente del prodotto software. Un driver è progettato per “attivare” il componente da testare e fornirgli i dati di input necessari;
+    \item \textbf{Stub}: una componente passiva che simula il comportamento di alcune parti mancanti o non ancora implementate nell’applicazione. Questo consente di testare in anticipo le parti del software che dipendono da altre parti non ancora disponibili;
+    \item \textbf{Logger}: uno strumento che registra i risultati ottenuti durante l’esecuzione del test, consentendo un’analisi accurata dei dati prodotti.
 \end{itemize}
 
 \subsubsection{Test di sistema}
@@ -516,8 +516,8 @@ dove:
 \begin{itemize}
     \item \textbf{[tipo]} rappresenta il tipo di test, in particolare:
     \begin{itemize}
-        \item S per i test di sistema;
-        \item A per i test di accettazione.
+        \item \textbf{S}: per i test di sistema;
+        \item \textbf{A}: per i test di accettazione.
     \end{itemize}
     \item \textbf{[codice]} è un numero progressivo associato al test all’interno del suo tipo.
 \end{itemize}
@@ -529,9 +529,9 @@ dove:
 Ad ogni test verrà associato uno stato che ne rappresenterà l’esito.
 Lo stato può essere:
 \begin{itemize}
-    \item N-I: il test non è ancora stato implementato;
-    \item Superato: il test riporta esito positivo;
-    \item Non superato: il test riporta esito negativo.
+    \item \textbf{N-I}: il test non è ancora stato implementato;
+    \item \textcolor{green}{\ding{51}}: il test riporta esito positivo;
+    \item \textcolor{red}{\ding{55}}: il test riporta esito negativo.
 \end{itemize}
 
 \subsection{Validazione}
