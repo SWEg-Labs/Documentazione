@@ -270,7 +270,7 @@ I test di unità vengono utilizzati per controllare il funzionamento corretto di
     TU157 & Verifica che il metodo copyToClipboard di ChatMessagesComponent rimuova 'content\_copy' multiplo e modifichi msg.copied. &  \multicolumn{1}{c|}{\textcolor{green}{\ding{51}}} \\ \hline
     TU158 & Verifica che il componente ChatMessagesComponent venga creato. &  \multicolumn{1}{c|}{\textcolor{green}{\ding{51}}} \\ \hline
     TU159 & Verifica che l'istanza del componente ChatMessagesComponent sia definita. &  \multicolumn{1}{c|}{\textcolor{green}{\ding{51}}} \\ \hline
-    TU160 & Verifica che il metodo copySnippet di ChatMessagesComponent chiami il metodo navigator.clipboard.writeText e inserisca e poi rimuova oppurtanemente la classe CSS 'snippet-copied' all'icona di copia. &  \multicolumn{1}{c|}{\textcolor{green}{\ding{51}}} \\ \hline
+    TU160 & Verifica che il metodo copySnippet di ChatMessagesComponent chiami il metodo navigator.clipboard.writeText e inserisca e poi rimuova opportanemente la classe CSS 'snippet-copied' all'icona di copia. &  \multicolumn{1}{c|}{\textcolor{green}{\ding{51}}} \\ \hline
     TU161 & Verifica che il metodo scrollToBottom di ChatMessagesComponent imposti scrollTop (la posizione di scorrimento verticale corrente) uguale a scrollHeight (l'altezza totale del contenuto dell'elemento HTML). &  \multicolumn{1}{c|}{\textcolor{green}{\ding{51}}} \\ \hline
     TU162 & Verifica che il metodo onScroll di ChatMessagesComponent non fallisca se l'attributo messagesContainer è undefined. &  \multicolumn{1}{c|}{\textcolor{green}{\ding{51}}} \\ \hline
     TU163 & Verifica che il metodo onScroll di ChatMessagesComponent emetta true se non si è in fondo. &  \multicolumn{1}{c|}{\textcolor{green}{\ding{51}}} \\ \hline
@@ -488,7 +488,7 @@ I test di accettazione descritti di seguito rappresentano la base per la validaz
 
     TS30 & Verificare che i messaggi del \emph{chatbot} e dell’utente mostrati a schermo devono essere distinguibili tra loro tramite una colorazione differente. & RDF30 & \multicolumn{1}{c|}{\textcolor{green}{\ding{51}}} \\ \hline
     TS31 & Verificare che il sistema carichi e mostri a schermo i messaggi cronologicamente precedenti, quando l’utente, tramite scroll verso il basso raggiunge l’inizio della lista dei messaggi mostrati. & RDF31 & \multicolumn{1}{c|}{\textcolor{green}{\ding{51}}} \\ \hline
-    TS32 & Verificare che nel caso il sistema fallisca nel recupeare i messaggi precedenti dal database, l’utente visualizzi un messaggio che comunica che non è stato possibile recuperare altri messaggi dal database. & RDF32 & \multicolumn{1}{c|}{\textcolor{green}{\ding{51}}} \\ \hline
+    TS32 & Verificare che nel caso il sistema fallisca nel recuperare i messaggi precedenti dal database, l’utente visualizzi un messaggio che comunica che non è stato possibile recuperare altri messaggi dal database. & RDF32 & \multicolumn{1}{c|}{\textcolor{green}{\ding{51}}} \\ \hline
     TS33 & Verificare che nel caso non ci siano altri messaggi nel database, l’utente visualizzi un messaggio che comunica che non ci sono altri messaggi da visualizzare. & RDF33 & \multicolumn{1}{c|}{\textcolor{red}{\ding{55}}} \\ \hline
     TS34 & Verificare che il sistema comunichi all’utente se l’ultimo tentativo di aggiornamento del database vettoriale ha avuto successo. & RZF34 & \multicolumn{1}{c|}{\textcolor{green}{\ding{51}}} \\ \hline
     TS35 & Verificare che il sistema comunichi all’utente se l’ultimo tentativo di aggiornamento del database vettoriale è fallito. & RZF35 & \multicolumn{1}{c|}{\textcolor{green}{\ding{51}}} \\ \hline
@@ -496,7 +496,7 @@ I test di accettazione descritti di seguito rappresentano la base per la validaz
     TS37 & Verificare che l’utente, accanto al badge che segnala l’esito dell’aggiornamento automatico del \emph{database vettoriale}, visualizzi un messaggio che spiega il significato di quest’ultimo nella sua forma corrente. & RZF37 & \multicolumn{1}{c|}{\textcolor{green}{\ding{51}}} \\ \hline
     TS38 & Verificare che se l’ultimo tentativo di aggiornamento del \emph{database vettoriale} ha avuto successo, l’utente accanto al badge visualizzi un messaggio che spiega il significato della forma a spunta di quest’ultimo. & RZF38 & \multicolumn{1}{c|}{\textcolor{green}{\ding{51}}} \\ \hline
     TS39 & Verificare che se l’ultimo tentativo di aggiornamento del \emph{database vettoriale} è fallito, l’utente accanto al badge visualizzi un messaggio che spiega il significato della forma a X di quest’ultimo. & RZF39 & \multicolumn{1}{c|}{\textcolor{green}{\ding{51}}} \\ \hline
-    TS40 & Verificare che se non è stato possibile recuperare l’esito dell’ultimo tentativo di aggiornamento del \emph{database vettoriale}, l’utente accanto al badge visualizzi un messaggio che piega il significato della forma a segnale di pericolo di quest’ultimo. & RZF40 & \multicolumn{1}{c|}{\textcolor{green}{\ding{51}}} \\ \hline
+    TS40 & Verificare che se non è stato possibile recuperare l’esito dell’ultimo tentativo di aggiornamento del \emph{database vettoriale}, l’utente accanto al badge visualizzi un messaggio che spiega il significato della forma a segnale di pericolo di quest’ultimo. & RZF40 & \multicolumn{1}{c|}{\textcolor{green}{\ding{51}}} \\ \hline
         
     \end{tabularx}
 \end{table}
@@ -577,7 +577,7 @@ I test di accettazione descritti di seguito rappresentano la base per la validaz
     & UC21, UC22, UC23, UC24 & \multicolumn{1}{c|}{\textcolor{green}{\ding{51}}} \\ \hline
     TA13 & Verificare che l'utente possa visualizzare una lista di 50 messaggi immediatamente precedenti a quanto già presente nella vista, con relativo errore nel caso non sia possibile recuperare i messaggi. & UC25, UC26, UC27, UC8.1 & \multicolumn{1}{c|}{\textcolor{green}{\ding{51}}} \\ \hline
     TA14 & Verificare che l'utente possa visualizzare un riquadro di caricamento di una risposta.& UC29 & \multicolumn{1}{c|}{\textcolor{green}{\ding{51}}} \\ \hline
-    TA15 & Verificare che l'utente possa visualizzzare un riquadro di caricamento dello storico dei messaggi. & UC30 & \multicolumn{1}{c|}{\textcolor{green}{\ding{51}}} \\ \hline
+    TA15 & Verificare che l'utente possa visualizzare un riquadro di caricamento dello storico dei messaggi. & UC30 & \multicolumn{1}{c|}{\textcolor{green}{\ding{51}}} \\ \hline
     TA16 & Verificare che l'utente possa visualizzare un riquadro di caricamento dei messaggi precedenti. & UC31 & \multicolumn{1}{c|}{\textcolor{green}{\ding{51}}} \\ \hline
     TA17 & Verificare che l'utente possa, premendo un pulsante, tornare ai messaggi recenti. & UC32 & \multicolumn{1}{c|}{\textcolor{green}{\ding{51}}} \\ \hline
 
